@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="144" viewBox="0 0 700 144" role="img" aria-labelledby="title desc">
+  <title id="title">Restidsanalys Premium Logotyp</title>
+  <desc id="desc">Restidsanalys symbol med dynamisk puls, färgövergångar och 3D-glaskänsla.</desc>
+  <defs>
+    <!-- Premium Gradients: Deep SaaS blue to neon violet/pink -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E2538"/>
+      <stop offset="100%" stop-color="#0F121C"/>
+    </linearGradient>
+    <linearGradient id="ring-grad-1" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/> <!-- Royal Blue -->
+      <stop offset="50%" stop-color="#8B5CF6"/> <!-- Vibrant Violet -->
+      <stop offset="100%" stop-color="#EC4899"/> <!-- Neon Pink -->
+    </linearGradient>
+    <linearGradient id="ring-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#C084FC"/>
+    </linearGradient>
+    
+    <!-- Soft Drop Shadow for the 3D Glass Look -->
+    <filter id="glass-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.4"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+    
+    <!-- Outer Glow for the lines to feel like energy/light -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <style>
+    /* CSS Animationer direkt i SVG:n för att skapa pulserande isokroner! */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.85); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 0.3; }
+      100% { transform: scale(0.85); opacity: 0.8; }
+    }
+    @keyframes pulse-inner {
+      0% { transform: scale(0.95); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.6; }
+      100% { transform: scale(0.95); opacity: 1; }
+    }
+    .ring-outer {
+      transform-origin: 57px 68px;
+      animation: pulse-ring 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .ring-inner {
+      transform-origin: 57px 68px;
+      animation: pulse-inner 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      animation-delay: 1s; /* Förskjutning skapar vågeffekt */
+    }
+    .target-dot {
+      animation: pulse-inner 3s ease-in-out infinite alternate;
+      transform-origin: 91px 39px;
+    }
+  </style>
+
+  <g transform="translate(16 8)">
+    <!-- Base App Icon with Shadow and Inner Stroke (Glassmorphism) -->
+    <rect width="128" height="128" rx="32" fill="url(#bg-grad)" filter="url(#glass-shadow)"/>
+    <rect width="128" height="128" rx="32" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    
+    <!-- Isochrone Rings med Gradienter och Animation -->
+    <circle cx="57" cy="68" r="38" fill="none" stroke="url(#ring-grad-1)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="160 60" transform="rotate(-34 57 68)" class="ring-outer" opacity="0.6"/>
+    <circle cx="57" cy="68" r="24" fill="none" stroke="url(#ring-grad-2)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="100 45" transform="rotate(-15 57 68)" class="ring-inner" opacity="0.9"/>
+    
+    <!-- Path to Target (Glödande vit) -->
+    <path d="M57 68L91 39" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" filter="url(#glow)"/>
+    
+    <!-- Center Dot (Start) -->
+    <circle cx="57" cy="68" r="8.5" fill="#FFFFFF" filter="url(#glow)"/>
+    
+    <!-- Target Dot (Utstansad illusion men med gradient) -->
+    <circle cx="91" cy="39" r="8.5" fill="url(#ring-grad-1)" stroke="#1E2538" stroke-width="3" class="target-dot"/>
+  </g>
+  
+  <!-- Typografi med kontrast: Krispigt vit text och en lila accentpunkt -->
+  <text x="178" y="89" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="54" font-weight="700" letter-spacing="-1.8">Restidsanalys</text>
+  <text x="515" y="89" fill="#8B5CF6" font-family="Inter, system-ui, sans-serif" font-size="54" font-weight="700" letter-spacing="-1.8">.</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wmGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E5E65" />
+      <stop offset="100%" stop-color="#093F44" />
+    </linearGradient>
+    <linearGradient id="wmGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B8792" />
+      <stop offset="100%" stop-color="#0D5C63" />
+    </linearGradient>
+    <linearGradient id="wmGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#64B6AC" />
+      <stop offset="100%" stop-color="#3A8A85" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left Icon Mark (48x48 scale shifted to 80x80) -->
+  <g transform="translate(40, 40)">
+    <rect x="0" y="0" width="36" height="36" rx="6" fill="url(#wmGrad1)" />
+    <rect x="44" y="0" width="36" height="36" rx="6" fill="url(#wmGrad2)" />
+    <rect x="0" y="44" width="36" height="36" rx="6" fill="url(#wmGrad3)" />
+    <rect x="44" y="44" width="36" height="36" rx="6" fill="#06282B" />
+    <!-- Center Geo Point -->
+    <circle cx="40" cy="40" r="4" fill="#F8F7F4" />
+  </g>
+
+  <!-- Typography: VALATLAS -->
+  <text x="150" y="94" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="52" font-weight="900" letter-spacing="-0.03em" fill="#121816">VALATLAS</text>
+
+  <!-- Subline / Coordinates -->
+  <text x="152" y="118" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" letter-spacing="0.22em" fill="#0D5C63" opacity="0.9">SVENSK VALGEOGRAFI &amp; DATA</text>
+</svg>

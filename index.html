@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="sv" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>GeoX — Digital Product Studio | Data, platser och digitala verktyg</title>
+  <meta name="description"
+    content="GeoX är en oberoende svensk digital produktstudio som utvecklar verktyg inom geodata, samhällsanalys och utvecklarverktyg. Bakom Valatlas, KrisGIS, Restidsanalys och UtterIDE.">
+  <meta name="keywords"
+    content="GeoX, digital product studio, geodata, geografisk analys, datavisualisering, samhällsdata, Valatlas, KrisGIS, Restidsanalys, UtterIDE, digitala verktyg">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://geox.dev">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="GeoX — Digital Product Studio">
+  <meta property="og:description"
+    content="Vi bygger verktyg som gör komplex data begriplig. Oberoende digital produktstudio bakom Valatlas, KrisGIS, Restidsanalys och UtterIDE.">
+  <meta property="og:url" content="https://geox.dev">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GeoX">
+  <meta property="og:locale" content="sv_SE">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GeoX — Digital Product Studio">
+  <meta name="twitter:description"
+    content="Vi bygger verktyg som gör komplex data begriplig. Digitala produkter inom geodata, samhällsanalys och utvecklarverktyg.">
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GeoX",
+    "url": "https://geox.dev",
+    "description": "GeoX utvecklar digitala produkter i skärningspunkten mellan geodata, samhällsdata, analys och mjukvaruutveckling.",
+    "sameAs": [
+      "https://www.valatlas.se",
+      "https://www.krisgis.se",
+      "https://www.restidsanalys.se",
+      "https://utteride.se"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Ambient Atmosphere -->
+  <div class="ambient-background" aria-hidden="true">
+    <div class="ambient-grid-lines"></div>
+    <div class="ambient-dot-grid"></div>
+    <div class="ambient-top-glow"></div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header" id="site-header">
+    <nav class="nav-container" aria-label="Huvudnavigation">
+      <a href="#" class="brand-link" aria-label="GeoX Startsida">
+        <svg viewBox="0 0 310 80" class="brand-logo-svg" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(0, -10)">
+            <g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+              <circle cx="45" cy="50" r="34" />
+              <path d="M11 50 H79" />
+              <path d="M45 16 Q 26 50 45 84" />
+              <path d="M45 16 Q 64 50 45 84" />
+            </g>
+            <text x="95" y="75" font-family="Inter, sans-serif" font-weight="900" font-size="74" letter-spacing="-2" fill="currentColor">Geo<tspan fill="var(--accent-primary)">X</tspan></text>
+          </g>
+        </svg>
+        <span class="brand-studio-badge">STUDIO</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="nav-links" id="nav-links">
+        <li class="nav-item">
+          <a href="#produkter" class="nav-link">
+            <span>Produkter</span>
+            <i data-lucide="chevron-down" size="14"></i>
+          </a>
+          <!-- Dropdown Menu -->
+          <div class="product-dropdown" role="menu">
+            <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" class="dropdown-item" role="menuitem">
+              <div class="dropdown-info">
+                <span class="dropdown-name">Valatlas <i data-lucide="arrow-up-right" size="12"></i></span>
+                <span class="dropdown-tag">Samhällsdata & Valanalys</span>
+              </div>
+              <span class="status-pill status-live dropdown-badge"><span class="status-dot"></span>LIVE</span>
+            </a>
+            <a href="https://www.krisgis.se" target="_blank" rel="noopener noreferrer" class="dropdown-item" role="menuitem">
+              <div class="dropdown-info">
+                <span class="dropdown-name">KrisGIS <i data-lucide="arrow-up-right" size="12"></i></span>
+                <span class="dropdown-tag">Samlad geografisk lägesbild</span>
+              </div>
+              <span class="status-pill status-live dropdown-badge"><span class="status-dot"></span>LIVE</span>
+            </a>
+            <a href="https://www.restidsanalys.se" target="_blank" rel="noopener noreferrer" class="dropdown-item" role="menuitem">
+              <div class="dropdown-info">
+                <span class="dropdown-name">Restidsanalys <i data-lucide="arrow-up-right" size="12"></i></span>
+                <span class="dropdown-tag">Tillgänglighet & beslutsstöd</span>
+              </div>
+              <span class="status-pill status-pilot dropdown-badge"><span class="status-dot"></span>PILOT</span>
+            </a>
+            <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" class="dropdown-item" role="menuitem">
+              <div class="dropdown-info">
+                <span class="dropdown-name">UtterIDE <i data-lucide="arrow-up-right" size="12"></i></span>
+                <span class="dropdown-tag">Review-first AI-kodagent</span>
+              </div>
+              <span class="status-pill status-dev dropdown-badge"><span class="status-dot"></span>DEV</span>
+            </a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#fokus" class="nav-link">Fokus</a>
+        </li>
+        <li class="nav-item">
+          <a href="#principer" class="nav-link">Principer</a>
+        </li>
+        <li class="nav-item">
+          <a href="#om" class="nav-link">Om GeoX</a>
+        </li>
+        <li class="nav-item">
+          <a href="#kontakt" class="nav-link">Kontakt</a>
+        </li>
+      </ul>
+
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Växla mellan mörkt och ljust läge">
+          <i data-lucide="sun" class="sun-icon" size="17"></i>
+          <i data-lucide="moon" class="moon-icon" size="17"></i>
+        </button>
+        <a href="#produkter" class="btn btn-nav-cta">Produkter</a>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Öppna meny" aria-expanded="false">
+          <i data-lucide="menu" size="20"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-eyebrow">
+            <span class="eyebrow-pill">GEOX / DIGITAL PRODUCT STUDIO</span>
+          </div>
+
+          <h1 class="hero-title">
+            Vi bygger verktyg som gör komplex data begriplig.
+          </h1>
+
+          <p class="hero-subtitle">
+            GeoX utvecklar digitala produkter inom geodata, samhällsanalys och utvecklarverktyg.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#produkter" class="btn btn-primary">
+              <span>Utforska produkterna</span>
+              <i data-lucide="arrow-down" size="16"></i>
+            </a>
+            <a href="#om" class="btn btn-secondary">
+              <span>Om GeoX</span>
+            </a>
+          </div>
+
+          <!-- Subtle Coordinate / Grid Accent -->
+          <div class="hero-meta-strip" aria-hidden="true">
+            <div class="meta-strip-item">
+              <span class="coord-label">STUDIO</span>
+              <span class="coord-value">STOCKHOLM, SE</span>
+            </div>
+            <div class="meta-strip-divider"></div>
+            <div class="meta-strip-item">
+              <span class="coord-label">DOMAIN</span>
+              <span class="coord-value">DATA • GEOGRAPHY • SOFTWARE</span>
+            </div>
+            <div class="meta-strip-divider"></div>
+            <div class="meta-strip-item">
+              <span class="coord-label">PORTFOLIO</span>
+              <span class="coord-value">4 ACTIVE PRODUCTS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS SHOWCASE SECTION -->
+    <section id="produkter" class="products-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">PRODUCTS</div>
+          <h2 class="section-title">Fyra produkter. Olika problem. Samma idé.</h2>
+          <p class="section-lead">Att göra komplex information enklare att förstå och använda.</p>
+        </div>
+
+        <div class="product-showcase-stack">
+
+          <!-- 1. VALATLAS -->
+          <article class="product-card" id="valatlas" style="--product-accent: #6366F1; --product-glow: rgba(99, 102, 241, 0.18);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-pill status-live"><span class="status-dot"></span>LIVE</span>
+                  <span class="product-category">Samhällsdata / Valdata / Visualisering</span>
+                </div>
+                <h3 class="product-name">Valatlas</h3>
+                <p class="product-punchline">
+                  Utforska svensk politik från riksnivå till ditt eget valdistrikt.
+                </p>
+                <p class="product-description">
+                  Valatlas kombinerar officiell valdata, kartor, partier, budgetar och kommunjämförelser för att göra svensk politik och demokratidata enklare att undersöka och analysera på djupet.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Officiell valdata</span>
+                  <span class="tag-item">Valdistrikt & kommuner</span>
+                  <span class="tag-item">Interaktiva kartor</span>
+                  <span class="tag-item">Sakfrågor & budget</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" class="btn btn-product-link">
+                    <span>Öppna Valatlas</span>
+                    <i data-lucide="arrow-up-right" size="16"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <i data-lucide="lock" size="11"></i>
+                      <span>valatlas.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <img src="assets/valatlas-preview.png" alt="Valatlas – sakfrågor, partipositioner och valanalys" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. KRISGIS -->
+          <article class="product-card card-reverse" id="krisgis" style="--product-accent: #38BDF8; --product-glow: rgba(56, 189, 248, 0.18);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-pill status-live"><span class="status-dot"></span>LIVE</span>
+                  <span class="product-category">Krisberedskap / Lägesbild / Geodata</span>
+                </div>
+                <h3 class="product-name">KrisGIS</h3>
+                <p class="product-punchline">
+                  Samlad geografisk lägesbild för kriser och samhällsstörningar.
+                </p>
+                <p class="product-description">
+                  KrisGIS samlar flera verifierbara och offentliga datakällor i en gemensam karta för att göra störningar, risker och skyddsrum enklare att överblicka. KrisGIS är en oberoende informationstjänst och inte en myndighet eller officiell larmkanal.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Realtidskarta</span>
+                  <span class="tag-item">Öppna myndighetsdata</span>
+                  <span class="tag-item">Samhällsstörningar</span>
+                  <span class="tag-item">Oberoende lägesbild</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://www.krisgis.se" target="_blank" rel="noopener noreferrer" class="btn btn-product-link">
+                    <span>Öppna KrisGIS</span>
+                    <i data-lucide="arrow-up-right" size="16"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <i data-lucide="lock" size="11"></i>
+                      <span>krisgis.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <img src="assets/krisgis-preview.png" alt="KrisGIS – samlad geografisk krislägesbild" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. RESTIDSANALYS -->
+          <article class="product-card" id="restidsanalys" style="--product-accent: #0284C7; --product-glow: rgba(2, 132, 199, 0.18);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-pill status-pilot"><span class="status-dot"></span>PILOT</span>
+                  <span class="product-category">Beslutsstöd / Tillgänglighet / GIS</span>
+                </div>
+                <h3 class="product-name">Restidsanalys</h3>
+                <p class="product-punchline">
+                  Hur många invånare når viktig service inom 15 minuter?
+                </p>
+                <p class="product-description">
+                  Restidsanalys hjälper organisationer och samhällsplanerare att analysera verklig tillgänglighet till exempelvis vård, skolor och samhällsservice med gång, cykel, kollektivtrafik och bil — inklusive räckvidd, störningar och nya förbindelser.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Isokroner & räckvidd</span>
+                  <span class="tag-item">Multimodal analys</span>
+                  <span class="tag-item">Scenario- & störningsanalys</span>
+                  <span class="tag-item">Beslutsunderlag</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://www.restidsanalys.se" target="_blank" rel="noopener noreferrer" class="btn btn-product-link">
+                    <span>Utforska Restidsanalys</span>
+                    <i data-lucide="arrow-up-right" size="16"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <i data-lucide="lock" size="11"></i>
+                      <span>restidsanalys.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <img src="assets/restidsanalys-preview.png" alt="Restidsanalys – isokroner och tillgänglighetsanalys" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. UTTERIDE -->
+          <article class="product-card card-reverse" id="utteride" style="--product-accent: #10B981; --product-glow: rgba(16, 185, 129, 0.18);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-pill status-dev"><span class="status-dot"></span>IN DEVELOPMENT</span>
+                  <span class="product-category">Developer tools / AI / Coding</span>
+                </div>
+                <h3 class="product-name">UtterIDE</h3>
+                <p class="product-punchline">
+                  AI-kodagent med utvecklaren i kontroll.
+                </p>
+                <p class="product-description">
+                  UtterIDE utforskar ett review-first arbetssätt för AI-assisterad utveckling med stöd för BYOK (Bring Your Own Key) och flera modellleverantörer som GPT, DeepSeek, databaser och specialiserade verktygsagenter.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Review-First</span>
+                  <span class="tag-item">BYOK</span>
+                  <span class="tag-item">Multi-Model</span>
+                  <span class="tag-item">Utvecklarkontroll</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" class="btn btn-product-link">
+                    <span>Utforska UtterIDE</span>
+                    <i data-lucide="arrow-up-right" size="16"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <i data-lucide="lock" size="11"></i>
+                      <span>utteride.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <img src="assets/utteride-preview.jpg" alt="UtterIDE – utvecklarmiljö och review-first AI-kodagent" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOCUS AREAS SECTION -->
+    <section id="fokus" class="focus-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">FOCUS</div>
+          <h2 class="section-title">Från rådata till något människor faktiskt kan använda.</h2>
+          <p class="section-lead">GeoX arbetar i skärningspunkten mellan tre kompletterande domäner.</p>
+        </div>
+
+        <div class="focus-grid">
+          <div class="focus-card">
+            <div class="focus-icon-wrap">
+              <i data-lucide="map-pin" size="24"></i>
+            </div>
+            <h3 class="focus-card-title">Geospatial</h3>
+            <p class="focus-card-desc">
+              Kartor, tillgänglighet, geografiska relationer och rumslig analys.
+            </p>
+          </div>
+
+          <div class="focus-card">
+            <div class="focus-icon-wrap">
+              <i data-lucide="database" size="24"></i>
+            </div>
+            <h3 class="focus-card-title">Data</h3>
+            <p class="focus-card-desc">
+              Offentliga data, API:er, visualisering och beslutsunderlag.
+            </p>
+          </div>
+
+          <div class="focus-card">
+            <div class="focus-icon-wrap">
+              <i data-lucide="terminal" size="24"></i>
+            </div>
+            <h3 class="focus-card-title">Software</h3>
+            <p class="focus-card-desc">
+              Webbprodukter, analysverktyg och AI-assisterad utveckling.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPLES SECTION -->
+    <section id="principer" class="principles-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">PHILOSOPHY</div>
+          <h2 class="section-title">Principer för varje produkt</h2>
+          <p class="section-lead">Tre enkla principer som vägleder hur vi designar och bygger.</p>
+        </div>
+
+        <div class="principles-grid">
+          <div class="principle-card">
+            <div class="principle-num">01</div>
+            <div class="principle-tag">Useful over impressive</div>
+            <h3 class="principle-title">Teknik är bara värdefull när den går att använda</h3>
+            <p class="principle-desc">
+              Vi bygger inte lösningar för att visa upp teknik eller floskler. Slutresultatet måste lösa ett verkligt problem och vara intuitivt i praktiken.
+            </p>
+          </div>
+
+          <div class="principle-card">
+            <div class="principle-num">02</div>
+            <div class="principle-tag">Real data</div>
+            <h3 class="principle-title">Byggt på spårbara datakällor</h3>
+            <p class="principle-desc">
+              När det är möjligt baseras produkterna på officiella, öppna och verifierbara datakällor för maximal tillförlitlighet och transparens.
+            </p>
+          </div>
+
+          <div class="principle-card">
+            <div class="principle-num">03</div>
+            <div class="principle-tag">Complexity underneath</div>
+            <h3 class="principle-title">Det avancerade ligger bakom gränssnittet</h3>
+            <p class="principle-desc">
+              Komplexa beräkningar, geografiska grafer och AI-modeller ska arbeta i bakgrunden — aldrig skapa friktion för användaren.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="om" class="about-section">
+      <div class="container">
+        <div class="about-panel">
+          <div class="about-grid">
+            <div class="about-headline-col">
+              <div class="about-eyebrow">
+                <span class="eyebrow-pill">OM GEOX</span>
+              </div>
+              <h2 class="about-title">
+                En oberoende digital produktstudio.
+              </h2>
+            </div>
+            <div class="about-body-col">
+              <p class="about-lead">
+                GeoX utvecklar produkter i skärningspunkten mellan geodata, samhällsdata, analys och mjukvaruutveckling.
+              </p>
+              <p class="about-text">
+                Vi bygger både publika informationstjänster och mer specialiserade verktyg för professionell användning. När stora datamängder, fragmenterad samhällsinformation eller komplicerade system gör något onödigt svårt, bygger vi ett renare och mer begripligt sätt att lösa det.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISCREET RESOURCES / SEO NAV -->
+    <section class="resources-strip" aria-label="Fördjupning och GIS-resurser">
+      <div class="container">
+        <div class="resources-inner">
+          <span class="resources-label">Fördjupning & resurser:</span>
+          <nav class="resources-links">
+            <a href="arcgis-alternative.html">ArcGIS Alternative</a>
+            <span class="sep">•</span>
+            <a href="fme-alternative.html">FME Alternative</a>
+            <span class="sep">•</span>
+            <a href="gis-etl-workflow.html">GIS ETL Workflow</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="kontakt">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="#" class="footer-brand-link" aria-label="GeoX Startsida">
+            <svg viewBox="0 0 310 80" class="brand-logo-svg" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(0, -10)">
+                <g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+                  <circle cx="45" cy="50" r="34" />
+                  <path d="M11 50 H79" />
+                  <path d="M45 16 Q 26 50 45 84" />
+                  <path d="M45 16 Q 64 50 45 84" />
+                </g>
+                <text x="95" y="75" font-family="Inter, sans-serif" font-weight="900" font-size="74" letter-spacing="-2" fill="currentColor">Geo<tspan fill="var(--accent-primary)">X</tspan></text>
+              </g>
+            </svg>
+          </a>
+          <p class="footer-summary">
+            Oberoende digital produktstudio. Vi bygger verktyg inom geodata, samhällsanalys och utvecklarverktyg.
+          </p>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-heading">Produkter</h4>
+          <ul class="footer-nav-list">
+            <li><a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer">Valatlas <i data-lucide="arrow-up-right" size="12"></i></a></li>
+            <li><a href="https://www.krisgis.se" target="_blank" rel="noopener noreferrer">KrisGIS <i data-lucide="arrow-up-right" size="12"></i></a></li>
+            <li><a href="https://www.restidsanalys.se" target="_blank" rel="noopener noreferrer">Restidsanalys <i data-lucide="arrow-up-right" size="12"></i></a></li>
+            <li><a href="https://utteride.se" target="_blank" rel="noopener noreferrer">UtterIDE <i data-lucide="arrow-up-right" size="12"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-heading">Studio</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#produkter">Produkter</a></li>
+            <li><a href="#fokus">Fokus</a></li>
+            <li><a href="#principer">Principer</a></li>
+            <li><a href="#om">Om GeoX</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 class="footer-heading">Kontakt</h4>
+          <ul class="footer-nav-list">
+            <li><a href="mailto:support@geox.dev">support@geox.dev</a></li>
+            <li><a href="mailto:info@geox.dev">info@geox.dev</a></li>
+            <li><a href="https://geox.dev">geox.dev</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="copyright">
+          © <span id="current-year">2026</span> GeoX. Alla rättigheter förbehållna.
+        </div>
+        <div class="footer-badge">
+          <span>Oberoende digital produktstudio • Utvecklad i Sverige 🇸🇪</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
