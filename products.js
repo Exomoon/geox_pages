@@ -1,6 +1,6 @@
 /**
- * GeoX Product Studio - Data Model
- * Reusable product architecture for GeoX Umbrella Ecosystem
+ * GeoX — Projects & Data Model
+ * Project architecture for GeoX Umbrella Ecosystem
  */
 
 export const products = [

@@ -1,5 +1,5 @@
 /**
- * GeoX Digital Product Studio — Main Script
+ * GeoX — Geodata & Integration Umbrella — Main Script
  */
 
 document.addEventListener('DOMContentLoaded', () => {
