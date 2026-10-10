@@ -86,7 +86,7 @@ export const products = [
     name: "PalaeoCoast",
     eyebrow: "Geospatial rekonstruktion / Paleogeografi / Raster",
     tagline: "Hur såg Europas forntida kuster ut från istidsmaximum till nutid?",
-    description: "Ett experimentellt geospatialt forskningsprojekt som utforskar hur forntida landskap kan återskapas genom att kombinera batymetri (GEBCO & EMODnet) med havsnivåkurvor, topologisk havskontakt och geomorfologiska processer.",
+    description: "Ett experimentellt geospatialt forskningsprojekt som utforskar hur forntida landskap kan återskapas genom att kombinera batymetri (GEBCO & EMODnet) med havsnivåkurvor, topologisk havskontakt och geomorfologiska processer. Numerisk GIA-motor för Fennoskandia och norra Europa utvecklas just nu.",
     url: "sealevel-sv.html",
     image: "assets/sealevel-preview.png",
     status: "EXPERIMENTAL / WIP",

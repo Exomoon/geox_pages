@@ -399,6 +399,11 @@
           PalaeoCoast är ett experimentellt geospatialt forskningsprojekt som utforskar hur forntida landskap kan återskapas genom att kombinera batymetri med havsnivåkurvor, topologisk havskontakt och geomorfologiska processer. Drivs av beräkningsmotorn <em>SeaLevelRize</em>.
         </p>
 
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:28px; padding:12px 18px; background:rgba(56,189,248,0.08); border-left:3px solid #38bdf8; border-radius:4px 8px 8px 4px;">
+          <span style="font-size:16px;">⚡</span>
+          <span style="font-size:14px; color:#cbd5e1; line-height:1.5;"><strong>Pågående arbete:</strong> Jag bygger just nu för fullt på en numerisk geofysisk <strong>GIA-motor (Glacial Isostatic Adjustment)</strong> för Fennoskandia och norra Europa, med stöd för ICE-6G_C och empirisk isutbredning.</span>
+        </div>
+
         <div class="hero-cta-row">
           <a href="#karta" class="btn btn-primary">Öppna kartvisaren ↓</a>
           <a href="viewer/sealevel/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
@@ -510,11 +515,14 @@
         <!-- GIA Engine in Development Callout -->
         <div style="margin-top: 24px; padding: 22px 26px; background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px;">
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;">
-            <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #38bdf8; background: rgba(56, 189, 248, 0.14); padding: 4px 10px; border-radius: 999px;">Aktiv utveckling</span>
-            <h4 style="margin: 0; font-size: 17px; font-weight: 700; color: #ffffff;">Numerisk GIA-motor för Fennoskandia & Europa</h4>
+            <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #38bdf8; background: rgba(56, 189, 248, 0.14); padding: 4px 10px; border-radius: 999px;">Aktivt arbete just nu</span>
+            <h4 style="margin: 0; font-size: 17px; font-weight: 700; color: #ffffff;">Jag bygger en numerisk GIA-motor för Fennoskandia & norra Europa</h4>
           </div>
+          <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.6; color: #cbd5e1;">
+            I den nuvarande prototypen i kartvisaren demonstreras beräkningsprincipen för dynamisk terräng med syntetiska testgradienter över Egeiska havet. <strong>Just nu arbetar jag aktivt med att bygga nästa stora modul i motorn:</strong> en verklig geofysisk <strong>GIA-beräkningsmotor (Glacial Isostatic Adjustment)</strong>.
+          </p>
           <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #94a3b8;">
-            I dagens visare demonstreras principen i Egeiska havet med syntetiska testgradienter. För norra Europa och Doggerland räcker dock inte schabloner — där krävs geofysisk <strong>GIA (Glacial Isostatic Adjustment)</strong> för att simulera mantelns viskositet, postglacial landhöjning och kollapsande randbälten (<em>forebulge collapse</em>). Denna modul utvecklas aktivt just nu genom att kombinera empiriska iskantsdata (DATED-1/BRITICE) och geodetiska modeller (NKG2016LU).
+            För norra Europa, Östersjöområdet och Doggerland räcker inte schablonmässiga lutningar — där krävs numerisk simulering av mantelns viskoelasticitet, postglacial landhöjning och kollapsande randbälten (<em>forebulge collapse</em>). Jag utvecklar detta genom att koppla samman globala geodynamiska lösningar (ICE-6G_C) med empiriska iskantsdata (DATED-1 och BRITICE-CHRONO) samt regionala geodetiska mätningar (NKG2016LU).
           </p>
         </div>
       </div>
