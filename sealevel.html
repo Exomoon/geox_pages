@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SeaLevelRize — Prehistoric Coastal Reconstruction GIS Engine | GeoX</title>
+  <meta name="description"
+    content="SeaLevelRize (PalaeoCoast) is a geospatial scenario engine modeling ancient coastal landscapes, sea level rise, tectonic land motion, and sediment dynamics on GEBCO bathymetry.">
+  <meta name="keywords"
+    content="Sea level rise, paleocoast, coastal reconstruction, GIS, bathymetry, GEBCO 2020, glacial isostatic adjustment, Aegean Sea, Ronnie Utter, GeoX">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://geox.dev/sealevel.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SeaLevelRize — Coastal Reconstruction & Sea Level Rise GIS Engine | GeoX">
+  <meta property="og:description"
+    content="Model prehistoric coastlines by coupling historical sea level curves with vertical land movement, erosion, and sedimentation.">
+  <meta property="og:url" content="https://geox.dev/sealevel.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GeoX">
+  <meta property="og:image" content="https://geox.dev/assets/sealevel-preview.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SeaLevelRize — Prehistoric Coastal Reconstruction GIS Engine">
+  <meta name="twitter:description"
+    content="Model prehistoric coastlines by coupling historical sea level curves with vertical land movement, erosion, and sedimentation.">
+  <meta name="twitter:image" content="https://geox.dev/assets/sealevel-preview.png">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SeaLevelRize",
+    "applicationCategory": "Geographic Information System",
+    "operatingSystem": "Linux, macOS, Windows",
+    "url": "https://geox.dev/sealevel.html",
+    "description": "Geospatial scenario modeling engine for ancient coastal landscapes and relative sea level changes.",
+    "author": {
+      "@type": "Person",
+      "name": "Ronnie Utter",
+      "sameAs": "https://www.linkedin.com/in/fme-dev/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="GeoX Home">
+        <span class="brand-text">Geo<span class="brand-accent">X</span></span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main Navigation">
+        <a href="index.html#projects" class="nav-link">Projects</a>
+        <a href="#overview" class="nav-link">Overview</a>
+        <a href="#viewer" class="nav-link">Interactive Map</a>
+        <a href="#science" class="nav-link">Method & Science</a>
+        <a href="#architecture" class="nav-link">Architecture</a>
+        <a href="https://github.com/Exomoon/sealevelrize" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub ↗</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switch" aria-label="Language selection">
+          <span class="lang-active">EN</span>
+          <span class="lang-sep">/</span>
+          <a href="sealevel-sv.html" class="lang-link">SV</a>
+        </div>
+        <a href="mailto:support@geox.dev" class="btn btn-header">Contact</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="overview">
+    <!-- Subpage Hero -->
+    <section class="subpage-hero">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="index.html">GeoX Home</a>
+          <span>/</span>
+          <a href="index.html#projects">Projects</a>
+          <span>/</span>
+          <span>SeaLevelRize</span>
+        </nav>
+
+        <div class="hero-pill-row">
+          <span class="status-badge"><i></i> Prototype / Open Source</span>
+          <span class="tag-badge">GEBCO 2020 600m</span>
+          <span class="tag-badge">22 000 BP → 0 BP</span>
+          <span class="tag-badge">Hydrological Flood-Fill</span>
+          <span class="tag-badge">QGIS & Leaflet</span>
+        </div>
+
+        <h1 class="subpage-title">SeaLevelRize — Coastal Landscape Evolution Engine</h1>
+        <p class="subpage-lead">
+          Flooding a modern digital elevation model (DEM) with historical sea level changes produces misleading paleogeographies.
+          SeaLevelRize reconstructs prehistoric coastlines by coupling regional sea-level curves with tectonic land movement, erosion, and sedimentation.
+        </p>
+
+        <div class="hero-cta-row">
+          <a href="#viewer" class="btn btn-primary">Open Interactive Map ↓</a>
+          <a href="https://github.com/Exomoon/sealevelrize" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <span>View Source on GitHub</span>
+            <span class="arrow-glyph" aria-hidden="true" style="margin-left: 6px;">→</span>
+          </a>
+        </div>
+
+        <div class="stats-bar">
+          <div class="stat-box">
+            <div class="stat-value">22 000 <span>BP</span></div>
+            <div class="stat-label">Last Glacial Maximum Horizon</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">600 <span>meters</span></div>
+            <div class="stat-label">Model Grid Cell Resolution</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">EPSG:3035</div>
+            <div class="stat-label">Equal-Area Scientific CRS</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">100% <span>Vectorized</span></div>
+            <div class="stat-label">NumPy Hydrological Engine</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Viewer Section -->
+    <section class="section" id="viewer" style="padding-top: 80px; padding-bottom: 80px;">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Interactive Map & Timeline</h2>
+          <p class="section-sub">
+            Explore Aegean Sea coastal configurations from 22 000 BP through 0 BP (1950 reference datum). Inspect connected oceans vs. isolated depressions, process layers, and difference statistics.
+          </p>
+        </div>
+
+        <div class="viewer-card">
+          <div class="viewer-header-bar">
+            <div class="viewer-title-group">
+              <span class="viewer-dot"></span>
+              <span class="viewer-title">PalaeoCoast Web Viewer · Aegean Basin Sandbox</span>
+            </div>
+            <div class="viewer-actions">
+              <a href="viewer/sealevel/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost">
+                <span>Fullscreen Window ↗</span>
+              </a>
+            </div>
+          </div>
+          <div class="viewer-frame-wrap">
+            <iframe src="viewer/sealevel/index.html" class="viewer-frame" title="SeaLevelRize Interactive Viewer" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Science & Methodology Section -->
+    <section class="section" id="science" style="background-color: var(--bg-surface);">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Scientific Principles & Model Formulation</h2>
+          <p class="section-sub">
+            How morphodynamic processes and relative sea level changes are mathematically reconstructed backwards in time.
+          </p>
+        </div>
+
+        <div class="detail-grid">
+          <div class="glass-box">
+            <h3>Backwards Landscape Evolution Equation</h3>
+            <p>
+              To determine ancient ground elevation at a given age $t$ (years Before Present, 1950), the cumulative geological effects that occurred between time $t$ and today must be inverted:
+            </p>
+
+            <div class="formula-display">
+              Z_paleo = Z_present − U + E − D
+            </div>
+
+            <p>
+              Where:
+            </p>
+            <ul style="color: var(--text-secondary); line-height: 1.8; margin-left: 20px; margin-bottom: 20px;">
+              <li><strong>$Z_{\text{paleo}}$:</strong> Reconstructed ancient land/bathymetric height in meters.</li>
+              <li><strong>$Z_{\text{present}}$:</strong> Present-day elevation (GEBCO 2020 datum).</li>
+              <li><strong>$U$:</strong> Cumulative vertical land motion ($+$ uplift lowers paleo-surface, $-$ subsidence raises paleo-surface).</li>
+              <li><strong>$E$:</strong> Cumulative post-depositional erosion ($+$ material eroded restores missing paleo-mass).</li>
+              <li><strong>$D$:</strong> Cumulative sediment deposition ($+$ deposited sediment is stripped away).</li>
+            </ul>
+
+            <p>
+              Height margin relative to sea level is computed as:
+              <br>
+              <strong style="color: #ffffff;">Margin = $Z_{\text{paleo}} - S(t)$</strong>, where $S(t)$ is ancient sea surface height.
+            </p>
+
+            <h3 style="margin-top: 32px;">True Hydrological Connectivity</h3>
+            <p>
+              A cell with negative elevation margin is not necessarily ocean. If it lies in an inland basin cut off by a sill from the open sea, it forms an <strong>enclosed sink depression</strong> rather than open ocean.
+              SeaLevelRize tracks contiguous 4-way topological connectivity originating from real ocean boundary seeds, preventing artificial inland flooding until a physical sill breach occurs.
+            </p>
+          </div>
+
+          <div>
+            <div class="glass-box" style="margin-bottom: 24px;">
+              <h3 style="color: var(--accent-cyan);">Reference Frame Conventions</h3>
+              <p style="font-size: 14px;">
+                <strong>Relative Mode:</strong> When regional RSL curves already include Glacial Isostatic Adjustment (GIA) and subsidence, additional land motion is locked to avoid double-counting.
+              </p>
+              <p style="font-size: 14px;">
+                <strong>Separate Mode:</strong> Global eustatic sea-level curves paired with explicit, spatially differentiated vertical tectonic fields and GIA displacement models.
+              </p>
+            </div>
+
+            <div class="glass-box">
+              <h3 style="color: #ffffff;">Data Provenance</h3>
+              <p style="font-size: 14px;">
+                • <strong>Elevation:</strong> GEBCO 2020 Grid (interpolated to 600m EPSG:3035).<br>
+                • <strong>Sea Level Curves:</strong> Lambeck et al., regional Aegean benchmarks.<br>
+                • <strong>Scope:</strong> Aegean Basin demo serves as a methodology proof of concept; Doggerland and North Sea expansions planned.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Time Milestones -->
+        <div style="margin-top: 56px;">
+          <h3 style="color: #ffffff; font-size: 22px; margin-bottom: 24px;">Key Paleogeographic Epochs</h3>
+          <div class="cards-grid-3">
+            <article class="scenario-card">
+              <div class="scenario-card-header">
+                <div class="scenario-time-tag">22 000 BP · Glacial Maximum</div>
+                <h4 class="scenario-card-title">Exposed Continental Shelf</h4>
+              </div>
+              <div class="scenario-card-body">
+                Sea levels dropped ~120m below present. Cycladic island complexes merged into vast contiguous land bridges, severely constraining water exchange through Mediterranean straits.
+              </div>
+            </article>
+
+            <article class="scenario-card">
+              <div class="scenario-card-header">
+                <div class="scenario-time-tag">11 700 BP · Early Holocene</div>
+                <h4 class="scenario-card-title">Rapid Marine Transgression</h4>
+              </div>
+              <div class="scenario-card-body">
+                Deglaciation triggered rapid sea-level rise. Marine sills were breached, transforming inland closed depressions into salt-water gulfs and isolating island archipelagos.
+              </div>
+            </article>
+
+            <article class="scenario-card">
+              <div class="scenario-card-header">
+                <div class="scenario-time-tag">0 BP · Present Day Reference</div>
+                <h4 class="scenario-card-title">Modern Baseline & Validation</h4>
+              </div>
+              <div class="scenario-card-body">
+                The 1950 calibration baseline where cumulative process offsets equal zero. Used to cross-validate reconstructed DEM grids against modern geodetic benchmarks.
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture & Code Pipeline -->
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Architecture & Python Pipeline</h2>
+          <p class="section-sub">
+            A modular engine supporting command-line execution, unit-tested models, QGIS visualization, and high-performance Web Mercator exports.
+          </p>
+        </div>
+
+        <div class="detail-grid">
+          <div class="glass-box">
+            <h3>Pipeline Components</h3>
+            <ul style="color: var(--text-secondary); line-height: 1.8; margin-left: 20px;">
+              <li><code>palaeocoast/model.py</code>: Core scientific model, backward elevation solver, and topological ocean seed flood algorithm.</li>
+              <li><code>palaeocoast/run.py</code>: Batch execution runner exporting multi-temporal GeoTIFF frames, GeoJSON coastlines, and summary metrics.</li>
+              <li><code>palaeocoast/web_export.py</code>: Reprojects and warps EPSG:3035 grids to EPSG:3857 Web Mercator for crisp web tiles.</li>
+              <li><code>palaeocoast/web_server.py</code>: Local HTTP server with JSON caching API for on-the-fly process toggling and cell inspection.</li>
+              <li><code>palaeocoast/qgis_viewer.py</code>: Standalone PyQGIS timeline slider script for professional cartographers.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="code-terminal">
+              <div class="comment"># Clone and set up repository</div>
+              <div><span class="prompt">$ </span>git clone git@github.com:Exomoon/sealevelrize.git</div>
+              <div><span class="prompt">$ </span>cd sealevelrize/palaeocoast</div>
+              <div><span class="prompt">$ </span>python3 -m venv .venv</div>
+              <div><span class="prompt">$ </span>source .venv/bin/activate</div>
+              <div><span class="prompt">$ </span>pip install -r requirements.txt</div>
+              <br>
+              <div class="comment"># Run validation test suite</div>
+              <div><span class="prompt">$ </span>python -m unittest discover -v</div>
+              <br>
+              <div class="comment"># Start local interactive server</div>
+              <div><span class="prompt">$ </span>python web_server.py --port 8765</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-wrap">
+          <a href="index.html" class="brand" aria-label="GeoX Home">
+            <span class="brand-text">Geo<span class="brand-accent">X</span></span>
+          </a>
+          <p class="footer-tagline">Where location meets data. Geospatial engineering and digital products.</p>
+        </div>
+
+        <div class="footer-links-wrap">
+          <div class="footer-col">
+            <span class="footer-col-title">Navigation</span>
+            <ul class="footer-links">
+              <li><a href="index.html">GeoX Home</a></li>
+              <li><a href="#overview">Overview</a></li>
+              <li><a href="#viewer">Interactive Map</a></li>
+              <li><a href="#science">Method & Science</a></li>
+              <li><a href="https://github.com/Exomoon/sealevelrize" target="_blank" rel="noopener noreferrer">GitHub Repository ↗</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Projects</span>
+            <ul class="footer-links">
+              <li><a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer">Restidsanalys</a></li>
+              <li><a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer">Områdesatlas</a></li>
+              <li><a href="https://krisgis.se" target="_blank" rel="noopener noreferrer">KrisGIS</a></li>
+              <li><a href="https://valatlas.se" target="_blank" rel="noopener noreferrer">Valatlas</a></li>
+              <li><a href="https://utteride.se" target="_blank" rel="noopener noreferrer">UtterIDE</a></li>
+              <li><a href="sealevel.html">SeaLevelRize</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Connect</span>
+            <ul class="footer-links">
+              <li><a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="mailto:support@geox.dev">support@geox.dev</a></li>
+              <li><a href="https://geox.dev">geox.dev</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-credit">Independent projects by <a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer" class="credit-link">Ronnie Utter</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

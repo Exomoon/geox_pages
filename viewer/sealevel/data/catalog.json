@@ -1,0 +1,3886 @@
+{
+  "title": "PalaeoCoast Europe",
+  "reference_year": 1950,
+  "display_crs": "EPSG:3857",
+  "analysis_crs": "EPSG:3035",
+  "regions": [
+    {
+      "id": "europe",
+      "name": "Europaöversikt",
+      "status": "overview",
+      "center": [
+        51,
+        15
+      ],
+      "zoom": 4
+    },
+    {
+      "id": "aegean",
+      "name": "Egeiska havet",
+      "status": "ready",
+      "center": [
+        37.6,
+        25.4
+      ],
+      "zoom": 6
+    },
+    {
+      "id": "doggerland",
+      "name": "Nordsjön / Doggerland",
+      "status": "prepared",
+      "center": [
+        55.2,
+        3.0
+      ],
+      "zoom": 6
+    }
+  ],
+  "data_status": [
+    {
+      "name": "GEBCO 2020",
+      "status": "Mätdata/sammanställning — används",
+      "detail": "15 bågsekunders globalgrid, demonstrationen samplad cirka 30 bågsekunder och modellerad på 600 m grid. Heterogena källor; inte navigationsdata."
+    },
+    {
+      "name": "Illustrativ havsnivåkurva",
+      "status": "Användarantagande — används",
+      "detail": "Manuellt valda demonstrationsvärden, inte en regionalt validerad RSL-rekonstruktion."
+    },
+    {
+      "name": "Rörelse och morfologi",
+      "status": "Användarantagande — scenario",
+      "detail": "Syntetiska höjdförändringar. Erosion och deposition är angivna vertikala förändringar, inte en fysisk transportmodell."
+    },
+    {
+      "name": "EMODnet DTM 2024",
+      "status": "Verifierad kandidat — inte integrerad",
+      "detail": "Cirka 115 m grid för europeiska hav. LAT/MSL och källdata måste harmoniseras med land-DEM före användning."
+    },
+    {
+      "name": "Copernicus DEM GLO-30",
+      "status": "Verifierad kandidat — inte integrerad",
+      "detail": "30 m DSM över land, höjddatum EGM2008. DSM är inte bar jord och kräver datum-/kustharmonisering."
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "baseline",
+      "name": "Kontroll – bara havsnivå",
+      "status": "KONTROLL: dagens terräng och illustrativ havsnivå; inga separata landskapsprocesser",
+      "sea_level_mode": "relative",
+      "resolution_m": 600,
+      "source_resolution": "GEBCO 2020, 15 arcsec original; demo sampled ~30 arcsec",
+      "analysis_bounds": [
+        [
+          34.99791666666268,
+          21.99791666666667
+        ],
+        [
+          40.00625,
+          29.006249999993628
+        ]
+      ],
+      "frames": [
+        {
+          "age_bp": 22000.0,
+          "sea_level_m": -125.0,
+          "layers": {
+            "state_full": {
+              "url": "data/baseline/22000BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/baseline/22000BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/baseline/22000BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/baseline/22000BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/baseline/22000BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/baseline/22000BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/baseline/22000BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/baseline/22000BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/baseline/22000BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/baseline/22000BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3769.835,
+              "max": 1145.236,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/baseline/22000BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/baseline/22000BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/baseline/22000BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/baseline/22000BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 163567.08,
+            "ocean_km2": 179868.96,
+            "basin_km2": 939.9599999999999
+          },
+          "sea_only": {
+            "land_km2": 163567.08,
+            "ocean_km2": 179868.96,
+            "basin_km2": 939.9599999999999
+          },
+          "delta": {
+            "land_km2": 0.0,
+            "ocean_km2": 0.0,
+            "basin_km2": 0.0
+          },
+          "changed_cells": 0
+        },
+        {
+          "age_bp": 16000.0,
+          "sea_level_m": -100.0,
+          "layers": {
+            "state_full": {
+              "url": "data/baseline/16000BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/baseline/16000BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/baseline/16000BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/baseline/16000BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/baseline/16000BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/baseline/16000BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/baseline/16000BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/baseline/16000BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/baseline/16000BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/baseline/16000BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3769.835,
+              "max": 1145.236,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/baseline/16000BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/baseline/16000BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/baseline/16000BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/baseline/16000BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 155845.08,
+            "ocean_km2": 187203.96,
+            "basin_km2": 1326.96
+          },
+          "sea_only": {
+            "land_km2": 155845.08,
+            "ocean_km2": 187203.96,
+            "basin_km2": 1326.96
+          },
+          "delta": {
+            "land_km2": 0.0,
+            "ocean_km2": 0.0,
+            "basin_km2": 0.0
+          },
+          "changed_cells": 0
+        },
+        {
+          "age_bp": 13000.0,
+          "sea_level_m": -70.0,
+          "layers": {
+            "state_full": {
+              "url": "data/baseline/13000BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/baseline/13000BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/baseline/13000BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/baseline/13000BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/baseline/13000BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/baseline/13000BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/baseline/13000BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/baseline/13000BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/baseline/13000BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/baseline/13000BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3769.835,
+              "max": 1145.236,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/baseline/13000BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/baseline/13000BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/baseline/13000BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/baseline/13000BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 141661.8,
+            "ocean_km2": 201844.44,
+            "basin_km2": 869.76
+          },
+          "sea_only": {
+            "land_km2": 141661.8,
+            "ocean_km2": 201844.44,
+            "basin_km2": 869.76
+          },
+          "delta": {
+            "land_km2": 0.0,
+            "ocean_km2": 0.0,
+            "basin_km2": 0.0
+          },
+          "changed_cells": 0
+        },
+        {
+          "age_bp": 11700.0,
+          "sea_level_m": -58.0,
+          "layers": {
+            "state_full": {
+              "url": "data/baseline/11700BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/baseline/11700BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/baseline/11700BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/baseline/11700BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/baseline/11700BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/baseline/11700BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/baseline/11700BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/baseline/11700BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/baseline/11700BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/baseline/11700BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3769.835,
+              "max": 1145.236,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/baseline/11700BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/baseline/11700BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/baseline/11700BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/baseline/11700BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 138091.32,
+            "ocean_km2": 205184.88,
+            "basin_km2": 1099.8
+          },
+          "sea_only": {
+            "land_km2": 138091.32,
+            "ocean_km2": 205184.88,
+            "basin_km2": 1099.8
+          },
+          "delta": {
+            "land_km2": 0.0,
+            "ocean_km2": 0.0,
+            "basin_km2": 0.0
+          },
+          "changed_cells": 0
+        },
+        {
+          "age_bp": 10000.0,
+          "sea_level_m": -40.0,
+          "layers": {
+            "state_full": {
+              "url": "data/baseline/10000BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/baseline/10000BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/baseline/10000BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/baseline/10000BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/baseline/10000BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/baseline/10000BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/baseline/10000BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/baseline/10000BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/baseline/10000BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/baseline/10000BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3769.835,
+              "max": 1145.236,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/baseline/10000BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/baseline/10000BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/baseline/10000BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/baseline/10000BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 133480.8,
+            "ocean_km2": 209971.44,
+            "basin_km2": 923.76
+          },
+          "sea_only": {
+            "land_km2": 133480.8,
+            "ocean_km2": 209971.44,
+            "basin_km2": 923.76
+          },
+          "delta": {
+            "land_km2": 0.0,
+            "ocean_km2": 0.0,
+            "basin_km2": 0.0
+          },
+          "changed_cells": 0
+        },
+        {
+          "age_bp": 6000.0,
+          "sea_level_m": -5.0,
+          "layers": {
+            "state_full": {
+              "url": "data/baseline/6000BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/baseline/6000BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/baseline/6000BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/baseline/6000BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/baseline/6000BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/baseline/6000BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/baseline/6000BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/baseline/6000BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/baseline/6000BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/baseline/6000BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3769.835,
+              "max": 1145.236,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/baseline/6000BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/baseline/6000BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/baseline/6000BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/baseline/6000BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 125553.59999999999,
+            "ocean_km2": 218573.28,
+            "basin_km2": 249.12
+          },
+          "sea_only": {
+            "land_km2": 125553.59999999999,
+            "ocean_km2": 218573.28,
+            "basin_km2": 249.12
+          },
+          "delta": {
+            "land_km2": 0.0,
+            "ocean_km2": 0.0,
+            "basin_km2": 0.0
+          },
+          "changed_cells": 0
+        },
+        {
+          "age_bp": 0.0,
+          "sea_level_m": 0.0,
+          "layers": {
+            "state_full": {
+              "url": "data/baseline/0BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/baseline/0BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/baseline/0BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/baseline/0BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/baseline/0BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/baseline/0BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/baseline/0BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/baseline/0BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/baseline/0BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/baseline/0BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3769.835,
+              "max": 1145.236,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/baseline/0BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/baseline/0BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/baseline/0BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/baseline/0BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 124474.31999999999,
+            "ocean_km2": 219608.28,
+            "basin_km2": 293.4
+          },
+          "sea_only": {
+            "land_km2": 124474.31999999999,
+            "ocean_km2": 219608.28,
+            "basin_km2": 293.4
+          },
+          "delta": {
+            "land_km2": 0.0,
+            "ocean_km2": 0.0,
+            "basin_km2": 0.0
+          },
+          "changed_cells": 0
+        }
+      ],
+      "provenance": {
+        "dem": "GEBCO 2020 via NOAA ERDDAP, every second sample, 2026-10-03",
+        "sea_level": "Manually chosen demonstration values, not extracted from a scientific regional reconstruction",
+        "reference": "0 BP = 1950; modern terrain treated as the age-0 baseline",
+        "vertical_motion": "None separately applied in relative mode"
+      }
+    },
+    {
+      "id": "spatial_scenario",
+      "name": "Test – havsnivå + landskapsprocesser",
+      "status": "HYPOTETISKT TEST: syntetisk landrörelse, erosion och sedimentpålagring; inte mätningar",
+      "sea_level_mode": "separate",
+      "resolution_m": 600,
+      "source_resolution": "GEBCO 2020, 15 arcsec original; demo sampled ~30 arcsec",
+      "analysis_bounds": [
+        [
+          34.99791666666268,
+          21.99791666666667
+        ],
+        [
+          40.00625,
+          29.006249999993628
+        ]
+      ],
+      "frames": [
+        {
+          "age_bp": 22000.0,
+          "sea_level_m": -125.0,
+          "layers": {
+            "state_full": {
+              "url": "data/spatial_scenario/22000BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/spatial_scenario/22000BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/spatial_scenario/22000BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/spatial_scenario/22000BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/spatial_scenario/22000BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/spatial_scenario/22000BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/spatial_scenario/22000BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -5.803,
+              "max": 5.803,
+              "empty": false,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/spatial_scenario/22000BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 3.3,
+              "empty": false,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/spatial_scenario/22000BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 6.6,
+              "empty": false,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/spatial_scenario/22000BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3767.439,
+              "max": 1148.463,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/spatial_scenario/22000BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -9.09,
+              "max": 9.09,
+              "empty": false,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/spatial_scenario/22000BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.264,
+              "max": 0.264,
+              "empty": false,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/spatial_scenario/22000BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.15,
+              "empty": false,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/spatial_scenario/22000BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.3,
+              "empty": false,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 162085.68,
+            "ocean_km2": 181259.28,
+            "basin_km2": 1031.04
+          },
+          "sea_only": {
+            "land_km2": 163567.08,
+            "ocean_km2": 179868.96,
+            "basin_km2": 939.9599999999999
+          },
+          "delta": {
+            "land_km2": -1481.3999999999942,
+            "ocean_km2": 1390.320000000007,
+            "basin_km2": 91.08000000000004
+          },
+          "changed_cells": 4175
+        },
+        {
+          "age_bp": 16000.0,
+          "sea_level_m": -100.0,
+          "layers": {
+            "state_full": {
+              "url": "data/spatial_scenario/16000BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/spatial_scenario/16000BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/spatial_scenario/16000BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/spatial_scenario/16000BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/spatial_scenario/16000BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/spatial_scenario/16000BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/spatial_scenario/16000BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -4.221,
+              "max": 4.221,
+              "empty": false,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/spatial_scenario/16000BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 2.4,
+              "empty": false,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/spatial_scenario/16000BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 4.8,
+              "empty": false,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/spatial_scenario/16000BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3768.131,
+              "max": 1147.722,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/spatial_scenario/16000BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -6.611,
+              "max": 6.611,
+              "empty": false,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/spatial_scenario/16000BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.264,
+              "max": 0.264,
+              "empty": false,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/spatial_scenario/16000BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.15,
+              "empty": false,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/spatial_scenario/16000BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.3,
+              "empty": false,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 153762.12,
+            "ocean_km2": 189124.56,
+            "basin_km2": 1489.32
+          },
+          "sea_only": {
+            "land_km2": 155845.08,
+            "ocean_km2": 187203.96,
+            "basin_km2": 1326.96
+          },
+          "delta": {
+            "land_km2": -2082.959999999992,
+            "ocean_km2": 1920.6000000000058,
+            "basin_km2": 162.3599999999999
+          },
+          "changed_cells": 6378
+        },
+        {
+          "age_bp": 13000.0,
+          "sea_level_m": -70.0,
+          "layers": {
+            "state_full": {
+              "url": "data/spatial_scenario/13000BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/spatial_scenario/13000BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/spatial_scenario/13000BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/spatial_scenario/13000BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/spatial_scenario/13000BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/spatial_scenario/13000BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/spatial_scenario/13000BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3.429,
+              "max": 3.429,
+              "empty": false,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/spatial_scenario/13000BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.95,
+              "empty": false,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/spatial_scenario/13000BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 3.9,
+              "empty": false,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/spatial_scenario/13000BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3768.469,
+              "max": 1147.329,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/spatial_scenario/13000BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -5.371,
+              "max": 5.371,
+              "empty": false,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/spatial_scenario/13000BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.264,
+              "max": 0.264,
+              "empty": false,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/spatial_scenario/13000BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.15,
+              "empty": false,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/spatial_scenario/13000BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.3,
+              "empty": false,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 140479.91999999998,
+            "ocean_km2": 202953.96,
+            "basin_km2": 942.12
+          },
+          "sea_only": {
+            "land_km2": 141661.8,
+            "ocean_km2": 201844.44,
+            "basin_km2": 869.76
+          },
+          "delta": {
+            "land_km2": -1181.8800000000047,
+            "ocean_km2": 1109.5199999999895,
+            "basin_km2": 72.36000000000001
+          },
+          "changed_cells": 3313
+        },
+        {
+          "age_bp": 11700.0,
+          "sea_level_m": -58.0,
+          "layers": {
+            "state_full": {
+              "url": "data/spatial_scenario/11700BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/spatial_scenario/11700BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/spatial_scenario/11700BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/spatial_scenario/11700BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/spatial_scenario/11700BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/spatial_scenario/11700BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/spatial_scenario/11700BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3.086,
+              "max": 3.086,
+              "empty": false,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/spatial_scenario/11700BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.755,
+              "empty": false,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/spatial_scenario/11700BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 3.51,
+              "empty": false,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/spatial_scenario/11700BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3768.57,
+              "max": 1147.116,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/spatial_scenario/11700BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -4.834,
+              "max": 4.834,
+              "empty": false,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/spatial_scenario/11700BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.264,
+              "max": 0.264,
+              "empty": false,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/spatial_scenario/11700BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.15,
+              "empty": false,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/spatial_scenario/11700BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.3,
+              "empty": false,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 137217.24,
+            "ocean_km2": 206025.47999999998,
+            "basin_km2": 1133.28
+          },
+          "sea_only": {
+            "land_km2": 138091.32,
+            "ocean_km2": 205184.88,
+            "basin_km2": 1099.8
+          },
+          "delta": {
+            "land_km2": -874.0800000000163,
+            "ocean_km2": 840.5999999999767,
+            "basin_km2": 33.48000000000002
+          },
+          "changed_cells": 2538
+        },
+        {
+          "age_bp": 10000.0,
+          "sea_level_m": -40.0,
+          "layers": {
+            "state_full": {
+              "url": "data/spatial_scenario/10000BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/spatial_scenario/10000BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/spatial_scenario/10000BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/spatial_scenario/10000BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/spatial_scenario/10000BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/spatial_scenario/10000BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/spatial_scenario/10000BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -2.638,
+              "max": 2.638,
+              "empty": false,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/spatial_scenario/10000BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.5,
+              "empty": false,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/spatial_scenario/10000BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 3.0,
+              "empty": false,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/spatial_scenario/10000BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3768.816,
+              "max": 1146.865,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/spatial_scenario/10000BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -4.132,
+              "max": 4.132,
+              "empty": false,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/spatial_scenario/10000BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.264,
+              "max": 0.264,
+              "empty": false,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/spatial_scenario/10000BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.15,
+              "empty": false,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/spatial_scenario/10000BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.3,
+              "empty": false,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 132768.36,
+            "ocean_km2": 210678.47999999998,
+            "basin_km2": 929.16
+          },
+          "sea_only": {
+            "land_km2": 133480.8,
+            "ocean_km2": 209971.44,
+            "basin_km2": 923.76
+          },
+          "delta": {
+            "land_km2": -712.4400000000023,
+            "ocean_km2": 707.039999999979,
+            "basin_km2": 5.399999999999977
+          },
+          "changed_cells": 2065
+        },
+        {
+          "age_bp": 6000.0,
+          "sea_level_m": -5.0,
+          "layers": {
+            "state_full": {
+              "url": "data/spatial_scenario/6000BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/spatial_scenario/6000BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/spatial_scenario/6000BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/spatial_scenario/6000BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/spatial_scenario/6000BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/spatial_scenario/6000BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/spatial_scenario/6000BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -1.583,
+              "max": 1.583,
+              "empty": false,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/spatial_scenario/6000BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.9,
+              "empty": false,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/spatial_scenario/6000BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.8,
+              "empty": false,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/spatial_scenario/6000BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3769.217,
+              "max": 1146.25,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/spatial_scenario/6000BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -2.479,
+              "max": 2.479,
+              "empty": false,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/spatial_scenario/6000BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.264,
+              "max": 0.264,
+              "empty": false,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/spatial_scenario/6000BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.15,
+              "empty": false,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/spatial_scenario/6000BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.3,
+              "empty": false,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 125203.31999999999,
+            "ocean_km2": 218895.84,
+            "basin_km2": 276.84
+          },
+          "sea_only": {
+            "land_km2": 125553.59999999999,
+            "ocean_km2": 218573.28,
+            "basin_km2": 249.12
+          },
+          "delta": {
+            "land_km2": -350.27999999999884,
+            "ocean_km2": 322.5599999999977,
+            "basin_km2": 27.71999999999997
+          },
+          "changed_cells": 1003
+        },
+        {
+          "age_bp": 0.0,
+          "sea_level_m": 0.0,
+          "layers": {
+            "state_full": {
+              "url": "data/spatial_scenario/0BP/state_full.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Hela landskapsscenariot",
+              "units": "klass",
+              "kind": "state"
+            },
+            "state_sea": {
+              "url": "data/spatial_scenario/0BP/state_sea.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Enbart havsnivå",
+              "units": "klass",
+              "kind": "state"
+            },
+            "class_difference": {
+              "url": "data/spatial_scenario/0BP/class_difference.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Skillnad mellan A och B",
+              "units": "ändrad klass",
+              "kind": "mask"
+            },
+            "coastline": {
+              "url": "data/spatial_scenario/0BP/coastline.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Rekonstruerad kust",
+              "units": "rasterkant",
+              "kind": "coast"
+            },
+            "sensitivity": {
+              "url": "data/spatial_scenario/0BP/sensitivity.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Känsliga områden",
+              "units": "klassändring inom testintervall",
+              "kind": "mask"
+            },
+            "basins": {
+              "url": "data/spatial_scenario/0BP/basins.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "title": "Slutna sänkor",
+              "units": "klass 3",
+              "kind": "basin"
+            },
+            "land_motion": {
+              "url": "data/spatial_scenario/0BP/land_motion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Landhöjning / landsänkning",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "erosion": {
+              "url": "data/spatial_scenario/0BP/erosion.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ erosion",
+              "units": "m",
+              "kind": "positive"
+            },
+            "deposition": {
+              "url": "data/spatial_scenario/0BP/deposition.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 1.0,
+              "empty": true,
+              "title": "Kumulativ sedimentpålagring",
+              "units": "m",
+              "kind": "positive"
+            },
+            "paleo_elevation": {
+              "url": "data/spatial_scenario/0BP/paleo_elevation.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -3769.835,
+              "max": 1145.236,
+              "title": "Rekonstruerad markhöjd",
+              "units": "m",
+              "kind": "terrain"
+            },
+            "terrain_change": {
+              "url": "data/spatial_scenario/0BP/terrain_change.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.0,
+              "max": 0.0,
+              "empty": true,
+              "title": "Rekonstruerad minus dagens höjd",
+              "units": "m",
+              "kind": "diverging"
+            },
+            "uplift_rate": {
+              "url": "data/spatial_scenario/0BP/uplift_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": -0.264,
+              "max": 0.264,
+              "empty": false,
+              "title": "Landrörelsehastighet",
+              "units": "mm/år",
+              "kind": "diverging"
+            },
+            "erosion_rate": {
+              "url": "data/spatial_scenario/0BP/erosion_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.15,
+              "empty": false,
+              "title": "Erosionshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            },
+            "deposition_rate": {
+              "url": "data/spatial_scenario/0BP/deposition_rate.png?v=mercator-20261010",
+              "bounds": [
+                [
+                  33.8624908984015,
+                  21.16783607849305
+                ],
+                [
+                  41.09595147512371,
+                  30.392679830837974
+                ]
+              ],
+              "min": 0.0,
+              "max": 0.3,
+              "empty": false,
+              "title": "Sedimentationshastighet",
+              "units": "mm/år",
+              "kind": "positive"
+            }
+          },
+          "full": {
+            "land_km2": 124474.31999999999,
+            "ocean_km2": 219608.28,
+            "basin_km2": 293.4
+          },
+          "sea_only": {
+            "land_km2": 124474.31999999999,
+            "ocean_km2": 219608.28,
+            "basin_km2": 293.4
+          },
+          "delta": {
+            "land_km2": 0.0,
+            "ocean_km2": 0.0,
+            "basin_km2": 0.0
+          },
+          "changed_cells": 0
+        }
+      ],
+      "provenance": {
+        "dem": "GEBCO 2020 via NOAA ERDDAP, every second sample, 2026-10-03",
+        "sea_level": "Same artificial numeric curve used as sea-surface position for this test; not a GIA-inclusive scientific RSL curve",
+        "reference": "0 BP = 1950; modern terrain treated as the age-0 baseline",
+        "vertical_motion": "Synthetic west/east gradient, -0.3 to +0.3 mm/year",
+        "morphology": "Synthetic 0.15 mm/year erosion of present exposed land; 0.3 mm/year deposition on shallow present seabed"
+      }
+    }
+  ]
+}

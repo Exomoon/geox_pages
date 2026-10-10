@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SeaLevelRize — Geospatial simuleringsmotor för forntida kustlandskap | GeoX</title>
+  <meta name="description"
+    content="SeaLevelRize (PalaeoCoast) är en geospatial scenariomotor för att rekonstruera äldre kustlandskap genom att kombinera havsnivåkurvor med landrörelse, erosion och sedimentation på GEBCO-bathymetri.">
+  <meta name="keywords"
+    content="Havsnivå, paleokust, kustrekonstruktion, GIS, batymetri, GEBCO 2020, isostasi, Egeiska havet, Ronnie Utter, GeoX">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://geox.dev/sealevel-sv.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SeaLevelRize — Kustrekonstruktion & Havsnivåmodell | GeoX">
+  <meta property="og:description"
+    content="Modellera forntida kustlinjer genom att koppla historiska havsnivåkurvor till vertikal landrörelse, erosion och sedimentation.">
+  <meta property="og:url" content="https://geox.dev/sealevel-sv.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GeoX">
+  <meta property="og:image" content="https://geox.dev/assets/sealevel-preview.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SeaLevelRize — Kustrekonstruktion & Havsnivåmodell">
+  <meta name="twitter:description"
+    content="Modellera forntida kustlinjer genom att koppla historiska havsnivåkurvor till vertikal landrörelse, erosion och sedimentation.">
+  <meta name="twitter:image" content="https://geox.dev/assets/sealevel-preview.png">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SeaLevelRize",
+    "applicationCategory": "Geographic Information System",
+    "operatingSystem": "Linux, macOS, Windows",
+    "url": "https://geox.dev/sealevel-sv.html",
+    "description": "Geospatial scenarioplattform för forntida kustlandskap och relativ havsnivåförändring.",
+    "author": {
+      "@type": "Person",
+      "name": "Ronnie Utter",
+      "sameAs": "https://www.linkedin.com/in/fme-dev/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="sv.html" class="brand" aria-label="GeoX Hem">
+        <span class="brand-text">Geo<span class="brand-accent">X</span></span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Huvudnavigation">
+        <a href="sv.html#projekt" class="nav-link">Projekt</a>
+        <a href="#oversikt" class="nav-link">Översikt</a>
+        <a href="#karta" class="nav-link">Interaktiv karta</a>
+        <a href="#vetenskap" class="nav-link">Metod & Vetenskap</a>
+        <a href="#arkitektur" class="nav-link">Arkitektur</a>
+        <a href="https://github.com/Exomoon/sealevelrize" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub ↗</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switch" aria-label="Val av språk">
+          <a href="sealevel.html" class="lang-link">EN</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-active">SV</span>
+        </div>
+        <a href="mailto:support@geox.dev" class="btn btn-header">Kontakt</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Öppna navigering" aria-expanded="false">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="oversikt">
+    <!-- Subpage Hero -->
+    <section class="subpage-hero">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="Brödsmulor">
+          <a href="sv.html">GeoX Hem</a>
+          <span>/</span>
+          <a href="sv.html#projekt">Projekt</a>
+          <span>/</span>
+          <span>SeaLevelRize</span>
+        </nav>
+
+        <div class="hero-pill-row">
+          <span class="status-badge"><i></i> Prototyp / Öppen källkod</span>
+          <span class="tag-badge">GEBCO 2020 600m</span>
+          <span class="tag-badge">22 000 BP → 0 BP</span>
+          <span class="tag-badge">Topologisk havskontakt</span>
+          <span class="tag-badge">QGIS & Leaflet</span>
+        </div>
+
+        <h1 class="subpage-title">SeaLevelRize — Modellering av forntida kustlandskap</h1>
+        <p class="subpage-lead">
+          Att enbart sänka eller höja havsnivån på dagens höjdmodell ger en missvisande bild av forntida landskap.
+          SeaLevelRize återskapar förhistoriska kuster genom att koppla regionala havsnivåkurvor med tektonisk landrörelse, erosion och sedimentation.
+        </p>
+
+        <div class="hero-cta-row">
+          <a href="#karta" class="btn btn-primary">Öppna interaktiv karta ↓</a>
+          <a href="https://github.com/Exomoon/sealevelrize" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <span>Se källkoden på GitHub</span>
+            <span class="arrow-glyph" aria-hidden="true" style="margin-left: 6px;">→</span>
+          </a>
+        </div>
+
+        <div class="stats-bar">
+          <div class="stat-box">
+            <div class="stat-value">22 000 <span>BP</span></div>
+            <div class="stat-label">Senaste istidsmaximum (LGM)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">600 <span>meter</span></div>
+            <div class="stat-label">Rasterupplösning per cell</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">EPSG:3035</div>
+            <div class="stat-label">Ytriktigt europeiskt projektionssystem</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value">100% <span>Vektoriserad</span></div>
+            <div class="stat-label">NumPy & Topologisk spridningsalgoritm</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Viewer Section -->
+    <section class="section" id="karta" style="padding-top: 80px; padding-bottom: 80px;">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Interaktiv kartvisare & tidsserie</h2>
+          <p class="section-sub">
+            Utforska Egeiska havets kustkonfigurationer från 22 000 BP fram till 0 BP (1950 års referensläge). Jämför anslutet hav mot slutna sänkor, processlager och areastatistik.
+          </p>
+        </div>
+
+        <div class="viewer-card">
+          <div class="viewer-header-bar">
+            <div class="viewer-title-group">
+              <span class="viewer-dot"></span>
+              <span class="viewer-title">PalaeoCoast Webbvisare · Egeiska havet sandbox</span>
+            </div>
+            <div class="viewer-actions">
+              <a href="viewer/sealevel/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost">
+                <span>Öppna i fullskärm ↗</span>
+              </a>
+            </div>
+          </div>
+          <div class="viewer-frame-wrap">
+            <iframe src="viewer/sealevel/index.html" class="viewer-frame" title="SeaLevelRize Interaktiv kartvisare" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Science & Methodology Section -->
+    <section class="section" id="vetenskap" style="background-color: var(--bg-surface);">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Vetenskaplig metodik & ekvationer</h2>
+          <p class="section-sub">
+            Hur morfodynamiska processer och relativ havsnivåförändring beräknas bakåt i tiden.
+          </p>
+        </div>
+
+        <div class="detail-grid">
+          <div class="glass-box">
+            <h3>Rekonstruktionsekvation bakåt i tiden</h3>
+            <p>
+              För att bestämma den forntida markhöjden vid en given tidpunkt $t$ (år före 1950, BP) inverteras de kumulativa geologiska effekterna som skett mellan tidpunkten $t$ och idag:
+            </p>
+
+            <div class="formula-display">
+              Äldre markhöjd = Dagens markhöjd − U + E − D
+            </div>
+
+            <p>
+              Där:
+            </p>
+            <ul style="color: var(--text-secondary); line-height: 1.8; margin-left: 20px; margin-bottom: 20px;">
+              <li><strong>Äldre markhöjd ($Z_{\text{äldre}}$):</strong> Rekonstruerad mark-/havsbottensnivå i meter.</li>
+              <li><strong>Dagens markhöjd ($Z_{\text{idag}}$):</strong> Nutida terränghöjd och bathymetri (GEBCO 2020).</li>
+              <li><strong>$U$:</strong> Kumulativ vertikal landrörelse ($+$ landhöjning ger lägre äldre yta, $-$ sänkning ger högre äldre yta).</li>
+              <li><strong>$E$:</strong> Kumulativ senare erosion ($+$ material som eroderats bort återställs till forntida massan).</li>
+              <li><strong>$D$:</strong> Kumulativ senare sedimentation ($+$ avsatt sediment avlägsnas för att nå äldre yta).</li>
+            </ul>
+
+            <p>
+              Höjdmarginalen gentemot havsytan beräknas som:
+              <br>
+              <strong style="color: #ffffff;">Höjdmarginal = Äldre markhöjd − Äldre havsyta</strong>
+            </p>
+
+            <h3 style="margin-top: 32px;">Äkta topologisk havskontakt</h3>
+            <p>
+              En terrängcell som ligger under havsnivån är inte automatiskt hav. Om den ligger i en sluten inlandssänka som avskiljs av en tröskel (sill) från öppet vatten, bildar den en <strong>sluten sänka</strong> snarare än anslutet hav.
+              SeaLevelRize spårar 4-vägs topologisk sammanlänkning med start från verkliga havsfrön vid gränsen, vilket förhindrar felaktig översvämning tills en fysisk tröskel bryts igenom.
+            </p>
+          </div>
+
+          <div>
+            <div class="glass-box" style="margin-bottom: 24px;">
+              <h3 style="color: var(--accent-cyan);">Referenskonventioner</h3>
+              <p style="font-size: 14px;">
+                <strong>Relativt läge (relative):</strong> När den valda havsnivåkurvan redan inkluderar glacial isostasi (GIA) och regional sänkning låses ytterligare landrörelse för att undvika dubbelräkning.
+              </p>
+              <p style="font-size: 14px;">
+                <strong>Separat läge (separate):</strong> Global eustatisk havsnivåkurva kombinerad med separata, rumsligt varierande fält för tektonik och landhöjning.
+              </p>
+            </div>
+
+            <div class="glass-box">
+              <h3 style="color: #ffffff;">Datakällor</h3>
+              <p style="font-size: 14px;">
+                • <strong>Terräng & batymetri:</strong> GEBCO 2020 Grid (interpolerat till 600m EPSG:3035).<br>
+                • <strong>Havsnivåkurvor:</strong> Lambeck m.fl., regionala referenskurvor.<br>
+                • <strong>Omfattning:</strong> Egeiska havet fungerar som demonstrationsområde; Nordsjön och Doggerland är planerade expansioner.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Tidsepoker -->
+        <div style="margin-top: 56px;">
+          <h3 style="color: #ffffff; font-size: 22px; margin-bottom: 24px;">Centrala paleogeografiska epoker</h3>
+          <div class="cards-grid-3">
+            <article class="scenario-card">
+              <div class="scenario-card-header">
+                <div class="scenario-time-tag">22 000 BP · Istidsmaximum</div>
+                <h4 class="scenario-card-title">Blottad kontinentalsockel</h4>
+              </div>
+              <div class="scenario-card-body">
+                Havsnivån låg cirka 120 meter under dagens nivå. Kykladernas ögrupp binds samman till sammanhängande landmassor och landbryggor mellan Balkan och Anatolien.
+              </div>
+            </article>
+
+            <article class="scenario-card">
+              <div class="scenario-card-header">
+                <div class="scenario-time-tag">11 700 BP · Tidig Holocen</div>
+                <h4 class="scenario-card-title">Snabb marin transgression</h4>
+              </div>
+              <div class="scenario-card-body">
+                Glaciäravsmältning orsakade kraftig och snabb havsnivåhöjning. Marina trösklar översvämmades och isolerade tidigare landbundna områden till separata öar.
+              </div>
+            </article>
+
+            <article class="scenario-card">
+              <div class="scenario-card-header">
+                <div class="scenario-time-tag">0 BP · Referensläge 1950</div>
+                <h4 class="scenario-card-title">Dagens kalibrerade utgångspunkt</h4>
+              </div>
+              <div class="scenario-card-body">
+                Referensläget där de kumulativa processerna är noll. Används för validering och kontrollräkning mot modern geodetisk och batymetrisk data.
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture & Code Pipeline -->
+    <section class="section" id="arkitektur">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Arkitektur & Python-pipeline</h2>
+          <p class="section-sub">
+            En modulär beräkningsmotor med stöd för terminalkörning, enhetstestade modeller, QGIS-visning och högpresterande Web Mercator-export.
+          </p>
+        </div>
+
+        <div class="detail-grid">
+          <div class="glass-box">
+            <h3>Systemkomponenter</h3>
+            <ul style="color: var(--text-secondary); line-height: 1.8; margin-left: 20px;">
+              <li><code>palaeocoast/model.py</code>: Kärnmodell med bakåtriktad höjdlösare och topologisk spridningsalgoritm för havskontakt.</li>
+              <li><code>palaeocoast/run.py</code>: Kör skript för att generera GeoTIFF per tidssteg, GeoJSON-kustlinjer och sammanfattande nyckeltal.</li>
+              <li><code>palaeocoast/web_export.py</code>: Omprojekterar EPSG:3035 till EPSG:3857 Web Mercator för knivskarp visning i webbläsare.</li>
+              <li><code>palaeocoast/web_server.py</code>: Lokal webbserver med API-stöd för interaktiv omräkning och cellinspektion i realtid.</li>
+              <li><code>palaeocoast/qgis_viewer.py</code>: Färdigt PyQGIS-skript för tidsserievisning direkt i QGIS-miljön.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="code-terminal">
+              <div class="comment"># Klona och konfigurera arkivet</div>
+              <div><span class="prompt">$ </span>git clone git@github.com:Exomoon/sealevelrize.git</div>
+              <div><span class="prompt">$ </span>cd sealevelrize/palaeocoast</div>
+              <div><span class="prompt">$ </span>python3 -m venv .venv</div>
+              <div><span class="prompt">$ </span>source .venv/bin/activate</div>
+              <div><span class="prompt">$ </span>pip install -r requirements.txt</div>
+              <br>
+              <div class="comment"># Kör valideringstester (22 tester)</div>
+              <div><span class="prompt">$ </span>python -m unittest discover -v</div>
+              <br>
+              <div class="comment"># Starta lokal interaktiv kartserver</div>
+              <div><span class="prompt">$ </span>python web_server.py --port 8765</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-wrap">
+          <a href="sv.html" class="brand" aria-label="GeoX Hem">
+            <span class="brand-text">Geo<span class="brand-accent">X</span></span>
+          </a>
+          <p class="footer-tagline">Where location meets data. Geodatateknik och digitala produkter.</p>
+        </div>
+
+        <div class="footer-links-wrap">
+          <div class="footer-col">
+            <span class="footer-col-title">Navigation</span>
+            <ul class="footer-links">
+              <li><a href="sv.html">GeoX Hem</a></li>
+              <li><a href="#oversikt">Översikt</a></li>
+              <li><a href="#karta">Interaktiv karta</a></li>
+              <li><a href="#vetenskap">Metod & Vetenskap</a></li>
+              <li><a href="https://github.com/Exomoon/sealevelrize" target="_blank" rel="noopener noreferrer">GitHub-arkiv ↗</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Projekt</span>
+            <ul class="footer-links">
+              <li><a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer">Restidsanalys</a></li>
+              <li><a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer">Områdesatlas</a></li>
+              <li><a href="https://krisgis.se" target="_blank" rel="noopener noreferrer">KrisGIS</a></li>
+              <li><a href="https://valatlas.se" target="_blank" rel="noopener noreferrer">Valatlas</a></li>
+              <li><a href="https://utteride.se" target="_blank" rel="noopener noreferrer">UtterIDE</a></li>
+              <li><a href="sealevel-sv.html">SeaLevelRize</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Kontakt</span>
+            <ul class="footer-links">
+              <li><a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="mailto:support@geox.dev">support@geox.dev</a></li>
+              <li><a href="https://geox.dev">geox.dev</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-credit">Fristående projekt skapade av <a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer" class="credit-link">Ronnie Utter</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
