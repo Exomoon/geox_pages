@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="PalaeoCoast — en geospatial scenarioplattform för äldre europeiska kustlandskap.">
   <title>PalaeoCoast Europe · GeoX</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b3038'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='sans-serif' font-size='25' font-weight='700' fill='white'%3EGX%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="vendor/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=20261010-99">
+  <link rel="stylesheet" href="styles.css?v=20261010-11">
 </head>
 <body>
   <header class="topbar">
@@ -25,9 +26,9 @@
       <p data-i18n="intro">Jämför enbart ändrad havsnivå med ett scenario där även landrörelse, erosion och sedimentpålagring förändrar terrängen.</p>
     </div>
     <nav class="region-nav" aria-label="Analysområden">
-      <button data-region="europe" class="region"><span>01</span><b>Europa</b><small data-i18n="overview">Översikt planerad</small></button>
+      <button data-region="europe" class="region"><span>01</span><b>Europa</b><small data-i18n="overview">5 km översikt</small></button>
       <button data-region="aegean" class="region active"><span>02</span><b data-i18n="aegean">Egeiska havet</b><small data-i18n="ready">Analysdata</small></button>
-      <button data-region="doggerland" class="region"><span>03</span><b>Doggerland</b><small data-i18n="nextRegion">Nästa region</small></button>
+      <button data-region="doggerland" class="region"><span>03</span><b>Doggerland</b><small data-i18n="nextRegion">450 m regional demo</small></button>
     </nav>
   </section>
 
@@ -44,17 +45,13 @@
         <button id="play" class="primary" type="button"><span>▶</span><span data-i18n="play">Spela tidsserie</span></button>
       </section>
 
-      <section>
+      <section id="comparisonSection">
         <div class="section-title"><span>02</span><h2 data-i18n="comparison">Jämförelse</h2></div>
         <div class="segmented comparison-modes" role="group" aria-label="Kartvisning">
           <button data-mode="full" class="active" title="Havsnivå och alla aktiva landskapsprocesser"><span data-i18n="reconstruction">Rekonstruktion</span></button>
           <button data-mode="difference" title="Celler som får annan klass när landskapsprocesserna räknas med"><span data-i18n="difference">Skillnad mot bara havsnivå</span></button>
         </div>
         <p class="comparison-help" data-i18n="comparisonHelp">Rekonstruktionen uppdateras direkt med tiden. Skillnad visar bara var landrörelse, erosion eller sedimentpålagring ändrar klass jämfört med samma havsnivå på dagens terräng.</p>
-        <div id="swipeControl" class="swipe-control" hidden>
-          <label for="swipe"><span>A · <span data-i18n="seaOnly">Havsnivå</span></span><span>B · <span data-i18n="full">Landskap</span></span></label>
-          <input id="swipe" type="range" min="0" max="100" value="50">
-        </div>
         <div class="comparison-stats">
           <article><div><small data-i18n="seaModel">Kontroll · bara havsnivå</small><b id="seaLand">—</b></div></article>
           <article><div><small data-i18n="fullModel">Rekonstruktion · alla processer</small><b id="fullLand">—</b></div></article>
@@ -64,11 +61,11 @@
 
       <section>
         <div class="section-title"><span>03</span><h2 data-i18n="processLayers">Processlager</h2></div>
-        <p class="process-time-note" data-i18n="processTimeNote">Visar förändring efter vald äldre tid fram till 0 BP (1950). Därför är processvärdet 0 vid 0 BP.</p>
+        <p class="process-time-note" data-i18n="processTimeNote">Äldre tider visar kumulativ förändring i meter. Vid 0 BP visas processområde och antagen hastighet i mm/år.</p>
         <div id="layerControls" class="layer-controls"></div>
       </section>
 
-      <section class="advanced-calculation">
+      <section class="advanced-calculation" hidden>
         <details id="customCalculation">
           <summary><span>04</span><strong data-i18n="recalculate">Avancerat: räkna om modell</strong></summary>
           <p class="hint" data-i18n="recalcHint">Detta ändrar modellens antaganden, inte vilka lager som syns. Stäng av en process och räkna om den valda tidpunkten lokalt.</p>
@@ -87,10 +84,15 @@
     <section class="map-shell" aria-label="Navigerbar karta">
       <div id="map"></div>
       <div class="map-toolbar">
-        <form id="gotoForm"><label class="sr-only" for="goto" data-i18n="gotoCoordinates">Gå till koordinater</label><input id="goto" placeholder="Lat, lon · 37.98, 23.73"><button type="submit" aria-label="Gå">→</button></form>
+        <form id="gotoForm" role="search">
+          <label class="sr-only" for="goto" data-i18n="gotoCoordinates">Sök ort eller koordinater</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="goto" placeholder="Sök ort eller lat, lon" autocomplete="off" aria-autocomplete="list" aria-controls="searchResults" aria-expanded="false">
+          <button type="submit" aria-label="Sök">→</button>
+          <div id="searchResults" class="search-results" role="listbox" hidden></div>
+        </form>
       </div>
       <div class="map-badges"><span id="modelResolution">Modellgrid · 600 m</span><span id="cursorCoordinates">—</span></div>
-      <div id="swipeDivider" class="swipe-divider" hidden><span>A</span><span>B</span></div>
       <div class="orientation"><b>N</b><i></i></div>
       <div id="aoiMessage" class="aoi-message" hidden></div>
     </section>
@@ -98,7 +100,7 @@
     <aside class="panel inspector" aria-label="Cellinformation">
       <section>
         <div class="section-title"><span>05</span><h2 data-i18n="cellAnalysis">Cellanalys</h2></div>
-        <div id="emptyCell" class="empty-cell"><div class="crosshair">＋</div><p data-i18n="clickPrompt">Klicka i det Egeiska modellområdet för att läsa den beräknade cellen.</p></div>
+        <div id="emptyCell" class="empty-cell"><div class="crosshair">＋</div><p data-i18n="clickPrompt">Klicka inom valt modellområde för att läsa den beräknade cellen.</p></div>
         <div id="cellDetails" hidden>
           <p id="cellCoordinates" class="cell-coordinates"></p>
           <div class="equation">
@@ -124,8 +126,8 @@
         <div class="section-title"><span>07</span><h2 data-i18n="resolutionQuality">Upplösning & kvalitet</h2></div>
         <dl class="quality-list">
           <div><dt data-i18n="basemapDetail">Bakgrundskarta</dt><dd>OpenStreetMap · visningsdetalj varierar</dd></div>
-          <div><dt data-i18n="modelCell">Modellcell</dt><dd>600 × 600 m · EPSG:3035</dd></div>
-          <div><dt data-i18n="terrainSource">Terrängunderlag</dt><dd>GEBCO 2020 · 30″ ≈ 740 × 925 m här</dd></div>
+          <div><dt data-i18n="modelCell">Modellcell</dt><dd id="qualityModelCell">—</dd></div>
+          <div><dt data-i18n="terrainSource">Terrängunderlag</dt><dd id="qualityTerrainSource">—</dd></div>
         </dl>
         <p class="warning" data-i18n="resolutionWarning">Zoom visar cellerna större men skapar ingen ny terränginformation.</p>
       </section>
@@ -140,7 +142,9 @@
     <div id="dataStatus" class="data-status"></div>
     <h3 data-i18n="verifiedCandidates">Verifierade kandidater för lokal förfining</h3>
     <ul>
-      <li><a href="https://emodnet.ec.europa.eu/en/emodnet-bathymetry-dtm-2024-release" target="_blank" rel="noreferrer">EMODnet Bathymetry DTM 2024</a> · ~115 m · europeiska hav · LAT/MSL-varianter.</li>
+      <li><a href="https://emodnet.ec.europa.eu/en/emodnet-bathymetry-dtm-2024-release" target="_blank" rel="noreferrer">EMODnet Bathymetry DTM 2024</a> · integrerat i Doggerland som 1/4 bågminutsexport · batymetri i LAT och sammansatt landdel.</li>
+      <li><a href="https://doi.org/10.1594/PANGAEA.945729" target="_blank" rel="noreferrer">BRITICE-CHRONO</a> · empirisk isutbredning vid 22 ka och 16 ka · CC BY 4.0.</li>
+      <li><a href="https://emodnet.ec.europa.eu/en/geology" target="_blank" rel="noreferrer">EMODnet Geology</a> · palaeokanaler som featureinventarium.</li>
       <li><a href="https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM" target="_blank" rel="noreferrer">Copernicus DEM GLO-30</a> · 30 m DSM · EGM2008.</li>
       <li><a href="https://www.gebco.net/data_and_products/gridded_bathymetry_data/" target="_blank" rel="noreferrer">GEBCO 2025</a> · globalt 15″ grid · heterogena höjddatum i delar av kustzonen.</li>
     </ul>
@@ -148,6 +152,6 @@
   </dialog>
 
   <script src="vendor/leaflet.js"></script>
-  <script src="app.js?v=20261010-99" type="module"></script>
+  <script src="app.js?v=20261010-32" type="module"></script>
 </body>
 </html>
