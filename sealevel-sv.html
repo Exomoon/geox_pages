@@ -69,7 +69,6 @@
         <a href="#karta" class="nav-link">Interaktiv karta</a>
         <a href="#vetenskap" class="nav-link">Metod & Vetenskap</a>
         <a href="#arkitektur" class="nav-link">Arkitektur</a>
-        <a href="https://github.com/Exomoon/sealevelrize" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub ↗</a>
       </nav>
 
       <div class="header-actions">
@@ -100,7 +99,7 @@
         </nav>
 
         <div class="hero-pill-row">
-          <span class="status-badge"><i></i> Prototyp / Öppen källkod</span>
+          <span class="status-badge"><i></i> Geospatial Forskning / Pilot</span>
           <span class="tag-badge">GEBCO 2020 600m</span>
           <span class="tag-badge">22 000 BP → 0 BP</span>
           <span class="tag-badge">Topologisk havskontakt</span>
@@ -115,9 +114,9 @@
 
         <div class="hero-cta-row">
           <a href="#karta" class="btn btn-primary">Öppna interaktiv karta ↓</a>
-          <a href="https://github.com/Exomoon/sealevelrize" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
-            <span>Se källkoden på GitHub</span>
-            <span class="arrow-glyph" aria-hidden="true" style="margin-left: 6px;">→</span>
+          <a href="#vetenskap" class="btn btn-ghost">
+            <span>Metod & Ekvationer</span>
+            <span class="arrow-glyph" aria-hidden="true" style="margin-left: 6px;">↓</span>
           </a>
         </div>
 
@@ -299,19 +298,15 @@
           </div>
 
           <div>
-            <div class="code-terminal">
-              <div class="comment"># Klona och konfigurera arkivet</div>
-              <div><span class="prompt">$ </span>git clone git@github.com:Exomoon/sealevelrize.git</div>
-              <div><span class="prompt">$ </span>cd sealevelrize/palaeocoast</div>
-              <div><span class="prompt">$ </span>python3 -m venv .venv</div>
-              <div><span class="prompt">$ </span>source .venv/bin/activate</div>
-              <div><span class="prompt">$ </span>pip install -r requirements.txt</div>
-              <br>
-              <div class="comment"># Kör valideringstester (22 tester)</div>
-              <div><span class="prompt">$ </span>python -m unittest discover -v</div>
-              <br>
-              <div class="comment"># Starta lokal interaktiv kartserver</div>
-              <div><span class="prompt">$ </span>python web_server.py --port 8765</div>
+            <div class="glass-box">
+              <h3 style="color: var(--accent-cyan);">Pipelineschema & Steg</h3>
+              <ol style="color: var(--text-secondary); line-height: 1.8; margin-left: 20px; font-size: 14px;">
+                <li><strong>Indata:</strong> GEBCO 2020 bathymetri (EPSG:3035) och regionala havsnivåkurvor.</li>
+                <li><strong>Modellering:</strong> Invertering av landrörelse, erosion och deposition per tidssteg.</li>
+                <li><strong>Hydrologi:</strong> Topologisk spridningsalgoritm för att avgränsa anslutet hav från inlandssänkor.</li>
+                <li><strong>Kartering:</strong> Automatisk export av GeoTIFF, GeoJSON-kustlinjer och Web Mercator-tiles.</li>
+                <li><strong>Gränssnitt:</strong> Realtidsinspektion och jämförelseanalys i Leaflet & QGIS.</li>
+              </ol>
             </div>
           </div>
         </div>
@@ -338,7 +333,7 @@
               <li><a href="#oversikt">Översikt</a></li>
               <li><a href="#karta">Interaktiv karta</a></li>
               <li><a href="#vetenskap">Metod & Vetenskap</a></li>
-              <li><a href="https://github.com/Exomoon/sealevelrize" target="_blank" rel="noopener noreferrer">GitHub-arkiv ↗</a></li>
+              <li><a href="#arkitektur">Arkitektur</a></li>
             </ul>
           </div>
 

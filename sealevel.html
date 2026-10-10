@@ -69,7 +69,6 @@
         <a href="#viewer" class="nav-link">Interactive Map</a>
         <a href="#science" class="nav-link">Method & Science</a>
         <a href="#architecture" class="nav-link">Architecture</a>
-        <a href="https://github.com/Exomoon/sealevelrize" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub ↗</a>
       </nav>
 
       <div class="header-actions">
@@ -100,7 +99,7 @@
         </nav>
 
         <div class="hero-pill-row">
-          <span class="status-badge"><i></i> Prototype / Open Source</span>
+          <span class="status-badge"><i></i> Geospatial Research / Prototype</span>
           <span class="tag-badge">GEBCO 2020 600m</span>
           <span class="tag-badge">22 000 BP → 0 BP</span>
           <span class="tag-badge">Hydrological Flood-Fill</span>
@@ -115,9 +114,9 @@
 
         <div class="hero-cta-row">
           <a href="#viewer" class="btn btn-primary">Open Interactive Map ↓</a>
-          <a href="https://github.com/Exomoon/sealevelrize" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
-            <span>View Source on GitHub</span>
-            <span class="arrow-glyph" aria-hidden="true" style="margin-left: 6px;">→</span>
+          <a href="#science" class="btn btn-ghost">
+            <span>Method & Principles</span>
+            <span class="arrow-glyph" aria-hidden="true" style="margin-left: 6px;">↓</span>
           </a>
         </div>
 
@@ -299,19 +298,15 @@
           </div>
 
           <div>
-            <div class="code-terminal">
-              <div class="comment"># Clone and set up repository</div>
-              <div><span class="prompt">$ </span>git clone git@github.com:Exomoon/sealevelrize.git</div>
-              <div><span class="prompt">$ </span>cd sealevelrize/palaeocoast</div>
-              <div><span class="prompt">$ </span>python3 -m venv .venv</div>
-              <div><span class="prompt">$ </span>source .venv/bin/activate</div>
-              <div><span class="prompt">$ </span>pip install -r requirements.txt</div>
-              <br>
-              <div class="comment"># Run validation test suite</div>
-              <div><span class="prompt">$ </span>python -m unittest discover -v</div>
-              <br>
-              <div class="comment"># Start local interactive server</div>
-              <div><span class="prompt">$ </span>python web_server.py --port 8765</div>
+            <div class="glass-box">
+              <h3 style="color: var(--accent-cyan);">Pipeline Architecture & Stages</h3>
+              <ol style="color: var(--text-secondary); line-height: 1.8; margin-left: 20px; font-size: 14px;">
+                <li><strong>Inputs:</strong> GEBCO 2020 bathymetry (EPSG:3035) and regional sea-level curve series.</li>
+                <li><strong>Modeling:</strong> Backward inversion of land motion, erosion, and deposition per time slice.</li>
+                <li><strong>Hydrology:</strong> Topological flood-fill delineating connected ocean from inland depressions.</li>
+                <li><strong>Cartography:</strong> Automated export of GeoTIFF, GeoJSON coastlines, and Web Mercator tiles.</li>
+                <li><strong>Inspection:</strong> Interactive exploration and delta statistics via Leaflet & PyQGIS.</li>
+              </ol>
             </div>
           </div>
         </div>
@@ -338,7 +333,7 @@
               <li><a href="#overview">Overview</a></li>
               <li><a href="#viewer">Interactive Map</a></li>
               <li><a href="#science">Method & Science</a></li>
-              <li><a href="https://github.com/Exomoon/sealevelrize" target="_blank" rel="noopener noreferrer">GitHub Repository ↗</a></li>
+              <li><a href="#architecture">Architecture</a></li>
             </ul>
           </div>
 
