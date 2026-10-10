@@ -33,9 +33,295 @@
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261010-5">
+
+  <style>
+    /* Critical Subpage Layout Styles (Guaranteed Zero-FOUC) */
+    .subpage-hero {
+      padding-top: 130px;
+      padding-bottom: 60px;
+      position: relative;
+      background: radial-gradient(circle at 50% 15%, rgba(0, 210, 255, 0.12) 0%, rgba(3, 6, 12, 0) 70%), var(--bg-void, #03060c);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.12);
+    }
+
+    .breadcrumb-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+
+    .breadcrumb-nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .breadcrumb-nav a:hover { color: #00d2ff; }
+
+    .hero-pill-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background-color: rgba(0, 210, 255, 0.12);
+      border: 1px solid rgba(0, 210, 255, 0.35);
+      color: #00d2ff;
+    }
+
+    .status-badge i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #00d2ff;
+      box-shadow: 0 0 8px #00d2ff;
+    }
+
+    .tag-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+    }
+
+    .subpage-title {
+      font-size: clamp(32px, 4.8vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .subpage-title span {
+      background: linear-gradient(135deg, #ffffff 40%, #00d2ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subpage-lead {
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: #94a3b8;
+      line-height: 1.6;
+      max-width: 840px;
+      margin-bottom: 32px;
+    }
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    @media (max-width: 900px) {
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 550px) {
+      .stats-bar { grid-template-columns: 1fr; }
+    }
+
+    .stat-box {
+      background: #090d16;
+      border: 1px solid rgba(56, 189, 248, 0.12);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .stat-value span {
+      font-size: 13px;
+      color: #00d2ff;
+      font-weight: 500;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    /* Embedded Workspace Card — Wide & Generous */
+    .viewer-wide-wrap {
+      width: 100%;
+      max-width: min(97vw, 1720px);
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .viewer-card {
+      background-color: #090d16;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 16px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .viewer-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(3, 6, 12, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .viewer-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .viewer-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00d2ff;
+      box-shadow: 0 0 10px #00d2ff;
+    }
+
+    .viewer-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    .viewer-frame-wrap {
+      width: 100%;
+      height: clamp(800px, 86vh, 940px);
+      position: relative;
+      background-color: #03060c;
+    }
+
+    .viewer-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Vectors & Motion Process Cards */
+    .process-visual-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .process-visual-grid { grid-template-columns: 1fr; }
+    }
+
+    .process-card {
+      background: #090d16;
+      border: 1px solid rgba(56, 189, 248, 0.14);
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .process-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 210, 255, 0.4);
+    }
+
+    .process-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .icon-uplift {
+      background: rgba(0, 210, 255, 0.12);
+      color: #00d2ff;
+      border: 1px solid rgba(0, 210, 255, 0.3);
+    }
+
+    .icon-subsidence {
+      background: rgba(147, 51, 234, 0.12);
+      color: #c084fc;
+      border: 1px solid rgba(147, 51, 234, 0.3);
+    }
+
+    .icon-basin {
+      background: rgba(245, 158, 11, 0.12);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .process-card h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .process-card p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .formula-banner {
+      background: rgba(3, 6, 12, 0.9);
+      border: 1px solid rgba(0, 210, 255, 0.25);
+      border-radius: 10px;
+      padding: 20px 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(14px, 2vw, 17px);
+      color: #00d2ff;
+      text-align: center;
+      margin: 24px 0;
+      letter-spacing: 0.02em;
+    }
+  </style>
 
   <script type="application/ld+json">
   {
@@ -67,8 +353,8 @@
         <a href="sv.html#projekt" class="nav-link">Projekt</a>
         <a href="#oversikt" class="nav-link">Översikt</a>
         <a href="#karta" class="nav-link">Interaktiv karta</a>
-        <a href="#vetenskap" class="nav-link">Metod & Vetenskap</a>
-        <a href="#arkitektur" class="nav-link">Arkitektur</a>
+        <a href="#dynamik" class="nav-link">Landhöjning & Processer</a>
+        <a href="#vetenskap" class="nav-link">Metod & Ekvationer</a>
       </nav>
 
       <div class="header-actions">
@@ -100,22 +386,22 @@
 
         <div class="hero-pill-row">
           <span class="status-badge"><i></i> Geospatial Forskning / Pilot</span>
-          <span class="tag-badge">GEBCO 2020 600m</span>
+          <span class="tag-badge">GEBCO 2020 · 600 m Grid</span>
           <span class="tag-badge">22 000 BP → 0 BP</span>
           <span class="tag-badge">Topologisk havskontakt</span>
           <span class="tag-badge">QGIS & Leaflet</span>
         </div>
 
-        <h1 class="subpage-title">SeaLevelRize — Modellering av forntida kustlandskap</h1>
+        <h1 class="subpage-title">SeaLevelRize — <span>Modellering av forntida kustlandskap</span></h1>
         <p class="subpage-lead">
-          Att enbart sänka eller höja havsnivån på dagens höjdmodell ger en missvisande bild av forntida landskap.
-          SeaLevelRize återskapar förhistoriska kuster genom att koppla regionala havsnivåkurvor med tektonisk landrörelse, erosion och sedimentation.
+          Historiska kuster formats av långt mer än bara havsnivåhöjning. 
+          SeaLevelRize rekonstruerar Europas förhistoriska landskap genom att koppla regionala havsnivåkurvor med tektonisk landhöjning, sänkning, erosion och sedimentpålagring.
         </p>
 
         <div class="hero-cta-row">
           <a href="#karta" class="btn btn-primary">Öppna interaktiv karta ↓</a>
-          <a href="#vetenskap" class="btn btn-ghost">
-            <span>Metod & Ekvationer</span>
+          <a href="#dynamik" class="btn btn-ghost">
+            <span>Hur landhöjning fungerar</span>
             <span class="arrow-glyph" aria-hidden="true" style="margin-left: 6px;">↓</span>
           </a>
         </div>
@@ -123,7 +409,7 @@
         <div class="stats-bar">
           <div class="stat-box">
             <div class="stat-value">22 000 <span>BP</span></div>
-            <div class="stat-label">Senaste istidsmaximum (LGM)</div>
+            <div class="stat-label">Istidsmaximum (LGM)</div>
           </div>
           <div class="stat-box">
             <div class="stat-value">600 <span>meter</span></div>
@@ -131,184 +417,129 @@
           </div>
           <div class="stat-box">
             <div class="stat-value">EPSG:3035</div>
-            <div class="stat-label">Ytriktigt europeiskt projektionssystem</div>
+            <div class="stat-label">Ytriktigt Europa-CRS</div>
           </div>
           <div class="stat-box">
             <div class="stat-value">100% <span>Vektoriserad</span></div>
-            <div class="stat-label">NumPy & Topologisk spridningsalgoritm</div>
+            <div class="stat-label">Topologisk flodfyllnad</div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Interactive Viewer Section -->
-    <section class="section" id="karta" style="padding-top: 80px; padding-bottom: 80px;">
+    <section class="section" id="karta" style="padding-top: 70px; padding-bottom: 70px;">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head" style="margin-bottom: 24px;">
           <h2 class="section-title">Interaktiv kartvisare & tidsserie</h2>
           <p class="section-sub">
-            Utforska Egeiska havets kustkonfigurationer från 22 000 BP fram till 0 BP (1950 års referensläge). Jämför anslutet hav mot slutna sänkor, processlager och areastatistik.
+            Utforska Egeiska havets forntida kustlinjer från 22 000 BP fram till nutid. Sök direkt på städer (t.ex. Aten, Santorini, Troja), undersök förlorade landbryggor och växla mellan full rekonstruktion och kontrollscenariot.
           </p>
         </div>
 
+      </div>
+      <div class="viewer-wide-wrap">
         <div class="viewer-card">
           <div class="viewer-header-bar">
             <div class="viewer-title-group">
               <span class="viewer-dot"></span>
-              <span class="viewer-title">PalaeoCoast Webbvisare · Egeiska havet sandbox</span>
+              <span class="viewer-title">PalaeoCoast Console · Egeiska havet (22 000 BP → 1950)</span>
             </div>
             <div class="viewer-actions">
-              <a href="viewer/sealevel/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost">
+              <a href="viewer/sealevel/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-header" style="font-size: 12px; padding: 6px 14px;">
                 <span>Öppna i fullskärm ↗</span>
               </a>
             </div>
           </div>
           <div class="viewer-frame-wrap">
-            <iframe src="viewer/sealevel/index.html" class="viewer-frame" title="SeaLevelRize Interaktiv kartvisare" loading="lazy"></iframe>
+            <iframe src="viewer/sealevel/index.html?embed=1&v=20261010-99" class="viewer-frame" title="SeaLevelRize Interaktiv kartvisare" loading="lazy"></iframe>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Process Guide: Landhöjning med Vektorpilar -->
+    <section class="section" id="dynamik" style="background-color: var(--bg-surface);">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Hur fungerar dynamisk landrörelse?</h2>
+          <p class="section-sub">
+            Att bara sänka havsnivån på dagens höjdkarta ("bathtub model") är ett välkänt fel i paleogeografi. Landmassan har rört sig vertikalt under samma tid.
+          </p>
+        </div>
+
+        <div class="process-visual-grid">
+          <article class="process-card">
+            <div class="process-icon-wrap icon-uplift">↑</div>
+            <h4>Landhöjning (Uplift)</h4>
+            <p>
+              När berggrunden tryckts uppåt (postglacial rekyl eller tektonik) låg marken <strong>lägre</strong> bakåt i tiden. Modellen subtraherar den senare höjningen för att återskapa den forntida topografin.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-icon-wrap icon-subsidence">↓</div>
+            <h4>Landsänkning (Subsidence)</h4>
+            <p>
+              I områden med sedimentpackning eller plattdragning har marken sjunkit. Bakåt i tiden låg dessa havsbottnar och kustremsor <strong>högre</strong> än dagens mätvärden.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-icon-wrap icon-basin">⨀</div>
+            <h4>Sluten sänka vs Hav</h4>
+            <p>
+              Ett område under havsytan blir inte hav om det avskärmas av en tröskel (sill). Modellen spårar verklig 4-vägs topologisk flodfyllnad från havsfrön för att förhindra felaktig insjööversvämning.
+            </p>
+          </article>
+        </div>
+
+        <div class="formula-banner">
+          Äldre markhöjd = Dagens markhöjd − U (landrörelse) + E (erosion) − D (sedimentation)
         </div>
       </div>
     </section>
 
     <!-- Science & Methodology Section -->
-    <section class="section" id="vetenskap" style="background-color: var(--bg-surface);">
+    <section class="section" id="vetenskap">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">Vetenskaplig metodik & ekvationer</h2>
+          <h2 class="section-title">Vetenskapliga epoker & validering</h2>
           <p class="section-sub">
-            Hur morfodynamiska processer och relativ havsnivåförändring beräknas bakåt i tiden.
+            Tre centrala tidshorisonter som definierar Egeiska havets transformation från istid till modern tid.
           </p>
         </div>
 
-        <div class="detail-grid">
-          <div class="glass-box">
-            <h3>Rekonstruktionsekvation bakåt i tiden</h3>
-            <p>
-              För att bestämma den forntida markhöjden vid en given tidpunkt <em>t</em> (år före 1950, BP) inverteras de kumulativa geologiska effekterna som skett mellan tidpunkten <em>t</em> och idag:
-            </p>
-
-            <div class="formula-display">
-              Z<sub>äldre</sub> = Z<sub>idag</sub> − U + E − D
+        <div class="cards-grid-3">
+          <article class="scenario-card">
+            <div class="scenario-card-header">
+              <div class="scenario-time-tag">22 000 BP · Istidsmaximum</div>
+              <h4 class="scenario-card-title">Blottad kontinentalsockel</h4>
             </div>
-
-            <p>
-              Där:
-            </p>
-            <ul style="color: var(--text-secondary); line-height: 1.8; margin-left: 20px; margin-bottom: 20px;">
-              <li><strong>Äldre markhöjd (<em>Z</em><sub>äldre</sub>):</strong> Rekonstruerad mark-/havsbottensnivå i meter.</li>
-              <li><strong>Dagens markhöjd (<em>Z</em><sub>idag</sub>):</strong> Nutida terränghöjd och bathymetri (GEBCO 2020).</li>
-              <li><strong><em>U</em>:</strong> Kumulativ vertikal landrörelse (+ landhöjning ger lägre äldre yta, − sänkning ger högre äldre yta).</li>
-              <li><strong><em>E</em>:</strong> Kumulativ senare erosion (+ material som eroderats bort återställs till forntida massan).</li>
-              <li><strong><em>D</em>:</strong> Kumulativ senare sedimentation (+ avsatt sediment avlägsnas för att nå äldre yta).</li>
-            </ul>
-
-            <p>
-              Höjdmarginalen gentemot havsytan beräknas som:
-              <br>
-              <strong style="color: #ffffff;">Höjdmarginal = Äldre markhöjd − Äldre havsyta</strong>
-            </p>
-
-            <h3 style="margin-top: 32px;">Äkta topologisk havskontakt</h3>
-            <p>
-              En terrängcell som ligger under havsnivån är inte automatiskt hav. Om den ligger i en sluten inlandssänka som avskiljs av en tröskel (sill) från öppet vatten, bildar den en <strong>sluten sänka</strong> snarare än anslutet hav.
-              SeaLevelRize spårar 4-vägs topologisk sammanlänkning med start från verkliga havsfrön vid gränsen, vilket förhindrar felaktig översvämning tills en fysisk tröskel bryts igenom.
-            </p>
-          </div>
-
-          <div>
-            <div class="glass-box" style="margin-bottom: 24px;">
-              <h3 style="color: var(--accent-cyan);">Referenskonventioner</h3>
-              <p style="font-size: 14px;">
-                <strong>Relativt läge (relative):</strong> När den valda havsnivåkurvan redan inkluderar glacial isostasi (GIA) och regional sänkning låses ytterligare landrörelse för att undvika dubbelräkning.
-              </p>
-              <p style="font-size: 14px;">
-                <strong>Separat läge (separate):</strong> Global eustatisk havsnivåkurva kombinerad med separata, rumsligt varierande fält för tektonik och landhöjning.
-              </p>
+            <div class="scenario-card-body">
+              Havsnivån låg ca 120 meter under dagens nivå. Kykladernas öar bands samman till en stor landmassa som blockerade dagens vattenflöden och skapade landförbindelser mellan Balkan och Anatolien.
             </div>
+          </article>
 
-            <div class="glass-box">
-              <h3 style="color: #ffffff;">Datakällor</h3>
-              <p style="font-size: 14px;">
-                • <strong>Terräng & batymetri:</strong> GEBCO 2020 Grid (interpolerat till 600m EPSG:3035).<br>
-                • <strong>Havsnivåkurvor:</strong> Lambeck m.fl., regionala referenskurvor.<br>
-                • <strong>Omfattning:</strong> Egeiska havet fungerar som demonstrationsområde; Nordsjön och Doggerland är planerade expansioner.
-              </p>
+          <article class="scenario-card">
+            <div class="scenario-card-header">
+              <div class="scenario-time-tag">11 700 BP · Yngre Dryas / Holocen</div>
+              <h4 class="scenario-card-title">Snabb marin transgression</h4>
             </div>
-          </div>
-        </div>
-
-        <!-- 3 Tidsepoker -->
-        <div style="margin-top: 56px;">
-          <h3 style="color: #ffffff; font-size: 22px; margin-bottom: 24px;">Centrala paleogeografiska epoker</h3>
-          <div class="cards-grid-3">
-            <article class="scenario-card">
-              <div class="scenario-card-header">
-                <div class="scenario-time-tag">22 000 BP · Istidsmaximum</div>
-                <h4 class="scenario-card-title">Blottad kontinentalsockel</h4>
-              </div>
-              <div class="scenario-card-body">
-                Havsnivån låg cirka 120 meter under dagens nivå. Kykladernas ögrupp binds samman till sammanhängande landmassor och landbryggor mellan Balkan och Anatolien.
-              </div>
-            </article>
-
-            <article class="scenario-card">
-              <div class="scenario-card-header">
-                <div class="scenario-time-tag">11 700 BP · Tidig Holocen</div>
-                <h4 class="scenario-card-title">Snabb marin transgression</h4>
-              </div>
-              <div class="scenario-card-body">
-                Glaciäravsmältning orsakade kraftig och snabb havsnivåhöjning. Marina trösklar översvämmades och isolerade tidigare landbundna områden till separata öar.
-              </div>
-            </article>
-
-            <article class="scenario-card">
-              <div class="scenario-card-header">
-                <div class="scenario-time-tag">0 BP · Referensläge 1950</div>
-                <h4 class="scenario-card-title">Dagens kalibrerade utgångspunkt</h4>
-              </div>
-              <div class="scenario-card-body">
-                Referensläget där de kumulativa processerna är noll. Används för validering och kontrollräkning mot modern geodetisk och batymetrisk data.
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Architecture & Code Pipeline -->
-    <section class="section" id="arkitektur">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="section-title">Arkitektur & Python-pipeline</h2>
-          <p class="section-sub">
-            En modulär beräkningsmotor med stöd för terminalkörning, enhetstestade modeller, QGIS-visning och högpresterande Web Mercator-export.
-          </p>
-        </div>
-
-        <div class="detail-grid">
-          <div class="glass-box">
-            <h3>Systemkomponenter</h3>
-            <ul style="color: var(--text-secondary); line-height: 1.8; margin-left: 20px;">
-              <li><code>palaeocoast/model.py</code>: Kärnmodell med bakåtriktad höjdlösare och topologisk spridningsalgoritm för havskontakt.</li>
-              <li><code>palaeocoast/run.py</code>: Kör skript för att generera GeoTIFF per tidssteg, GeoJSON-kustlinjer och sammanfattande nyckeltal.</li>
-              <li><code>palaeocoast/web_export.py</code>: Omprojekterar EPSG:3035 till EPSG:3857 Web Mercator för knivskarp visning i webbläsare.</li>
-              <li><code>palaeocoast/web_server.py</code>: Lokal webbserver med API-stöd för interaktiv omräkning och cellinspektion i realtid.</li>
-              <li><code>palaeocoast/qgis_viewer.py</code>: Färdigt PyQGIS-skript för tidsserievisning direkt i QGIS-miljön.</li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="glass-box">
-              <h3 style="color: var(--accent-cyan);">Pipelineschema & Steg</h3>
-              <ol style="color: var(--text-secondary); line-height: 1.8; margin-left: 20px; font-size: 14px;">
-                <li><strong>Indata:</strong> GEBCO 2020 bathymetri (EPSG:3035) och regionala havsnivåkurvor.</li>
-                <li><strong>Modellering:</strong> Invertering av landrörelse, erosion och deposition per tidssteg.</li>
-                <li><strong>Hydrologi:</strong> Topologisk spridningsalgoritm för att avgränsa anslutet hav från inlandssänkor.</li>
-                <li><strong>Kartering:</strong> Automatisk export av GeoTIFF, GeoJSON-kustlinjer och Web Mercator-tiles.</li>
-                <li><strong>Gränssnitt:</strong> Realtidsinspektion och jämförelseanalys i Leaflet & QGIS.</li>
-              </ol>
+            <div class="scenario-card-body">
+              Kraftig glaciäravsmältning orsakade snabb havshöjning. Marina trösklar översvämmades och isolerade tidigare landbryggor till den arkipelag vi känner idag.
             </div>
-          </div>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-card-header">
+              <div class="scenario-time-tag">0 BP · Referensläge 1950</div>
+              <h4 class="scenario-card-title">Kalibrerad utgångspunkt</h4>
+            </div>
+            <div class="scenario-card-body">
+              Dagens GEBCO 2020-terrängläge där de kumulativa processerna är noll. Används för noggrann validering och kontroll mot modern geodata.
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -332,20 +563,8 @@
               <li><a href="sv.html">GeoX Hem</a></li>
               <li><a href="#oversikt">Översikt</a></li>
               <li><a href="#karta">Interaktiv karta</a></li>
+              <li><a href="#dynamik">Landhöjning & Processer</a></li>
               <li><a href="#vetenskap">Metod & Vetenskap</a></li>
-              <li><a href="#arkitektur">Arkitektur</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <span class="footer-col-title">Projekt</span>
-            <ul class="footer-links">
-              <li><a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer">Restidsanalys</a></li>
-              <li><a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer">Områdesatlas</a></li>
-              <li><a href="https://krisgis.se" target="_blank" rel="noopener noreferrer">KrisGIS</a></li>
-              <li><a href="https://valatlas.se" target="_blank" rel="noopener noreferrer">Valatlas</a></li>
-              <li><a href="https://utteride.se" target="_blank" rel="noopener noreferrer">UtterIDE</a></li>
-              <li><a href="sealevel-sv.html">SeaLevelRize</a></li>
             </ul>
           </div>
 

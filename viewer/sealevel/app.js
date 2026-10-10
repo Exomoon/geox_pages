@@ -8,6 +8,10 @@ const translations = {
 };
 document.querySelectorAll('[data-i18n]').forEach(el => el.dataset.sv = el.textContent);
 
+if (window.self !== window.top || location.search.includes('embed=1')) {
+  document.body.classList.add('is-embedded');
+}
+
 const map = L.map('map', {zoomControl:false, minZoom:3, worldCopyJump:false, maxBoundsViscosity:1}).setView([37.6,25.4],6);
 L.control.zoom({position:'bottomright'}).addTo(map);
 L.control.scale({imperial:false, position:'bottomleft'}).addTo(map);
@@ -203,7 +207,6 @@ document.querySelectorAll('[data-region]').forEach(button=>button.onclick=()=>{
   $('aoiMessage').hidden=false;
   $('aoiMessage').textContent=region==='europe'?'Europaöversikten är planerad men saknar ännu analysdata. Kartan är begränsad till Egeiska modellens täckning.':'Doggerland är nästa fördjupningsområde och saknar ännu analysdata.';
 });
-$('fitRegion').onclick=()=>{if(state.analysisBounds)map.fitBounds(state.analysisBounds,{padding:[18,18]})};
 $('gotoForm').onsubmit=e=>{e.preventDefault();const parts=$('goto').value.split(/[,; ]+/).map(Number).filter(Number.isFinite);if(parts.length<2)return;const point=L.latLng(parts[0],parts[1]);if(state.analysisBounds&&!state.analysisBounds.contains(point)){$('aoiMessage').hidden=false;$('aoiMessage').textContent='Koordinaten ligger utanför nuvarande analystäckning (Egeiska havet).';return}$('aoiMessage').hidden=true;map.flyTo(point,Math.max(map.getZoom(),9))};
 $('methodButton').onclick=()=>$('methodDialog').showModal();$('closeMethod').onclick=()=>$('methodDialog').close();
 $('language').onclick=()=>{state.lang=state.lang==='sv'?'en':'sv';$('language').textContent=state.lang==='sv'?'EN':'SV';document.documentElement.lang=state.lang;document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;el.textContent=state.lang==='sv'?el.dataset.sv:(translations.en[key]||el.dataset.sv)})};
