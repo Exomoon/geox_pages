@@ -80,6 +80,24 @@ export const products = [
     isExternal: true,
     tags: ["Review-First", "BYOK", "Multi-Model", "Full kontroll"],
     featured: true
+  },
+  {
+    id: "palaeocoast",
+    name: "PalaeoCoast",
+    eyebrow: "Geospatial rekonstruktion / Paleogeografi / Raster",
+    tagline: "Hur såg Europas forntida kuster ut från istidsmaximum till nutid?",
+    description: "Ett experimentellt geospatialt forskningsprojekt som utforskar hur forntida landskap kan återskapas genom att kombinera batymetri (GEBCO & EMODnet) med havsnivåkurvor, topologisk havskontakt och geomorfologiska processer.",
+    url: "sealevel-sv.html",
+    image: "assets/sealevel-preview.png",
+    status: "EXPERIMENTAL / WIP",
+    statusVariant: "dev",
+    accentColor: "#ee7c3f",
+    accentGlow: "rgba(238, 124, 63, 0.16)",
+    ctaText: "Utforska PalaeoCoast",
+    ctaLink: "sealevel-sv.html",
+    isExternal: false,
+    tags: ["22 000 BP → 1950", "Topologisk havskontakt", "GEBCO & EMODnet", "GIA under utveckling"],
+    featured: true
   }
 ];
 

@@ -5,19 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SeaLevelRize — Prehistoric Coastal Reconstruction GIS Engine | GeoX</title>
+  <title>PalaeoCoast — Experimental Geospatial Reconstruction of Prehistoric Coastlines | GeoX</title>
   <meta name="description"
-    content="SeaLevelRize (PalaeoCoast) is a geospatial scenario engine modeling ancient coastal landscapes, sea level rise, tectonic land motion, and sediment dynamics on GEBCO bathymetry.">
+    content="PalaeoCoast is an experimental geospatial research project exploring prehistoric coastal landscapes from 22 000 BP through present day. Powered by the SeaLevelRize computational engine.">
   <meta name="keywords"
-    content="Sea level rise, paleocoast, coastal reconstruction, GIS, bathymetry, GEBCO 2020, glacial isostatic adjustment, Aegean Sea, Ronnie Utter, GeoX">
+    content="PalaeoCoast, SeaLevelRize, sea level rise, paleogeography, coastal reconstruction, GIS, bathymetry, GEBCO 2020, EMODnet, isostasy, GIA, Doggerland, Aegean Sea, GeoX">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://geox.dev/sealevel.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="SeaLevelRize — Coastal Reconstruction & Sea Level Rise GIS Engine | GeoX">
+  <meta property="og:title" content="PalaeoCoast — Experimental Geospatial Reconstruction | GeoX">
   <meta property="og:description"
-    content="Model prehistoric coastlines by coupling historical sea level curves with vertical land movement, erosion, and sedimentation.">
+    content="Explore prehistoric shorelines from 22 000 BP to present by coupling bathymetry to sea level curves and geomorphological processes.">
   <meta property="og:url" content="https://geox.dev/sealevel.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GeoX">
@@ -25,9 +25,9 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SeaLevelRize — Prehistoric Coastal Reconstruction GIS Engine">
+  <meta name="twitter:title" content="PalaeoCoast — Experimental Geospatial Reconstruction">
   <meta name="twitter:description"
-    content="Model prehistoric coastlines by coupling historical sea level curves with vertical land movement, erosion, and sedimentation.">
+    content="Explore prehistoric shorelines from 22 000 BP to present by coupling bathymetry to sea level curves and geomorphological processes.">
   <meta name="twitter:image" content="https://geox.dev/assets/sealevel-preview.png">
 
   <!-- Typography -->
@@ -381,28 +381,31 @@
           <span>/</span>
           <a href="index.html#projects">Projects</a>
           <span>/</span>
-          <span>SeaLevelRize</span>
+          <span>PalaeoCoast</span>
         </nav>
 
         <div class="hero-pill-row">
-          <span class="status-badge"><i></i> Geospatial Research / Prototype</span>
-          <span class="tag-badge">GEBCO 2020 · 600m Grid</span>
+          <span class="status-badge" style="background:rgba(238,124,63,0.15);color:#ee7c3f;border-color:rgba(238,124,63,0.35);"><i></i> Experimental Prototype / Work in Progress</span>
+          <span class="tag-badge" style="border-color:rgba(56,189,248,0.4);color:#38bdf8;">⚡ Numerical GIA Engine in Development</span>
+          <span class="tag-badge">GEBCO 2020 & EMODnet DTM 2024</span>
           <span class="tag-badge">22 000 BP → 0 BP</span>
-          <span class="tag-badge">Hydrological Flood-Fill</span>
+          <span class="tag-badge">Topological Ocean Connectivity</span>
           <span class="tag-badge">QGIS & Leaflet</span>
         </div>
 
-        <h1 class="subpage-title">SeaLevelRize — <span>Coastal Landscape Evolution Engine</span></h1>
+        <h1 class="subpage-title">PalaeoCoast — <span>Experimental Geospatial Reconstruction</span></h1>
         <p class="subpage-lead">
-          Flooding a modern digital elevation model (DEM) produces misleading paleogeographies.
-          SeaLevelRize reconstructs prehistoric landscapes by coupling regional sea-level curves with tectonic uplift, subsidence, erosion, and sedimentation.
+          How did European coastlines transform as the last ice age retreated? 
+          PalaeoCoast is an experimental geospatial research project exploring how prehistoric landscapes can be reconstructed by coupling bathymetry with relative sea-level curves, topological ocean connectivity, and geomorphological processes. Powered by the computational engine <em>SeaLevelRize</em>.
         </p>
 
         <div class="hero-cta-row">
           <a href="#viewer" class="btn btn-primary">Open Interactive Map ↓</a>
+          <a href="viewer/sealevel/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <span>Direct Fullscreen ↗</span>
+          </a>
           <a href="#dynamics" class="btn btn-ghost">
-            <span>How Land Motion Works</span>
-            <span class="arrow-glyph" aria-hidden="true" style="margin-left: 6px;">↓</span>
+            <span>About Land Motion & GIA ↓</span>
           </a>
         </div>
 
@@ -437,6 +440,12 @@
           </p>
         </div>
 
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px; padding:12px 18px; background:rgba(56,189,248,0.05); border:1px solid rgba(56,189,248,0.18); border-radius:8px;">
+          <span style="font-size:13px; color:#94a3b8;">💡 The viewer works in the frame below, but is best experienced in fullscreen with all tools and panels.</span>
+          <a href="viewer/sealevel/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:12px; padding:6px 16px;">
+            <span>Open Viewer Fullscreen ↗</span>
+          </a>
+        </div>
       </div>
       <div class="viewer-wide-wrap">
         <div class="viewer-card">
@@ -497,6 +506,17 @@
         <div class="formula-banner">
           Ancient Elevation = Modern Elevation − U (land motion) + E (erosion) − D (deposition)
         </div>
+
+        <!-- GIA Engine in Development Callout -->
+        <div style="margin-top: 24px; padding: 22px 26px; background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;">
+            <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #38bdf8; background: rgba(56, 189, 248, 0.14); padding: 4px 10px; border-radius: 999px;">Active Development</span>
+            <h4 style="margin: 0; font-size: 17px; font-weight: 700; color: #ffffff;">Numerical GIA Engine for Fennoscandia & Northern Europe</h4>
+          </div>
+          <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #94a3b8;">
+            The current viewer illustrates the computational principle using synthetic test gradients across the Aegean. For Northern Europe and Doggerland, linear approximations are insufficient — geophysical <strong>Glacial Isostatic Adjustment (GIA)</strong> is required to simulate mantle viscosity, postglacial crustal rebound, and peripheral forebulge collapse. This module is actively under development, harmonizing empirical ice margin data (DATED-1/BRITICE) with geodetic rebound models (NKG2016LU).
+          </p>
+        </div>
       </div>
     </section>
 
@@ -504,9 +524,9 @@
     <section class="section" id="science">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">Scientific Epochs & Validation</h2>
+          <h2 class="section-title">Historical Epochs & Model Limitations</h2>
           <p class="section-sub">
-            Three key time horizons defining the evolution of the Aegean Basin from the ice age to antiquity.
+            The engine models geometric elevation scenarios for primary horizons. It serves as a methodological testbed and scenario platform — not a finalized regional geodynamic ground truth.
           </p>
         </div>
 
@@ -517,7 +537,7 @@
               <h4 class="scenario-card-title">Exposed Continental Shelf</h4>
             </div>
             <div class="scenario-card-body">
-              Global oceans dropped ~120m below modern datum. The Cyclades formed a vast continental promontory connecting the Greek mainland to western Anatolia.
+              Global oceans dropped ~120–125m below modern datum. The Cyclades merged into a contiguous landmass and Doggerland formed an extensive plain connecting Britain to mainland Europe.
             </div>
           </article>
 
@@ -527,17 +547,17 @@
               <h4 class="scenario-card-title">Rapid Marine Transgression</h4>
             </div>
             <div class="scenario-card-body">
-              Abrupt deglaciation drove surging sea levels. Marine sills breached, fragmenting land bridges into the archipelago of islands known in classical antiquity.
+              Abrupt deglaciation drove surging sea levels. Marine sills breached, fragmenting land bridges into the archipelago of islands and channels we observe today.
             </div>
           </article>
 
           <article class="scenario-card">
             <div class="scenario-card-header">
               <div class="scenario-time-tag">0 BP · 1950 Reference Baseline</div>
-              <h4 class="scenario-card-title">Calibrated Modern Ground Truth</h4>
+              <h4 class="scenario-card-title">Modern Calibration Benchmark</h4>
             </div>
             <div class="scenario-card-body">
-              Modern GEBCO 2020 datum where cumulative process offsets equal zero. Used to cross-validate reconstructed DEM grids against modern geodetic benchmarks.
+              Modern GEBCO and EMODnet baseline where cumulative process displacement equals zero. Used as the modern geodetic control surface.
             </div>
           </article>
         </div>

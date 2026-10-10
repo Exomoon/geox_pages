@@ -5,19 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SeaLevelRize — Geospatial simuleringsmotor för forntida kustlandskap | GeoX</title>
+  <title>PalaeoCoast — Experimentell geospatial rekonstruktion av forntida kuster | GeoX</title>
   <meta name="description"
-    content="SeaLevelRize (PalaeoCoast) är en geospatial scenariomotor för att rekonstruera äldre kustlandskap genom att kombinera havsnivåkurvor med landrörelse, erosion och sedimentation på GEBCO-bathymetri.">
+    content="PalaeoCoast är ett experimentellt geospatialt forskningsprojekt för att utforska forntida kustlandskap från 22 000 BP till nutid. Drivs av beräkningsmotorn SeaLevelRize.">
   <meta name="keywords"
-    content="Havsnivå, paleokust, kustrekonstruktion, GIS, batymetri, GEBCO 2020, isostasi, Egeiska havet, Ronnie Utter, GeoX">
+    content="PalaeoCoast, SeaLevelRize, havsnivå, paleogeografi, kustrekonstruktion, GIS, batymetri, GEBCO 2020, EMODnet, isostasi, GIA, Doggerland, Egeiska havet, GeoX">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://geox.dev/sealevel-sv.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="SeaLevelRize — Kustrekonstruktion & Havsnivåmodell | GeoX">
+  <meta property="og:title" content="PalaeoCoast — Experimentell geospatial rekonstruktion | GeoX">
   <meta property="og:description"
-    content="Modellera forntida kustlinjer genom att koppla historiska havsnivåkurvor till vertikal landrörelse, erosion och sedimentation.">
+    content="Utforska forntida kustlinjer från 22 000 BP fram till nutid genom att koppla batymetri till havsnivå och geomorfologiska processer.">
   <meta property="og:url" content="https://geox.dev/sealevel-sv.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GeoX">
@@ -25,9 +25,9 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SeaLevelRize — Kustrekonstruktion & Havsnivåmodell">
+  <meta name="twitter:title" content="PalaeoCoast — Experimentell geospatial rekonstruktion">
   <meta name="twitter:description"
-    content="Modellera forntida kustlinjer genom att koppla historiska havsnivåkurvor till vertikal landrörelse, erosion och sedimentation.">
+    content="Utforska forntida kustlinjer från 22 000 BP fram till nutid genom att koppla batymetri till havsnivå och geomorfologiska processer.">
   <meta name="twitter:image" content="https://geox.dev/assets/sealevel-preview.png">
 
   <!-- Typography -->
@@ -381,28 +381,31 @@
           <span>/</span>
           <a href="sv.html#projekt">Projekt</a>
           <span>/</span>
-          <span>SeaLevelRize</span>
+          <span>PalaeoCoast</span>
         </nav>
 
         <div class="hero-pill-row">
-          <span class="status-badge"><i></i> Geospatial Forskning / Pilot</span>
-          <span class="tag-badge">GEBCO 2020 · 600 m Grid</span>
+          <span class="status-badge" style="background:rgba(238,124,63,0.15);color:#ee7c3f;border-color:rgba(238,124,63,0.35);"><i></i> Experimentell pilot / Work in Progress</span>
+          <span class="tag-badge" style="border-color:rgba(56,189,248,0.4);color:#38bdf8;">⚡ GIA-motor under utveckling</span>
+          <span class="tag-badge">GEBCO 2020 & EMODnet DTM 2024</span>
           <span class="tag-badge">22 000 BP → 0 BP</span>
           <span class="tag-badge">Topologisk havskontakt</span>
           <span class="tag-badge">QGIS & Leaflet</span>
         </div>
 
-        <h1 class="subpage-title">SeaLevelRize — <span>Modellering av forntida kustlandskap</span></h1>
+        <h1 class="subpage-title">PalaeoCoast — <span>Experimentell geospatial rekonstruktion</span></h1>
         <p class="subpage-lead">
-          Historiska kuster formats av långt mer än bara havsnivåhöjning. 
-          SeaLevelRize rekonstruerar Europas förhistoriska landskap genom att koppla regionala havsnivåkurvor med tektonisk landhöjning, sänkning, erosion och sedimentpålagring.
+          Hur förändrades Europas kuster när istiden släppte sitt grepp? 
+          PalaeoCoast är ett experimentellt geospatialt forskningsprojekt som utforskar hur forntida landskap kan återskapas genom att kombinera batymetri med havsnivåkurvor, topologisk havskontakt och geomorfologiska processer. Drivs av beräkningsmotorn <em>SeaLevelRize</em>.
         </p>
 
         <div class="hero-cta-row">
-          <a href="#karta" class="btn btn-primary">Öppna interaktiv karta ↓</a>
+          <a href="#karta" class="btn btn-primary">Öppna kartvisaren ↓</a>
+          <a href="viewer/sealevel/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <span>Direkt till fullskärm ↗</span>
+          </a>
           <a href="#dynamik" class="btn btn-ghost">
-            <span>Hur landhöjning fungerar</span>
-            <span class="arrow-glyph" aria-hidden="true" style="margin-left: 6px;">↓</span>
+            <span>Om landhöjning & GIA ↓</span>
           </a>
         </div>
 
@@ -437,6 +440,12 @@
           </p>
         </div>
 
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px; padding:12px 18px; background:rgba(56,189,248,0.05); border:1px solid rgba(56,189,248,0.18); border-radius:8px;">
+          <span style="font-size:13px; color:#94a3b8;">💡 Kartvisaren fungerar i ramen nedan, men upplevs bäst i fullskärm med alla paneler och verktyg.</span>
+          <a href="viewer/sealevel/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:12px; padding:6px 16px;">
+            <span>Öppna kartvisaren i fullskärm ↗</span>
+          </a>
+        </div>
       </div>
       <div class="viewer-wide-wrap">
         <div class="viewer-card">
@@ -497,6 +506,17 @@
         <div class="formula-banner">
           Äldre markhöjd = Dagens markhöjd − U (landrörelse) + E (erosion) − D (sedimentation)
         </div>
+
+        <!-- GIA Engine in Development Callout -->
+        <div style="margin-top: 24px; padding: 22px 26px; background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;">
+            <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #38bdf8; background: rgba(56, 189, 248, 0.14); padding: 4px 10px; border-radius: 999px;">Aktiv utveckling</span>
+            <h4 style="margin: 0; font-size: 17px; font-weight: 700; color: #ffffff;">Numerisk GIA-motor för Fennoskandia & Europa</h4>
+          </div>
+          <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #94a3b8;">
+            I dagens visare demonstreras principen i Egeiska havet med syntetiska testgradienter. För norra Europa och Doggerland räcker dock inte schabloner — där krävs geofysisk <strong>GIA (Glacial Isostatic Adjustment)</strong> för att simulera mantelns viskositet, postglacial landhöjning och kollapsande randbälten (<em>forebulge collapse</em>). Denna modul utvecklas aktivt just nu genom att kombinera empiriska iskantsdata (DATED-1/BRITICE) och geodetiska modeller (NKG2016LU).
+          </p>
+        </div>
       </div>
     </section>
 
@@ -504,9 +524,9 @@
     <section class="section" id="vetenskap">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">Vetenskapliga epoker & validering</h2>
+          <h2 class="section-title">Historiska tidsepoker & modellens begränsningar</h2>
           <p class="section-sub">
-            Tre centrala tidshorisonter som definierar Egeiska havets transformation från istid till modern tid.
+            Modellen beräknar geometriska höjdscenarier för centrala tidshorisonter. Den ska tolkas som en metodstudie och ett scenarioverktyg – inte en fullt kalibrerad regional geodynamisk sanning.
           </p>
         </div>
 
@@ -517,7 +537,7 @@
               <h4 class="scenario-card-title">Blottad kontinentalsockel</h4>
             </div>
             <div class="scenario-card-body">
-              Havsnivån låg ca 120 meter under dagens nivå. Kykladernas öar bands samman till en stor landmassa som blockerade dagens vattenflöden och skapade landförbindelser mellan Balkan och Anatolien.
+              Havsnivån låg ca 120–125 meter under dagens nivå. Kykladernas öar bands samman till en stor landmassa och Doggerland utgjorde en vidsträckt slätt mellan Brittiska öarna och kontinenten.
             </div>
           </article>
 
@@ -527,17 +547,17 @@
               <h4 class="scenario-card-title">Snabb marin transgression</h4>
             </div>
             <div class="scenario-card-body">
-              Kraftig glaciäravsmältning orsakade snabb havshöjning. Marina trösklar översvämmades och isolerade tidigare landbryggor till den arkipelag vi känner idag.
+              Kraftig glaciäravsmältning orsakade snabb havshöjning. Marina trösklar översvämmades och isolerade tidigare landbryggor till den arkipelag och de sund vi ser idag.
             </div>
           </article>
 
           <article class="scenario-card">
             <div class="scenario-card-header">
               <div class="scenario-time-tag">0 BP · Referensläge 1950</div>
-              <h4 class="scenario-card-title">Kalibrerad utgångspunkt</h4>
+              <h4 class="scenario-card-title">Modern kalibreringspunkt</h4>
             </div>
             <div class="scenario-card-body">
-              Dagens GEBCO 2020-terrängläge där de kumulativa processerna är noll. Används för noggrann validering och kontroll mot modern geodata.
+              Dagens GEBCO- och EMODnet-terrängläge där kumulativa processer sätts till noll. Fungerar som kontroll- och referensyta mot modern uppmätt geodata.
             </div>
           </article>
         </div>
