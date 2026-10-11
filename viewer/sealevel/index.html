@@ -2,42 +2,59 @@
 <html lang="sv">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
   <meta name="description" content="PalaeoCoast — en geospatial scenarioplattform för äldre europeiska kustlandskap.">
   <title>PalaeoCoast Europe · GeoX</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b3038'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='sans-serif' font-size='25' font-weight='700' fill='white'%3EGX%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b3038'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='sans-serif' font-size='22' font-weight='700' fill='%2300d2ff'%3EGX%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="vendor/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=20261011-17">
+  <link rel="stylesheet" href="styles.css?v=20261011-21">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="https://geox.dev" aria-label="GeoX startsida"><span class="brand-mark">GX</span><span>GeoX <b>/ PalaeoCoast</b></span></a>
-    <div class="top-actions">
-      <span class="status-pill"><i></i><span data-i18n="scenarioPlatform">Geospatial scenarioplattform</span></span>
-      <button id="language" class="text-button" type="button">EN</button>
-      <button id="methodButton" class="text-button" type="button" data-i18n="methodSources">Metod & källor</button>
-    </div>
-  </header>
+  <div class="app-container">
+    <header class="topbar">
+      <div class="brand-section">
+        <a class="brand-mark" href="https://geox.dev" target="_blank" rel="noopener noreferrer" title="GeoX Hem">GX</a>
+        <div class="brand-title">
+          <a href="https://geox.dev">GeoX</a> / <span>PalaeoCoast</span>
+        </div>
+        <span class="brand-badge">22 ka – 0 BP · GIA</span>
+      </div>
 
-  <section class="intro-bar">
-    <div>
-      <p class="eyebrow" data-i18n="eyebrow">PALAEOCOAST · EUROPA · EXPERIMENTAL, UNDER DEVELOPMENT</p>
-      <h1 data-i18n="headline">Läs kustens förändring lager för lager.</h1>
-      <p data-i18n="intro">Jämför enbart ändrad havsnivå med ett scenario där även landrörelse, erosion och sedimentpålagring förändrar terrängen. Experimental, under development.</p>
-    </div>
-    <nav class="region-nav" aria-label="Analysområden">
-      <button data-region="europe" class="region"><span>01</span><b data-i18n="regionEurope">Europa</b><small data-i18n="overview">5 km översikt</small></button>
-      <button data-region="aegean" class="region active"><span>02</span><b data-i18n="aegean">Egeiska havet</b><small data-i18n="ready">Analysdata</small></button>
-      <button data-region="doggerland" class="region"><span>03</span><b>Doggerland</b><small data-i18n="nextRegion">450 m regional demo</small></button>
-    </nav>
-  </section>
+      <div class="topbar-center">
+        <div class="study-area-pill">
+          <span class="status-dot"></span>
+          <nav class="region-nav" aria-label="Analysområden">
+            <button data-region="europe" class="region-pill" type="button"><b data-i18n="regionEurope">Europa</b><small data-i18n="overview">5 km</small></button>
+            <button data-region="aegean" class="region-pill active" type="button"><b data-i18n="aegean">Egeiska havet</b><small data-i18n="ready">600 m</small></button>
+            <button data-region="doggerland" class="region-pill" type="button"><b>Doggerland</b><small data-i18n="nextRegion">450 m</small></button>
+          </nav>
+        </div>
+      </div>
 
-  <main class="workspace">
-    <aside class="panel controls" aria-label="Modellkontroller">
-      <section id="timeSection">
-        <div class="section-title"><span>01</span><h2 data-i18n="timeScenario">Tid & scenario</h2></div>
-        <label for="scenario" data-i18n="scenario">Scenario</label>
-        <select id="scenario"></select>
+      <div class="topbar-actions">
+        <button class="btn btn-secondary" id="methodButton" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <span data-i18n="methodSources">Metod &amp; källor</span>
+        </button>
+        <button class="btn btn-secondary" id="language" type="button">EN</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="panel controls" aria-label="Modellkontroller">
+        <div class="intro-card">
+          <p class="eyebrow" data-i18n="eyebrow">PALAEOCOAST · EUROPA · EXPERIMENTAL, UNDER DEVELOPMENT</p>
+          <h1 data-i18n="headline">Läs kustens förändring lager för lager.</h1>
+          <p data-i18n="intro">Jämför enbart ändrad havsnivå med ett scenario där även landrörelse, erosion och sedimentpålagring förändrar terrängen.</p>
+        </div>
+
+        <section id="timeSection">
+          <div class="section-title"><span>01</span><h2 data-i18n="timeScenario">Tid & scenario</h2></div>
+          <label for="scenario" data-i18n="scenario">Scenario</label>
+          <select id="scenario"></select>
         <div id="scenarioStatus" class="notice"></div>
         <div class="time-row"><label for="time" data-i18n="selectedTime">Vald tid</label><output id="age">—</output></div>
         <input id="time" type="range" min="0" max="6" value="0" step="1">
@@ -153,6 +170,7 @@
       </section>
     </aside>
   </main>
+  </div>
 
   <div id="mobileSheetBackdrop" class="mobile-sheet-backdrop" hidden></div>
   <aside id="mobileSheet" class="mobile-sheet" role="dialog" aria-modal="true" aria-labelledby="mobileSheetTitle" hidden>
@@ -165,22 +183,22 @@
     <button id="closeMethod" class="dialog-close" aria-label="Stäng">×</button>
     <p class="eyebrow">PALAEOCOAST · METHOD / SOURCES</p>
     <h2 data-i18n="methodTitle">Vad modellen visar — och inte visar</h2>
-    <p data-i18n="methodIntro">Modellen rekonstruerar geometriska höjdscenarier. Den daterar inte bosättningar och modellerar inte fysisk sedimenttransport, vågor eller isfrihet.</p>
+    <p data-i18n="methodIntro">Modellen rekonstruerar geometriska och geofysiska forntida kuster. Den daterar inte bosättningar och modellerar inte vågor, erosionstransport eller lokal isfrihet.</p>
 
     <!-- Calculation & Uplift Summary -->
     <div style="margin: 14px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: #fff;">
-      <h3 style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px; color: var(--teal);">Beräkning av landhöjning &amp; terräng</h3>
+      <h3 style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px; color: var(--teal);" data-i18n="methodCalcHeading">Beräkning av forntida markyta &amp; kustlinje</h3>
       <div style="font-family: monospace; font-size: 11px; padding: 6px 8px; background: #f2f6f4; border-radius: 4px; margin-bottom: 8px;">
         Z_past = Z_now + A_rel − U + E − D<br>
         M = Z_past − S
       </div>
-      <ul style="margin: 0; padding-left: 16px; font-size: 10.5px; line-height: 1.5; color: #496068;">
+      <ul style="margin: 0; padding-left: 16px; font-size: 10.5px; line-height: 1.5; color: #496068;" id="methodCalcList">
         <li><strong>− U (Landhöjning):</strong> Om marken höjts efter vald forntid låg den äldre markytan lägre än dagens DEM (−U). Landsänkning innebär att marken låg högre (+).</li>
-        <li><strong>A_rel (GIA):</strong> Kombinerad relativhöjdsanomali från ICE-6G_C som justerar terrängen i förhållande till dåtidens hav innan land/vatten klassificeras.</li>
+        <li><strong>A_rel (GIA / ICE-6G_C):</strong> Geofysiskt beräknad relativhöjdsanomali (jordskorpans deformation + gravitationsskift i havsytan) från ICE-6G_C VM5a. Används i ICE-6G_C-scenarierna.</li>
         <li><strong>Topologisk kontakt:</strong> Celler under havsytan (M ≤ 0) kräver hydraulisk fyrgrannskapsförbindelse till havsfrö för att bli sammanhängande hav. Slutna sänkor förblir torrlagda.</li>
       </ul>
       <div style="margin-top: 10px;">
-        <a href="../../sealevel-sv.html#metod" target="_blank" rel="noopener noreferrer" style="font-size: 11px; font-weight: 700; color: var(--sea); text-decoration: underline;">
+        <a id="geoxReportLink" href="https://geox.dev/sealevel-sv.html#metod" target="_blank" rel="noopener noreferrer" style="font-size: 11px; font-weight: 700; color: var(--sea); text-decoration: underline;" data-i18n="geoxReportLink">
           Läs fullständig vetenskaplig rapport &amp; interaktiv principskiss på GeoX ↗
         </a>
       </div>
@@ -188,7 +206,7 @@
 
     <div id="dataStatus" class="data-status"></div>
     <h3 data-i18n="verifiedCandidates">Verifierade kandidater för lokal förfining</h3>
-    <ul>
+    <ul id="verifiedCandidatesList">
       <li><a href="https://emodnet.ec.europa.eu/en/emodnet-bathymetry-dtm-2024-release" target="_blank" rel="noreferrer">EMODnet Bathymetry DTM 2024</a> · integrerat i Doggerland som 1/4 bågminutsexport · batymetri i LAT och sammansatt landdel.</li>
       <li><a href="https://doi.org/10.1594/PANGAEA.945729" target="_blank" rel="noreferrer">BRITICE-CHRONO</a> · empirisk isutbredning vid 22 ka och 16 ka · CC BY 4.0.</li>
       <li><a href="https://doi.org/10.1594/PANGAEA.848117" target="_blank" rel="noreferrer">DATED-1</a> · eurasisk isutbredning med minimi-, mest trovärdig och maximigräns vid 22–10 ka · CC BY 3.0.</li>
@@ -200,6 +218,6 @@
   </dialog>
 
   <script src="vendor/leaflet.js"></script>
-  <script src="app.js?v=20261011-42" type="module"></script>
+  <script src="app.js?v=20261011-44" type="module"></script>
 </body>
 </html>

@@ -88,7 +88,9 @@ const translations = {
     drawAoi: 'Draw analysis area',
     gotoCoordinates: 'Go to coordinates',
     methodTitle: 'What the model shows — and does not show',
-    methodIntro: 'The model reconstructs geometric elevation scenarios. It does not date settlements or model physical sediment transport, waves or ice-free conditions.',
+    methodIntro: 'The model reconstructs geometric and geophysical palaeotopography. It does not date settlements or model physical sediment transport, waves, or ice-free conditions.',
+    methodCalcHeading: 'Palaeotopography & Coastline Calculation',
+    geoxReportLink: 'Read full scientific report & interactive principle overview on GeoX ↗',
     verifiedCandidates: 'Verified candidates for local refinement',
     datumWarning: 'These sources must not be merged without documented vertical-datum harmonisation. Finer resampling is not greater real accuracy.',
     opacity: 'Opacity',
@@ -130,6 +132,12 @@ const translations = {
     cellSplitRequiresApi: 'Cell breakdown requires local Python server. Static map still displays all precomputed layers.'
   },
   sv: {
+    methodTitle: 'Vad modellen visar — och inte visar',
+    methodIntro: 'Modellen rekonstruerar geometriska och geofysiska forntida kuster. Den daterar inte bosättningar och modellerar inte vågor, erosionstransport eller lokal isfrihet.',
+    methodCalcHeading: 'Beräkning av forntida markyta & kustlinje',
+    geoxReportLink: 'Läs fullständig vetenskaplig rapport & interaktiv principskiss på GeoX ↗',
+    verifiedCandidates: 'Verifierade kandidater för lokal förfining',
+    datumWarning: 'Dessa underlag får inte fogas ihop utan dokumenterad vertikal datumharmonisering. Finare omprovtagning är inte högre faktisk noggrannhet.',
     regionEurope: 'Europa',
     opacity: 'Opacitet',
     lacksRegional: 'Saknar regionalt underlag i detta scenario.',
@@ -350,20 +358,104 @@ function openMobileSheet(panelId, trigger = null) {
   $('closeMobileSheet').focus({preventScroll: true});
 }
 
-function removeResultLayers() {
-  for (const key of ['state_full', 'state_sea', 'class_difference']) {
-    const layer = state.layers.get(key); if (layer) { map.removeLayer(layer); state.layers.delete(key); }
+const rasterTransitions = new Map();
+
+function removeMapLayer(key) {
+  const trans = rasterTransitions.get(key);
+  if (trans) {
+    if (trans.timer) clearTimeout(trans.timer);
+    if (trans.pending && map.hasLayer(trans.pending)) map.removeLayer(trans.pending);
+    if (trans.current && map.hasLayer(trans.current)) map.removeLayer(trans.current);
+    rasterTransitions.delete(key);
+  }
+  const layer = state.layers.get(key);
+  if (layer) {
+    if (map.hasLayer(layer)) map.removeLayer(layer);
+    state.layers.delete(key);
   }
 }
+
+function clearAllMapLayers() {
+  for (const [key, trans] of rasterTransitions) {
+    if (trans.timer) clearTimeout(trans.timer);
+    if (trans.pending && map.hasLayer(trans.pending)) map.removeLayer(trans.pending);
+    if (trans.current && map.hasLayer(trans.current)) map.removeLayer(trans.current);
+  }
+  rasterTransitions.clear();
+  for (const [key, layer] of state.layers) {
+    if (map.hasLayer(layer)) map.removeLayer(layer);
+  }
+  state.layers.clear();
+}
+
 function addImage(key, info, pane = 'process', opacity = .8) {
-  const old = state.layers.get(key); if (old) map.removeLayer(old);
-  const layer = info.tiles
+  if (!info || (!info.tiles && !info.url)) {
+    removeMapLayer(key);
+    return null;
+  }
+  const newSource = info.tiles || info.url;
+  const isTile = Boolean(info.tiles);
+  let trans = rasterTransitions.get(key);
+
+  if (trans) {
+    if (trans.source === newSource && trans.current && map.hasLayer(trans.current)) {
+      trans.current.setOpacity(opacity);
+      state.layers.set(key, trans.current);
+      return trans.current;
+    }
+  } else {
+    trans = { current: null, pending: null, timer: null, source: null };
+    rasterTransitions.set(key, trans);
+  }
+
+  const nextLayer = isTile
     ? L.tileLayer(info.tiles, {pane, opacity, interactive: false, noWrap: true, minNativeZoom: info.min_native_zoom, maxNativeZoom: info.max_native_zoom, maxZoom: 14, className: 'model-raster'})
     : L.imageOverlay(info.url, info.bounds, {pane, opacity, interactive: false, crossOrigin: false, className: 'model-raster'});
-  layer.addTo(map);
-  state.layers.set(key, layer); return layer;
+
+  if (trans.pending) {
+    if (trans.timer) clearTimeout(trans.timer);
+    if (map.hasLayer(trans.pending)) map.removeLayer(trans.pending);
+    trans.pending = null;
+  }
+
+  if (!trans.current || !map.hasLayer(trans.current)) {
+    nextLayer.addTo(map);
+    trans.current = nextLayer;
+    trans.source = newSource;
+    state.layers.set(key, nextLayer);
+    return nextLayer;
+  }
+
+  trans.pending = nextLayer;
+  trans.source = newSource;
+  state.layers.set(key, nextLayer);
+  nextLayer.addTo(map);
+
+  const swapToNext = () => {
+    if (trans.pending !== nextLayer) return;
+    if (trans.timer) { clearTimeout(trans.timer); trans.timer = null; }
+    if (trans.current && map.hasLayer(trans.current)) {
+      map.removeLayer(trans.current);
+    }
+    trans.current = nextLayer;
+    trans.pending = null;
+  };
+
+  if (isTile) {
+    nextLayer.once('load', swapToNext);
+  } else {
+    const el = nextLayer.getElement();
+    if (el && el.complete) {
+      swapToNext();
+    } else {
+      nextLayer.once('load', swapToNext);
+      nextLayer.once('error', swapToNext);
+    }
+  }
+  trans.timer = setTimeout(swapToNext, 350);
+
+  return nextLayer;
 }
-function removeMapLayer(key) { const layer = state.layers.get(key); if (layer) { map.removeLayer(layer); state.layers.delete(key); } }
 const processRateLayers = {land_motion: 'uplift_rate', erosion: 'erosion_rate', deposition: 'deposition_rate'};
 function processDisplay(name) {
   const vector = state.frame.vector_layers?.[name];
@@ -424,12 +516,19 @@ function refreshMotionSymbols() {
 }
 function renderResult() {
   const frame = state.frame;
-  removeResultLayers();
-  if (state.mode === 'full') addImage('state_full', frame.layers.state_full, 'resultB', .76);
-  if (state.mode === 'sea') addImage('state_sea', frame.layers.state_sea, 'resultA', .76);
-  if (state.mode === 'difference') {
+  if (state.mode === 'full') {
+    removeMapLayer('state_sea');
+    removeMapLayer('class_difference');
+    addImage('state_full', frame.layers.state_full, 'resultB', .76);
+  } else if (state.mode === 'sea') {
+    removeMapLayer('state_full');
+    removeMapLayer('class_difference');
+    addImage('state_sea', frame.layers.state_sea, 'resultA', .76);
+  } else if (state.mode === 'difference') {
+    removeMapLayer('state_sea');
     addImage('state_full', frame.layers.state_full, 'resultB', .48);
     if (frame.changed_cells > 0) addImage('class_difference', frame.layers.class_difference, 'process', .98);
+    else removeMapLayer('class_difference');
   }
 }
 
@@ -503,23 +602,35 @@ function buildLayerControls() {
     opacity.oninput = () => {
       settings.opacity = +opacity.value / 100;
       opacity.title = `${t('opacity')} ${opacity.value} %`;
+      const trans = rasterTransitions.get(name);
+      if (trans) {
+        if (trans.current && map.hasLayer(trans.current)) setProcessOpacity(name, trans.current, settings.opacity);
+        if (trans.pending && map.hasLayer(trans.pending)) setProcessOpacity(name, trans.pending, settings.opacity);
+      }
       const layer = state.layers.get(name);
-      if (layer) setProcessOpacity(name, layer, settings.opacity);
+      if (layer && layer !== trans?.current && layer !== trans?.pending) setProcessOpacity(name, layer, settings.opacity);
       if (name === 'land_motion' && !['surface', 'off'].includes(settings.visual)) renderMotionSymbols(settings.opacity);
     };
     const motionSelect = row.querySelector('.motion-display');
     if (motionSelect) motionSelect.onchange = () => { settings.visual = motionSelect.value; toggleProcess(name, settings.enabled && available, settings.opacity); };
     $('layerControls').append(row);
     if (settings.enabled && available) toggleProcess(name, true, settings.opacity);
+    else removeMapLayer(name);
   }
 }
 function toggleProcess(name, on, opacity) {
-  removeMapLayer(name); if (name === 'land_motion') removeMapLayer('land_motion_symbols');
-  if (on) {
+  if (!on) {
+    removeMapLayer(name);
+    if (name === 'land_motion') removeMapLayer('land_motion_symbols');
+  } else {
     const display = processDisplay(name);
     if (display.isVector) addVector(name, display.info, opacity);
-    else if (name !== 'land_motion' || !['markers', 'off'].includes(state.layerSettings.get(name)?.visual)) addImage(name, display.info, 'process', name === 'land_motion' ? opacity * .24 : opacity);
-    if (name === 'land_motion' && !['surface', 'off'].includes(state.layerSettings.get(name)?.visual)) renderMotionSymbols(opacity);
+    else if (name !== 'land_motion' || !['markers', 'off'].includes(state.layerSettings.get(name)?.visual)) {
+      addImage(name, display.info, 'process', name === 'land_motion' ? opacity * .24 : opacity);
+    }
+    if (name === 'land_motion' && !['surface', 'off'].includes(state.layerSettings.get(name)?.visual)) {
+      renderMotionSymbols(opacity);
+    }
   }
   updateLegend(name, on);
 }
@@ -583,7 +694,6 @@ function renderFrame(frameOverride = null) {
   setText('modelResolution', `${t('modelGrid')} · ${fmt.format(state.scenario.resolution_m)} m · ${state.scenario.source_resolution}`);
   setText('qualityModelCell', `${fmt.format(state.scenario.resolution_m)} × ${fmt.format(state.scenario.resolution_m)} m · EPSG:3035`);
   setText('qualityTerrainSource', state.scenario.source_resolution);
-  for (const [key, layer] of state.layers) { map.removeLayer(layer); } state.layers.clear();
   renderResult(); buildLayerControls();
   const activeProcess = [...availableProcessNames()].reverse().find(name => state.layerSettings.get(name)?.enabled && !processDisplay(name).info.empty);
   updateLegend(activeProcess); clearCell(); updateCalculationControls(); syncMobileControls();
@@ -649,6 +759,7 @@ function scenariosForRegion(regionId) { return state.catalog.scenarios.filter(sc
 function setRegion(regionId, preferredScenario = null, fit = true) {
   const scenarios = scenariosForRegion(regionId);
   if (!scenarios.length) return;
+  clearAllMapLayers();
   state.regionId = regionId;
   document.querySelectorAll('[data-region]').forEach(button => button.classList.toggle('active', button.dataset.region === regionId));
   $('scenario').innerHTML = scenarios.map(s => `<option value="${s.id}">${(scenarioUi[state.lang] || scenarioUi.sv)?.[s.id]?.name || s.name}</option>`).join('');
@@ -657,6 +768,96 @@ function setRegion(regionId, preferredScenario = null, fit = true) {
   state.scenario = currentScenario(); configureAnalysisBounds(fit); $('aoiMessage').hidden = true;
   syncMobileControls();
 }
+const dataStatusTranslations = {
+  en: {
+    'GEBCO 2020': {
+      status: 'Measurement composite — active',
+      detail: 'Aegean demo uses ~30 arcseconds on 600 m grid. Europe overview uses ~1 arcminute on 5 km grid. Heterogeneous sources; not for navigation.'
+    },
+    'Illustrativ havsnivåkurva': {
+      name: 'Illustrative sea-level curve',
+      status: 'User assumption — active',
+      detail: 'Manually chosen demonstration values, not a regionally validated RSL reconstruction.'
+    },
+    'Rörelse och morfologi': {
+      name: 'Land motion & morphology',
+      status: 'User assumption — scenario',
+      detail: 'Synthetic elevation adjustments. Uplift, erosion, and deposition are specified vertical changes, not dynamic physical transport.'
+    },
+    'EMODnet DTM 2024': {
+      status: 'Measurement composite — Doggerland',
+      detail: 'Doggerland uses a 1/4 arcminute export on a 450 m grid. Bathymetry references LAT while land is a source composite; full vertical harmonisation remains.'
+    },
+    'BRITICE-CHRONO': {
+      status: 'Empirical reconstruction — map layer',
+      detail: 'Empirical ice extents displayed at 22,000 and 16,000 BP. Absence at other displayed times indicates lack of matching layer, not ice-free conditions.'
+    },
+    'DATED-1': {
+      status: 'Empirical reconstruction — European ice layer',
+      detail: 'Eurasian ice sheet shown with most credible, minimum, and maximum extents at source epochs between 22,000 and 10,000 BP. Ice is an overlay and does not alter GIA or coastal computation.'
+    },
+    'EMODnet Geology palaeochannels': {
+      status: 'Mapped geometry — map layer',
+      detail: 'Mapped palaeochannels displayed as a feature inventory; not to be interpreted as a contemporaneous or complete river network.'
+    },
+    'Regional GIA/RSL': {
+      status: 'Illustrative scenarios lack GIA',
+      detail: 'Legacy Europe/Doggerland demos still use an illustrative eustatic curve. Choose an ICE-6G_C scenario for model-derived spatial relative elevation; regional datum harmonisation and validation remain.'
+    },
+    'ICE-6G_C VM5a': {
+      status: 'Scientific model — integrated as separate scenario',
+      detail: '1° time-dependent relative land-sea elevation alters classification and coastline. Display grid is finer but does not synthesize local GIA detail. Results are model-derived and pending regional validation.'
+    },
+    'Copernicus DEM GLO-30': {
+      status: 'Verified candidate — not integrated',
+      detail: '30 m DSM over land, vertical datum EGM2008. DSM is not bare earth and requires datum and coastal harmonisation.'
+    }
+  }
+};
+
+function updateMethodContent() {
+  const isEn = state.lang === 'en';
+  const calcList = $('methodCalcList');
+  if (calcList) {
+    calcList.innerHTML = isEn
+      ? `<li><strong>− U (Land motion):</strong> Scenario assumption for tectonic/isostatic uplift. If land has risen since the epoch, palaeo-elevation was lower (−U). Subsidence means land was higher (+).</li>
+         <li><strong>A_rel (GIA / ICE-6G_C):</strong> Geophysically modelled relative elevation anomaly (solid-Earth deformation + geoid/sea-surface shift) from ICE-6G_C VM5a. Applied in ICE-6G_C scenarios.</li>
+         <li><strong>Hydraulic connectivity:</strong> Cells below sea level (M ≤ 0) require a 4-connected topological path to an ocean seed to become connected sea. Enclosed basins remain dry land.</li>`
+      : `<li><strong>− U (Landhöjning):</strong> Om marken höjts efter vald forntid låg den äldre markytan lägre än dagens DEM (−U). Landsänkning innebär att marken låg högre (+).</li>
+         <li><strong>A_rel (GIA / ICE-6G_C):</strong> Geofysiskt beräknad relativhöjdsanomali (jordskorpans deformation + gravitationsskift i havsytan) från ICE-6G_C VM5a. Används i ICE-6G_C-scenarierna.</li>
+         <li><strong>Topologisk kontakt:</strong> Celler under havsytan (M ≤ 0) kräver hydraulisk fyrgrannskapsförbindelse till havsfrö för att bli sammanhängande hav. Slutna sänkor förblir torrlagda.</li>`;
+  }
+  const reportLink = $('geoxReportLink');
+  if (reportLink) {
+    reportLink.href = isEn ? 'https://geox.dev/sealevel-en.html#method' : 'https://geox.dev/sealevel-sv.html#metod';
+  }
+  const candList = $('verifiedCandidatesList');
+  if (candList) {
+    candList.innerHTML = isEn
+      ? `<li><a href="https://emodnet.ec.europa.eu/en/emodnet-bathymetry-dtm-2024-release" target="_blank" rel="noreferrer">EMODnet Bathymetry DTM 2024</a> · integrated into Doggerland as a 1/4 arcminute export · bathymetry in LAT and composite land model.</li>
+         <li><a href="https://doi.org/10.1594/PANGAEA.945729" target="_blank" rel="noreferrer">BRITICE-CHRONO</a> · empirical ice extent at 22 ka and 16 ka · CC BY 4.0.</li>
+         <li><a href="https://doi.org/10.1594/PANGAEA.848117" target="_blank" rel="noreferrer">DATED-1</a> · Eurasian ice sheet with minimum, most credible, and maximum extents at 22–10 ka · CC BY 3.0.</li>
+         <li><a href="https://emodnet.ec.europa.eu/en/geology" target="_blank" rel="noreferrer">EMODnet Geology</a> · palaeochannels as a feature inventory.</li>
+         <li><a href="https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM" target="_blank" rel="noreferrer">Copernicus DEM GLO-30</a> · 30 m DSM · EGM2008.</li>
+         <li><a href="https://www.gebco.net/data_and_products/gridded_bathymetry_data/" target="_blank" rel="noreferrer">GEBCO 2025</a> · global 15″ grid · heterogeneous vertical datums in coastal zones.</li>`
+      : `<li><a href="https://emodnet.ec.europa.eu/en/emodnet-bathymetry-dtm-2024-release" target="_blank" rel="noreferrer">EMODnet Bathymetry DTM 2024</a> · integrerat i Doggerland som 1/4 bågminutsexport · batymetri i LAT och sammansatt landdel.</li>
+         <li><a href="https://doi.org/10.1594/PANGAEA.945729" target="_blank" rel="noreferrer">BRITICE-CHRONO</a> · empirisk isutbredning vid 22 ka och 16 ka · CC BY 4.0.</li>
+         <li><a href="https://doi.org/10.1594/PANGAEA.848117" target="_blank" rel="noreferrer">DATED-1</a> · eurasisk isutbredning med minimi-, mest trovärdig och maximigräns vid 22–10 ka · CC BY 3.0.</li>
+         <li><a href="https://emodnet.ec.europa.eu/en/geology" target="_blank" rel="noreferrer">EMODnet Geology</a> · palaeokanaler som featureinventarium.</li>
+         <li><a href="https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM" target="_blank" rel="noreferrer">Copernicus DEM GLO-30</a> · 30 m DSM · EGM2008.</li>
+         <li><a href="https://www.gebco.net/data_and_products/gridded_bathymetry_data/" target="_blank" rel="noreferrer">GEBCO 2025</a> · globalt 15″ grid · heterogena höjddatum i delar av kustzonen.</li>`;
+  }
+  if (state.catalog?.data_status) {
+    $('dataStatus').innerHTML = state.catalog.data_status.map(d => {
+      const tr = isEn ? dataStatusTranslations.en[d.name] : null;
+      const name = tr?.name || d.name;
+      const status = tr?.status || d.status;
+      const detail = tr?.detail || d.detail;
+      return `<article class="data-card"><b>${name}</b><span>${status}</span><p>${detail}</p></article>`;
+    }).join('');
+  }
+}
+
 function setLanguage(lang) {
   state.lang = lang === 'en' ? 'en' : 'sv';
   $('language').textContent = state.lang === 'sv' ? 'EN' : 'SV';
@@ -666,6 +867,7 @@ function setLanguage(lang) {
     const key = el.dataset.i18n;
     el.textContent = translations[state.lang]?.[key] || el.dataset.sv;
   });
+  updateMethodContent();
   if (state.catalog) {
     const currentVal = $('scenario').value;
     const scenarios = scenariosForRegion(state.regionId);
@@ -682,7 +884,7 @@ function populate() {
   const requestedScenarioEntry = state.catalog.scenarios.find(s => s.id === requestedScenario);
   const requestedRegion = params.get('region') || requestedScenarioEntry?.region_id || 'aegean';
   setRegion(requestedRegion, requestedScenario || 'spatial_scenario', false);
-  $('dataStatus').innerHTML = state.catalog.data_status.map(d => `<article class="data-card"><b>${d.name}</b><span>${d.status}</span><p>${d.detail}</p></article>`).join('');
+  updateMethodContent();
   const requested = params.get('compare');
   const requestedAgeValue = params.get('age'), requestedAge = Number(requestedAgeValue);
   if (requestedAgeValue !== null && Number.isFinite(requestedAge)) {
@@ -746,8 +948,32 @@ function markCustomDirty() { state.customDirty = true; updateCalculationControls
 function refreshCustomState() { if (hasCustomAssumptions()) { markCustomDirty(); return; } state.customDirty = false; if (state.resultId) renderFrame(); updateCalculationControls(); }
 async function detectApi() { try { const r = await fetch('/api/health'); state.api = r.ok; } catch {} updateCalculationControls(); }
 
-$('scenario').onchange = () => { closeMobileSheet(); $('time').max = currentScenario().frames.length - 1; $('time').value = 0; state.scenario = currentScenario(); state.regionId = state.scenario.region_id; configureAnalysisBounds(true); renderFrame(); if (hasCustomAssumptions()) markCustomDirty(); };
-$('time').oninput = () => { renderFrame(); if (hasCustomAssumptions()) markCustomDirty(); };
+$('scenario').onchange = () => {
+  closeMobileSheet();
+  clearAllMapLayers();
+  $('time').max = currentScenario().frames.length - 1;
+  $('time').value = 0;
+  state.scenario = currentScenario();
+  state.regionId = state.scenario.region_id;
+  configureAnalysisBounds(true);
+  renderFrame();
+  if (hasCustomAssumptions()) markCustomDirty();
+};
+
+let timeScrubRaf = null;
+function handleTimeInput() {
+  state.scenario = currentScenario();
+  state.frame = currentFrame();
+  setText('age', `${fmt.format(state.frame.age_bp)} BP`);
+  if (timeScrubRaf) cancelAnimationFrame(timeScrubRaf);
+  timeScrubRaf = requestAnimationFrame(() => {
+    timeScrubRaf = null;
+    renderFrame();
+    if (hasCustomAssumptions()) markCustomDirty();
+  });
+}
+
+$('time').oninput = handleTimeInput;
 $('play').onclick = () => {
   if (state.timer) {
     clearInterval(state.timer); state.timer = null;
@@ -757,7 +983,7 @@ $('play').onclick = () => {
   $('play').lastElementChild.textContent = t('pause'); syncMobileControls();
 };
 $('mobileScenario').onchange = () => { $('scenario').value = $('mobileScenario').value; $('scenario').dispatchEvent(new Event('change')); };
-$('mobileTime').oninput = () => { $('time').value = $('mobileTime').value; $('time').dispatchEvent(new Event('input')); };
+$('mobileTime').oninput = () => { $('time').value = $('mobileTime').value; handleTimeInput(); };
 $('mobilePlay').onclick = () => $('play').click();
 document.querySelectorAll('[data-mobile-panel]').forEach(button => button.onclick = () => openMobileSheet(button.dataset.mobilePanel, button));
 $('closeMobileSheet').onclick = () => closeMobileSheet({restoreFocus: true});
