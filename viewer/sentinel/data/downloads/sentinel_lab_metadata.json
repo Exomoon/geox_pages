@@ -21,7 +21,7 @@
     ],
     "bounds_wgs84": {
       "min_lon": 14.693,
-      "min_lat": 6460000.0,
+      "min_lat": 58.281,
       "max_lon": 14.957,
       "max_lat": 58.418
     },
