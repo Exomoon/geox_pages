@@ -54,5 +54,4 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
   .inspector>section:not(#cellSection){margin:8px 8px 0;border:1px solid rgba(16,45,53,.1);border-radius:12px}.data-status{grid-template-columns:1fr}dialog{width:calc(100% - 20px);padding:22px 17px}
 }
 @keyframes sheet-in{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
-.terrain-raster{transition:opacity .28s ease}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.leaflet-fade-anim .leaflet-tile,.leaflet-zoom-anim .leaflet-zoom-animated{transition:none!important}}

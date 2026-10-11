@@ -222,7 +222,7 @@ const rateLabels = {
 
 const layerDescriptions = {
   en: {
-    paleo_elevation: 'Reconstructed elevation with epoch terrain shading, placed beneath classification and process layers as geographic context.',
+    paleo_elevation: 'Reconstructed elevation with epoch terrain shading. Sea level defines inundation; landscape processes alter topography.',
     terrain_change: 'Reconstructed elevation minus present elevation (m). Shows cumulative sum of land motion, erosion and deposition.',
     relative_height_anomaly: 'ICE-6G_C ground elevation anomaly relative to contemporaneous sea level compared to 0 ka. Combines crustal and sea-surface effects.',
     coastline: 'Boundary between computed land and hydraulically connected sea.',
@@ -235,7 +235,7 @@ const layerDescriptions = {
     palaeodrainage: 'Mapped palaeochannels from EMODnet Geology feature inventory.'
   },
   sv: {
-    paleo_elevation: 'Rekonstruerad höjd med tidsberoende terrängskuggning, placerad under klassning och processlager som geografisk bakgrund.',
+    paleo_elevation: 'Rekonstruerad höjd med tidsberoende terrängskuggning. Havsnivån avgör vad som översvämmas; landskapsprocesserna ändrar själva höjden.',
     terrain_change: 'Rekonstruerad höjd minus dagens höjd, i meter. Visar bidraget från landrörelse, erosion och sedimentpålagring.',
     relative_height_anomaly: 'ICE-6G_C-markhöjd relativt samtidens hav jämfört med 0 ka. Innehåller både land- och havsyteeffekter och är inte ren landhöjning.',
     coastline: 'Gränsen mellan beräknat land och hav med havskontakt.',
@@ -355,46 +355,15 @@ function removeResultLayers() {
     const layer = state.layers.get(key); if (layer) { map.removeLayer(layer); state.layers.delete(key); }
   }
 }
-const terrainLayers = new Set();
-function clearTerrainLayers() {
-  for (const layer of terrainLayers) if (map.hasLayer(layer)) map.removeLayer(layer);
-  terrainLayers.clear();
-  state.layers.delete('paleo_elevation');
-}
 function addImage(key, info, pane = 'process', opacity = .8) {
-  const old = state.layers.get(key), source = info.tiles || info.url;
-  const isTerrain = key === 'paleo_elevation';
-  if (isTerrain && old?._url === source) { old.setOpacity(opacity); return old; }
-  if (!isTerrain && old) map.removeLayer(old);
-  const initialOpacity = isTerrain && old ? 0 : opacity;
-  const className = `model-raster${isTerrain ? ' terrain-raster' : ''}`;
+  const old = state.layers.get(key); if (old) map.removeLayer(old);
   const layer = info.tiles
-    ? L.tileLayer(info.tiles, {pane, opacity: initialOpacity, interactive: false, noWrap: true, minNativeZoom: info.min_native_zoom, maxNativeZoom: info.max_native_zoom, maxZoom: 14, className})
-    : L.imageOverlay(info.url, info.bounds, {pane, opacity: initialOpacity, interactive: false, crossOrigin: false, className});
-  if (isTerrain) {
-    terrainLayers.add(layer);
-    layer.once('load', () => {
-      if (state.layers.get(key) !== layer) {
-        if (map.hasLayer(layer)) map.removeLayer(layer);
-        terrainLayers.delete(layer);
-        return;
-      }
-      layer.setOpacity(state.layerSettings.get(key)?.opacity ?? opacity);
-      for (const previous of [...terrainLayers]) {
-        if (previous !== layer) {
-          if (map.hasLayer(previous)) map.removeLayer(previous);
-          terrainLayers.delete(previous);
-        }
-      }
-    });
-  }
+    ? L.tileLayer(info.tiles, {pane, opacity, interactive: false, noWrap: true, minNativeZoom: info.min_native_zoom, maxNativeZoom: info.max_native_zoom, maxZoom: 14, className: 'model-raster'})
+    : L.imageOverlay(info.url, info.bounds, {pane, opacity, interactive: false, crossOrigin: false, className: 'model-raster'});
   layer.addTo(map);
   state.layers.set(key, layer); return layer;
 }
-function removeMapLayer(key) {
-  if (key === 'paleo_elevation') { clearTerrainLayers(); return; }
-  const layer = state.layers.get(key); if (layer) { map.removeLayer(layer); state.layers.delete(key); }
-}
+function removeMapLayer(key) { const layer = state.layers.get(key); if (layer) { map.removeLayer(layer); state.layers.delete(key); } }
 const processRateLayers = {land_motion: 'uplift_rate', erosion: 'erosion_rate', deposition: 'deposition_rate'};
 function processDisplay(name) {
   const vector = state.frame.vector_layers?.[name];
@@ -478,7 +447,7 @@ function layerDescription(name, display = processDisplay(name)) {
 const processNames = ['paleo_elevation', 'terrain_change', 'relative_height_anomaly', 'coastline', 'sensitivity', 'basins', 'land_motion', 'erosion', 'deposition'];
 processNames.push('ice_extent', 'palaeodrainage');
 
-for (const name of processNames) state.layerSettings.set(name, {enabled: name === 'coastline' || name === 'paleo_elevation' || name === 'ice_extent', opacity: name === 'coastline' ? 1 : name === 'paleo_elevation' ? 0.9 : 0.78, visual: name === 'land_motion' ? 'both' : null});
+for (const name of processNames) state.layerSettings.set(name, {enabled: name === 'coastline' || name === 'paleo_elevation' || name === 'ice_extent', opacity: name === 'coastline' ? 1 : name === 'paleo_elevation' ? 0.88 : 0.78, visual: name === 'land_motion' ? 'both' : null});
 const vectorCache = new Map();
 function availableProcessNames() {
   return processNames.filter(name => state.frame.layers[name] || state.frame.vector_layers?.[name] || state.scenario.frames.some(frame => frame.vector_layers?.[name]));
@@ -545,12 +514,11 @@ function buildLayerControls() {
   }
 }
 function toggleProcess(name, on, opacity) {
-  if (name !== 'paleo_elevation' || !on) removeMapLayer(name);
-  if (name === 'land_motion') removeMapLayer('land_motion_symbols');
+  removeMapLayer(name); if (name === 'land_motion') removeMapLayer('land_motion_symbols');
   if (on) {
     const display = processDisplay(name);
     if (display.isVector) addVector(name, display.info, opacity);
-    else if (name !== 'land_motion' || !['markers', 'off'].includes(state.layerSettings.get(name)?.visual)) addImage(name, display.info, name === 'paleo_elevation' ? 'terrain' : 'process', name === 'land_motion' ? opacity * .24 : opacity);
+    else if (name !== 'land_motion' || !['markers', 'off'].includes(state.layerSettings.get(name)?.visual)) addImage(name, display.info, 'process', name === 'land_motion' ? opacity * .24 : opacity);
     if (name === 'land_motion' && !['surface', 'off'].includes(state.layerSettings.get(name)?.visual)) renderMotionSymbols(opacity);
   }
   updateLegend(name, on);
@@ -615,10 +583,7 @@ function renderFrame(frameOverride = null) {
   setText('modelResolution', `${t('modelGrid')} · ${fmt.format(state.scenario.resolution_m)} m · ${state.scenario.source_resolution}`);
   setText('qualityModelCell', `${fmt.format(state.scenario.resolution_m)} × ${fmt.format(state.scenario.resolution_m)} m · EPSG:3035`);
   setText('qualityTerrainSource', state.scenario.source_resolution);
-  for (const [key, layer] of [...state.layers]) {
-    if (key === 'paleo_elevation') continue;
-    map.removeLayer(layer); state.layers.delete(key);
-  }
+  for (const [key, layer] of state.layers) { map.removeLayer(layer); } state.layers.clear();
   renderResult(); buildLayerControls();
   const activeProcess = [...availableProcessNames()].reverse().find(name => state.layerSettings.get(name)?.enabled && !processDisplay(name).info.empty);
   updateLegend(activeProcess); clearCell(); updateCalculationControls(); syncMobileControls();
