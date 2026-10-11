@@ -65,6 +65,23 @@ button, input, select {
   color: inherit;
 }
 
+select {
+  color-scheme: dark;
+}
+
+option,
+select option {
+  background-color: #090d16 !important;
+  color: #f8fafc !important;
+  font-size: 12px;
+}
+
+optgroup,
+select optgroup {
+  background-color: #0f1523 !important;
+  color: var(--accent-cyan) !important;
+}
+
 /* App Container */
 .app-container {
   display: flex;
