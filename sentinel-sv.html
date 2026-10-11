@@ -106,25 +106,17 @@
           En professionell geodataplattform och numerisk beräkningsmotor för interaktiv rasteranalys i 10 meters markupplösning. Plattformen kombinerar autentiska observationer från ESA:s Copernicus Sentinel-2 Level-2A (ytreflektans BOA) och digitala höjdmodeller (Copernicus DEM GLO-30) med fem specialiserade moduler: vegetationsfenologi, våtmarkshydrologi, brandskadekartering, digital terrängmorfometri och en sandlådad AST-rasterkalkylator.
         </p>
 
-        <!-- KPI Ribbon -->
-        <div class="kpi-ribbon">
-          <div class="kpi-card">
-            <div class="kpi-value">5</div>
-            <div class="kpi-label">Analysmoduler</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-value">10 m</div>
-            <div class="kpi-label">Markupplösning (BOA)</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-value">6 102 ha</div>
-            <div class="kpi-label">Karterad Brandareal (Kårböle)</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-value">0 eval()</div>
-            <div class="kpi-label">Säker AST-Algebra</div>
-          </div>
-        </div>
+        <!-- Ingenjörs- & Utvecklingsmeddelande -->
+        <aside class="scientific-notice-box" aria-label="Utvecklingsmeddelande">
+          <span class="notice-badge">Experimentell Sandlåda · Under Aktiv Utveckling</span>
+          <h2 class="notice-title">Experimentellt Geodataprojekt — Aktiv FoU-fas</h2>
+          <p class="notice-text">
+            <strong>Utforskande sandlåda:</strong> Sentinel Lab är en experimentell prototyp- och beräkningssandlåda inom GeoX Raster Lab för att utvärdera klientbaserad rasteralgebra, automatiserade satellitdatapipelines och webbaserad multispektral visualisering. Funktioner och analysmoduler utvecklas och kalibreras iterativt.
+          </p>
+          <p class="notice-text">
+            <strong>Autentiska satellitdata:</strong> Samtliga beräkningar genomförs mot autentisk ytreflektans (BOA) från ESA Copernicus Sentinel-2 Level-2A och höjdmodellen Copernicus DEM GLO-30, förbehandlade med GDAL, Rasterio, NumPy och SciPy i metrisk projektion (EPSG:32633).
+          </p>
+        </aside>
 
         <div class="case-study-actions">
           <a href="#viewer" class="btn btn-primary">Inspektera Arbetsbordet ↓</a>

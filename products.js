@@ -117,11 +117,11 @@ export const rasterLabProjects = [
     urlSv: "sentinel-sv.html",
     viewerUrl: "viewer/sentinel/index.html",
     image: "assets/sentinel-viewer-preview.png",
-    status: "R&D 02",
+    status: "EXPERIMENTAL SANDBOX",
     statusVariant: "sandbox",
     accentColor: "#00d2ff",
     accentGlow: "rgba(0, 210, 255, 0.18)",
-    tags: ["Sentinel-2 Level-2A", "Copernicus DEM (10m/30m)", "5 Analysmoduler", "Float32 & AST"]
+    tags: ["Sentinel-2 Level-2A", "Copernicus DEM (10m/30m)", "5 Analysmoduler", "Under utveckling"]
   }
 ];
 
