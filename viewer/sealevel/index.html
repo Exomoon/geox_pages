@@ -7,7 +7,7 @@
   <title>PalaeoCoast Europe · GeoX</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b3038'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='sans-serif' font-size='25' font-weight='700' fill='white'%3EGX%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="vendor/leaflet.css">
-  <link rel="stylesheet" href="styles.css?v=20261010-11">
+  <link rel="stylesheet" href="styles.css?v=20261011-15">
 </head>
 <body>
   <header class="topbar">
@@ -34,7 +34,7 @@
 
   <main class="workspace">
     <aside class="panel controls" aria-label="Modellkontroller">
-      <section>
+      <section id="timeSection">
         <div class="section-title"><span>01</span><h2 data-i18n="timeScenario">Tid & scenario</h2></div>
         <label for="scenario" data-i18n="scenario">Scenario</label>
         <select id="scenario"></select>
@@ -59,7 +59,7 @@
         </div>
       </section>
 
-      <section>
+      <section id="processSection">
         <div class="section-title"><span>03</span><h2 data-i18n="processLayers">Processlager</h2></div>
         <p class="process-time-note" data-i18n="processTimeNote">Äldre tider visar kumulativ förändring i meter. Vid 0 BP visas processområde och antagen hastighet i mm/år.</p>
         <div id="layerControls" class="layer-controls"></div>
@@ -95,16 +95,36 @@
       <div class="map-badges"><span id="modelResolution">Modellgrid · 600 m</span><span id="cursorCoordinates">—</span></div>
       <div class="orientation"><b>N</b><i></i></div>
       <div id="aoiMessage" class="aoi-message" hidden></div>
+      <div class="mobile-scenario-control">
+        <label for="mobileScenario" data-i18n="scenario">Scenario</label>
+        <select id="mobileScenario" aria-label="Scenario"></select>
+      </div>
+      <section class="mobile-time-dock" aria-label="Tidslinje">
+        <div class="mobile-time-head">
+          <span data-i18n="selectedTime">Vald tid</span>
+          <output id="mobileAge">—</output>
+          <button id="mobilePlay" type="button"><span aria-hidden="true">▶</span><span data-i18n="play">Spela tidsserie</span></button>
+        </div>
+        <input id="mobileTime" type="range" min="0" max="6" value="0" step="1" aria-label="Vald tid">
+        <div class="time-axis"><span data-i18n="older">Äldre</span><span>0 BP · 1950</span></div>
+      </section>
     </section>
 
+    <nav class="mobile-actions" aria-label="Kartverktyg">
+      <button type="button" data-mobile-panel="processSection"><span aria-hidden="true">◫</span><span data-i18n="mobileLayers">Lager</span></button>
+      <button id="mobileComparisonButton" type="button" data-mobile-panel="comparisonSection"><span aria-hidden="true">◐</span><span data-i18n="mobileComparison">Jämför</span></button>
+      <button type="button" data-mobile-panel="cellSection"><span aria-hidden="true">＋</span><span data-i18n="mobileAnalysis">Analys</span></button>
+    </nav>
+
     <aside class="panel inspector" aria-label="Cellinformation">
-      <section>
+      <section id="cellSection">
         <div class="section-title"><span>05</span><h2 data-i18n="cellAnalysis">Cellanalys</h2></div>
         <div id="emptyCell" class="empty-cell"><div class="crosshair">＋</div><p data-i18n="clickPrompt">Klicka inom valt modellområde för att läsa den beräknade cellen.</p></div>
         <div id="cellDetails" hidden>
           <p id="cellCoordinates" class="cell-coordinates"></p>
           <div class="equation">
             <div><span data-i18n="todayTerrain">Dagens markhöjd</span><b id="todayHeight"></b></div>
+            <div id="relativeHeightRow" hidden><span>+ relativhöjdsanomali (land + hav)</span><b id="relativeHeightValue"></b></div>
             <div><span data-i18n="laterUplift">− senare landhöjning / + landsänkning</span><b id="upliftValue"></b></div>
             <div><span data-i18n="laterErosion">+ senare erosion</span><b id="erosionValue"></b></div>
             <div><span data-i18n="laterDeposition">− senare sedimentpålagring</span><b id="depositionValue"></b></div>
@@ -133,6 +153,13 @@
       </section>
     </aside>
   </main>
+
+  <div id="mobileSheetBackdrop" class="mobile-sheet-backdrop" hidden></div>
+  <aside id="mobileSheet" class="mobile-sheet" role="dialog" aria-modal="true" aria-labelledby="mobileSheetTitle" hidden>
+    <div class="mobile-sheet-handle" aria-hidden="true"></div>
+    <header><h2 id="mobileSheetTitle">Panel</h2><button id="closeMobileSheet" type="button" aria-label="Stäng">×</button></header>
+    <div id="mobileSheetContent" class="mobile-sheet-content"></div>
+  </aside>
 
   <dialog id="methodDialog">
     <button id="closeMethod" class="dialog-close" aria-label="Stäng">×</button>
@@ -173,6 +200,6 @@
   </dialog>
 
   <script src="vendor/leaflet.js"></script>
-  <script src="app.js?v=20261010-33" type="module"></script>
+  <script src="app.js?v=20261011-39" type="module"></script>
 </body>
 </html>

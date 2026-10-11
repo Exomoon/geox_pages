@@ -93,9 +93,11 @@ const translations = {
     datumWarning: 'These sources must not be merged without documented vertical-datum harmonisation. Finer resampling is not greater real accuracy.',
     opacity: 'Opacity',
     lacksRegional: 'Lacks regional data in this scenario.',
+    iceUnavailableAtTime: 'No integrated ice-extent source matches this selected time. This does not by itself mean ice-free conditions.',
     land: 'Land',
     connectedSea: 'Connected sea',
     closedBasin: 'Closed basin',
+    closedBasinsSeparate: 'Closed depressions are displayed with the separate layer.',
     noProcessDiff: 'No process difference',
     noDiffZeroBP: 'No difference at 0 BP',
     baselineDiffHint: 'The control scenario contains no landscape processes at any epoch.',
@@ -122,15 +124,20 @@ const translations = {
     geocoderDown: 'Place search unavailable right now.',
     searchAttribution: 'Search data © OpenStreetMap',
     close: 'Close',
+    mobileLayers: 'Layers',
+    mobileComparison: 'Compare',
+    mobileAnalysis: 'Analysis',
     cellSplitRequiresApi: 'Cell breakdown requires local Python server. Static map still displays all precomputed layers.'
   },
   sv: {
     regionEurope: 'Europa',
     opacity: 'Opacitet',
     lacksRegional: 'Saknar regionalt underlag i detta scenario.',
+    iceUnavailableAtTime: 'Ingen integrerad isutbredningskälla matchar den valda tiden. Det betyder inte i sig att området var isfritt.',
     land: 'Land',
     connectedSea: 'Hav med kontakt',
     closedBasin: 'Sluten sänka',
+    closedBasinsSeparate: 'Slutna sänkor visas med det separata lagret.',
     noProcessDiff: 'Ingen processkillnad',
     noDiffZeroBP: 'Ingen skillnad vid 0 BP',
     baselineDiffHint: 'Kontrollen innehåller inga separata landskapsprocesser, oavsett vald tid.',
@@ -157,6 +164,9 @@ const translations = {
     geocoderDown: 'Ortsökningen svarar inte just nu.',
     searchAttribution: 'Sökdata © OpenStreetMap',
     close: 'Stäng',
+    mobileLayers: 'Lager',
+    mobileComparison: 'Jämför',
+    mobileAnalysis: 'Analys',
     cellSplitRequiresApi: 'Celluppdelning kräver den lokala Pythonservern. Den statiska kartan visar fortfarande alla färdigberäknade lager.'
   }
 };
@@ -165,20 +175,20 @@ const scenarioUi = {
   en: {
     baseline: { name: 'Sea level only · control', status: 'CONTROL: present terrain and illustrative sea level. No separate land motion, erosion or deposition.' },
     spatial_scenario: { name: 'Sea level + landscape', status: 'HYPOTHETICAL TEST: synthetic land motion, erosion and deposition—not measurements.' },
-    europe_overview: { name: 'Europe overview (5 km)', status: 'OVERVIEW: 5 km pan-European terrain and sea-level reconstruction.' },
+    europe_overview: { name: 'Europe overview (5 km)', status: 'ILLUSTRATIVE OVERVIEW: present terrain with a manually selected sea-level curve; no ICE-6G_C correction. DATED-1 ice extent is a separate overlay.' },
     doggerland_overview: { name: 'Doggerland regional (450 m)', status: 'REGIONAL: 450 m bathymetry and prehistoric landscape reconstruction.' },
-    aegean_ice6g_c: { name: 'Aegean ICE-6G_C', status: 'GIA TEST: Coupling ICE-6G_C relative sea level model.' },
-    europe_ice6g_c: { name: 'Europe ICE-6G_C', status: 'GIA TEST: Coupling ICE-6G_C relative sea level model.' },
-    doggerland_ice6g_c: { name: 'Doggerland ICE-6G_C', status: 'GIA TEST: Coupling ICE-6G_C relative sea level model.' }
+    aegean_ice6g_c: { name: 'Aegean ICE-6G_C', status: 'SCIENTIFIC MODEL: combined change in ground height relative to past sea level affects the coastline calculation. This is not pure land uplift.' },
+    europe_ice6g_c: { name: 'Europe ICE-6G_C', status: 'SCIENTIFIC MODEL: ICE-6G_C relative land–sea change affects terrain and coastline; it is not pure uplift or an ice outline. DATED-1 separately displays ice extent.' },
+    doggerland_ice6g_c: { name: 'Doggerland ICE-6G_C', status: 'SCIENTIFIC MODEL: combined change in ground height relative to past sea level affects the coastline calculation. This is not pure land uplift.' }
   },
   sv: {
     baseline: { name: 'Bara havsnivå · kontroll', status: 'KONTROLL: dagens terräng och illustrativ havsnivå. Ingen separat landrörelse, erosion eller sedimentpålagring.' },
     spatial_scenario: { name: 'Havsnivå + landskap', status: 'HYPOTETISKT TEST: syntetisk landrörelse, erosion och sedimentpålagring – inte mätningar.' },
-    europe_overview: { name: 'Europa översikt (5 km)', status: 'ÖVERSIKT: 5 km paneuropeisk terräng och havsnivårekonstruktion.' },
+    europe_overview: { name: 'Europa översikt (5 km)', status: 'ILLUSTRATIV ÖVERSIKT: dagens terräng med manuellt vald havsnivåkurva; ingen ICE-6G_C-korrigering. DATED-1:s isutbredning är ett separat visningslager.' },
     doggerland_overview: { name: 'Doggerland regional (450 m)', status: 'REGIONAL: 450 m batymetri och forntida landskapsrekonstruktion.' },
-    aegean_ice6g_c: { name: 'Egeiska havet ICE-6G_C', status: 'GIA-TEST: Kopplar ICE-6G_C relativ havsnivåmodell.' },
-    europe_ice6g_c: { name: 'Europa ICE-6G_C', status: 'GIA-TEST: Kopplar ICE-6G_C relativ havsnivåmodell.' },
-    doggerland_ice6g_c: { name: 'Doggerland ICE-6G_C', status: 'GIA-TEST: Kopplar ICE-6G_C relativ havsnivåmodell.' }
+    aegean_ice6g_c: { name: 'Egeiska havet ICE-6G_C', status: 'VETENSKAPLIG MODELL: kombinerad förändring av markhöjd relativt dåtidens hav påverkar kustberäkningen. Detta är inte ren landhöjning.' },
+    europe_ice6g_c: { name: 'Europa ICE-6G_C', status: 'VETENSKAPLIG MODELL: ICE-6G_C:s relativa land–hav-förändring påverkar terräng och kust. Det är varken ren landhöjning eller en isgräns; DATED-1 visar isutbredningen separat.' },
+    doggerland_ice6g_c: { name: 'Doggerland ICE-6G_C', status: 'VETENSKAPLIG MODELL: kombinerad förändring av markhöjd relativt dåtidens hav påverkar kustberäkningen. Detta är inte ren landhöjning.' }
   }
 };
 
@@ -275,6 +285,68 @@ function currentScenario() { return state.catalog.scenarios.find(s => s.id === $
 function currentFrame() { return currentScenario().frames[+$('time').value]; }
 function setText(id, value) { const el = $(id); if (el) el.textContent = value; }
 
+const mobileMedia = window.matchMedia('(max-width: 900px)');
+const mobilePanelOrigins = new Map();
+let activeMobilePanel = null;
+let activeMobileTrigger = null;
+
+function syncMobileControls() {
+  if (!state.catalog) return;
+  const desktopScenario = $('scenario'), mobileScenario = $('mobileScenario');
+  if (mobileScenario && desktopScenario) {
+    mobileScenario.innerHTML = desktopScenario.innerHTML;
+    mobileScenario.value = desktopScenario.value;
+  }
+  const desktopTime = $('time'), mobileTime = $('mobileTime');
+  if (mobileTime && desktopTime) {
+    mobileTime.max = desktopTime.max;
+    mobileTime.value = desktopTime.value;
+  }
+  setText('mobileAge', state.frame ? `${fmt.format(state.frame.age_bp)} BP` : '—');
+  const mobilePlay = $('mobilePlay');
+  if (mobilePlay) {
+    mobilePlay.lastElementChild.textContent = state.timer ? t('pause') : t('play');
+    mobilePlay.firstElementChild.textContent = state.timer ? 'Ⅱ' : '▶';
+  }
+}
+
+function closeMobileSheet({restoreFocus = false} = {}) {
+  if (!activeMobilePanel) return;
+  const target = $(activeMobilePanel), origin = mobilePanelOrigins.get(activeMobilePanel);
+  if (target && origin) {
+    target.classList.remove('in-mobile-sheet');
+    if (origin.next && origin.next.parentNode === origin.parent) origin.parent.insertBefore(target, origin.next);
+    else origin.parent.append(target);
+  }
+  $('mobileSheet').hidden = true;
+  $('mobileSheetBackdrop').hidden = true;
+  document.body.classList.remove('mobile-sheet-open');
+  document.querySelectorAll('[data-mobile-panel]').forEach(button => button.classList.remove('active'));
+  const trigger = activeMobileTrigger;
+  activeMobilePanel = null;
+  activeMobileTrigger = null;
+  if (restoreFocus) trigger?.focus();
+}
+
+function openMobileSheet(panelId, trigger = null) {
+  if (!mobileMedia.matches) return;
+  if (activeMobilePanel === panelId) { closeMobileSheet({restoreFocus: true}); return; }
+  closeMobileSheet();
+  const target = $(panelId);
+  if (!target || target.hidden) return;
+  mobilePanelOrigins.set(panelId, {parent: target.parentNode, next: target.nextSibling});
+  $('mobileSheetContent').append(target);
+  target.classList.add('in-mobile-sheet');
+  setText('mobileSheetTitle', target.querySelector('h2')?.textContent || 'Panel');
+  $('mobileSheet').hidden = false;
+  $('mobileSheetBackdrop').hidden = false;
+  document.body.classList.add('mobile-sheet-open');
+  trigger?.classList.add('active');
+  activeMobilePanel = panelId;
+  activeMobileTrigger = trigger;
+  $('closeMobileSheet').focus({preventScroll: true});
+}
+
 function removeResultLayers() {
   for (const key of ['state_full', 'state_sea', 'class_difference']) {
     const layer = state.layers.get(key); if (layer) { map.removeLayer(layer); state.layers.delete(key); }
@@ -293,6 +365,8 @@ const processRateLayers = {land_motion: 'uplift_rate', erosion: 'erosion_rate', 
 function processDisplay(name) {
   const vector = state.frame.vector_layers?.[name];
   if (vector) return {info: vector, key: name, isRate: false, isVector: true};
+  const scenarioVector = state.scenario.frames.find(frame => frame.vector_layers?.[name])?.vector_layers?.[name];
+  if (scenarioVector) return {info: {...scenarioVector, empty: true}, key: name, isRate: false, isVector: true};
   const cumulative = state.frame.layers[name], rateKey = processRateLayers[name], rate = rateKey ? state.frame.layers[rateKey] : null;
   if (state.frame.age_bp === 0 && rate && !rate.empty) return {info: rate, key: rateKey, isRate: true};
   return {info: cumulative, key: name, isRate: false, isVector: false};
@@ -341,7 +415,9 @@ function renderMotionSymbols(opacity = 1) {
 }
 function refreshMotionSymbols() {
   const settings = state.layerSettings.get('land_motion');
-  if (settings?.enabled && !processDisplay('land_motion').info.empty) renderMotionSymbols(settings.opacity);
+  if (settings?.enabled && !['surface', 'off'].includes(settings.visual) && !processDisplay('land_motion').info.empty) {
+    renderMotionSymbols(settings.opacity);
+  }
 }
 function renderResult() {
   const frame = state.frame;
@@ -368,11 +444,18 @@ function layerDescription(name, display = processDisplay(name)) {
 const processNames = ['paleo_elevation', 'terrain_change', 'relative_height_anomaly', 'coastline', 'sensitivity', 'basins', 'land_motion', 'erosion', 'deposition'];
 processNames.push('ice_extent', 'palaeodrainage');
 
-for (const name of processNames) state.layerSettings.set(name, {enabled: name === 'coastline' || name === 'paleo_elevation', opacity: name === 'coastline' ? 1 : name === 'paleo_elevation' ? 0.88 : 0.78, visual: name === 'land_motion' ? 'both' : null});
+for (const name of processNames) state.layerSettings.set(name, {enabled: name === 'coastline' || name === 'paleo_elevation' || name === 'ice_extent', opacity: name === 'coastline' ? 1 : name === 'paleo_elevation' ? 0.88 : 0.78, visual: name === 'land_motion' ? 'both' : null});
 const vectorCache = new Map();
-function availableProcessNames() { return processNames.filter(name => state.frame.layers[name] || state.frame.vector_layers?.[name]); }
-function vectorStyle(name, opacity) {
-  if (name === 'ice_extent') return {color: '#a8d5e5', weight: 1.5, opacity, fillColor: '#dff2f7', fillOpacity: opacity * .55};
+function availableProcessNames() {
+  return processNames.filter(name => state.frame.layers[name] || state.frame.vector_layers?.[name] || state.scenario.frames.some(frame => frame.vector_layers?.[name]));
+}
+function vectorStyle(name, opacity, feature = null) {
+  if (name === 'ice_extent') {
+    const extent = feature?.properties?.extent;
+    if (extent === 'maximum') return {color: '#79adbf', weight: 1.2, opacity: opacity * .9, dashArray: '5 4', fillColor: '#dff2f7', fillOpacity: opacity * .16};
+    if (extent === 'minimum') return {color: '#d6f1f7', weight: 1, opacity, fillColor: '#eefbff', fillOpacity: opacity * .66};
+    return {color: '#9ed1df', weight: 1.6, opacity, fillColor: '#c8e9f1', fillOpacity: opacity * .42};
+  }
   return {color: '#3aa6b7', weight: 2, opacity, fillOpacity: 0, dashArray: '6 4'};
 }
 async function addVector(name, info, opacity) {
@@ -382,13 +465,23 @@ async function addVector(name, info, opacity) {
     const data = await vectorCache.get(url);
     if (state.frame.vector_layers?.[name]?.url !== url || !state.layerSettings.get(name)?.enabled) return;
     removeMapLayer(name);
-    const layer = L.geoJSON(data, {pane: 'process', interactive: true, style: vectorStyle(name, opacity), onEachFeature: (_, featureLayer) => featureLayer.bindPopup(`<b>${info.title}</b><p>${info.detail || ''}</p>`)}).addTo(map);
+    const layer = L.geoJSON(data, {
+      pane: 'process', interactive: true,
+      style: feature => vectorStyle(name, opacity, feature),
+      onEachFeature: (feature, featureLayer) => {
+        const extentLabels = state.lang === 'en'
+          ? {maximum: 'Maximum published extent', most_credible: 'Most credible extent', minimum: 'Minimum published extent'}
+          : {maximum: 'Största publicerade utbredning', most_credible: 'Mest trovärdig utbredning', minimum: 'Minsta publicerade utbredning'};
+        const extent = extentLabels[feature.properties?.extent];
+        featureLayer.bindPopup(`<b>${info.title}</b>${extent ? `<small>${extent}</small>` : ''}<p>${info.detail || ''}</p>`);
+      },
+    }).addTo(map);
     state.layers.set(name, layer);
   } catch (error) { showMapMessage(error.message); }
 }
 function setProcessOpacity(name, layer, opacity) {
   if (name === 'land_motion') { layer.setOpacity(opacity * .24); return; }
-  if (state.frame.vector_layers?.[name]) { layer.setStyle(vectorStyle(name, opacity)); return; }
+  if (state.frame.vector_layers?.[name]) { layer.setStyle(feature => vectorStyle(name, opacity, feature)); return; }
   layer.setOpacity(opacity);
 }
 function buildLayerControls() {
@@ -396,15 +489,21 @@ function buildLayerControls() {
   for (const name of availableProcessNames()) {
     const settings = state.layerSettings.get(name);
     const display = processDisplay(name), info = display.info;
-    const description = info.empty ? t('lacksRegional') : layerDescription(name, display);
+    const description = info.empty ? (name === 'ice_extent' ? t('iceUnavailableAtTime') : t('lacksRegional')) : layerDescription(name, display);
     const row = document.createElement('div'); row.className = `layer-row layer-${name}${info.empty ? ' is-empty' : ''}`; row.title = description;
     const available = !info.empty;
     const visual = name === 'land_motion' ? '<span class="layer-glyphs"><i>+</i><i>+</i></span>' : `<span class="layer-swatch ${name}"></span>`;
     const motionMode = name === 'land_motion' ? `<select class="motion-display" aria-label="Visning av landrörelse"><option value="surface" ${settings.visual === 'surface' ? 'selected' : ''}>${t('surface')}</option><option value="markers" ${settings.visual === 'markers' ? 'selected' : ''}>${t('markers')}</option><option value="both" ${settings.visual === 'both' ? 'selected' : ''}>${t('both')}</option><option value="off" ${settings.visual === 'off' ? 'selected' : ''}>${t('off')}</option></select>` : '';
-    row.innerHTML = `<input type="checkbox" data-layer="${name}" ${settings.enabled ? 'checked' : ''} ${available ? '' : 'disabled'}><div class="layer-copy"><label>${visual}<span>${layerLabel(name, display)}</span></label><small>${description}</small>${motionMode}</div><div class="opacity-control"><span>${t('opacity')}</span><input type="range" min="0" max="100" value="${Math.round(settings.opacity * 100)}" aria-label="${t('opacity')}" title="${t('opacity')} ${Math.round(settings.opacity * 100)} %" ${settings.enabled && available ? '' : 'disabled'}></div>`;
+    row.innerHTML = `<input type="checkbox" data-layer="${name}" ${settings.enabled && available ? 'checked' : ''} ${available ? '' : 'disabled'}><div class="layer-copy"><label>${visual}<span>${layerLabel(name, display)}</span></label><small>${description}</small>${motionMode}</div><div class="opacity-control"><span>${t('opacity')}</span><input type="range" min="0" max="100" value="${Math.round(settings.opacity * 100)}" aria-label="${t('opacity')}" title="${t('opacity')} ${Math.round(settings.opacity * 100)} %" ${settings.enabled && available ? '' : 'disabled'}></div>`;
     const toggle = row.children[0], opacity = row.querySelector('input[type=range]');
     toggle.onchange = () => { settings.enabled = toggle.checked; opacity.disabled = !toggle.checked; toggleProcess(name, settings.enabled && available, settings.opacity); };
-    opacity.oninput = () => { settings.opacity = +opacity.value / 100; opacity.title = `${t('opacity')} ${opacity.value} %`; const layer = state.layers.get(name); if (layer) setProcessOpacity(name, layer, settings.opacity); if (name === 'land_motion') renderMotionSymbols(settings.opacity); };
+    opacity.oninput = () => {
+      settings.opacity = +opacity.value / 100;
+      opacity.title = `${t('opacity')} ${opacity.value} %`;
+      const layer = state.layers.get(name);
+      if (layer) setProcessOpacity(name, layer, settings.opacity);
+      if (name === 'land_motion' && !['surface', 'off'].includes(settings.visual)) renderMotionSymbols(settings.opacity);
+    };
     const motionSelect = row.querySelector('.motion-display');
     if (motionSelect) motionSelect.onchange = () => { settings.visual = motionSelect.value; toggleProcess(name, settings.enabled && available, settings.opacity); };
     $('layerControls').append(row);
@@ -440,11 +539,18 @@ function updateLegend(activeName, on = true) {
     return;
   }
   if (info.kind === 'ice' || info.kind === 'drainage') {
+    if (info.kind === 'ice' && info.uncertainty) {
+      const labels = state.lang === 'en'
+        ? ['Maximum published extent', 'Most credible extent', 'Minimum published extent']
+        : ['Största publicerade utbredning', 'Mest trovärdig utbredning', 'Minsta publicerade utbredning'];
+      $('legend').innerHTML = `<b>${info.title}</b><div class="ice-uncertainty-legend"><span class="ice-key ice-max"></span><small>${labels[0]}</small><span class="ice-key ice-mc"></span><small>${labels[1]}</small><span class="ice-key ice-min"></span><small>${labels[2]}</small></div><p class="legend-note">${info.detail || layerDescription(activeName, display)}</p>`;
+      return;
+    }
     const color = info.kind === 'ice' ? '#dff2f7' : '#3aa6b7';
     $('legend').innerHTML = `<div class="legend-row"><i class="swatch" style="background:${color};border:1px solid #307a8b"></i>${info.title}</div><p class="legend-note">${info.detail || layerDescription(activeName, display)}</p>`;
     return;
   }
-  if (info.kind === 'state') $('legend').innerHTML = `<div class="legend-row"><i class="swatch" style="background:#d3c091"></i>${t('land')}</div><div class="legend-row"><i class="swatch" style="background:#155870"></i>${t('connectedSea')}</div><div class="legend-row"><i class="swatch" style="background:#725982"></i>${t('closedBasin')}</div>`;
+  if (info.kind === 'state') $('legend').innerHTML = `<div class="legend-row"><i class="swatch" style="background:#d3c091"></i>${t('land')}</div><div class="legend-row"><i class="swatch" style="background:#155870"></i>${t('connectedSea')}</div><p class="legend-note">${t('closedBasinsSeparate')}</p>`;
   else if (['diverging', 'positive', 'terrain'].includes(info.kind)) {
     const gradients = {paleo_elevation: 'linear-gradient(90deg,#10384b,#4f93a0,#d9c89e,#8da672,#8a725e,#e8e3d8)', terrain_change: 'linear-gradient(90deg,#4a63a8,#f3efe1,#cb5b3e)', erosion: 'linear-gradient(90deg,#fff4d5,#d04d2e)', deposition: 'linear-gradient(90deg,#eef5c6,#30896f)', land_motion: 'linear-gradient(90deg,#4a63a8,#f3efe1,#cb5b3e)'};
     $('legend').innerHTML = `<b>${activeName ? layerLabel(activeName, display) : info.title} · ${info.units}</b><div class="gradient" style="background:${gradients[activeName] || 'linear-gradient(90deg,#133d59,#d8c89a,#6d5139)'}"></div><div class="legend-scale"><span>${info.min}</span><span>${info.kind === 'diverging' ? '0' : ''}</span><span>${info.max}</span></div><p class="legend-note">${activeName ? layerDescription(activeName, display) : ''}</p>`;
@@ -458,6 +564,8 @@ function renderFrame(frameOverride = null) {
   const differenceButton = document.querySelector('[data-mode="difference"]');
   differenceButton.disabled = !state.scenario.has_landscape_processes || state.scenario.comparison_available === false;
   $('comparisonSection').hidden = !state.scenario.has_landscape_processes || state.scenario.comparison_available === false;
+  $('mobileComparisonButton').hidden = $('comparisonSection').hidden;
+  if ($('comparisonSection').hidden && activeMobilePanel === 'comparisonSection') closeMobileSheet();
   if ((!state.scenario.has_landscape_processes || state.scenario.comparison_available === false) && state.mode === 'difference') {
     state.mode = 'full'; document.querySelectorAll('.segmented button').forEach(button => button.classList.toggle('active', button.dataset.mode === 'full'));
   }
@@ -475,7 +583,7 @@ function renderFrame(frameOverride = null) {
   for (const [key, layer] of state.layers) { map.removeLayer(layer); } state.layers.clear();
   renderResult(); buildLayerControls();
   const activeProcess = [...availableProcessNames()].reverse().find(name => state.layerSettings.get(name)?.enabled && !processDisplay(name).info.empty);
-  updateLegend(activeProcess); clearCell(); updateCalculationControls();
+  updateLegend(activeProcess); clearCell(); updateCalculationControls(); syncMobileControls();
 }
 function signed(n) { return `${n >= 0 ? '+' : '−'}${fmt.format(Math.abs(n))}`; }
 function normaliseSearch(value) { return value.toLocaleLowerCase('sv-SE').normalize('NFD').replace(/[̀-ͯ]/g, '').trim(); }
@@ -544,6 +652,7 @@ function setRegion(regionId, preferredScenario = null, fit = true) {
   $('scenario').value = scenarios.some(s => s.id === preferredScenario) ? preferredScenario : scenarios[0].id;
   $('time').max = currentScenario().frames.length - 1; $('time').value = 0;
   state.scenario = currentScenario(); configureAnalysisBounds(fit); $('aoiMessage').hidden = true;
+  syncMobileControls();
 }
 function setLanguage(lang) {
   state.lang = lang === 'en' ? 'en' : 'sv';
@@ -562,6 +671,7 @@ function setLanguage(lang) {
     renderFrame();
     buildLayerControls();
     updateLegend();
+    syncMobileControls();
   }
 }
 function populate() {
@@ -593,15 +703,17 @@ function populate() {
 }
 function clearCell() { $('emptyCell').hidden = false; $('cellDetails').hidden = true; }
 async function inspectCell(latlng) {
-  if (!state.api) { $('emptyCell').innerHTML = `<p>${t('cellSplitRequiresApi')}</p>`; return; }
+  const analysisTrigger = document.querySelector('[data-mobile-panel="cellSection"]');
+  if (!state.api) { $('emptyCell').innerHTML = `<p>${t('cellSplitRequiresApi')}</p>`; if (activeMobilePanel !== 'cellSection') openMobileSheet('cellSection', analysisTrigger); return; }
   const q = new URLSearchParams({scenario: state.scenario.id, age: state.frame.age_bp, lat: latlng.lat, lon: latlng.lng}); if (state.resultId) q.set('result', state.resultId);
   const response = await fetch(`/api/cell?${q}`); const data = await response.json();
-  if (!response.ok) { $('emptyCell').innerHTML = `<p>${data.error}</p>`; return; }
+  if (!response.ok) { $('emptyCell').innerHTML = `<p>${data.error}</p>`; if (activeMobilePanel !== 'cellSection') openMobileSheet('cellSection', analysisTrigger); return; }
   $('emptyCell').hidden = true; $('cellDetails').hidden = false;
   setText('cellCoordinates', `${data.lat.toFixed(5)}°, ${data.lon.toFixed(5)}° · rad ${data.row}, kolumn ${data.column}`);
   setText('todayHeight', `${fmt.format(data.today_m)} m`); setText('upliftValue', `${signed(-data.uplift_since_m)} m`); setText('erosionValue', `${signed(data.erosion_since_m)} m`); setText('depositionValue', `${signed(-data.deposition_since_m)} m`); setText('paleoHeight', `${fmt.format(data.paleo_m)} m`);
   const relRow = $('relativeHeightRow'); if (relRow) { relRow.hidden = Math.abs(data.relative_height_anomaly_m || 0) < 1e-9; setText('relativeHeightValue', `${signed(data.relative_height_anomaly_m || 0)} m`); }
   setText('seaSurface', `${fmt.format(data.sea_surface_m)} m`); setText('margin', `${fmt.format(data.margin_m)} m`); setText('cellClass', data.full_class_name + (data.sensitive ? ' · känslig' : '')); setText('simpleClass', data.sea_only_class_name);
+  if (activeMobilePanel !== 'cellSection') openMobileSheet('cellSection', analysisTrigger);
 }
 async function calculate() {
   const button = $('calculate'); button.disabled = true; setText('calculationStatus', 'Beräknar och skapar kartlager…');
@@ -631,9 +743,23 @@ function markCustomDirty() { state.customDirty = true; updateCalculationControls
 function refreshCustomState() { if (hasCustomAssumptions()) { markCustomDirty(); return; } state.customDirty = false; if (state.resultId) renderFrame(); updateCalculationControls(); }
 async function detectApi() { try { const r = await fetch('/api/health'); state.api = r.ok; } catch {} updateCalculationControls(); }
 
-$('scenario').onchange = () => { $('time').max = currentScenario().frames.length - 1; $('time').value = 0; state.scenario = currentScenario(); state.regionId = state.scenario.region_id; configureAnalysisBounds(true); renderFrame(); if (hasCustomAssumptions()) markCustomDirty(); };
+$('scenario').onchange = () => { closeMobileSheet(); $('time').max = currentScenario().frames.length - 1; $('time').value = 0; state.scenario = currentScenario(); state.regionId = state.scenario.region_id; configureAnalysisBounds(true); renderFrame(); if (hasCustomAssumptions()) markCustomDirty(); };
 $('time').oninput = () => { renderFrame(); if (hasCustomAssumptions()) markCustomDirty(); };
-$('play').onclick = () => { if (state.timer) { clearInterval(state.timer); state.timer = null; $('play').lastElementChild.textContent = t('play'); return; } state.timer = setInterval(() => { $('time').value = (+$('time').value + 1) % currentScenario().frames.length; renderFrame(); }, 1200); $('play').lastElementChild.textContent = t('pause'); };
+$('play').onclick = () => {
+  if (state.timer) {
+    clearInterval(state.timer); state.timer = null;
+    $('play').lastElementChild.textContent = t('play'); syncMobileControls(); return;
+  }
+  state.timer = setInterval(() => { $('time').value = (+$('time').value + 1) % currentScenario().frames.length; renderFrame(); }, 1200);
+  $('play').lastElementChild.textContent = t('pause'); syncMobileControls();
+};
+$('mobileScenario').onchange = () => { $('scenario').value = $('mobileScenario').value; $('scenario').dispatchEvent(new Event('change')); };
+$('mobileTime').oninput = () => { $('time').value = $('mobileTime').value; $('time').dispatchEvent(new Event('input')); };
+$('mobilePlay').onclick = () => $('play').click();
+document.querySelectorAll('[data-mobile-panel]').forEach(button => button.onclick = () => openMobileSheet(button.dataset.mobilePanel, button));
+$('closeMobileSheet').onclick = () => closeMobileSheet({restoreFocus: true});
+$('mobileSheetBackdrop').onclick = () => closeMobileSheet({restoreFocus: true});
+mobileMedia.addEventListener('change', event => { if (!event.matches) closeMobileSheet(); setTimeout(() => map.invalidateSize(), 0); });
 document.querySelectorAll('.segmented button').forEach(button => button.onclick = () => { document.querySelectorAll('.segmented button').forEach(b => b.classList.remove('active')); button.classList.add('active'); state.mode = button.dataset.mode; renderResult(); updateLegend(); });
 $('calculate').onclick = calculate;
 for (const id of ['enableUplift', 'enableErosion', 'enableDeposition']) $(id).addEventListener('input', refreshCustomState);
@@ -656,7 +782,8 @@ $('gotoForm').onsubmit = async e => {
   catch (error) { showMapMessage(error.message); }
 };
 document.addEventListener('pointerdown', event => { if (!$('gotoForm').contains(event.target)) hideSearchResults(); });
+document.addEventListener('keydown', event => { if (event.key === 'Escape' && activeMobilePanel) closeMobileSheet({restoreFocus: true}); });
 $('methodButton').onclick = () => $('methodDialog').showModal(); $('closeMethod').onclick = () => $('methodDialog').close();
 $('language').onclick = () => setLanguage(state.lang === 'sv' ? 'en' : 'sv');
 
-fetch('data/catalog.json').then(r => r.json()).then(catalog => { state.catalog = catalog; populate(); detectApi(); }).catch(error => { document.body.innerHTML = `<main style="padding:3rem"><h1>PalaeoCoast kunde inte starta</h1><p>${error.message}</p><p>Kör <code>python web_server.py</code> och öppna den angivna adressen.</p></main>`; });
+fetch('data/catalog.json?v=20261011-5', {cache: 'no-store'}).then(r => r.json()).then(catalog => { state.catalog = catalog; populate(); detectApi(); }).catch(error => { document.body.innerHTML = `<main style="padding:3rem"><h1>PalaeoCoast kunde inte starta</h1><p>${error.message}</p><p>Kör <code>python web_server.py</code> och öppna den angivna adressen.</p></main>`; });
