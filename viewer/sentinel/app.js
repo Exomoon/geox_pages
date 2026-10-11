@@ -21,12 +21,12 @@
     currentAreaId: 'takern',
     currentArea: null,
     currentDate: 'date_a', // 'date_a' | 'date_b'
-    currentLayerType: 'ndvi', // 'ndvi' | 'delta' | 'true_color' | 'false_color'
+    currentLayerType: 'delta', // 'delta' (default change product) | 'ndvi' | 'true_color' | 'false_color'
     currentZone: 'entire_study_area',
     
     // Water experiment state
     waterDate: 'date_a',
-    waterLayer: 'ndwi', // 'ndwi' | 'mndwi' | 'water_mask'
+    waterLayer: 'mndwi', // 'mndwi' (default modified water index) | 'ndwi' | 'water_mask'
     waterThreshold: 0.0,
     
     // Wildfire experiment state
@@ -244,19 +244,51 @@
     activeBasemapLayer.bringToBack();
   }
 
-  // Switch Active Experiment
+  // Switch Active Experiment with consistent layer defaults & smooth zoom
   async function switchExperiment(expId) {
     state.activeExperiment = expId;
     if (el.experimentSelect) el.experimentSelect.value = expId;
 
-    // Toggle control panels
+    // 1. Activate experiment's primary product and synchronize button states
+    if (expId === 'vegetation') {
+      state.currentLayerType = 'delta'; // ΔNDVI Förändring is the core product
+      if (el.layerButtons) {
+        el.layerButtons.forEach(b => b.classList.toggle('active', b.dataset.layerType === 'delta'));
+      }
+      if (el.dateGroup) el.dateGroup.style.display = 'none'; // Delta covers both dates
+    } else if (expId === 'water') {
+      state.waterLayer = 'mndwi';
+      state.waterDate = 'date_a';
+      if (el.waterLayerButtons) {
+        el.waterLayerButtons.forEach(b => b.classList.toggle('active', b.dataset.waterLayer === 'mndwi'));
+      }
+      if (el.waterDateButtons) {
+        el.waterDateButtons.forEach(b => b.classList.toggle('active', b.dataset.waterDate === 'date_a'));
+      }
+    } else if (expId === 'wildfire') {
+      state.fireLayer = 'dnbr';
+      state.fireDate = 'post';
+      if (el.fireLayerButtons) {
+        el.fireLayerButtons.forEach(b => b.classList.toggle('active', b.dataset.fireLayer === 'dnbr'));
+      }
+      if (el.fireDateButtons) {
+        el.fireDateButtons.forEach(b => b.classList.toggle('active', b.dataset.fireDate === 'post'));
+      }
+    } else if (expId === 'terrain') {
+      state.terrainLayer = 'elevation';
+      if (el.terrainLayerButtons) {
+        el.terrainLayerButtons.forEach(b => b.classList.toggle('active', b.dataset.terrainLayer === 'elevation'));
+      }
+    }
+
+    // 2. Toggle control panels
     el.moduleVegControls.style.display = expId === 'vegetation' ? 'block' : 'none';
     el.moduleWaterControls.style.display = expId === 'water' ? 'block' : 'none';
     el.moduleFireControls.style.display = expId === 'wildfire' ? 'block' : 'none';
     el.moduleTerrainControls.style.display = expId === 'terrain' ? 'block' : 'none';
     el.moduleCalcControls.style.display = expId === 'calculator' ? 'block' : 'none';
 
-    // Keep topbar study area select in sync
+    // 3. Keep topbar study area select in sync
     if (el.studyAreaSelect) {
       if (expId === 'vegetation') {
         el.studyAreaSelect.value = `veg_${state.currentAreaId}`;
@@ -277,37 +309,35 @@
       }
     }
 
-    // Set map bounds and center
+    // 4. Resolve exact WGS84 bounds and smoothly fly map to area
     let expMeta = (state.catalog.experiments && state.catalog.experiments[expId]) || null;
     let bounds = null;
-    let center = null;
 
     if (expId === 'vegetation') {
-      bounds = state.currentArea.wgs84_bounds;
-      center = state.currentArea.center;
-    } else if (expMeta && expMeta.wgs84_bounds) {
+      bounds = state.currentArea ? state.currentArea.wgs84_bounds : (state.catalog.areas ? state.catalog.areas.takern.wgs84_bounds : null);
+    } else if (expMeta && Array.isArray(expMeta.wgs84_bounds)) {
       bounds = expMeta.wgs84_bounds;
-      center = expMeta.center;
-    } else {
+    } else if (state.catalog.areas && state.catalog.areas.takern) {
       bounds = state.catalog.areas.takern.wgs84_bounds;
-      center = state.catalog.areas.takern.center;
     }
 
-    mapInstance.flyToBounds(bounds, { padding: [30, 30], duration: 1.0 });
+    if (bounds && mapInstance) {
+      mapInstance.flyToBounds(bounds, { padding: [30, 30], duration: 1.0 });
+    }
 
-    // Load overlays for active experiment
+    // 5. Load overlays for active experiment
     setupExperimentOverlays(expId, bounds);
 
-    // Load probe grid
+    // 6. Load probe grid
     await loadExperimentProbeGrid(expId);
 
-    // Populate Split compare presets & options
+    // 7. Populate Split compare presets & options
     populateExperimentSplitDropdowns(expId);
 
-    // Update download list
+    // 8. Update download list
     updateDownloadsList();
 
-    // Show/hide zone polygons
+    // 9. Show/hide zone polygons
     if (expId === 'vegetation') {
       setupPredefinedZones();
       el.analysisPanel.style.display = 'block';
@@ -318,6 +348,25 @@
     }
 
     updateActiveLayers();
+  }
+
+  // Switch Subregion within Vegetation Module (Tåkern, Öland, Skåne)
+  async function switchVegArea(areaId) {
+    if (!state.catalog.areas || !state.catalog.areas[areaId]) return;
+    state.currentAreaId = areaId;
+    state.currentArea = state.catalog.areas[areaId];
+    state.currentZone = 'entire_study_area';
+    state.currentLayerType = 'delta'; // Maintain ΔNDVI as the primary product
+
+    if (el.vegAreaButtons) {
+      el.vegAreaButtons.forEach(b => b.classList.toggle('active', b.dataset.vegArea === areaId));
+    }
+    if (el.layerButtons) {
+      el.layerButtons.forEach(b => b.classList.toggle('active', b.dataset.layerType === 'delta'));
+    }
+    if (el.dateGroup) el.dateGroup.style.display = 'none';
+
+    await switchExperiment('vegetation');
   }
 
   // Setup Overlays for the Active Experiment
@@ -695,9 +744,9 @@
       el.legendLabels.innerHTML = '<span>Oskadat</span><span>Låg brandgrad</span><span>Måttlig</span><span>Hög brandgrad</span>';
     } else if (type === 'elevation') {
       el.legendTitle.textContent = t.legendElevation;
-      el.legendUnit.textContent = '[86.7 .. 167 m]';
+      el.legendUnit.textContent = '[87.5 .. 263.6 m]';
       el.legendBar.className = 'legend-bar elevation';
-      el.legendLabels.innerHTML = '<span>Vättern (86.7m)</span><span>Sluttning</span><span>Hjässan (167m)</span>';
+      el.legendLabels.innerHTML = '<span>Vättern (87.5m)</span><span>Sluttning</span><span>Hjässan (263.6m)</span>';
     } else if (type === 'slope') {
       el.legendTitle.textContent = t.legendSlope;
       el.legendUnit.textContent = '[0° .. 25°+]';
@@ -726,8 +775,8 @@
       const dists = data.distances_km;
       const n = elevs.length;
       
-      const minE = 80.0;
-      const maxE = 180.0;
+      const minE = 75.0;
+      const maxE = 280.0;
       const svgW = 680;
       const svgH = 220;
       const padTop = 20;
@@ -759,9 +808,9 @@
         <line x1="0" y1="${svgH - padBot}" x2="${svgW}" y2="${svgH - padBot}" stroke="rgba(255,255,255,0.2)"/>
         
         <!-- Y Axis Labels -->
-        <text x="10" y="${padTop + 12}" fill="#94a3b8" font-size="10" font-family="monospace">180 m</text>
-        <text x="10" y="${padTop + chartH * 0.5 + 4}" fill="#94a3b8" font-size="10" font-family="monospace">130 m</text>
-        <text x="10" y="${svgH - padBot - 4}" fill="#94a3b8" font-size="10" font-family="monospace">80 m (Vättern)</text>
+        <text x="10" y="${padTop + 12}" fill="#94a3b8" font-size="10" font-family="monospace">280 m (Hjässan: 263.6 m)</text>
+        <text x="10" y="${padTop + chartH * 0.5 + 4}" fill="#94a3b8" font-size="10" font-family="monospace">175 m</text>
+        <text x="10" y="${svgH - padBot - 4}" fill="#94a3b8" font-size="10" font-family="monospace">87.5 m (Vättern)</text>
         
         <!-- Mountain Silhouette -->
         <path d="${pathArea}" fill="url(#profileGrad)"/>
@@ -833,9 +882,7 @@
       });
 
       poly.on('click', () => {
-        el.zoneDropdown.value = zone.id;
-        state.currentZone = zone.id;
-        updateAreaAnalysis(zone.id);
+        selectZone(zone.id, true);
       });
 
       poly.bindTooltip(state.lang === 'sv' ? zone.name_sv : zone.name_en, {
@@ -847,7 +894,35 @@
       zonePolygonLayers[zone.id] = poly;
     });
 
-    updateAreaAnalysis('entire_study_area');
+    selectZone('entire_study_area', false);
+  }
+
+  // Select and Focus on an Analysis Zone
+  function selectZone(zoneId, shouldZoom = true) {
+    state.currentZone = zoneId;
+    if (el.zoneDropdown) el.zoneDropdown.value = zoneId;
+    updateAreaAnalysis(zoneId);
+
+    if (zoneId === 'entire_study_area') {
+      Object.values(zonePolygonLayers).forEach(p => {
+        p.setStyle({ color: '#00d2ff', weight: 1.5, fillOpacity: 0.08, dashArray: '4, 4' });
+      });
+      if (shouldZoom && state.currentArea && state.currentArea.wgs84_bounds && mapInstance) {
+        mapInstance.flyToBounds(state.currentArea.wgs84_bounds, { padding: [30, 30], duration: 0.8 });
+      }
+    } else {
+      Object.entries(zonePolygonLayers).forEach(([id, p]) => {
+        if (id === zoneId) {
+          p.setStyle({ color: '#10b981', weight: 3, fillOpacity: 0.28, dashArray: null });
+          p.bringToFront();
+          if (shouldZoom && mapInstance) {
+            mapInstance.flyToBounds(p.getBounds(), { padding: [60, 60], maxZoom: 15, duration: 0.8 });
+          }
+        } else {
+          p.setStyle({ color: '#64748b', weight: 1, fillOpacity: 0.04, dashArray: '4, 4' });
+        }
+      });
+    }
   }
 
   // Update Area Analysis Panel
@@ -1027,12 +1102,17 @@
         const val = e.target.value;
         if (val.startsWith('veg_')) {
           const areaId = val.replace('veg_', '');
-          state.currentAreaId = areaId;
-          state.currentArea = state.catalog.areas[areaId];
-          await switchExperiment('vegetation');
+          await switchVegArea(areaId);
         } else {
           await switchExperiment(val);
         }
+      });
+    }
+
+    // Zone Dropdown Selector (Analysis Panel)
+    if (el.zoneDropdown) {
+      el.zoneDropdown.addEventListener('change', (e) => {
+        selectZone(e.target.value, true);
       });
     }
 
@@ -1059,14 +1139,8 @@
     if (el.vegAreaButtons) {
       el.vegAreaButtons.forEach(btn => {
         btn.addEventListener('click', async () => {
-          el.vegAreaButtons.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
           const areaId = btn.dataset.vegArea;
-          if (state.catalog.areas && state.catalog.areas[areaId]) {
-            state.currentAreaId = areaId;
-            state.currentArea = state.catalog.areas[areaId];
-            await switchExperiment('vegetation');
-          }
+          await switchVegArea(areaId);
         });
       });
     }

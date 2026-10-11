@@ -112,7 +112,7 @@
               </div>
             </div>
 
-            <div class="control-group" id="dateSelectGroup">
+            <div class="control-group" id="dateSelectGroup" style="display: none;">
               <label class="control-label" data-i18n="observationDate">Observationsdatum</label>
               <div class="segmented-control" id="dateControl">
                 <div class="segmented-btn active" data-date="date_a" title="2024-06-04">04 Jun 2024</div>
@@ -123,13 +123,13 @@
             <div class="control-group" id="layerSelectGroup">
               <label class="control-label" data-i18n="visualizationType">Visualisering</label>
               
-              <button class="layer-select-btn active" data-layer-type="ndvi">
-                <span>NDVI Vegetationsindex</span>
+              <button class="layer-select-btn active" data-layer-type="delta">
+                <span>ΔNDVI Förändring (Sep - Jun)</span>
                 <span class="layer-indicator"></span>
               </button>
-              
-              <button class="layer-select-btn" data-layer-type="delta">
-                <span>ΔNDVI Förändring (Sep - Jun)</span>
+
+              <button class="layer-select-btn" data-layer-type="ndvi">
+                <span>NDVI Vegetationsindex</span>
                 <span class="layer-indicator"></span>
               </button>
 
@@ -271,15 +271,19 @@
             <div class="terrain-stat-card">
               <div style="display: flex; justify-content: space-between; font-size: 11px;">
                 <span style="color: var(--text-secondary);">Vätterns vattenlinje:</span>
-                <strong style="color: var(--accent-cyan); font-family: var(--font-mono);">86.7 m ö.h.</strong>
+                <strong style="color: var(--accent-cyan); font-family: var(--font-mono);" id="terrainStatVattern">87.5 m ö.h.</strong>
               </div>
               <div style="display: flex; justify-content: space-between; font-size: 11px;">
                 <span style="color: var(--text-secondary);">Omberg krön (Hjässan):</span>
-                <strong style="color: var(--accent-cyan); font-family: var(--font-mono);">167.0 m ö.h.</strong>
+                <strong style="color: var(--accent-cyan); font-family: var(--font-mono);" id="terrainStatSummit">263.6 m ö.h.</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                <span style="color: var(--text-secondary);">Relativ relief (över Vättern):</span>
+                <strong style="color: var(--accent-green); font-family: var(--font-mono);" id="terrainStatRelief">~176 m</strong>
               </div>
               <div style="display: flex; justify-content: space-between; font-size: 11px;">
                 <span style="color: var(--text-secondary);">Maximal branthet (Vätternbranten):</span>
-                <strong style="color: var(--accent-amber); font-family: var(--font-mono);">21.6° lutning</strong>
+                <strong style="color: var(--accent-amber); font-family: var(--font-mono);" id="terrainStatSlope">28.4° lutning</strong>
               </div>
               <button class="btn btn-secondary btn-profile" id="btnShowProfile">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
@@ -531,8 +535,10 @@
 
           <h3>4. Datakälla &amp; Licensiering</h3>
           <p>
-            Data härrör från European Space Agency (ESA) Copernicus Sentinel-2 MSI via Copernicus Data Space Ecosystem (CDSE)
-            och AWS Open Data. Användning sker under Copernicus Open Access / Creative Commons CC-BY 4.0.
+            Optiska satellitdata härrör från European Space Agency (ESA) Copernicus Sentinel-2 MSI och digital höjdmodell
+            från Copernicus DEM (GLO-30). Data tillgängliggörs under den officiella <em>Copernicus Open Access Policy</em> 
+            i enlighet med EU-förordning (EU) nr 1159/2013 och (EU) 2021/696 för fri, full och öppen användning.
+            Kreditering: <em>Contains modified Copernicus Sentinel data (2018–2024) / Copernicus DEM (2024), processed by GeoX / Ronnie Utter</em>.
           </p>
         </div>
       </div>
@@ -599,20 +605,20 @@
     <div class="modal-backdrop" id="profileModal">
       <div class="modal-content" style="max-width: 720px;">
         <div class="modal-header">
-          <h2 style="font-size: 16px; font-weight: 600;">Topografisk Höjdprofil: Vättern ➔ Omberg (Hjässan) ➔ Tåkern</h2>
+          <h2 style="font-size: 16px; font-weight: 600;">Topografisk Höjdprofil: Vättern ➔ Omberg (Hjässan 263 m) ➔ Östgötaslätten</h2>
           <button class="btn btn-secondary btn-icon" id="btnCloseProfile">&times;</button>
         </div>
         <div class="modal-body">
           <p style="font-size: 12px; color: var(--text-secondary);">
-            Korssektion (15 km W-E transect) genererad från Copernicus DEM GLO-30. Visar den dramatiska förkastningsbranten där Omberg reser sig direkt ur Vätterns djupa vattenyta (86.7 m ö.h.) upp till Hjässans krön (167 m ö.h.) innan landskapet övergår i Östgötaslättens bördiga jordar och Tåkerns våtmark.
+            Korssektion (15 km W-E transect) genererad från Copernicus DEM GLO-30 direkt genom Hjässans topp. Visar den dramatiska förkastningsbranten där Omberg reser sig brant ur Vätterns djupa vattenyta (87.5 m ö.h.) upp till Hjässans krön (263.6 m ö.h., ~176 m över Vättern) innan landskapet sluttar ned mot Östgötaslättens jordbruksbygd.
           </p>
           <div id="profileChartContainer" style="width: 100%; height: 240px; background: rgba(0,0,0,0.4); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 10px; margin-top: 10px; display: flex; align-items: center; justify-content: center;">
             <svg id="profileSvg" width="100%" height="100%" viewBox="0 0 680 220" preserveAspectRatio="none"></svg>
           </div>
           <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); margin-top: 6px;">
-            <span>0 km (Vättern, 86.7 m)</span>
-            <span>7.5 km (Ombergsbranten / Hjässan)</span>
-            <span>15 km (Tåkerns strandkant)</span>
+            <span>0 km (Vättern, 87.5 m)</span>
+            <span>7.4 km (Hjässans topp, 263.6 m)</span>
+            <span>15 km (Östgötaslätten, 103 m)</span>
           </div>
         </div>
       </div>

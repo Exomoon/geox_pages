@@ -3767,6 +3767,20 @@
         "skane"
       ],
       "default_area": "takern",
+      "center": [
+        58.34821,
+        14.82086
+      ],
+      "wgs84_bounds": [
+        [
+          58.280672,
+          14.693073
+        ],
+        [
+          58.415754,
+          14.94865
+        ]
+      ],
       "layers": [
         {
           "id": "ndvi",
@@ -3804,12 +3818,16 @@
         58.34821,
         14.82086
       ],
-      "wgs84_bounds": {
-        "left": 482000.0,
-        "bottom": 6460000.0,
-        "right": 497000.0,
-        "top": 6475000.0
-      },
+      "wgs84_bounds": [
+        [
+          58.280672,
+          14.693073
+        ],
+        [
+          58.415754,
+          14.94865
+        ]
+      ],
       "observations": {
         "date_a": {
           "date": "2024-06-04",
@@ -3923,23 +3941,23 @@
       "description_sv": "30m digital ytmodell över Omberg & Vättern med analytisk terrängskuggning, lutning och topografiska profiler.",
       "description_en": "30m Digital Surface Model over Omberg & Lake Vättern with hillshade and slope.",
       "center": [
-        58.34821,
-        14.82086
+        58.30295,
+        14.65047
       ],
       "wgs84_bounds": [
         [
-          58.280672,
-          14.693073
+          58.235243,
+          14.523167
         ],
         [
-          58.415754,
-          14.94865
+          58.370664,
+          14.777767
         ]
       ],
       "metrics": {
-        "min_elev": 86.7,
-        "max_elev": 167.0,
-        "max_slope": 21.6
+        "min_elev": 87.5,
+        "max_elev": 262.6,
+        "max_slope": 50.5
       },
       "layers": [
         {
