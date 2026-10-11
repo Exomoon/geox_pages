@@ -80,26 +80,47 @@ export const products = [
     isExternal: true,
     tags: ["Review-First", "BYOK", "Multi-Model", "Full kontroll"],
     featured: true
-  },
-  {
-    id: "palaeocoast",
-    name: "PalaeoCoast",
-    eyebrow: "Geospatial rekonstruktion / Paleogeografi / Raster",
-    tagline: "Hur såg Europas forntida kuster ut från istidsmaximum till nutid?",
-    description: "Ett experimentellt geospatialt forskningsprojekt som utforskar hur forntida landskap kan återskapas genom att kombinera batymetri (GEBCO & EMODnet) med havsnivåkurvor, topologisk havskontakt och geomorfologiska processer. Numerisk GIA-motor för Fennoskandia och norra Europa utvecklas just nu.",
-    url: "sealevel-sv.html",
-    image: "assets/sealevel-preview.png",
-    status: "EXPERIMENTAL / WIP",
-    statusVariant: "dev",
-    accentColor: "#ee7c3f",
-    accentGlow: "rgba(238, 124, 63, 0.16)",
-    ctaText: "Utforska PalaeoCoast",
-    ctaLink: "sealevel-sv.html",
-    isExternal: false,
-    tags: ["22 000 BP → 1950", "Topologisk havskontakt", "GEBCO & EMODnet", "GIA under utveckling"],
-    featured: true
   }
 ];
+
+export const rasterLabProjects = [
+  {
+    id: "palaeocoast",
+    projectNumber: "01",
+    name: "PalaeoCoast – Historical Coastline Explorer",
+    nameSv: "PalaeoCoast – Historisk kustlinjeutforskare",
+    eyebrow: "GeoX Raster Lab · Project 01",
+    tagline: "Experimental Geospatial Modelling & Visualisation Sandbox",
+    description: "Experimental modelling sandbox investigating European prehistoric coastlines from 22 000 BP through present day by coupling bathymetry (GEBCO & EMODnet) with relative sea-level curves and topological ocean connectivity. Land uplift, GIA, erosion and sedimentation are treated as distinct physical processes.",
+    descriptionSv: "Experimentell modelleringssandlåda som utforskar forntida europeiska kustlinjer från 22 000 BP till nutid genom att koppla batymetri till havsnivåkurvor och topologisk havskontakt. Landhöjning, GIA, erosion och sedimentation behandlas som distinkta fysiska processer.",
+    url: "sealevel.html",
+    urlSv: "sealevel-sv.html",
+    viewerUrl: "viewer/sealevel/index.html",
+    image: "assets/sealevel-preview-en.png",
+    imageSv: "assets/sealevel-preview.png",
+    status: "EXPERIMENTAL SANDBOX",
+    statusVariant: "sandbox",
+    accentColor: "#ee7c3f",
+    accentGlow: "rgba(238, 124, 63, 0.16)",
+    tags: ["22 000 BP → 1950", "Topologisk havskontakt", "GEBCO & EMODnet", "GIA under utveckling"]
+  },
+  {
+    id: "sentinel2-change-detection",
+    projectNumber: "02",
+    name: "Sentinel-2 Change Detection",
+    nameSv: "Sentinel-2 Change Detection",
+    eyebrow: "GeoX Raster Lab · Project 02",
+    tagline: "Multi-temporal satellite imagery & automated spectral change analysis",
+    description: "Automated change detection and surface dynamics using Copernicus Sentinel-2 MSI multi-spectral bands (10m resolution). Monitoring vegetation anomalies (NDVI), surface water boundaries (NDWI) and landscape transformations.",
+    descriptionSv: "Flerdimensionell tidsserieanalys och automatiserad förändringsdetektering med Copernicus Sentinel-2 MSI multispektrala band (10 m upplösning). Övervakning av vegetationsavvikelser (NDVI), vattenytor (NDWI) och landskapsdynamik.",
+    status: "COMING SOON",
+    statusVariant: "coming-soon",
+    accentColor: "#38bdf8",
+    accentGlow: "rgba(56, 189, 248, 0.16)",
+    tags: ["Copernicus Sentinel-2", "Multi-spectral (10m)", "NDVI & NDWI", "Planerad / Coming Soon"]
+  }
+];
+
 
 export const focusAreas = [
   {

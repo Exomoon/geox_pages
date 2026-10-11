@@ -61,6 +61,7 @@
 
       <nav class="site-nav" id="site-nav" aria-label="Main Navigation">
         <a href="#projects" class="nav-link">Projects</a>
+        <a href="#raster-lab" class="nav-link">Raster Lab</a>
         <a href="#capabilities" class="nav-link">Capabilities</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#contact" class="nav-link">Contact</a>
@@ -101,158 +102,368 @@
             <a href="#projects" class="btn btn-primary">Explore projects</a>
             <a href="#about" class="btn btn-ghost">About GeoX</a>
           </div>
+          <p class="hero-facts">Geospatial engineering <span>·</span> Spatial data platforms <span>·</span> Raster Lab</p>
         </div>
       </div>
 
-      <div class="hero-bottom-fade" aria-hidden="true"></div>
+      <div class="hero-boundary-glow" aria-hidden="true"></div>
     </section>
+
+    <!-- Hero Metrics Strip (High-Tech Ticker) -->
+    <div class="hero-metrics-bar">
+      <div class="container hero-metrics-inner">
+        <div class="metric-item">
+          <span class="metric-dot"></span>
+          <span class="metric-label">Platform</span>
+          <span class="metric-value">GeoX.dev</span>
+        </div>
+        <div class="metric-sep">/</div>
+        <div class="metric-item">
+          <span class="metric-label">Portfolio</span>
+          <span class="metric-value">5 Live Spatial Platforms</span>
+        </div>
+        <div class="metric-sep">/</div>
+        <div class="metric-item">
+          <span class="metric-label">R&amp;D</span>
+          <span class="metric-value">GeoX Raster Lab</span>
+        </div>
+        <div class="metric-sep">/</div>
+        <div class="metric-item">
+          <span class="metric-label">Stack</span>
+          <span class="metric-value">MapLibre · OTP · FME · DuckDB</span>
+        </div>
+      </div>
+    </div>
 
     <!-- Selected Projects -->
     <section class="section projects-section" id="projects">
       <div class="container">
         <div class="section-head">
+          <span class="section-eyebrow">Portfolio</span>
           <h2 class="section-title">Selected projects</h2>
+          <p class="section-sub">Spatial data platforms, accessibility analytics and developer tooling at the intersection of data and user experience.</p>
         </div>
 
-        <div class="projects-list">
+        <div class="projects-grid-wide">
 
           <!-- 1. Restidsanalys -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">Restidsanalys</h3>
-                <p class="project-summary">Analyze accessibility in time — not just distance.</p>
+          <article class="project-card-wide">
+            <div class="project-stage-frame">
+              <div class="stage-topbar">
+                <div class="stage-traffic-lights">
+                  <span class="light-dot light-red"></span>
+                  <span class="light-dot light-yellow"></span>
+                  <span class="light-dot light-green"></span>
+                </div>
+                <div class="stage-url-badge">restidsanalys.se / isochrones</div>
+                <div class="stage-status-live"><span class="pulse-green"></span> Live</div>
               </div>
-              <div class="project-action">
-                <a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Explore restidsanalys.se</span>
+              <a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer" class="stage-viewport" tabindex="-1">
+                <img src="assets/restidsanalys-preview.png" alt="Restidsanalys user interface" loading="lazy">
+                <div class="stage-gradient-overlay"></div>
+              </a>
+            </div>
+            <div class="project-card-body">
+              <div class="project-badge-row">
+                <span class="project-pill"><span class="project-pill-dot"></span> Accessibility &amp; GIS</span>
+                <span class="project-tag-accent">Isochrones</span>
+              </div>
+              <h3 class="project-title"><a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer">Restidsanalys</a></h3>
+              <p class="project-desc">Analyze real travel times and multimodal catchment areas in time rather than simple distance.</p>
+              <div class="project-tech-tags">
+                <span>MapLibre GL</span>
+                <span>OpenTripPlanner</span>
+                <span>GTFS Sweden</span>
+                <span>Travel Contours</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer" class="project-card-link">
+                  <span>Visit restidsanalys.se</span>
                   <span class="arrow-glyph" aria-hidden="true">→</span>
                 </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/restidsanalys-preview.png" alt="Restidsanalys interface" loading="lazy">
-                </a>
+                <span class="project-domain-hint">restidsanalys.se</span>
               </div>
             </div>
           </article>
 
           <!-- 2. Områdesatlas -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">Områdesatlas</h3>
-                <p class="project-summary">Explore Swedish society, economy and geographic patterns through data and maps.</p>
+          <article class="project-card-wide">
+            <div class="project-stage-frame">
+              <div class="stage-topbar">
+                <div class="stage-traffic-lights">
+                  <span class="light-dot light-red"></span>
+                  <span class="light-dot light-yellow"></span>
+                  <span class="light-dot light-green"></span>
+                </div>
+                <div class="stage-url-badge">omradesatlas.se / demography</div>
+                <div class="stage-status-live"><span class="pulse-green"></span> Live</div>
               </div>
-              <div class="project-action">
-                <a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Explore omradesatlas.se</span>
+              <a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer" class="stage-viewport" tabindex="-1">
+                <img src="assets/omradesatlas-preview.png" alt="Områdesatlas comparative data" loading="lazy">
+                <div class="stage-gradient-overlay"></div>
+              </a>
+            </div>
+            <div class="project-card-body">
+              <div class="project-badge-row">
+                <span class="project-pill"><span class="project-pill-dot"></span> Socioeconomics &amp; Maps</span>
+                <span class="project-tag-accent">Demographics</span>
+              </div>
+              <h3 class="project-title"><a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer">Områdesatlas</a></h3>
+              <p class="project-desc">Comparative analysis of Swedish society, municipal indicators and regional demographics.</p>
+              <div class="project-tech-tags">
+                <span>Statistics Sweden Open Data</span>
+                <span>RegS Boundaries</span>
+                <span>Interactive Plots</span>
+                <span>Spatial Comparison</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer" class="project-card-link">
+                  <span>Visit omradesatlas.se</span>
                   <span class="arrow-glyph" aria-hidden="true">→</span>
                 </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/omradesatlas-preview.png" alt="Områdesatlas comparative data" loading="lazy">
-                </a>
+                <span class="project-domain-hint">omradesatlas.se</span>
               </div>
             </div>
           </article>
 
           <!-- 3. KrisGIS -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">KrisGIS</h3>
-                <p class="project-summary">Location-based access to critical public information and preparedness data.</p>
+          <article class="project-card-wide">
+            <div class="project-stage-frame">
+              <div class="stage-topbar">
+                <div class="stage-traffic-lights">
+                  <span class="light-dot light-red"></span>
+                  <span class="light-dot light-yellow"></span>
+                  <span class="light-dot light-green"></span>
+                </div>
+                <div class="stage-url-badge">krisgis.se / incident-map</div>
+                <div class="stage-status-live"><span class="pulse-green"></span> Live</div>
               </div>
-              <div class="project-action">
-                <a href="https://krisgis.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Explore krisgis.se</span>
+              <a href="https://krisgis.se" target="_blank" rel="noopener noreferrer" class="stage-viewport" tabindex="-1">
+                <img src="assets/krisgis-preview.png" alt="KrisGIS situation map" loading="lazy">
+                <div class="stage-gradient-overlay"></div>
+              </a>
+            </div>
+            <div class="project-card-body">
+              <div class="project-badge-row">
+                <span class="project-pill"><span class="project-pill-dot"></span> Civil Preparedness</span>
+                <span class="project-tag-accent">Real-Time</span>
+              </div>
+              <h3 class="project-title"><a href="https://krisgis.se" target="_blank" rel="noopener noreferrer">KrisGIS</a></h3>
+              <p class="project-desc">Location-based aggregation of public incident data, operational disruptions and emergency geodata.</p>
+              <div class="project-tech-tags">
+                <span>Civil Contingencies Agency (MSB)</span>
+                <span>Trafikverket API</span>
+                <span>Real-Time Aggregation</span>
+                <span>Preparedness</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://krisgis.se" target="_blank" rel="noopener noreferrer" class="project-card-link">
+                  <span>Visit krisgis.se</span>
                   <span class="arrow-glyph" aria-hidden="true">→</span>
                 </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://krisgis.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/krisgis-preview.png" alt="KrisGIS situation map" loading="lazy">
-                </a>
+                <span class="project-domain-hint">krisgis.se</span>
               </div>
             </div>
           </article>
 
           <!-- 4. Valatlas -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">Valatlas</h3>
-                <p class="project-summary">Official Swedish election data, district analytics and political geography.</p>
+          <article class="project-card-wide">
+            <div class="project-stage-frame">
+              <div class="stage-topbar">
+                <div class="stage-traffic-lights">
+                  <span class="light-dot light-red"></span>
+                  <span class="light-dot light-yellow"></span>
+                  <span class="light-dot light-green"></span>
+                </div>
+                <div class="stage-url-badge">valatlas.se / val2022</div>
+                <div class="stage-status-live"><span class="pulse-green"></span> Live</div>
               </div>
-              <div class="project-action">
-                <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Explore valatlas.se</span>
+              <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" class="stage-viewport" tabindex="-1">
+                <img src="assets/valatlas-preview.png" alt="Valatlas electoral atlas" loading="lazy">
+                <div class="stage-gradient-overlay"></div>
+              </a>
+            </div>
+            <div class="project-card-body">
+              <div class="project-badge-row">
+                <span class="project-pill"><span class="project-pill-dot"></span> Political Geography</span>
+                <span class="project-tag-accent">Election GIS</span>
+              </div>
+              <h3 class="project-title"><a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer">Valatlas</a></h3>
+              <p class="project-desc">Deep exploratory atlas of official Swedish election results, voting districts and municipal budgets.</p>
+              <div class="project-tech-tags">
+                <span>Election Authority</span>
+                <span>6,000+ Precincts</span>
+                <span>Municipal Budgets</span>
+                <span>Seat Allocations</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" class="project-card-link">
+                  <span>Visit valatlas.se</span>
                   <span class="arrow-glyph" aria-hidden="true">→</span>
                 </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/valatlas-preview.png" alt="Valatlas election results and maps" loading="lazy">
-                </a>
+                <span class="project-domain-hint">valatlas.se</span>
               </div>
             </div>
           </article>
 
           <!-- 5. UtterIDE -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">UtterIDE</h3>
-                <p class="project-summary">Review-first AI coding agent with bring-your-own-key (BYOK) architecture and local developer control.</p>
+          <article class="project-card-wide">
+            <div class="project-stage-frame">
+              <div class="stage-topbar">
+                <div class="stage-traffic-lights">
+                  <span class="light-dot light-red"></span>
+                  <span class="light-dot light-yellow"></span>
+                  <span class="light-dot light-green"></span>
+                </div>
+                <div class="stage-url-badge">utteride.se / code-agent</div>
+                <div class="stage-status-live"><span class="pulse-green"></span> Live</div>
               </div>
-              <div class="project-action">
-                <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Explore utteride.se</span>
+              <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" class="stage-viewport" tabindex="-1">
+                <img src="assets/utteride-preview.jpg" alt="UtterIDE environment" loading="lazy">
+                <div class="stage-gradient-overlay"></div>
+              </a>
+            </div>
+            <div class="project-card-body">
+              <div class="project-badge-row">
+                <span class="project-pill"><span class="project-pill-dot"></span> Developer Tools</span>
+                <span class="project-tag-accent">AI &amp; Code</span>
+              </div>
+              <h3 class="project-title"><a href="https://utteride.se" target="_blank" rel="noopener noreferrer">UtterIDE</a></h3>
+              <p class="project-desc">Review-first AI coding environment engineered for local developer control and BYOK architecture.</p>
+              <div class="project-tech-tags">
+                <span>TypeScript</span>
+                <span>Local AI Agent</span>
+                <span>BYOK Claude / DeepSeek</span>
+                <span>Diff Inspection</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" class="project-card-link">
+                  <span>Visit utteride.se</span>
                   <span class="arrow-glyph" aria-hidden="true">→</span>
                 </a>
+                <span class="project-domain-hint">utteride.se</span>
               </div>
             </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/utteride-preview.jpg" alt="UtterIDE development interface" loading="lazy">
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Raster Lab Section -->
+    <section class="section raster-lab-section" id="raster-lab">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">R&amp;D · Experiments</span>
+          <h2 class="section-title">GeoX Raster Lab</h2>
+          <p class="section-sub">
+            Dedicated collection of raster-based geospatial calculations, computational terrain modelling and applied remote sensing.
+          </p>
+        </div>
+
+        <div class="lab-banner">
+          <span class="pulse-cyan"></span>
+          <span class="lab-banner-text"><strong>Active R&amp;D:</strong> Numerical GIA engine (glacial isostatic adjustment) under development for European palaeo-coastlines.</span>
+        </div>
+
+        <div class="raster-lab-grid">
+
+          <!-- 01. PalaeoCoast -->
+          <article class="raster-card">
+            <div class="project-stage-frame">
+              <div class="stage-topbar">
+                <div class="stage-traffic-lights">
+                  <span class="light-dot light-red"></span>
+                  <span class="light-dot light-yellow"></span>
+                  <span class="light-dot light-green"></span>
+                </div>
+                <div class="stage-url-badge">geox.dev/viewer/sealevel/ · 600m DEM · EPSG:3053</div>
+                <div class="stage-status-live"><span class="pulse-green"></span> R&amp;D 01</div>
+              </div>
+              <a href="sealevel.html" class="stage-viewport" tabindex="-1">
+                <img src="assets/palaeocoast-viewer-preview.png" alt="PalaeoCoast interactive map viewer" loading="lazy">
+                <div class="stage-gradient-overlay"></div>
+              </a>
+            </div>
+            <div class="raster-card-body">
+              <div class="raster-badge-row">
+                <span class="raster-badge raster-badge-lab">Raster Lab 01</span>
+                <span class="raster-badge raster-badge-lab">Experimental Sandbox</span>
+                <span class="raster-badge raster-badge-lab">Palaeo-Bathymetry</span>
+              </div>
+              <h3 class="raster-card-title">PalaeoCoast – Historical Coastline Explorer</h3>
+              <p class="raster-card-desc">
+                Experimental reconstruction of European coastlines from 22 000 BP through present day by coupling bathymetry with relative sea-level curves and topological ocean connectivity. GIA numerical engine under active development.
+              </p>
+              
+              <div class="raster-spec-grid">
+                <div class="spec-cell">
+                  <span class="spec-label">Time Horizon</span>
+                  <span class="spec-val">22,000 BP – Present</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-label">Terrain &amp; Bathymetry</span>
+                  <span class="spec-val">GEBCO 2020 (600m)</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-label">Inundation Algorithm</span>
+                  <span class="spec-val">4-Way Flood Fill</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-label">Crustal Uplift</span>
+                  <span class="spec-val">GIA Engine in R&amp;D</span>
+                </div>
+              </div>
+
+              <div class="raster-card-actions">
+                <a href="viewer/sealevel/index.html?lang=en" target="_blank" rel="noopener noreferrer" class="raster-action-primary">
+                  <span>Launch Map Viewer</span>
+                  <span class="arrow-glyph" aria-hidden="true">↗</span>
+                </a>
+                <a href="sealevel.html" class="raster-action-secondary">
+                  <span>Case Study &amp; Methodology</span>
+                  <span class="arrow-glyph" aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- 6. PalaeoCoast -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap;">
-                  <h3 class="project-title">PalaeoCoast</h3>
-                  <span style="font-size:10px;text-transform:uppercase;font-weight:700;letter-spacing:0.05em;padding:2px 8px;border-radius:999px;background:rgba(238,124,63,0.15);color:#ee7c3f;border:1px solid rgba(238,124,63,0.35);">Experimental</span>
+          <!-- 02. Sentinel-2 Change Detection -->
+          <article class="raster-card">
+            <div class="project-stage-frame">
+              <div class="stage-topbar">
+                <div class="stage-traffic-lights">
+                  <span class="light-dot light-red"></span>
+                  <span class="light-dot light-yellow"></span>
+                  <span class="light-dot light-green"></span>
                 </div>
-                <p class="project-summary">Palaeogeographic reconstruction of European prehistoric coastlines from 22 000 BP through present day with topological ocean connectivity. Numerical GIA engine currently under active development.</p>
+                <div class="stage-url-badge">Copernicus Sentinel-2 MSI</div>
+                <div class="stage-status-live" style="color:#F59E0B;"><span class="status-pulse-amber"></span> Coming Soon</div>
               </div>
-              <div class="project-action">
-                <a href="sealevel.html" class="project-link">
-                  <span>Explore PalaeoCoast</span>
-                  <span class="arrow-glyph" aria-hidden="true">→</span>
-                </a>
+              <div class="sentinel-clean-stage">
+                <div class="sentinel-radar-ring" aria-hidden="true">
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
+                </div>
+                <span class="sentinel-sensor-caption">Copernicus Sentinel-2 MSI · 10m Multispectral</span>
               </div>
             </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="sealevel.html" tabindex="-1">
-                  <img src="assets/sealevel-preview-en.png" alt="PalaeoCoast reconstruction map" loading="lazy">
-                </a>
+            <div class="raster-card-body">
+              <div class="raster-badge-row">
+                <span class="raster-badge raster-badge-lab">Raster Lab 02</span>
+                <span class="raster-badge raster-badge-coming">Coming Soon</span>
+              </div>
+              <h3 class="raster-card-title">Sentinel-2 Change Detection</h3>
+              <p class="raster-card-desc">
+                Multi-temporal satellite imagery analysis and automated change detection across spectral bands to monitor environmental shifts and coastal dynamics.
+              </p>
+              <div class="raster-card-actions">
+                <span class="raster-status-note">
+                  <span class="status-pulse-amber"></span> Planned Experiment · Pipeline in Development
+                </span>
               </div>
             </div>
           </article>
@@ -265,34 +476,41 @@
     <section class="section capabilities-section" id="capabilities">
       <div class="container">
         <div class="section-head">
+          <span class="section-eyebrow">Expertise</span>
           <h2 class="section-title">Capabilities</h2>
-          <p class="section-sub">Technical focus areas across spatial analysis, pipelines and digital interfaces.</p>
+          <p class="section-sub">Technical focus areas across spatial analysis, automated pipelines and digital interfaces.</p>
         </div>
 
         <div class="capabilities-grid">
           <div class="capability-item">
+            <div class="capability-num">// 01</div>
             <h3 class="capability-title">Geospatial Engineering</h3>
-            <p class="capability-desc">Coordinate reference systems, vector tiling, spatial indexing and geometric transformations.</p>
+            <p class="capability-desc">Coordinate reference systems, vector tiling, spatial indexing and high-precision geometric transformations.</p>
           </div>
           <div class="capability-item">
-            <h3 class="capability-title">Data Pipelines & ETL</h3>
-            <p class="capability-desc">Automated ingestion, schema normalization, batch processing and reproducible pipelines.</p>
+            <div class="capability-num">// 02</div>
+            <h3 class="capability-title">Data Pipelines &amp; ETL</h3>
+            <p class="capability-desc">Automated ingestion, schema normalization, batch processing and reproducible pipelines in FME and Python.</p>
           </div>
           <div class="capability-item">
-            <h3 class="capability-title">Spatial & Isochrone Analysis</h3>
-            <p class="capability-desc">Multimodal routing, accessibility modeling, catchment areas and geographic travel times.</p>
+            <div class="capability-num">// 03</div>
+            <h3 class="capability-title">Spatial &amp; Isochrone Analysis</h3>
+            <p class="capability-desc">Multimodal routing, accessibility modeling, catchment areas and geographic travel times powered by OpenTripPlanner.</p>
           </div>
           <div class="capability-item">
-            <h3 class="capability-title">APIs & Integrations</h3>
-            <p class="capability-desc">Robust services bridging public records, geospatial databases and production web apps.</p>
+            <div class="capability-num">// 04</div>
+            <h3 class="capability-title">APIs &amp; Integrations</h3>
+            <p class="capability-desc">Robust services bridging official public records, geospatial databases and responsive production web applications.</p>
           </div>
           <div class="capability-item">
+            <div class="capability-num">// 05</div>
             <h3 class="capability-title">Interactive Mapping</h3>
-            <p class="capability-desc">Lightweight, accessible map renderers designed for clarity and fast user interaction.</p>
+            <p class="capability-desc">Lightweight, high-density MapLibre GL renderers engineered for maximum responsiveness, visual hierarchy and low latency.</p>
           </div>
           <div class="capability-item">
+            <div class="capability-num">// 06</div>
             <h3 class="capability-title">Open Data Processing</h3>
-            <p class="capability-desc">Structuring, validating and enriching official public datasets into actionable tools.</p>
+            <p class="capability-desc">Structuring, validating and enriching official public datasets (SCB, MSB, Valmyndigheten) into production tools.</p>
           </div>
         </div>
       </div>
@@ -302,9 +520,10 @@
     <section class="section about-section" id="about">
       <div class="container">
         <div class="about-card">
+          <span class="section-eyebrow">Architecture &amp; Founder</span>
           <h2 class="section-title">About GeoX</h2>
           <p class="about-lead">
-            GeoX is an independent development identity for projects exploring the intersection of geospatial technology, data engineering and digital products.
+            GeoX is an independent development identity for projects exploring the intersection of geospatial engineering, data infrastructure and digital products. Created and engineered by Ronnie Utter.
           </p>
           <div class="about-author-wrap">
             <span class="about-author">Created by <a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer" class="author-link">Ronnie Utter</a></span>
@@ -336,7 +555,15 @@
               <li><a href="https://krisgis.se" target="_blank" rel="noopener noreferrer">KrisGIS</a></li>
               <li><a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer">Valatlas</a></li>
               <li><a href="https://utteride.se" target="_blank" rel="noopener noreferrer">UtterIDE</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Raster Lab</span>
+            <ul class="footer-links">
               <li><a href="sealevel.html">PalaeoCoast</a></li>
+              <li><a href="viewer/sealevel/index.html?lang=en" target="_blank" rel="noopener noreferrer">Interactive Map ↗</a></li>
+              <li><span style="color:#64748b;font-size:14px;">Sentinel-2 (Coming Soon)</span></li>
             </ul>
           </div>
 

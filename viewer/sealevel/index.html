@@ -139,11 +139,32 @@
     <p class="eyebrow">PALAEOCOAST · METHOD / SOURCES</p>
     <h2 data-i18n="methodTitle">Vad modellen visar — och inte visar</h2>
     <p data-i18n="methodIntro">Modellen rekonstruerar geometriska höjdscenarier. Den daterar inte bosättningar och modellerar inte fysisk sedimenttransport, vågor eller isfrihet.</p>
+
+    <!-- Calculation & Uplift Summary -->
+    <div style="margin: 14px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: #fff;">
+      <h3 style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px; color: var(--teal);">Beräkning av landhöjning &amp; terräng</h3>
+      <div style="font-family: monospace; font-size: 11px; padding: 6px 8px; background: #f2f6f4; border-radius: 4px; margin-bottom: 8px;">
+        Z_past = Z_now + A_rel − U + E − D<br>
+        M = Z_past − S
+      </div>
+      <ul style="margin: 0; padding-left: 16px; font-size: 10.5px; line-height: 1.5; color: #496068;">
+        <li><strong>− U (Landhöjning):</strong> Om marken höjts efter vald forntid låg den äldre markytan lägre än dagens DEM (−U). Landsänkning innebär att marken låg högre (+).</li>
+        <li><strong>A_rel (GIA):</strong> Kombinerad relativhöjdsanomali från ICE-6G_C som justerar terrängen i förhållande till dåtidens hav innan land/vatten klassificeras.</li>
+        <li><strong>Topologisk kontakt:</strong> Celler under havsytan (M ≤ 0) kräver hydraulisk fyrgrannskapsförbindelse till havsfrö för att bli sammanhängande hav. Slutna sänkor förblir torrlagda.</li>
+      </ul>
+      <div style="margin-top: 10px;">
+        <a href="../../sealevel-sv.html#metod" target="_blank" rel="noopener noreferrer" style="font-size: 11px; font-weight: 700; color: var(--sea); text-decoration: underline;">
+          Läs fullständig vetenskaplig rapport &amp; interaktiv principskiss på GeoX ↗
+        </a>
+      </div>
+    </div>
+
     <div id="dataStatus" class="data-status"></div>
     <h3 data-i18n="verifiedCandidates">Verifierade kandidater för lokal förfining</h3>
     <ul>
       <li><a href="https://emodnet.ec.europa.eu/en/emodnet-bathymetry-dtm-2024-release" target="_blank" rel="noreferrer">EMODnet Bathymetry DTM 2024</a> · integrerat i Doggerland som 1/4 bågminutsexport · batymetri i LAT och sammansatt landdel.</li>
       <li><a href="https://doi.org/10.1594/PANGAEA.945729" target="_blank" rel="noreferrer">BRITICE-CHRONO</a> · empirisk isutbredning vid 22 ka och 16 ka · CC BY 4.0.</li>
+      <li><a href="https://doi.org/10.1594/PANGAEA.848117" target="_blank" rel="noreferrer">DATED-1</a> · eurasisk isutbredning med minimi-, mest trovärdig och maximigräns vid 22–10 ka · CC BY 3.0.</li>
       <li><a href="https://emodnet.ec.europa.eu/en/geology" target="_blank" rel="noreferrer">EMODnet Geology</a> · palaeokanaler som featureinventarium.</li>
       <li><a href="https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM" target="_blank" rel="noreferrer">Copernicus DEM GLO-30</a> · 30 m DSM · EGM2008.</li>
       <li><a href="https://www.gebco.net/data_and_products/gridded_bathymetry_data/" target="_blank" rel="noreferrer">GEBCO 2025</a> · globalt 15″ grid · heterogena höjddatum i delar av kustzonen.</li>
