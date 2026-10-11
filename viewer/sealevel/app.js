@@ -194,11 +194,13 @@ const scenarioUi = {
 
 const processLabels = {
   en: {
+    paleo_elevation: 'Terrain relief · background',
     land_motion: 'Assumed land motion after selected date → 1950',
     erosion: 'Assumed erosion after selected date → 1950',
     deposition: 'Assumed deposition after selected date → 1950'
   },
   sv: {
+    paleo_elevation: 'Terrängrelief · bakgrund',
     land_motion: 'Antagen landrörelse efter vald tid → 1950',
     erosion: 'Antagen erosion efter vald tid → 1950',
     deposition: 'Antagen sedimentpålagring efter vald tid → 1950'
@@ -220,7 +222,7 @@ const rateLabels = {
 
 const layerDescriptions = {
   en: {
-    paleo_elevation: 'Reconstructed elevation with epoch terrain shading. Sea level defines inundation; landscape processes alter topography.',
+    paleo_elevation: 'Reconstructed elevation with epoch terrain shading, placed beneath classification and process layers as geographic context.',
     terrain_change: 'Reconstructed elevation minus present elevation (m). Shows cumulative sum of land motion, erosion and deposition.',
     relative_height_anomaly: 'ICE-6G_C ground elevation anomaly relative to contemporaneous sea level compared to 0 ka. Combines crustal and sea-surface effects.',
     coastline: 'Boundary between computed land and hydraulically connected sea.',
@@ -233,7 +235,7 @@ const layerDescriptions = {
     palaeodrainage: 'Mapped palaeochannels from EMODnet Geology feature inventory.'
   },
   sv: {
-    paleo_elevation: 'Rekonstruerad höjd med tidsberoende terrängskuggning. Havsnivån avgör vad som översvämmas; landskapsprocesserna ändrar själva höjden.',
+    paleo_elevation: 'Rekonstruerad höjd med tidsberoende terrängskuggning, placerad under klassning och processlager som geografisk bakgrund.',
     terrain_change: 'Rekonstruerad höjd minus dagens höjd, i meter. Visar bidraget från landrörelse, erosion och sedimentpålagring.',
     relative_height_anomaly: 'ICE-6G_C-markhöjd relativt samtidens hav jämfört med 0 ka. Innehåller både land- och havsyteeffekter och är inte ren landhöjning.',
     coastline: 'Gränsen mellan beräknat land och hav med havskontakt.',
@@ -277,6 +279,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attr
 map.createPane('resultA'); map.getPane('resultA').style.zIndex = 410;
 map.createPane('resultB'); map.getPane('resultB').style.zIndex = 420;
 map.createPane('process'); map.getPane('process').style.zIndex = 430;
+map.createPane('terrain'); map.getPane('terrain').style.zIndex = 405;
 
 function t(key) {
   return translations[state.lang]?.[key] || translations.sv?.[key] || document.querySelector(`[data-i18n="${key}"]`)?.dataset.sv || key;
@@ -444,7 +447,7 @@ function layerDescription(name, display = processDisplay(name)) {
 const processNames = ['paleo_elevation', 'terrain_change', 'relative_height_anomaly', 'coastline', 'sensitivity', 'basins', 'land_motion', 'erosion', 'deposition'];
 processNames.push('ice_extent', 'palaeodrainage');
 
-for (const name of processNames) state.layerSettings.set(name, {enabled: name === 'coastline' || name === 'paleo_elevation' || name === 'ice_extent', opacity: name === 'coastline' ? 1 : name === 'paleo_elevation' ? 0.88 : 0.78, visual: name === 'land_motion' ? 'both' : null});
+for (const name of processNames) state.layerSettings.set(name, {enabled: name === 'coastline' || name === 'paleo_elevation' || name === 'ice_extent', opacity: name === 'coastline' ? 1 : name === 'paleo_elevation' ? 0.68 : 0.78, visual: name === 'land_motion' ? 'both' : null});
 const vectorCache = new Map();
 function availableProcessNames() {
   return processNames.filter(name => state.frame.layers[name] || state.frame.vector_layers?.[name] || state.scenario.frames.some(frame => frame.vector_layers?.[name]));
@@ -515,7 +518,7 @@ function toggleProcess(name, on, opacity) {
   if (on) {
     const display = processDisplay(name);
     if (display.isVector) addVector(name, display.info, opacity);
-    else if (name !== 'land_motion' || !['markers', 'off'].includes(state.layerSettings.get(name)?.visual)) addImage(name, display.info, 'process', name === 'land_motion' ? opacity * .24 : opacity);
+    else if (name !== 'land_motion' || !['markers', 'off'].includes(state.layerSettings.get(name)?.visual)) addImage(name, display.info, name === 'paleo_elevation' ? 'terrain' : 'process', name === 'land_motion' ? opacity * .24 : opacity);
     if (name === 'land_motion' && !['surface', 'off'].includes(state.layerSettings.get(name)?.visual)) renderMotionSymbols(opacity);
   }
   updateLegend(name, on);
