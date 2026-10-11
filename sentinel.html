@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sentinel Lab — Satellite &amp; Terrain Analytics | GeoX Raster Lab</title>
+  <meta name="description"
+    content="High-resolution remote sensing workbench and computational raster engine processing Copernicus Sentinel-2 Level-2A (10m BOA) and Copernicus DEM GLO-30 within GeoX Raster Lab.">
+  <meta name="keywords"
+    content="Sentinel Lab, Sentinel-2, Copernicus, Remote Sensing, NDVI, MNDWI, NBR, dNBR, Kårböle Wildfire, DEM, GLO-30, AST Raster Algebra, GeoX Raster Lab, GIS">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://geox.dev/sentinel.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sentinel Lab — Satellite &amp; Terrain Analytics | GeoX Raster Lab">
+  <meta property="og:description"
+    content="High-resolution remote sensing workbench and computational raster engine processing Copernicus Sentinel-2 Level-2A (10m BOA) and Copernicus DEM GLO-30.">
+  <meta property="og:url" content="https://geox.dev/sentinel.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GeoX">
+  <meta property="og:image" content="https://geox.dev/assets/sentinel-viewer-preview.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sentinel Lab — Satellite &amp; Terrain Analytics">
+  <meta name="twitter:description"
+    content="High-resolution remote sensing workbench and computational raster engine processing Copernicus Sentinel-2 Level-2A and DEM GLO-30.">
+  <meta name="twitter:image" content="https://geox.dev/assets/sentinel-viewer-preview.png">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=20261011-2">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Sentinel Lab",
+    "applicationCategory": "Geographic Information System",
+    "operatingSystem": "Web Browser",
+    "url": "https://geox.dev/sentinel.html",
+    "description": "High-resolution remote sensing workbench and computational raster engine processing Copernicus Sentinel-2 Level-2A and DEM GLO-30.",
+    "author": {
+      "@type": "Person",
+      "name": "Ronnie Utter",
+      "sameAs": "https://www.linkedin.com/in/fme-dev/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header (Nordic Slate Light Styling) -->
+  <header class="site-header site-header-light" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="GeoX Home">
+        <span class="brand-text">Geo<span class="brand-accent">X</span></span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main Navigation">
+        <a href="index.html#projects" class="nav-link">Projects</a>
+        <a href="index.html#raster-lab" class="nav-link">Raster Lab</a>
+        <a href="#overview" class="nav-link">Overview</a>
+        <a href="#viewer" class="nav-link">Workbench</a>
+        <a href="#experiments" class="nav-link">Modules</a>
+        <a href="#methodology" class="nav-link">Methodology</a>
+        <a href="#sources" class="nav-link">Data Sources</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switch" aria-label="Language selection">
+          <span class="lang-active">EN</span>
+          <span class="lang-sep">/</span>
+          <a href="sentinel-sv.html" class="lang-link">SV</a>
+        </div>
+        <a href="mailto:support@geox.dev" class="btn btn-header">Contact</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="overview">
+    <!-- Case Study Header -->
+    <section class="case-study-hero">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="index.html">GeoX Home</a>
+          <span>/</span>
+          <a href="index.html#raster-lab">Raster Lab</a>
+          <span>/</span>
+          <span>Sentinel Lab</span>
+        </nav>
+
+        <span class="case-study-eyebrow">GeoX Raster Lab · Project 02 · Engineering Case Study</span>
+        <h1 class="case-study-title">Sentinel Lab — Satellite &amp; Terrain Analytics</h1>
+        <p class="case-study-lead">
+          A high-performance remote sensing workbench and computational raster engine processing authentic European Space Agency (ESA) Copernicus Sentinel-2 Level-2A multispectral imagery and Copernicus DEM GLO-30 topography. Featuring five analytical modules: vegetation phenology, wetland hydrology, wildfire burn severity, digital terrain morphometry, and a sandboxed AST raster calculator.
+        </p>
+
+        <!-- KPI Ribbon -->
+        <div class="kpi-ribbon">
+          <div class="kpi-card">
+            <div class="kpi-value">5</div>
+            <div class="kpi-label">Analytical Modules</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value">10 m</div>
+            <div class="kpi-label">Ground Resolution (BOA)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value">6 102 ha</div>
+            <div class="kpi-label">Mapped Burn Area (Kårböle)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value">0 eval()</div>
+            <div class="kpi-label">Sandboxed AST Algebra</div>
+          </div>
+        </div>
+
+        <div class="case-study-actions">
+          <a href="#viewer" class="btn btn-primary">Inspect Workbench Preview ↓</a>
+          <a href="viewer/sentinel/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="color:var(--text-primary);border-color:var(--border);">
+            <span>Open Interactive Workbench Fullscreen ↗</span>
+          </a>
+          <a href="#experiments" class="btn btn-ghost" style="color:var(--text-secondary);border-color:var(--border);">
+            <span>Explore 5 Modules ↓</span>
+          </a>
+          <a href="#methodology" class="btn btn-ghost" style="color:var(--text-secondary);border-color:var(--border);">
+            <span>Read Methodology ↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Embedded Viewer Section -->
+    <section class="case-study-viewer-section" id="viewer">
+      <div class="container">
+        <div class="section-head" style="margin-bottom: 24px;">
+          <h2 class="section-title">Interactive Analysis Workbench</h2>
+          <p class="section-sub">
+            Switch between multispectral sensors, inspect probe histograms, test band math expressions, and analyze terrain slope and wildfire contours directly in the browser.
+          </p>
+        </div>
+
+        <div class="viewer-frame-container">
+          <div class="viewer-top-bar">
+            <span class="viewer-bar-title">Sentinel Lab Console · Copernicus Sentinel-2 MSI · DEM GLO-30 · EPSG:32633</span>
+            <a href="viewer/sentinel/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 12px; padding: 6px 14px;">
+              <span>Fullscreen Window ↗</span>
+            </a>
+          </div>
+          <iframe src="viewer/sentinel/index.html?embed=1&v=20261011-1" class="viewer-frame" title="Sentinel Lab Interactive GIS Workbench" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analytical Modules Section -->
+    <section class="case-study-body-section" id="experiments">
+      <div class="container">
+        <div class="section-head" style="margin-bottom: 36px;">
+          <span class="section-eyebrow">Applied Remote Sensing Modules</span>
+          <h2 class="section-title">The Five Computational Raster Experiments</h2>
+          <p class="section-sub">
+            Each module addresses a distinct scientific and computational challenge in Earth observation, from agricultural phenology and wetland ecology to wildfire severity mapping and numerical digital terrain morphometry.
+          </p>
+        </div>
+
+        <!-- MODULE 1: VEGETATION -->
+        <article class="exp-feature-card">
+          <div class="exp-header">
+            <div>
+              <span class="exp-badge badge-veg">Module 01 · Spectral Indices &amp; Phenology</span>
+              <h3 class="exp-title">Multitemporal Vegetation Dynamics (NDVI &amp; &Delta;NDVI)</h3>
+              <div class="exp-meta">Study Areas: Lake Tåkern · Stora Alvaret (Öland) · Skåne Plain | Sensor: Sentinel-2 MSI 10m BOA</div>
+            </div>
+            <a href="viewer/sentinel/index.html?exp=vegetation" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Launch Module 1 ↗</a>
+          </div>
+          <div class="exp-body-grid">
+            <div class="exp-text">
+              <p>
+                Measures seasonal canopy vitality, agricultural ripening, and crop harvest across southern and central Sweden. 
+                The analysis contrasts midsummer peak growth (June/July) against late summer harvest (August/September) by calculating the Normalized Difference Vegetation Index (NDVI) on atmospheric-corrected Bottom-of-Atmosphere (BOA) surface reflectance.
+              </p>
+              <div class="formula-box">
+                <span>NDVI = (B08 − B04) / (B08 + B04)</span> &nbsp;|&nbsp; <span>&Delta;NDVI = NDVI_B − NDVI_A</span>
+              </div>
+              <p>
+                <strong>Key Finding:</strong> Intensive agricultural parcels around Lake Tåkern and across Skåne show a sharp NDVI plunge from ~0.85 (dense vegetative canopy) down to ~0.25 post-harvest. On Öland's limestone grassland (Alvaret), the index reflects moisture stress and drought response. Cloud, cloud shadow, and saturated pixels are automatically masked using the Sentinel-2 Scene Classification Layer (SCL).
+              </p>
+            </div>
+            <div class="preview-gallery">
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/takern/true_color_a.png" alt="True Color June 2024">
+                <div class="preview-thumb-caption">True Color June 2024</div>
+              </div>
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/takern/ndvi_a.png" alt="NDVI Midsummer">
+                <div class="preview-thumb-caption">NDVI Midsummer Peak</div>
+              </div>
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/takern/false_color_a.png" alt="False Color NIR">
+                <div class="preview-thumb-caption">Color-Infrared (B08-B04-B03)</div>
+              </div>
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/takern/delta_ndvi.png" alt="Delta NDVI Difference">
+                <div class="preview-thumb-caption">&Delta;NDVI Phenology Shift</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- MODULE 2: WATER -->
+        <article class="exp-feature-card">
+          <div class="exp-header">
+            <div>
+              <span class="exp-badge badge-water">Module 02 · Hydrology &amp; Wetlands</span>
+              <h3 class="exp-title">Water &amp; Wetland Detection (NDWI / MNDWI)</h3>
+              <div class="exp-meta">Study Area: Lake Tåkern (Ramsar Wetland Site) | Sensor: MSI Bands B03 (Green), B08 (NIR), B11 (SWIR-1)</div>
+            </div>
+            <a href="viewer/sentinel/index.html?exp=water" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Launch Module 2 ↗</a>
+          </div>
+          <div class="exp-body-grid">
+            <div class="exp-text">
+              <p>
+                Lake Tåkern is one of Northern Europe's renowned bird reserves, characterized by shallow open waters framed by vast reed beds (<em>Phragmites australis</em>). 
+                This module benchmarks classical McFeeters NDWI against Xu's Modified MNDWI utilizing Short-Wave Infrared radiation (SWIR-1 B11).
+              </p>
+              <div class="formula-box">
+                <span>NDWI = (B03 − B08) / (B03 + B08)</span> &nbsp;|&nbsp; <span>MNDWI = (B03 − B11) / (B03 + B11)</span>
+              </div>
+              <p>
+                <strong>Hydrological Insight:</strong> Classical NDWI frequently overestimates open water across moist soils and marsh reed fringes. MNDWI strongly attenuates soil and vegetation reflectance in the SWIR spectrum, delineating open water surfaces with high fidelity. The analysis isolates a seasonal water body surface expansion of <strong>+0.68 km&sup2;</strong>, accompanied by an interactive client-side threshold slider.
+              </p>
+            </div>
+            <div class="preview-gallery">
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/water/ndwi_a.png" alt="NDWI Tåkern">
+                <div class="preview-thumb-caption">Classical NDWI (Green − NIR)</div>
+              </div>
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/water/mndwi_a.png" alt="MNDWI Tåkern">
+                <div class="preview-thumb-caption">Modified MNDWI (Green − SWIR)</div>
+              </div>
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/water/water_mask_a.png" alt="Classified Water June">
+                <div class="preview-thumb-caption">Classified Water Mask June</div>
+              </div>
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/water/water_mask_b.png" alt="Classified Water Sept">
+                <div class="preview-thumb-caption">Classified Water Mask Sept</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- MODULE 3: WILDFIRE -->
+        <article class="exp-feature-card">
+          <div class="exp-header">
+            <div>
+              <span class="exp-badge badge-fire">Module 03 · Disaster Analytics &amp; Wildfire</span>
+              <h3 class="exp-title">Kårböle Wildfire 2018 (NBR &amp; dNBR Burn Severity)</h3>
+              <div class="exp-meta">Study Area: Kårböle, Hälsingland (Tile 33VWJ) | Temporal Baseline: 2018-07-04 vs 2018-09-12</div>
+            </div>
+            <a href="viewer/sentinel/index.html?exp=wildfire" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Launch Module 3 ↗</a>
+          </div>
+          <div class="exp-body-grid">
+            <div class="exp-text">
+              <p>
+                The record heatwave and drought of July 2018 triggered the most severe modern wildfires in Sweden's history. 
+                This experiment utilizes pair-matched, cloud-free Sentinel-2 observations captured immediately before and after the disaster to classify burn severity according to USGS / Copernicus Emergency Management Service standards.
+              </p>
+              <div class="formula-box">
+                <span>NBR = (B08 − B12) / (B08 + B12)</span> &nbsp;|&nbsp; <span>dNBR = NBR_pre − NBR_post</span>
+              </div>
+              <p>
+                <strong>Quantitative Damage Mapping:</strong> By contrasting NIR (B08, 842 nm, strongly absorbed by charcoal and charred biomass) against SWIR-2 (B12, 2190 nm, strongly reflected by bare ash and scorched mineral soils), the engine classifies exactly <strong>6 102 hectares</strong> of high- and moderate-severity burned coniferous boreal forest.
+              </p>
+            </div>
+            <div class="preview-gallery">
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/wildfire/true_color_pre.png" alt="Kårböle Pre-Fire">
+                <div class="preview-thumb-caption">4 July 2018 (Pre-Fire)</div>
+              </div>
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/wildfire/true_color_post.png" alt="Kårböle Post-Fire">
+                <div class="preview-thumb-caption">12 Sept 2018 (Post-Fire)</div>
+              </div>
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/wildfire/false_color_post.png" alt="False Color Burn Scars">
+                <div class="preview-thumb-caption">Color-Infrared Burn Scars</div>
+              </div>
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/wildfire/dnbr.png" alt="dNBR Severity Map">
+                <div class="preview-thumb-caption">dNBR Burn Severity (USGS)</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- MODULE 4: TERRAIN -->
+        <article class="exp-feature-card">
+          <div class="exp-header">
+            <div>
+              <span class="exp-badge badge-terrain">Module 04 · Topography &amp; Morphometry</span>
+              <h3 class="exp-title">Digital Terrain &amp; Slope Morphometry (Copernicus DEM)</h3>
+              <div class="exp-meta">Study Area: Omberg Horst &amp; Lake Vättern Fault Escarpment | Dataset: Copernicus DEM GLO-30 (30m)</div>
+            </div>
+            <a href="viewer/sentinel/index.html?exp=terrain" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Launch Module 4 ↗</a>
+          </div>
+          <div class="exp-body-grid">
+            <div class="exp-text">
+              <p>
+                Mount Omberg rises dramatically as an isolated bedrock horst between the deep Lake Vättern tectonic graben and the flat sedimentary plains of Östergötland. 
+                This experiment derives analytical morphometric terrain models directly from Copernicus DEM: elevation, slope gradient, and analytical shaded relief (hillshade).
+              </p>
+              <div class="formula-box">
+                <span>Slope = arctan(&radic;(p&sup2; + q&sup2;)) [Horn 1981]</span> &nbsp;|&nbsp; <span>Hillshade (Az 315&deg;, Alt 45&deg;)</span>
+              </div>
+              <p>
+                <strong>Morphometric Findings:</strong> Elevations span from 86.7 m (Lake Vättern waterline) up to 167.0 m a.s.l. (Hjässan summit). 
+                Horn's 3&times;3 convolution filter detects steep cliff gradients of up to <strong>21.6&deg; slope</strong> along the western fracture line. Includes an interactive SVG elevation cross-section profile!
+              </p>
+            </div>
+            <div class="preview-gallery">
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/terrain/elevation.png" alt="Copernicus DEM Elevation">
+                <div class="preview-thumb-caption">Digital Elevation Model (DEM)</div>
+              </div>
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/terrain/slope.png" alt="Horn's Slope Analysis">
+                <div class="preview-thumb-caption">Slope Gradient (Horn's Filter)</div>
+              </div>
+              <div class="preview-thumb">
+                <img src="viewer/sentinel/data/terrain/hillshade.png" alt="Analytical Hillshade">
+                <div class="preview-thumb-caption">Analytical Shaded Relief</div>
+              </div>
+              <div class="preview-thumb" style="background: #0f172a; display: flex; align-items: center; justify-content: center;">
+                <svg width="60" height="40" viewBox="0 0 100 50" fill="none">
+                  <path d="M5 45 L25 45 L45 15 L65 25 L85 10 L95 45 Z" fill="rgba(0,210,255,0.15)" stroke="#00d2ff" stroke-width="2"/>
+                </svg>
+                <div class="preview-thumb-caption">Interactive Elevation Profile</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- MODULE 5: CALCULATOR -->
+        <article class="exp-feature-card">
+          <div class="exp-header">
+            <div>
+              <span class="exp-badge badge-calc">Module 05 · Client-Side Band Algebra</span>
+              <h3 class="exp-title">Sandboxed AST Raster Band Calculator</h3>
+              <div class="exp-meta">Architecture: Recursive Descent AST Parser &amp; Lexer | Zero eval() | Float32 Raster Matrices</div>
+            </div>
+            <a href="viewer/sentinel/index.html?exp=calculator" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Launch Module 5 ↗</a>
+          </div>
+          <div class="exp-body-grid">
+            <div class="exp-text">
+              <p>
+                Unlike naive web solutions that execute untrusted Javascript via <code>eval()</code> or <code>new Function()</code>, GeoX Raster Lab implements 
+                a secure, sandboxed lexical tokenizer and recursive descent parser compiling mathematical expressions into Abstract Syntax Trees (AST).
+              </p>
+              <div class="formula-box">
+                <span>Validated AST Grammar: BinOp(Left, Op, Right) | BandToken | NumericConstant</span>
+              </div>
+              <p>
+                <strong>Capabilities:</strong> Interactive band selector tokens (B02, B03, B04, B08, B11, B12), arithmetic operators (+, −, *, /), 
+                one-click preset formulas (NDVI, NDWI, MNDWI, NBR, SAVI), real-time syntax checking with informative error messages, and GPU/canvas rendering using custom color ramps.
+              </p>
+            </div>
+            <div class="preview-gallery">
+              <div class="preview-thumb" style="grid-column: span 2; height: 160px; background: #080c10; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;">
+                <div style="font-family: var(--font-mono); font-size: 15px; color: var(--accent-cyan); margin-bottom: 12px;">
+                  (B08 − B04) / (B08 + B04 + 0.0001)
+                </div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+                  <span style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-family: var(--font-mono);">B02</span>
+                  <span style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-family: var(--font-mono);">B03</span>
+                  <span style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-family: var(--font-mono);">B04</span>
+                  <span style="background: rgba(0,210,255,0.2); color: #00d2ff; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-family: var(--font-mono);">B08 (NIR)</span>
+                  <span style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-family: var(--font-mono);">B11</span>
+                  <span style="background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-family: var(--font-mono);">B12</span>
+                </div>
+                <div class="preview-thumb-caption">Sandboxed Client/Server Raster Engine</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Technical Methodology Section -->
+    <section class="case-study-body-section" id="methodology" style="background-color: var(--bg-surface); border-top: 1px solid var(--border-subtle);">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Data Engineering &amp; Computing</span>
+          <h2 class="section-title">Technical Specifications &amp; Pipeline Architecture</h2>
+          <p class="section-sub">
+            The numerical engine is engineered in Python leveraging <code>Rasterio</code>, <code>NumPy</code>, <code>SciPy</code>, <code>PyProj</code>, and <code>GDAL</code>. All spatial outputs maintain rigorous metric coordinate reference systems (SWEREF99 TM / UTM Zone 33N, EPSG:32633).
+          </p>
+        </div>
+
+        <div class="tech-specs-table-wrapper">
+          <table class="tech-specs-table">
+            <thead>
+              <tr>
+                <th>Component / Parameter</th>
+                <th>Source / Numerical Algorithm</th>
+                <th>Resolution &amp; Processing Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Optical Satellite Imagery</td>
+                <td>Copernicus Sentinel-2 MSI Level-2A</td>
+                <td>10m &amp; 20m ground resolution, Bottom-of-Atmosphere (BOA) surface reflectance</td>
+              </tr>
+              <tr>
+                <td>Atmospheric &amp; Cloud Masking</td>
+                <td>Scene Classification Layer (SCL)</td>
+                <td>20m nearest-neighbor resampled to 10m grid; filters clouds, shadows, and snow</td>
+              </tr>
+              <tr>
+                <td>Elevation Baseline (DEM)</td>
+                <td>Copernicus DEM GLO-30</td>
+                <td>30m spatial resolution, WGS84 ellipsoidal height reprojected to metric grid</td>
+              </tr>
+              <tr>
+                <td>Terrain Slope Analysis</td>
+                <td>Horn's 3&times;3 Convolution Operator</td>
+                <td>Second-order central finite differences, angular output in degrees [&deg;]</td>
+              </tr>
+              <tr>
+                <td>Wildfire Severity Mapping</td>
+                <td>NBR / dNBR (USGS 4-Tier Scale)</td>
+                <td>NIR (B08) vs SWIR-2 (B12); temporal baseline 2018-07-04 vs 2018-09-12</td>
+              </tr>
+              <tr>
+                <td>Surface Water Extraction</td>
+                <td>MNDWI (Xu 2006) Dynamic Threshold</td>
+                <td>Green (B03) vs SWIR-1 (B11); client-side pixel histogram integration</td>
+              </tr>
+              <tr>
+                <td>Raster Algebra Engine</td>
+                <td>Sandboxed AST Recursive Descent</td>
+                <td>Grammar-validated abstract syntax tree, zero eval(), Float32 tensor math</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sources & Datasets Section -->
+    <section class="section" id="sources" style="background-color: var(--bg-surface-alt); border-top: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Data Architecture</span>
+          <h2 class="section-title">Datasets &amp; Reference Baselines</h2>
+          <p class="section-sub">
+            All satellite observations and elevation models originate from verified, open scientific repositories under open data licenses.
+          </p>
+        </div>
+
+        <div class="sources-grid">
+          <div class="source-item">
+            <div class="source-tag">Earth Observation</div>
+            <h3 class="source-title">Copernicus Sentinel-2</h3>
+            <p class="source-detail">Multispectral Instrument (MSI) Level-2A BOA reflectance from the European Space Agency (ESA) Copernicus Data Space Ecosystem.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Elevation</div>
+            <h3 class="source-title">Copernicus DEM GLO-30</h3>
+            <p class="source-detail">30-meter global digital elevation model providing consistent topographic terrain geometry across the Scandinavian peninsula.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Projection</div>
+            <h3 class="source-title">EPSG:32633 (UTM 33N)</h3>
+            <p class="source-detail">Metric conformal projection (SWEREF99 TM compatible) preserving true euclidean distances for slope, distance, and area measurements.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Atmosphere</div>
+            <h3 class="source-title">Sen2Cor BOA Processing</h3>
+            <p class="source-detail">Bottom-of-Atmosphere surface reflectance removes Rayleigh scattering and aerosol attenuation across visible and infrared spectrums.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Quality Flagging</div>
+            <h3 class="source-title">Scene Classification (SCL)</h3>
+            <p class="source-detail">Pixel-level classification masking cirrus clouds, high-density cloud masses, and topographic cloud cast shadows.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Numerical Precision</div>
+            <h3 class="source-title">Float32 Matrix Algebra</h3>
+            <p class="source-detail">High dynamic range floating-point raster calculations avoiding quantization artifacts in sensitive ratio index products.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (Grounding Dark Slate) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-wrap">
+          <a href="index.html" class="brand" aria-label="GeoX Home">
+            <span class="brand-text">Geo<span class="brand-accent">X</span></span>
+          </a>
+          <p class="footer-tagline">Where location meets data. Geospatial engineering, data integration and digital products.</p>
+        </div>
+
+        <div class="footer-links-wrap">
+          <div class="footer-col">
+            <span class="footer-col-title">Raster Lab</span>
+            <ul class="footer-links">
+              <li><a href="sealevel.html">PalaeoCoast</a></li>
+              <li><a href="viewer/sealevel/index.html?lang=en" target="_blank" rel="noopener noreferrer">PalaeoCoast Map ↗</a></li>
+              <li><a href="sentinel.html">Sentinel Lab</a></li>
+              <li><a href="viewer/sentinel/index.html" target="_blank" rel="noopener noreferrer">Sentinel Lab Map ↗</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Navigation</span>
+            <ul class="footer-links">
+              <li><a href="index.html">GeoX Home</a></li>
+              <li><a href="index.html#projects">Portfolio</a></li>
+              <li><a href="index.html#raster-lab">Raster Lab</a></li>
+              <li><a href="#overview">Case Study</a></li>
+              <li><a href="#viewer">Workbench</a></li>
+              <li><a href="#experiments">Modules</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Connect</span>
+            <ul class="footer-links">
+              <li><a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="mailto:support@geox.dev">support@geox.dev</a></li>
+              <li><a href="https://geox.dev">geox.dev</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-credit">Independent geospatial engineering projects by <a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer" class="credit-link">Ronnie Utter</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
