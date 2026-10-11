@@ -1,0 +1,5 @@
+zone_id,zone_name,metric,date_a_mean,date_b_mean,delta_mean,delta_min,delta_max,delta_std,valid_pixels,valid_percentage
+entire_study_area,"Hela studieområdet (Tåkern)",NDVI,-0.066,-0.115,-0.049,-1.123,0.956,0.11,2011800,89.41
+stora_alvaret_karst,"Stora Alvaret (Kalkstensplatå)",NDVI,-0.085,-0.119,-0.034,-0.584,0.581,0.077,200000,8.89
+alvar_arable_zone,"Öländsk åkermark (Kastlösa)",NDVI,-0.098,-0.164,-0.066,-0.552,0.5,0.082,160000,7.11
+ostkusten_baltic,"Östersjökusten (Ölands östra strand)",NDVI,-0.125,-0.194,-0.069,-0.974,0.778,0.102,148904,6.62

@@ -105,19 +105,19 @@ export const rasterLabProjects = [
     tags: ["22 000 BP → 1950", "Topologisk havskontakt", "GEBCO & EMODnet", "GIA under utveckling"]
   },
   {
-    id: "sentinel2-change-detection",
+    id: "sentinel-lab",
     projectNumber: "02",
-    name: "Sentinel-2 Change Detection",
-    nameSv: "Sentinel-2 Change Detection",
+    name: "Sentinel Lab",
+    nameSv: "Sentinel Lab",
     eyebrow: "GeoX Raster Lab · Project 02",
-    tagline: "Multi-temporal satellite imagery & automated spectral change analysis",
-    description: "Automated change detection and surface dynamics using Copernicus Sentinel-2 MSI multi-spectral bands (10m resolution). Monitoring vegetation anomalies (NDVI), surface water boundaries (NDWI) and landscape transformations.",
-    descriptionSv: "Flerdimensionell tidsserieanalys och automatiserad förändringsdetektering med Copernicus Sentinel-2 MSI multispektrala band (10 m upplösning). Övervakning av vegetationsavvikelser (NDVI), vattenytor (NDWI) och landskapsdynamik.",
-    status: "COMING SOON",
-    statusVariant: "coming-soon",
-    accentColor: "#38bdf8",
-    accentGlow: "rgba(56, 189, 248, 0.16)",
-    tags: ["Copernicus Sentinel-2", "Multi-spectral (10m)", "NDVI & NDWI", "Planerad / Coming Soon"]
+    tagline: "Multispectral satellite analytics, terrain modeling & band algebra",
+    description: "High-resolution multi-temporal satellite imagery analysis across Copernicus Sentinel-2 Level-2A and Copernicus DEM GLO-30. Includes 5 analytical modules: vegetation phenology, wetland dynamics, wildfire burn severity, terrain topography, and AST band algebra.",
+    descriptionSv: "Multitemporal satellit- och rasteranalys i 10 m upplösning med Copernicus Sentinel-2 Level-2A och Copernicus DEM GLO-30. Innehåller 5 analysmoduler: vegetationsdynamik, våtmarksförändring, brandskadegrad, terrängtopografi och sandlådad AST-rasterkalkylator.",
+    status: "R&D 02",
+    statusVariant: "sandbox",
+    accentColor: "#00d2ff",
+    accentGlow: "rgba(0, 210, 255, 0.18)",
+    tags: ["Sentinel-2 Level-2A", "Copernicus DEM (10m/30m)", "5 Analysmoduler", "Float32 & AST"]
   }
 ];
 

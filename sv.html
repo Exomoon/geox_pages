@@ -429,7 +429,7 @@
             </div>
           </article>
 
-          <!-- 02. Sentinel-2 Change Detection -->
+          <!-- 02. Sentinel Lab -->
           <article class="raster-card">
             <div class="project-stage-frame">
               <div class="stage-topbar">
@@ -438,33 +438,53 @@
                   <span class="light-dot light-yellow"></span>
                   <span class="light-dot light-green"></span>
                 </div>
-                <div class="stage-url-badge">Copernicus Sentinel-2 MSI</div>
-                <div class="stage-status-live" style="color:#F59E0B;"><span class="status-pulse-amber"></span> Kommer snart</div>
+                <div class="stage-url-badge">geox.dev/viewer/sentinel/ · 10m BOA · EPSG:32633</div>
+                <div class="stage-status-live"><span class="pulse-green"></span> R&amp;D 02</div>
               </div>
-              <div class="sentinel-clean-stage">
-                <div class="sentinel-radar-ring" aria-hidden="true">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                    <polyline points="2 17 12 22 22 17"></polyline>
-                    <polyline points="2 12 12 17 22 12"></polyline>
-                  </svg>
-                </div>
-                <span class="sentinel-sensor-caption">Copernicus Sentinel-2 MSI · 10m Multispektral</span>
-              </div>
+              <a href="viewer/sentinel/project.html" class="stage-viewport" tabindex="-1">
+                <img src="assets/sentinel-viewer-preview.png" alt="Sentinel Lab interaktivt satellit- och rasterarbetsbord" loading="lazy">
+                <div class="stage-gradient-overlay"></div>
+              </a>
             </div>
             <div class="raster-card-body">
               <div class="raster-badge-row">
                 <span class="raster-badge raster-badge-lab">Raster Lab 02</span>
-                <span class="raster-badge raster-badge-coming">Kommer snart</span>
+                <span class="raster-badge raster-badge-lab">Multispektral Satellit</span>
+                <span class="raster-badge raster-badge-lab">Terrängmodellering</span>
               </div>
-              <h3 class="raster-card-title">Sentinel-2 Change Detection</h3>
+              <h3 class="raster-card-title">Sentinel Lab – Satellit- &amp; Terränganalys</h3>
               <p class="raster-card-desc">
-                Tidsserieanalys och automatiserad förändringsdetektering över spektralband för kontinuerlig övervakning av vegetationsavvikelser och kustdynamik.
+                Multitemporal satellit- och rasteranalys i 10 m upplösning med Copernicus Sentinel-2 Level-2A och Copernicus DEM GLO-30. Innehåller 5 analysmoduler: vegetationsdynamik, våtmarksförändring, brandskadegrad, terrängtopografi och sandlådad AST-rasterkalkylator.
               </p>
+              
+              <div class="raster-spec-grid">
+                <div class="spec-cell">
+                  <span class="spec-label">Sensor &amp; DEM</span>
+                  <span class="spec-val">Sentinel-2 + GLO-30</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-label">Upplösning</span>
+                  <span class="spec-val">10 m BOA / 30 m DEM</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-label">Experiment</span>
+                  <span class="spec-val">5 moduler (NDVI–AST)</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-label">Beräkning</span>
+                  <span class="spec-val">Float32 SCL-maskad</span>
+                </div>
+              </div>
+
               <div class="raster-card-actions">
-                <span class="raster-status-note">
-                  <span class="status-pulse-amber"></span> Planerat experiment · Datapipeline under utveckling
-                </span>
+                <a href="viewer/sentinel/index.html" target="_blank" rel="noopener noreferrer" class="raster-action-primary">
+                  <span>Starta Kartarbetsbord</span>
+                  <span class="arrow-glyph" aria-hidden="true">↗</span>
+                </a>
+                <a href="viewer/sentinel/project.html" class="raster-action-secondary">
+                  <span>Fallstudie &amp; Metodik</span>
+                  <span class="arrow-glyph" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
           </article>
@@ -485,33 +505,48 @@
         <div class="capabilities-grid">
           <div class="capability-item">
             <div class="capability-num">// 01</div>
-            <h3 class="capability-title">Geospatial utveckling</h3>
-            <p class="capability-desc">Koordinatsystem, vektor-tiles, spatial indexering och geometriska transformationer i webb och databaser.</p>
+            <h3 class="capability-title">FME-arkitektur &amp; Spatial ETL</h3>
+            <p class="capability-desc">Avancerade transformeringsflöden i FME Desktop och automatiserad orkestrering i FME Flow / Server. Batchbearbetning, CAD/BIM-till-GIS och schemanormalisering.</p>
           </div>
           <div class="capability-item">
             <div class="capability-num">// 02</div>
-            <h3 class="capability-title">Datapipelines &amp; ETL</h3>
-            <p class="capability-desc">Automatiserad insamling, schemanormalisering, batchbearbetning och reproducerbara flöden i FME och Python.</p>
+            <h3 class="capability-title">Spatiala Databaser &amp; PostGIS</h3>
+            <p class="capability-desc">Modellering och optimering i PostgreSQL/PostGIS, SpatiaLite och DuckDB Spatial. Rumsindexering (R-Tree/GiST), spatiala SQL-vyer och högpresterande analyser.</p>
           </div>
           <div class="capability-item">
             <div class="capability-num">// 03</div>
-            <h3 class="capability-title">Isokroner &amp; ruttanalys</h3>
-            <p class="capability-desc">Multimodal ruttberäkning, tillgänglighetsmodellering, upptagningsområden och restider via OpenTripPlanner.</p>
+            <h3 class="capability-title">QGIS &amp; Python-automatisering</h3>
+            <p class="capability-desc">Skriptning och automatisering med PyQGIS, specialbyggda plugins och headless kartrendering integrerad i större produktionspipeliner.</p>
           </div>
           <div class="capability-item">
             <div class="capability-num">// 04</div>
-            <h3 class="capability-title">API:er &amp; integrationer</h3>
-            <p class="capability-desc">Stabila integrationer som kopplar samman offentliga register, geodatabaser och responsiva webbappar.</p>
+            <h3 class="capability-title">Satellitdata &amp; Rastermotorer</h3>
+            <p class="capability-desc">Fjärranalys med Copernicus Sentinel-2 och digitala höjdmodeller (DEM). Numerisk bandalgebra på Float32-matriser med GDAL, Rasterio, NumPy och SciPy.</p>
           </div>
           <div class="capability-item">
             <div class="capability-num">// 05</div>
-            <h3 class="capability-title">Interaktiv kartutveckling</h3>
-            <p class="capability-desc">Lättviktiga MapLibre GL-visare med fokus på extrem snabbhet, hög densitet och responsiv användarupplevelse.</p>
+            <h3 class="capability-title">Isokroner &amp; Ruttberäkning</h3>
+            <p class="capability-desc">Multimodal nätverksanalys, restidsisokroner och tillgänglighetsmodellering med OpenTripPlanner och GTFS-kollektivtrafikdata.</p>
           </div>
           <div class="capability-item">
             <div class="capability-num">// 06</div>
-            <h3 class="capability-title">Öppna data &amp; normalisering</h3>
-            <p class="capability-desc">Strukturering, validering och kvalitetssäkring av offentliga samhällsdata (SCB, MSB, Valmyndigheten) till färdiga verktyg.</p>
+            <h3 class="capability-title">Interaktiv Kartutveckling &amp; Web-GIS</h3>
+            <p class="capability-desc">Reaktiva klientsidiga GIS-gränssnitt med MapLibre GL, Leaflet, vektortiles och Nordic Slate-designsystem med extremt låg latens.</p>
+          </div>
+          <div class="capability-item">
+            <div class="capability-num">// 07</div>
+            <h3 class="capability-title">Geodata-arkitektur &amp; Systemdesign</h3>
+            <p class="capability-desc">Helhetsarkitektur för spatial infrastruktur: från rådatainsamling via automatiserade pipelines till säkra API:er och slutanvändargränssnitt.</p>
+          </div>
+          <div class="capability-item">
+            <div class="capability-num">// 08</div>
+            <h3 class="capability-title">API:er &amp; Tjänsteintegrationer</h3>
+            <p class="capability-desc">Robusta mikrotjänster och integrationer mot offentliga geodatatjänster, WMS/WFS/OGC API och moderna REST/GeoJSON-arkitekturer.</p>
+          </div>
+          <div class="capability-item">
+            <div class="capability-num">// 09</div>
+            <h3 class="capability-title">Öppna Data &amp; Samhällsregister</h3>
+            <p class="capability-desc">Kvalitetssäkring och förädling av nationella geodata (Lantmäteriet, SCB, MSB, Valmyndigheten och SGU) till produktionsfärdiga beslutsunderlag.</p>
           </div>
         </div>
       </div>
@@ -563,8 +598,9 @@
             <span class="footer-col-title">Raster Lab</span>
             <ul class="footer-links">
               <li><a href="sealevel-sv.html">PalaeoCoast</a></li>
-              <li><a href="viewer/sealevel/index.html?lang=sv" target="_blank" rel="noopener noreferrer">Kartvisare ↗</a></li>
-              <li><span style="color:#64748b;font-size:14px;">Sentinel-2 (Kommer snart)</span></li>
+              <li><a href="viewer/sealevel/index.html?lang=sv" target="_blank" rel="noopener noreferrer">PalaeoCoast Kartvisare ↗</a></li>
+              <li><a href="viewer/sentinel/project.html">Sentinel Lab</a></li>
+              <li><a href="viewer/sentinel/index.html" target="_blank" rel="noopener noreferrer">Sentinel Lab Kartvisare ↗</a></li>
             </ul>
           </div>
 

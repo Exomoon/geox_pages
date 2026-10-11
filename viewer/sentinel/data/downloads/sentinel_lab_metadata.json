@@ -1,0 +1,1214 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-10-11T12:00:00Z",
+  "study_area": {
+    "id": "takern_ostgotaslatten",
+    "title_sv": "Tåkern & Östgötaslätten",
+    "title_en": "Lake Tåkern & East Gothland Plains",
+    "description_sv": "Internationellt känd fågelsjö med omfattande vassbälten omgiven av intensivt jordbruk och spridda barrskogsområden.",
+    "description_en": "Internationally renowned wetland and bird sanctuary with expansive reed beds, surrounded by intensive arable agriculture and boreal forest.",
+    "crs": "EPSG:32633",
+    "resolution_m": 10.0,
+    "bounds": {
+      "left": 482000.0,
+      "bottom": 6460000.0,
+      "right": 497000.0,
+      "top": 6475000.0
+    },
+    "center_wgs84": [
+      14.825,
+      58.352
+    ],
+    "bounds_wgs84": {
+      "min_lon": 14.693,
+      "min_lat": 6460000.0,
+      "max_lon": 14.957,
+      "max_lat": 58.418
+    },
+    "center": [
+      58.34821,
+      14.82086
+    ],
+    "wgs84_bounds": [
+      [
+        58.280672,
+        14.693073
+      ],
+      [
+        58.415754,
+        14.94865
+      ]
+    ],
+    "pixel_dimensions": [
+      1500,
+      1500
+    ]
+  },
+  "observations": {
+    "date_a": {
+      "date": "2024-06-04",
+      "label": "2024-06-04 (Tidig sommar · Full tillväxt)",
+      "label_en": "2024-06-04 (Early Summer · Peak Growth)",
+      "season": "early_summer",
+      "scene_id": "S2B_33VVE_20240604_0_L2A",
+      "satellite": "Sentinel-2B",
+      "instrument": "MSI Level-2A",
+      "cloud_cover_tile": 6.7,
+      "cloud_cover_roi": 0.0,
+      "base_url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/V/VE/2024/6/S2B_33VVE_20240604_0_L2A",
+      "bands": {
+        "B02": "B02.tif",
+        "B03": "B03.tif",
+        "B04": "B04.tif",
+        "B08": "B08.tif",
+        "SCL": "SCL.tif",
+        "TCI": "TCI.tif"
+      },
+      "mask_statistics": {
+        "total_pixels": 2250000,
+        "valid_pixels": 2250000,
+        "invalid_pixels": 0,
+        "valid_percentage": 100.0,
+        "valid_area_km2": 225.0,
+        "total_area_km2": 225.0
+      }
+    },
+    "date_b": {
+      "date": "2024-09-05",
+      "label": "2024-09-05 (Sensommar · Efter skörd)",
+      "label_en": "2024-09-05 (Late Summer · Post-Harvest)",
+      "season": "late_summer",
+      "scene_id": "S2B_33VVE_20240905_0_L2A",
+      "satellite": "Sentinel-2B",
+      "instrument": "MSI Level-2A",
+      "cloud_cover_tile": 0.0,
+      "cloud_cover_roi": 0.0,
+      "base_url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/V/VE/2024/9/S2B_33VVE_20240905_0_L2A",
+      "bands": {
+        "B02": "B02.tif",
+        "B03": "B03.tif",
+        "B04": "B04.tif",
+        "B08": "B08.tif",
+        "SCL": "SCL.tif",
+        "TCI": "TCI.tif"
+      },
+      "mask_statistics": {
+        "total_pixels": 2250000,
+        "valid_pixels": 2250000,
+        "invalid_pixels": 0,
+        "valid_percentage": 100.0,
+        "valid_area_km2": 225.0,
+        "total_area_km2": 225.0
+      }
+    },
+    "combined_mask": {
+      "total_pixels": 2250000,
+      "valid_pixels": 2250000,
+      "invalid_pixels": 0,
+      "valid_percentage": 100.0,
+      "valid_area_km2": 225.0,
+      "total_area_km2": 225.0
+    }
+  },
+  "statistics": {
+    "date_a": {
+      "total_pixels": 2250000,
+      "valid_pixels": 2250000,
+      "valid_percentage": 100.0,
+      "valid_area_km2": 225.0,
+      "total_area_km2": 225.0,
+      "mean": 0.643,
+      "min": -0.646,
+      "max": 0.953,
+      "std": 0.362,
+      "histogram": {
+        "bins": [
+          -0.2,
+          -0.14,
+          -0.08,
+          -0.02,
+          0.04,
+          0.1,
+          0.16,
+          0.22,
+          0.28,
+          0.34,
+          0.4,
+          0.46,
+          0.52,
+          0.58,
+          0.64,
+          0.7,
+          0.76,
+          0.82,
+          0.88,
+          0.94,
+          1.0
+        ],
+        "counts": [
+          58454,
+          51660,
+          33885,
+          22496,
+          21557,
+          16425,
+          23618,
+          24916,
+          27006,
+          36304,
+          43423,
+          48888,
+          54251,
+          66200,
+          89302,
+          141614,
+          243117,
+          553643,
+          575197,
+          233
+        ]
+      }
+    },
+    "date_b": {
+      "total_pixels": 2250000,
+      "valid_pixels": 2250000,
+      "valid_percentage": 100.0,
+      "valid_area_km2": 225.0,
+      "total_area_km2": 225.0,
+      "mean": 0.35,
+      "min": -0.727,
+      "max": 0.998,
+      "std": 0.34,
+      "histogram": {
+        "bins": [
+          -0.2,
+          -0.14,
+          -0.08,
+          -0.02,
+          0.04,
+          0.1,
+          0.16,
+          0.22,
+          0.28,
+          0.34,
+          0.4,
+          0.46,
+          0.52,
+          0.58,
+          0.64,
+          0.7,
+          0.76,
+          0.82,
+          0.88,
+          0.94,
+          1.0
+        ],
+        "counts": [
+          54422,
+          32396,
+          23209,
+          15874,
+          11817,
+          220714,
+          387081,
+          211503,
+          126638,
+          90621,
+          66278,
+          59355,
+          73463,
+          102670,
+          104351,
+          101583,
+          127329,
+          203670,
+          55621,
+          4
+        ]
+      }
+    },
+    "delta": {
+      "total_pixels": 2250000,
+      "valid_pixels": 2250000,
+      "valid_percentage": 100.0,
+      "valid_area_km2": 225.0,
+      "total_area_km2": 225.0,
+      "mean": -0.292,
+      "min": -1.18,
+      "max": 1.047,
+      "std": 0.311,
+      "histogram": {
+        "bins": [
+          -0.6,
+          -0.54,
+          -0.48,
+          -0.42,
+          -0.36,
+          -0.3,
+          -0.24,
+          -0.18,
+          -0.12,
+          -0.06,
+          0.0,
+          0.06,
+          0.12,
+          0.18,
+          0.24,
+          0.3,
+          0.36,
+          0.42,
+          0.48,
+          0.54,
+          0.6
+        ],
+        "counts": [
+          110230,
+          86428,
+          74010,
+          60363,
+          55916,
+          69319,
+          113810,
+          162721,
+          222648,
+          364934,
+          141376,
+          58532,
+          36624,
+          27703,
+          14879,
+          10305,
+          11896,
+          7829,
+          6017,
+          3674
+        ]
+      }
+    }
+  },
+  "predefined_zones": [
+    {
+      "id": "wheat_field_vaderstad",
+      "name_sv": "Jordbruksfält (Svanshals / Väderstad)",
+      "name_en": "Arable Crop Field (Svanshals / Väderstad)",
+      "type": "agriculture",
+      "description_sv": "Aktivt odlingsfält med tydlig fenologisk kontrast: sluten gröda i juni kontra stubb/öppen mark efter skörd i september.",
+      "description_en": "Active crop field showing distinct phenological contrast: dense crop canopy in June vs stubble/bare soil post-harvest in September.",
+      "polygon_wgs84": [
+        [
+          58.315013,
+          14.798598
+        ],
+        [
+          58.315043,
+          14.819079
+        ],
+        [
+          58.305163,
+          14.819129
+        ],
+        [
+          58.305133,
+          14.798654
+        ],
+        [
+          58.315013,
+          14.798598
+        ]
+      ],
+      "stats": {
+        "date_a": {
+          "total_pixels": 2250000,
+          "valid_pixels": 13200,
+          "valid_percentage": 0.59,
+          "valid_area_km2": 1.32,
+          "total_area_km2": 225.0,
+          "mean": 0.792,
+          "min": 0.115,
+          "max": 0.919,
+          "std": 0.177,
+          "histogram": {
+            "bins": [
+              -0.2,
+              -0.14,
+              -0.08,
+              -0.02,
+              0.04,
+              0.1,
+              0.16,
+              0.22,
+              0.28,
+              0.34,
+              0.4,
+              0.46,
+              0.52,
+              0.58,
+              0.64,
+              0.7,
+              0.76,
+              0.82,
+              0.88,
+              0.94,
+              1.0
+            ],
+            "counts": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              228,
+              261,
+              372,
+              230,
+              136,
+              166,
+              176,
+              184,
+              229,
+              606,
+              1166,
+              5147,
+              4292,
+              0
+            ]
+          }
+        },
+        "date_b": {
+          "total_pixels": 2250000,
+          "valid_pixels": 13200,
+          "valid_percentage": 0.59,
+          "valid_area_km2": 1.32,
+          "total_area_km2": 225.0,
+          "mean": 0.249,
+          "min": 0.076,
+          "max": 0.882,
+          "std": 0.139,
+          "histogram": {
+            "bins": [
+              -0.2,
+              -0.14,
+              -0.08,
+              -0.02,
+              0.04,
+              0.1,
+              0.16,
+              0.22,
+              0.28,
+              0.34,
+              0.4,
+              0.46,
+              0.52,
+              0.58,
+              0.64,
+              0.7,
+              0.76,
+              0.82,
+              0.88,
+              0.94,
+              1.0
+            ],
+            "counts": [
+              0,
+              0,
+              0,
+              0,
+              1,
+              2387,
+              5871,
+              1785,
+              1424,
+              529,
+              139,
+              127,
+              167,
+              187,
+              175,
+              165,
+              159,
+              83,
+              1,
+              0
+            ]
+          }
+        },
+        "delta": {
+          "total_pixels": 2250000,
+          "valid_pixels": 13200,
+          "valid_percentage": 0.59,
+          "valid_area_km2": 1.32,
+          "total_area_km2": 225.0,
+          "mean": -0.542,
+          "min": -0.79,
+          "max": 0.618,
+          "std": 0.264,
+          "histogram": {
+            "bins": [
+              -0.6,
+              -0.54,
+              -0.48,
+              -0.42,
+              -0.36,
+              -0.3,
+              -0.24,
+              -0.18,
+              -0.12,
+              -0.06,
+              0.0,
+              0.06,
+              0.12,
+              0.18,
+              0.24,
+              0.3,
+              0.36,
+              0.42,
+              0.48,
+              0.54,
+              0.6
+            ],
+            "counts": [
+              1275,
+              435,
+              232,
+              195,
+              175,
+              161,
+              137,
+              171,
+              271,
+              307,
+              312,
+              217,
+              189,
+              104,
+              79,
+              80,
+              40,
+              35,
+              5,
+              2
+            ]
+          }
+        },
+        "poly_total_pixels": 13200,
+        "poly_valid_pixels": 13200
+      }
+    },
+    {
+      "id": "takern_reed_beds",
+      "name_sv": "Tåkerns vassbälten (Phragmites)",
+      "name_en": "Lake Tåkern Reed Beds (Phragmites)",
+      "type": "wetland",
+      "description_sv": "Omfattande våtmarksvegetation med hög tillväxttakt och fördröjd sensommarmognad.",
+      "description_en": "Expansive wetland reed belt exhibiting vigorous mid-summer expansion and late-season vigor.",
+      "polygon_wgs84": [
+        [
+          58.343638,
+          14.735232
+        ],
+        [
+          58.343704,
+          14.769395
+        ],
+        [
+          58.330232,
+          14.769483
+        ],
+        [
+          58.330166,
+          14.735333
+        ],
+        [
+          58.343638,
+          14.735232
+        ]
+      ],
+      "stats": {
+        "date_a": {
+          "total_pixels": 2250000,
+          "valid_pixels": 30000,
+          "valid_percentage": 1.33,
+          "valid_area_km2": 3.0,
+          "total_area_km2": 225.0,
+          "mean": 0.569,
+          "min": -0.217,
+          "max": 0.916,
+          "std": 0.236,
+          "histogram": {
+            "bins": [
+              -0.2,
+              -0.14,
+              -0.08,
+              -0.02,
+              0.04,
+              0.1,
+              0.16,
+              0.22,
+              0.28,
+              0.34,
+              0.4,
+              0.46,
+              0.52,
+              0.58,
+              0.64,
+              0.7,
+              0.76,
+              0.82,
+              0.88,
+              0.94,
+              1.0
+            ],
+            "counts": [
+              35,
+              174,
+              384,
+              508,
+              653,
+              808,
+              859,
+              1037,
+              1252,
+              1250,
+              1302,
+              1563,
+              1896,
+              2516,
+              3509,
+              5458,
+              5316,
+              1394,
+              83,
+              0
+            ]
+          }
+        },
+        "date_b": {
+          "total_pixels": 2250000,
+          "valid_pixels": 30000,
+          "valid_percentage": 1.33,
+          "valid_area_km2": 3.0,
+          "total_area_km2": 225.0,
+          "mean": 0.438,
+          "min": -0.495,
+          "max": 0.835,
+          "std": 0.304,
+          "histogram": {
+            "bins": [
+              -0.2,
+              -0.14,
+              -0.08,
+              -0.02,
+              0.04,
+              0.1,
+              0.16,
+              0.22,
+              0.28,
+              0.34,
+              0.4,
+              0.46,
+              0.52,
+              0.58,
+              0.64,
+              0.7,
+              0.76,
+              0.82,
+              0.88,
+              0.94,
+              1.0
+            ],
+            "counts": [
+              810,
+              1101,
+              1004,
+              932,
+              917,
+              859,
+              763,
+              841,
+              1014,
+              1106,
+              1282,
+              1727,
+              2256,
+              3659,
+              5388,
+              4488,
+              875,
+              22,
+              0,
+              0
+            ]
+          }
+        },
+        "delta": {
+          "total_pixels": 2250000,
+          "valid_pixels": 30000,
+          "valid_percentage": 1.33,
+          "valid_area_km2": 3.0,
+          "total_area_km2": 225.0,
+          "mean": -0.132,
+          "min": -1.165,
+          "max": 0.657,
+          "std": 0.253,
+          "histogram": {
+            "bins": [
+              -0.6,
+              -0.54,
+              -0.48,
+              -0.42,
+              -0.36,
+              -0.3,
+              -0.24,
+              -0.18,
+              -0.12,
+              -0.06,
+              0.0,
+              0.06,
+              0.12,
+              0.18,
+              0.24,
+              0.3,
+              0.36,
+              0.42,
+              0.48,
+              0.54,
+              0.6
+            ],
+            "counts": [
+              379,
+              410,
+              487,
+              653,
+              786,
+              1217,
+              2206,
+              3592,
+              4321,
+              4551,
+              3953,
+              2550,
+              1443,
+              747,
+              234,
+              84,
+              45,
+              27,
+              36,
+              19
+            ]
+          }
+        },
+        "poly_total_pixels": 30000,
+        "poly_valid_pixels": 30000
+      }
+    },
+    {
+      "id": "takern_open_water",
+      "name_sv": "Tåkerns öppna vattenspegel",
+      "name_en": "Lake Tåkern Open Water",
+      "type": "water",
+      "description_sv": "Grunda vattenytor med karakteristiska negativa NDVI-värden och hög absorption i nära infrarött (B08).",
+      "description_en": "Shallow water body characterized by negative NDVI values and near-total NIR absorption.",
+      "polygon_wgs84": [
+        [
+          58.366136,
+          14.757284
+        ],
+        [
+          58.366207,
+          14.798306
+        ],
+        [
+          58.350939,
+          14.798393
+        ],
+        [
+          58.350867,
+          14.757389
+        ],
+        [
+          58.366136,
+          14.757284
+        ]
+      ],
+      "stats": {
+        "date_a": {
+          "total_pixels": 2250000,
+          "valid_pixels": 40800,
+          "valid_percentage": 1.81,
+          "valid_area_km2": 4.08,
+          "total_area_km2": 225.0,
+          "mean": 0.14,
+          "min": -0.485,
+          "max": 0.942,
+          "std": 0.403,
+          "histogram": {
+            "bins": [
+              -0.2,
+              -0.14,
+              -0.08,
+              -0.02,
+              0.04,
+              0.1,
+              0.16,
+              0.22,
+              0.28,
+              0.34,
+              0.4,
+              0.46,
+              0.52,
+              0.58,
+              0.64,
+              0.7,
+              0.76,
+              0.82,
+              0.88,
+              0.94,
+              1.0
+            ],
+            "counts": [
+              7955,
+              7147,
+              3405,
+              1656,
+              1008,
+              665,
+              498,
+              412,
+              359,
+              394,
+              428,
+              482,
+              678,
+              894,
+              1419,
+              2263,
+              2827,
+              1674,
+              1285,
+              1
+            ]
+          }
+        },
+        "date_b": {
+          "total_pixels": 2250000,
+          "valid_pixels": 40800,
+          "valid_percentage": 1.81,
+          "valid_area_km2": 4.08,
+          "total_area_km2": 225.0,
+          "mean": 0.054,
+          "min": -0.501,
+          "max": 0.89,
+          "std": 0.41,
+          "histogram": {
+            "bins": [
+              -0.2,
+              -0.14,
+              -0.08,
+              -0.02,
+              0.04,
+              0.1,
+              0.16,
+              0.22,
+              0.28,
+              0.34,
+              0.4,
+              0.46,
+              0.52,
+              0.58,
+              0.64,
+              0.7,
+              0.76,
+              0.82,
+              0.88,
+              0.94,
+              1.0
+            ],
+            "counts": [
+              5694,
+              2066,
+              1131,
+              696,
+              495,
+              414,
+              311,
+              293,
+              297,
+              361,
+              455,
+              593,
+              1590,
+              3058,
+              2262,
+              1976,
+              1227,
+              803,
+              8,
+              0
+            ]
+          }
+        },
+        "delta": {
+          "total_pixels": 2250000,
+          "valid_pixels": 40800,
+          "valid_percentage": 1.81,
+          "valid_area_km2": 4.08,
+          "total_area_km2": 225.0,
+          "mean": -0.087,
+          "min": -0.911,
+          "max": 0.484,
+          "std": 0.125,
+          "histogram": {
+            "bins": [
+              -0.6,
+              -0.54,
+              -0.48,
+              -0.42,
+              -0.36,
+              -0.3,
+              -0.24,
+              -0.18,
+              -0.12,
+              -0.06,
+              0.0,
+              0.06,
+              0.12,
+              0.18,
+              0.24,
+              0.3,
+              0.36,
+              0.42,
+              0.48,
+              0.54,
+              0.6
+            ],
+            "counts": [
+              26,
+              104,
+              233,
+              328,
+              790,
+              1622,
+              3906,
+              7834,
+              10358,
+              8277,
+              3318,
+              1615,
+              1079,
+              644,
+              347,
+              144,
+              55,
+              22,
+              2,
+              0
+            ]
+          }
+        },
+        "poly_total_pixels": 40800,
+        "poly_valid_pixels": 40800
+      }
+    },
+    {
+      "id": "coniferous_forest_omberg",
+      "name_sv": "Barrskog (Omberg / Svanshalsbranten)",
+      "name_en": "Boreal Coniferous Forest (Omberg Ridge)",
+      "type": "forest",
+      "description_sv": "Stabil barr- och blandskog som fungerar som radiometrisk referens med minimal säsongsvariation.",
+      "description_en": "Stable coniferous and mixed forest canopy serving as an empirical radiometric baseline with minimal seasonal drift.",
+      "polygon_wgs84": [
+        [
+          58.370495,
+          14.695713
+        ],
+        [
+          58.370557,
+          14.723064
+        ],
+        [
+          58.354391,
+          14.72319
+        ],
+        [
+          58.354329,
+          14.695852
+        ],
+        [
+          58.370495,
+          14.695713
+        ]
+      ],
+      "stats": {
+        "date_a": {
+          "total_pixels": 2250000,
+          "valid_pixels": 28800,
+          "valid_percentage": 1.28,
+          "valid_area_km2": 2.88,
+          "total_area_km2": 225.0,
+          "mean": 0.726,
+          "min": 0.011,
+          "max": 0.936,
+          "std": 0.162,
+          "histogram": {
+            "bins": [
+              -0.2,
+              -0.14,
+              -0.08,
+              -0.02,
+              0.04,
+              0.1,
+              0.16,
+              0.22,
+              0.28,
+              0.34,
+              0.4,
+              0.46,
+              0.52,
+              0.58,
+              0.64,
+              0.7,
+              0.76,
+              0.82,
+              0.88,
+              0.94,
+              1.0
+            ],
+            "counts": [
+              0,
+              0,
+              0,
+              2,
+              28,
+              59,
+              50,
+              420,
+              642,
+              699,
+              953,
+              1077,
+              1052,
+              1242,
+              2259,
+              3897,
+              6361,
+              8138,
+              1921,
+              0
+            ]
+          }
+        },
+        "date_b": {
+          "total_pixels": 2250000,
+          "valid_pixels": 28800,
+          "valid_percentage": 1.28,
+          "valid_area_km2": 2.88,
+          "total_area_km2": 225.0,
+          "mean": 0.345,
+          "min": -0.043,
+          "max": 0.912,
+          "std": 0.205,
+          "histogram": {
+            "bins": [
+              -0.2,
+              -0.14,
+              -0.08,
+              -0.02,
+              0.04,
+              0.1,
+              0.16,
+              0.22,
+              0.28,
+              0.34,
+              0.4,
+              0.46,
+              0.52,
+              0.58,
+              0.64,
+              0.7,
+              0.76,
+              0.82,
+              0.88,
+              0.94,
+              1.0
+            ],
+            "counts": [
+              0,
+              0,
+              1,
+              9,
+              85,
+              4260,
+              6466,
+              4967,
+              2325,
+              1410,
+              1336,
+              1480,
+              1414,
+              1121,
+              1238,
+              1251,
+              977,
+              384,
+              76,
+              0
+            ]
+          }
+        },
+        "delta": {
+          "total_pixels": 2250000,
+          "valid_pixels": 28800,
+          "valid_percentage": 1.28,
+          "valid_area_km2": 2.88,
+          "total_area_km2": 225.0,
+          "mean": -0.381,
+          "min": -0.786,
+          "max": 0.422,
+          "std": 0.262,
+          "histogram": {
+            "bins": [
+              -0.6,
+              -0.54,
+              -0.48,
+              -0.42,
+              -0.36,
+              -0.3,
+              -0.24,
+              -0.18,
+              -0.12,
+              -0.06,
+              0.0,
+              0.06,
+              0.12,
+              0.18,
+              0.24,
+              0.3,
+              0.36,
+              0.42,
+              0.48,
+              0.54,
+              0.6
+            ],
+            "counts": [
+              3982,
+              2619,
+              1322,
+              1018,
+              976,
+              1076,
+              1106,
+              1149,
+              1873,
+              2597,
+              2088,
+              724,
+              125,
+              45,
+              19,
+              6,
+              10,
+              1,
+              0,
+              0
+            ]
+          }
+        },
+        "poly_total_pixels": 28800,
+        "poly_valid_pixels": 28800
+      }
+    }
+  ],
+  "layers": [
+    {
+      "id": "true_color_a",
+      "name_sv": "Sannfärg (2024-06-04)",
+      "name_en": "True Color (2024-06-04)",
+      "type": "rgb",
+      "bands": "B04, B03, B02",
+      "file": "data/true_color_a.png",
+      "group": "observations_a"
+    },
+    {
+      "id": "false_color_a",
+      "name_sv": "Falskfärg NIR (2024-06-04)",
+      "name_en": "False Color NIR (2024-06-04)",
+      "type": "false_color",
+      "bands": "B08, B04, B03",
+      "file": "data/false_color_a.png",
+      "group": "observations_a"
+    },
+    {
+      "id": "ndvi_a",
+      "name_sv": "NDVI (2024-06-04)",
+      "name_en": "NDVI (2024-06-04)",
+      "type": "index",
+      "unit": "NDVI [-1, 1]",
+      "file": "data/ndvi_a.png",
+      "group": "observations_a"
+    },
+    {
+      "id": "true_color_b",
+      "name_sv": "Sannfärg (2024-09-05)",
+      "name_en": "True Color (2024-09-05)",
+      "type": "rgb",
+      "bands": "B04, B03, B02",
+      "file": "data/true_color_b.png",
+      "group": "observations_b"
+    },
+    {
+      "id": "false_color_b",
+      "name_sv": "Falskfärg NIR (2024-09-05)",
+      "name_en": "False Color NIR (2024-09-05)",
+      "type": "false_color",
+      "bands": "B08, B04, B03",
+      "file": "data/false_color_b.png",
+      "group": "observations_b"
+    },
+    {
+      "id": "ndvi_b",
+      "name_sv": "NDVI (2024-09-05)",
+      "name_en": "NDVI (2024-09-05)",
+      "type": "index",
+      "unit": "NDVI [-1, 1]",
+      "file": "data/ndvi_b.png",
+      "group": "observations_b"
+    },
+    {
+      "id": "delta_ndvi",
+      "name_sv": "Delta NDVI (Förändring B - A)",
+      "name_en": "Delta NDVI (Change B - A)",
+      "type": "change",
+      "unit": "ΔNDVI [-2, 2]",
+      "file": "data/delta_ndvi.png",
+      "group": "change_detection"
+    }
+  ],
+  "downloads": [
+    {
+      "id": "ndvi_a_geotiff",
+      "label_sv": "NDVI 2024-06-04 GeoTIFF (Float32)",
+      "label_en": "NDVI 2024-06-04 GeoTIFF (Float32)",
+      "file": "data/downloads/sentinel_lab_ndvi_20240604.tif"
+    },
+    {
+      "id": "ndvi_b_geotiff",
+      "label_sv": "NDVI 2024-09-05 GeoTIFF (Float32)",
+      "label_en": "NDVI 2024-09-05 GeoTIFF (Float32)",
+      "file": "data/downloads/sentinel_lab_ndvi_20240905.tif"
+    },
+    {
+      "id": "delta_ndvi_geotiff",
+      "label_sv": "Delta NDVI GeoTIFF (Float32)",
+      "label_en": "Delta NDVI GeoTIFF (Float32)",
+      "file": "data/downloads/sentinel_lab_delta_ndvi.tif"
+    },
+    {
+      "id": "statistics_csv",
+      "label_sv": "Zonal Statistik CSV",
+      "label_en": "Zonal Statistics CSV",
+      "file": "data/downloads/sentinel_lab_statistics.csv"
+    }
+  ]
+}

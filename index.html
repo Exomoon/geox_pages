@@ -428,7 +428,7 @@
             </div>
           </article>
 
-          <!-- 02. Sentinel-2 Change Detection -->
+          <!-- 02. Sentinel Lab -->
           <article class="raster-card">
             <div class="project-stage-frame">
               <div class="stage-topbar">
@@ -437,33 +437,53 @@
                   <span class="light-dot light-yellow"></span>
                   <span class="light-dot light-green"></span>
                 </div>
-                <div class="stage-url-badge">Copernicus Sentinel-2 MSI</div>
-                <div class="stage-status-live" style="color:#F59E0B;"><span class="status-pulse-amber"></span> Coming Soon</div>
+                <div class="stage-url-badge">geox.dev/viewer/sentinel/ · 10m BOA · EPSG:32633</div>
+                <div class="stage-status-live"><span class="pulse-green"></span> R&amp;D 02</div>
               </div>
-              <div class="sentinel-clean-stage">
-                <div class="sentinel-radar-ring" aria-hidden="true">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                    <polyline points="2 17 12 22 22 17"></polyline>
-                    <polyline points="2 12 12 17 22 12"></polyline>
-                  </svg>
-                </div>
-                <span class="sentinel-sensor-caption">Copernicus Sentinel-2 MSI · 10m Multispectral</span>
-              </div>
+              <a href="viewer/sentinel/project.html" class="stage-viewport" tabindex="-1">
+                <img src="assets/sentinel-viewer-preview.png" alt="Sentinel Lab interactive satellite and raster analysis workbench" loading="lazy">
+                <div class="stage-gradient-overlay"></div>
+              </a>
             </div>
             <div class="raster-card-body">
               <div class="raster-badge-row">
                 <span class="raster-badge raster-badge-lab">Raster Lab 02</span>
-                <span class="raster-badge raster-badge-coming">Coming Soon</span>
+                <span class="raster-badge raster-badge-lab">Multispectral Satellite</span>
+                <span class="raster-badge raster-badge-lab">Terrain Modeling</span>
               </div>
-              <h3 class="raster-card-title">Sentinel-2 Change Detection</h3>
+              <h3 class="raster-card-title">Sentinel Lab – Satellite &amp; Terrain Analytics</h3>
               <p class="raster-card-desc">
-                Multi-temporal satellite imagery analysis and automated change detection across spectral bands to monitor environmental shifts and coastal dynamics.
+                High-resolution multi-temporal satellite imagery analysis across Copernicus Sentinel-2 Level-2A and Copernicus DEM GLO-30. Includes 5 analytical modules: vegetation phenology, wetland dynamics, wildfire burn severity, terrain topography, and AST band algebra.
               </p>
+              
+              <div class="raster-spec-grid">
+                <div class="spec-cell">
+                  <span class="spec-label">Sensor &amp; DEM</span>
+                  <span class="spec-val">Sentinel-2 + GLO-30</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-label">Resolution</span>
+                  <span class="spec-val">10m BOA / 30m DEM</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-label">Experiments</span>
+                  <span class="spec-val">5 Modules (NDVI–AST)</span>
+                </div>
+                <div class="spec-cell">
+                  <span class="spec-label">Processing</span>
+                  <span class="spec-val">Float32 Cloud-Masked</span>
+                </div>
+              </div>
+
               <div class="raster-card-actions">
-                <span class="raster-status-note">
-                  <span class="status-pulse-amber"></span> Planned Experiment · Pipeline in Development
-                </span>
+                <a href="viewer/sentinel/index.html" target="_blank" rel="noopener noreferrer" class="raster-action-primary">
+                  <span>Launch Map Viewer</span>
+                  <span class="arrow-glyph" aria-hidden="true">↗</span>
+                </a>
+                <a href="viewer/sentinel/project.html" class="raster-action-secondary">
+                  <span>Case Study &amp; Methodology</span>
+                  <span class="arrow-glyph" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
           </article>
@@ -484,33 +504,48 @@
         <div class="capabilities-grid">
           <div class="capability-item">
             <div class="capability-num">// 01</div>
-            <h3 class="capability-title">Geospatial Engineering</h3>
-            <p class="capability-desc">Coordinate reference systems, vector tiling, spatial indexing and high-precision geometric transformations.</p>
+            <h3 class="capability-title">FME Architecture &amp; Spatial ETL</h3>
+            <p class="capability-desc">Advanced data transformation workflows in FME Desktop and automated orchestration with FME Flow / Server. Batch pipelines, CAD/BIM-to-GIS and schema normalisation.</p>
           </div>
           <div class="capability-item">
             <div class="capability-num">// 02</div>
-            <h3 class="capability-title">Data Pipelines &amp; ETL</h3>
-            <p class="capability-desc">Automated ingestion, schema normalization, batch processing and reproducible pipelines in FME and Python.</p>
+            <h3 class="capability-title">Spatial Databases &amp; PostGIS</h3>
+            <p class="capability-desc">High-performance spatial modelling in PostgreSQL/PostGIS, SpatiaLite and DuckDB Spatial. R-Tree/GiST indexing, spatial SQL views and high-throughput analytical queries.</p>
           </div>
           <div class="capability-item">
             <div class="capability-num">// 03</div>
-            <h3 class="capability-title">Spatial &amp; Isochrone Analysis</h3>
-            <p class="capability-desc">Multimodal routing, accessibility modeling, catchment areas and geographic travel times powered by OpenTripPlanner.</p>
+            <h3 class="capability-title">QGIS &amp; Python Automation</h3>
+            <p class="capability-desc">Custom PyQGIS plugin development, automated cartographic batch processing and headless Python geoprocessing integrated into production pipelines.</p>
           </div>
           <div class="capability-item">
             <div class="capability-num">// 04</div>
-            <h3 class="capability-title">APIs &amp; Integrations</h3>
-            <p class="capability-desc">Robust services bridging official public records, geospatial databases and responsive production web applications.</p>
+            <h3 class="capability-title">Earth Observation &amp; Raster Engines</h3>
+            <p class="capability-desc">Applied remote sensing using Copernicus Sentinel-2 MSI and DEM rasters. Float32 band algebra, atmospheric correction (BOA), and cloud masking using GDAL, Rasterio, NumPy and SciPy.</p>
           </div>
           <div class="capability-item">
             <div class="capability-num">// 05</div>
-            <h3 class="capability-title">Interactive Mapping</h3>
-            <p class="capability-desc">Lightweight, high-density MapLibre GL renderers engineered for maximum responsiveness, visual hierarchy and low latency.</p>
+            <h3 class="capability-title">Multimodal Routing &amp; Isochrones</h3>
+            <p class="capability-desc">Multimodal network analysis, travel-time catchment modeling, accessibility isochrones and transit scheduling powered by OpenTripPlanner and GTFS data.</p>
           </div>
           <div class="capability-item">
             <div class="capability-num">// 06</div>
-            <h3 class="capability-title">Open Data Processing</h3>
-            <p class="capability-desc">Structuring, validating and enriching official public datasets (SCB, MSB, Valmyndigheten) into production tools.</p>
+            <h3 class="capability-title">Interactive Mapping &amp; Web-GIS</h3>
+            <p class="capability-desc">Ultra-responsive client-side GIS renderers using MapLibre GL, Leaflet, vector tiles and the custom Nordic Slate design system engineered for low latency.</p>
+          </div>
+          <div class="capability-item">
+            <div class="capability-num">// 07</div>
+            <h3 class="capability-title">Geospatial Solution Architecture</h3>
+            <p class="capability-desc">End-to-end spatial infrastructure design: from raw sensor ingestion through automated validation pipelines, spatial databases, and production-grade client interfaces.</p>
+          </div>
+          <div class="capability-item">
+            <div class="capability-num">// 08</div>
+            <h3 class="capability-title">APIs &amp; Service Integrations</h3>
+            <p class="capability-desc">Robust services bridging national public registries, spatial databases, WMS/WFS/OGC APIs and responsive client-side geospatial web applications.</p>
+          </div>
+          <div class="capability-item">
+            <div class="capability-num">// 09</div>
+            <h3 class="capability-title">Public Sector Open Data</h3>
+            <p class="capability-desc">Structuring, validating and enriching official national datasets (SCB, Lantmäteriet, MSB, Valmyndigheten) into dependable decision-support tools.</p>
           </div>
         </div>
       </div>
@@ -562,8 +597,9 @@
             <span class="footer-col-title">Raster Lab</span>
             <ul class="footer-links">
               <li><a href="sealevel.html">PalaeoCoast</a></li>
-              <li><a href="viewer/sealevel/index.html?lang=en" target="_blank" rel="noopener noreferrer">Interactive Map ↗</a></li>
-              <li><span style="color:#64748b;font-size:14px;">Sentinel-2 (Coming Soon)</span></li>
+              <li><a href="viewer/sealevel/index.html?lang=en" target="_blank" rel="noopener noreferrer">PalaeoCoast Map ↗</a></li>
+              <li><a href="viewer/sentinel/project.html">Sentinel Lab</a></li>
+              <li><a href="viewer/sentinel/index.html" target="_blank" rel="noopener noreferrer">Sentinel Lab Map ↗</a></li>
             </ul>
           </div>
 

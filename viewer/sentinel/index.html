@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sentinel Lab · GeoX Raster Lab</title>
+  <meta name="description" content="Interaktiv satellit- och rasteranalys med Sentinel-2 Level-2A. Beräkna NDVI, undersök vegetationsförändringar och genomför zonstatistiska analyser.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="vendor/leaflet.css">
+  <link rel="stylesheet" href="styles.css?v=20261011-1">
+  
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b3038'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='sans-serif' font-size='22' font-weight='700' fill='%2300d2ff'%3ES2%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="brand-section">
+        <a href="https://geox.dev" target="_blank" rel="noopener noreferrer" class="brand-mark" title="GeoX Hem">GX</a>
+        <div class="brand-title">
+          <a href="https://geox.dev">GeoX</a> / <span>Sentinel Lab</span>
+        </div>
+        <span class="brand-badge">Level-2A BOA</span>
+      </div>
+
+      <div class="topbar-center">
+        <div class="study-area-pill" id="studyAreaPill">
+          <span class="status-dot"></span>
+          <select class="study-area-select" id="studyAreaSelect">
+            <optgroup label="🌱 1. Vegetationsförändring (NDVI)">
+              <option value="veg_takern" selected>Tåkern &amp; Östgötaslätten (Vegetation)</option>
+              <option value="veg_oland">Stora Alvaret (Öland · Torka &amp; Fenologi)</option>
+              <option value="veg_skane">Skåneslätten &amp; Kävlingeån (Skörd)</option>
+            </optgroup>
+            <optgroup label="🔬 Övriga Rasterexperiment">
+              <option value="water">💧 2. Vatten &amp; Våtmark (Lake Tåkern · NDWI/MNDWI)</option>
+              <option value="wildfire">🔥 3. Skogsbrand Kårböle 2018 (Hälsingland · dNBR)</option>
+              <option value="terrain">⛰️ 4. Terränganalys (Omberg &amp; Vättern · Copernicus DEM)</option>
+              <option value="calculator">🧮 5. Säker Rasterräknare (AST-Bandalgebra)</option>
+            </optgroup>
+          </select>
+          <span id="studyAreaSubLabel" style="color: var(--text-muted); font-size: 11px;">(15×15 km · 10 m)</span>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <a href="project.html" class="btn btn-secondary" style="text-decoration: none;" title="Visa redaktionell projektsida för alla 5 experiment">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          <span>Projektsida</span>
+        </a>
+        <button class="btn btn-secondary" id="btnMethodology" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <span data-i18n="methodology">Metodik &amp; Källor</span>
+        </button>
+        <button class="btn btn-primary" id="btnDownloads" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span data-i18n="exports">GeoTIFF Export</span>
+        </button>
+        <button class="btn btn-secondary" id="btnLangToggle" type="button">EN</button>
+      </div>
+    </header>
+
+    <!-- Main Map Viewport -->
+    <main class="map-viewport">
+      <div id="map"></div>
+
+      <!-- Controls Panel (Layers & Compare) -->
+      <aside class="floating-panel controls-panel mobile-open" id="controlsPanel">
+        <div class="panel-header">
+          <span class="panel-title" data-i18n="layersControl">Satellitlager &amp; Analys</span>
+          <button class="panel-close-btn" id="btnCloseControls" type="button" aria-label="Stäng panel" title="Stäng panel">✕</button>
+        </div>
+
+        <!-- Experiment Selector -->
+        <div class="experiment-select-wrapper">
+          <label class="control-label" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span data-i18n="experimentTitle">Rasterexperiment</span>
+            <span class="badge" style="background: rgba(0,210,255,0.15); color: var(--accent-cyan); font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 600;">5 MODULER</span>
+          </label>
+          <select class="experiment-select" id="experimentSelect">
+            <option value="vegetation" selected>🌱 1. Vegetationsförändring (NDVI)</option>
+            <option value="water">💧 2. Vatten &amp; Våtmark (NDWI/MNDWI)</option>
+            <option value="wildfire">🔥 3. Skogsbrand Kårböle 2018 (dNBR)</option>
+            <option value="terrain">⛰️ 4. Terränganalys (Copernicus DEM)</option>
+            <option value="calculator">🧮 5. Säker Rasterräknare (AST)</option>
+          </select>
+        </div>
+
+        <!-- Mode Toggle: Single vs Split Compare -->
+        <div class="segmented-control" id="modeControl">
+          <div class="segmented-btn active" data-mode="single" data-i18n="modeSingle">Enskilt lager</div>
+          <div class="segmented-btn" data-mode="split" data-i18n="modeSplit">Jämför (Swipe)</div>
+        </div>
+
+        <!-- Single Layer Mode Controls -->
+        <div id="singleControls">
+          <!-- 1. Vegetation Controls -->
+          <div id="moduleVegControls">
+            <div class="control-group" id="vegAreaSelectGroup">
+              <label class="control-label" style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Studieområde</span>
+                <span style="font-size: 10px; color: var(--text-muted); font-family: var(--font-mono);">15×15 km</span>
+              </label>
+              <div class="segmented-control" id="vegAreaControl">
+                <div class="segmented-btn active" data-veg-area="takern" title="Tåkern &amp; Östgötaslätten">Tåkern</div>
+                <div class="segmented-btn" data-veg-area="oland" title="Stora Alvaret (Öland)">Öland</div>
+                <div class="segmented-btn" data-veg-area="skane" title="Skåneslätten &amp; Kävlingeån">Skåne</div>
+              </div>
+            </div>
+
+            <div class="control-group" id="dateSelectGroup">
+              <label class="control-label" data-i18n="observationDate">Observationsdatum</label>
+              <div class="segmented-control" id="dateControl">
+                <div class="segmented-btn active" data-date="date_a" title="2024-06-04">04 Jun 2024</div>
+                <div class="segmented-btn" data-date="date_b" title="2024-09-05">05 Sep 2024</div>
+              </div>
+            </div>
+
+            <div class="control-group" id="layerSelectGroup">
+              <label class="control-label" data-i18n="visualizationType">Visualisering</label>
+              
+              <button class="layer-select-btn active" data-layer-type="ndvi">
+                <span>NDVI Vegetationsindex</span>
+                <span class="layer-indicator"></span>
+              </button>
+              
+              <button class="layer-select-btn" data-layer-type="delta">
+                <span>ΔNDVI Förändring (Sep - Jun)</span>
+                <span class="layer-indicator"></span>
+              </button>
+
+              <button class="layer-select-btn" data-layer-type="true_color">
+                <span>Sannfärg RGB (B04, B03, B02)</span>
+                <span class="layer-indicator"></span>
+              </button>
+
+              <button class="layer-select-btn" data-layer-type="false_color">
+                <span>Falskfärg NIR (B08, B04, B03)</span>
+                <span class="layer-indicator"></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. Water & Wetlands Controls -->
+          <div id="moduleWaterControls" style="display: none;">
+            <div class="control-group">
+              <label class="control-label">Observationsdatum (Tåkern)</label>
+              <div class="segmented-control" id="waterDateControl">
+                <div class="segmented-btn active" data-water-date="date_a">04 Jun 2024 (Vårflod)</div>
+                <div class="segmented-btn" data-water-date="date_b">05 Sep 2024 (Sensommar)</div>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Vattenindex &amp; Mask</label>
+              <button class="layer-select-btn active" data-water-layer="ndwi">
+                <span>NDWI Vattenindex (B03, B08)</span>
+                <span class="layer-indicator"></span>
+              </button>
+              <button class="layer-select-btn" data-water-layer="mndwi">
+                <span>MNDWI Modifierat Vattenindex (B03, B11)</span>
+                <span class="layer-indicator"></span>
+              </button>
+              <button class="layer-select-btn" data-water-layer="water_mask">
+                <span>Vattenmask (Klassificerat öppet vatten)</span>
+                <span class="layer-indicator"></span>
+              </button>
+            </div>
+
+            <div class="water-metric-box">
+              <div class="water-metric-row">
+                <span style="color: var(--text-secondary);">Vattenyta Jun 2024:</span>
+                <strong style="color: var(--accent-cyan);" id="waterAreaA">30.7 km² (3067 ha)</strong>
+              </div>
+              <div class="water-metric-row">
+                <span style="color: var(--text-secondary);">Vattenyta Sep 2024:</span>
+                <strong style="color: var(--accent-cyan);" id="waterAreaB">31.4 km² (3135 ha)</strong>
+              </div>
+              <div class="water-metric-row" style="border-top: 1px dashed rgba(0,210,255,0.2); padding-top: 4px;">
+                <span style="color: var(--text-secondary);">Arealförändring (Δ):</span>
+                <strong style="color: var(--accent-emerald);" id="waterAreaDelta">+0.7 km² (+68 ha)</strong>
+              </div>
+            </div>
+
+            <div class="water-slider-container">
+              <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                <span style="color: var(--text-secondary);">Tröskelvärde för vatten:</span>
+                <strong id="waterThresholdVal" style="color: var(--accent-cyan); font-family: var(--font-mono);">0.00</strong>
+              </div>
+              <input type="range" class="water-slider" id="waterThresholdSlider" min="-0.20" max="0.20" step="0.02" value="0.00">
+            </div>
+          </div>
+
+          <!-- 3. Wildfire Controls -->
+          <div id="moduleFireControls" style="display: none;">
+            <div class="control-group">
+              <label class="control-label">Brandperiod (Kårböle 2018)</label>
+              <div class="segmented-control" id="fireDateControl">
+                <div class="segmented-btn active" data-fire-date="post">Sep 2018 (Efter brand)</div>
+                <div class="segmented-btn" data-fire-date="pre">Jul 2018 (Före brand)</div>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Skadeanalys &amp; Spektralband</label>
+              <button class="layer-select-btn active" data-fire-layer="dnbr">
+                <span>dNBR Brandskadegrad (USGS Standard)</span>
+                <span class="layer-indicator"></span>
+              </button>
+              <button class="layer-select-btn" data-fire-layer="nbr">
+                <span>NBR Burn Ratio (B08, B12)</span>
+                <span class="layer-indicator"></span>
+              </button>
+              <button class="layer-select-btn" data-fire-layer="false_color">
+                <span>SWIR Falskfärg (B12, B08, B04)</span>
+                <span class="layer-indicator"></span>
+              </button>
+              <button class="layer-select-btn" data-fire-layer="true_color">
+                <span>Sannfärg RGB (B04, B03, B02)</span>
+                <span class="layer-indicator"></span>
+              </button>
+            </div>
+
+            <div class="fire-severity-card">
+              <div style="font-weight: 600; font-size: 11px; margin-bottom: 6px; color: var(--accent-rose);">USGS Brandskadegrader (Kårböle 15×15 km)</div>
+              <div class="fire-class-row">
+                <span><span class="fire-class-badge unburned"></span>Oskadat / Låg dNBR (&lt;0.10)</span>
+                <span style="font-family: var(--font-mono);">16 397 ha (73 %)</span>
+              </div>
+              <div class="fire-class-row">
+                <span><span class="fire-class-badge low"></span>Låg brandgrad (0.10–0.27)</span>
+                <span style="font-family: var(--font-mono);">2 244 ha (10 %)</span>
+              </div>
+              <div class="fire-class-row">
+                <span><span class="fire-class-badge moderate"></span>Måttlig brandgrad (0.27–0.66)</span>
+                <span style="font-family: var(--font-mono);">3 334 ha (15 %)</span>
+              </div>
+              <div class="fire-class-row">
+                <span><span class="fire-class-badge high"></span>Hög brandgrad (&ge;0.66)</span>
+                <span style="font-family: var(--font-mono);">524 ha (2 %)</span>
+              </div>
+              <div class="fire-class-row" style="margin-top: 4px; border-top: 1px dashed rgba(244,63,94,0.3); font-weight: 600;">
+                <span style="color: var(--text-primary);">Total brandskadad areal:</span>
+                <span style="color: var(--accent-rose); font-family: var(--font-mono);">6 102 ha (61 km²)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Terrain Controls -->
+          <div id="moduleTerrainControls" style="display: none;">
+            <div class="control-group">
+              <label class="control-label">Terrängprodukter (Copernicus DEM 30 m)</label>
+              <button class="layer-select-btn active" data-terrain-layer="elevation">
+                <span>Höjd (m ö.h. · Nordisk Hypsometri)</span>
+                <span class="layer-indicator"></span>
+              </button>
+              <button class="layer-select-btn" data-terrain-layer="slope">
+                <span>Lutning (grader · Horns metod)</span>
+                <span class="layer-indicator"></span>
+              </button>
+              <button class="layer-select-btn" data-terrain-layer="hillshade">
+                <span>Terrängskuggning (Hillshade az 315°)</span>
+                <span class="layer-indicator"></span>
+              </button>
+            </div>
+
+            <div class="terrain-stat-card">
+              <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                <span style="color: var(--text-secondary);">Vätterns vattenlinje:</span>
+                <strong style="color: var(--accent-cyan); font-family: var(--font-mono);">86.7 m ö.h.</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                <span style="color: var(--text-secondary);">Omberg krön (Hjässan):</span>
+                <strong style="color: var(--accent-cyan); font-family: var(--font-mono);">167.0 m ö.h.</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                <span style="color: var(--text-secondary);">Maximal branthet (Vätternbranten):</span>
+                <strong style="color: var(--accent-amber); font-family: var(--font-mono);">21.6° lutning</strong>
+              </div>
+              <button class="btn btn-secondary btn-profile" id="btnShowProfile">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                <span>Visa Topografisk Profil</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 5. Calculator Controls -->
+          <div id="moduleCalcControls" style="display: none;">
+            <div class="control-group">
+              <label class="control-label">Säker Rasterräknare (AST-parser)</label>
+              <div class="calc-container">
+                <select class="split-select" id="calcPresetSelect" style="width: 100%;">
+                  <option value="" disabled selected>— Välj fördefinierad formel —</option>
+                  <option value="(B08 - B04) / (B08 + B04)">NDVI: (B08 - B04) / (B08 + B04)</option>
+                  <option value="(B03 - B08) / (B03 + B08)">NDWI: (B03 - B08) / (B03 + B08)</option>
+                  <option value="(B03 - B11) / (B03 + B11)">MNDWI: (B03 - B11) / (B03 + B11)</option>
+                  <option value="(B08 - B12) / (B08 + B12)">NBR: (B08 - B12) / (B08 + B12)</option>
+                  <option value="NDVI_B - NDVI_A">ΔNDVI: NDVI_B - NDVI_A</option>
+                  <option value="NDVI_A > 0.6">Tät vegetation: NDVI_A &gt; 0.6</option>
+                  <option value="NDWI > 0.0">Öppet vatten: NDWI &gt; 0.0</option>
+                </select>
+
+                <div class="calc-band-pills">
+                  <span class="calc-pill" data-insert="B02">B02</span>
+                  <span class="calc-pill" data-insert="B03">B03</span>
+                  <span class="calc-pill" data-insert="B04">B04</span>
+                  <span class="calc-pill" data-insert="B08">B08</span>
+                  <span class="calc-pill" data-insert="B11">B11</span>
+                  <span class="calc-pill" data-insert="B12">B12</span>
+                  <span class="calc-pill" data-insert="NDVI_A">NDVI_A</span>
+                  <span class="calc-pill" data-insert="NDVI_B">NDVI_B</span>
+                  <span class="calc-pill" data-insert=" / ">/</span>
+                  <span class="calc-pill" data-insert=" - ">-</span>
+                  <span class="calc-pill" data-insert=" + ">+</span>
+                  <span class="calc-pill" data-insert=" > ">&gt;</span>
+                </div>
+
+                <div class="calc-input-wrapper">
+                  <input type="text" class="calc-input" id="calcFormulaInput" value="(B08 - B04) / (B08 + B04)" placeholder="Ange formel...">
+                </div>
+
+                <button class="btn btn-primary" id="btnRunCalc" style="width: 100%; justify-content: center; margin-top: 4px;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  <span>Exekvera Bandalgebra</span>
+                </button>
+
+                <div class="calc-status-box success" id="calcStatusBox">
+                  Status: Redo för beräkning på 1500×1500 Float32 matris.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Split Compare / Swipe Controls -->
+        <div id="splitControls" style="display: none;">
+          <div class="control-group">
+            <label class="control-label" data-i18n="splitPresets">Snabbjämförelse</label>
+            <div class="preset-grid" id="presetGrid">
+              <button class="btn-preset active" data-preset="ndvi_ab">NDVI (A ↔ B)</button>
+              <button class="btn-preset" data-preset="tci_ab">Sannfärg (A ↔ B)</button>
+              <button class="btn-preset" data-preset="tci_ndvi">Sannfärg ↔ NDVI</button>
+              <button class="btn-preset" data-preset="ndvi_delta">NDVI ↔ ΔNDVI</button>
+            </div>
+          </div>
+
+          <div class="split-config" id="splitConfig">
+            <div class="split-row">
+              <span data-i18n="splitLeft">Vänster sida:</span>
+              <select class="split-select" id="splitLeftSelect"></select>
+            </div>
+            <div class="split-row">
+              <span data-i18n="splitRight">Höger sida:</span>
+              <select class="split-select" id="splitRightSelect"></select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Basemap Selector -->
+        <div class="control-group" style="border-top: 1px solid var(--border-subtle); padding-top: 10px;">
+          <label class="control-label" data-i18n="basemapTitle">Bakgrundskarta</label>
+          <div class="segmented-control" id="basemapControl">
+            <div class="segmented-btn active" data-basemap="satellite">Satellit</div>
+            <div class="segmented-btn" data-basemap="dark">Mörk</div>
+            <div class="segmented-btn" data-basemap="osm">Karta</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Swipe Divider Line and Grab Handle -->
+      <div class="swipe-divider" id="swipeDivider">
+        <div class="swipe-handle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+      </div>
+
+      <!-- Right Side: Area Analysis Panel -->
+      <aside class="floating-panel analysis-panel" id="analysisPanel">
+        <div class="panel-header">
+          <span class="panel-title" data-i18n="areaAnalysisTitle">Områdesanalys (Zonstatistik)</span>
+          <button class="panel-close-btn" id="btnCloseAnalysis" type="button" aria-label="Stäng panel" title="Stäng panel">✕</button>
+        </div>
+
+        <div class="zone-selector">
+          <label class="control-label" data-i18n="selectZone">Välj studiezon</label>
+          <select class="zone-dropdown" id="zoneDropdown">
+            <option value="entire_study_area">Hela området (15×15 km)</option>
+            <option value="wheat_field_vaderstad">Jordbruksfält (Svanshals / Väderstad)</option>
+            <option value="takern_reed_beds">Tåkerns vassbälten (Phragmites)</option>
+            <option value="takern_open_water">Tåkerns öppna vattenspegel</option>
+            <option value="coniferous_forest_omberg">Barrskog (Omberg / Svanshals)</option>
+          </select>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <span class="metric-label" data-i18n="meanJun">Medel NDVI (Jun)</span>
+            <span class="metric-value neutral" id="metricMeanA">0.643</span>
+          </div>
+
+          <div class="metric-card">
+            <span class="metric-label" data-i18n="meanSep">Medel NDVI (Sep)</span>
+            <span class="metric-value neutral" id="metricMeanB">0.350</span>
+          </div>
+
+          <div class="metric-card full-width">
+            <span class="metric-label" data-i18n="deltaMean">Förändring (ΔNDVI = B - A)</span>
+            <span class="metric-value negative" id="metricDeltaMean">-0.292</span>
+          </div>
+
+          <div class="metric-card">
+            <span class="metric-label" data-i18n="validPixels">Giltiga pixlar</span>
+            <span class="metric-value" id="metricValid">100.0%</span>
+          </div>
+
+          <div class="metric-card">
+            <span class="metric-label" data-i18n="stdDev">Standardavvikelse</span>
+            <span class="metric-value" id="metricStd">0.311</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Histogram -->
+        <div class="histogram-container">
+          <span class="control-label" data-i18n="distribution">Frekvensfördelning (Histogram)</span>
+          <svg class="histogram-svg" id="histogramSvg" viewBox="0 0 300 70" preserveAspectRatio="none"></svg>
+        </div>
+      </aside>
+
+      <!-- Bottom-Left: Pixel Probe -->
+      <div class="floating-panel probe-card" id="probeCard">
+        <div class="probe-item">
+          <span class="probe-title">Position</span>
+          <span class="probe-val" id="probeCoords">58.352°N, 14.825°E</span>
+        </div>
+        <div class="probe-item">
+          <span class="probe-title">NDVI Jun</span>
+          <span class="probe-val" id="probeNdviA">0.74</span>
+        </div>
+        <div class="probe-item">
+          <span class="probe-title">NDVI Sep</span>
+          <span class="probe-val" id="probeNdviB">0.28</span>
+        </div>
+        <div class="probe-item">
+          <span class="probe-title">ΔNDVI</span>
+          <span class="probe-val" id="probeDelta">-0.46</span>
+        </div>
+      </div>
+
+      <!-- Bottom-Right: Dynamic Legend -->
+      <div class="floating-panel legend-panel" id="legendPanel">
+        <div class="legend-title">
+          <span id="legendTitle">NDVI Skala</span>
+          <span id="legendUnit">[-0.2 .. 0.9]</span>
+        </div>
+        <div class="legend-bar ndvi" id="legendBar"></div>
+        <div class="legend-labels" id="legendLabels">
+          <span>Vatten</span>
+          <span>Barmark</span>
+          <span>Gles</span>
+          <span>Tät grönska</span>
+        </div>
+      </div>
+
+      <!-- Mobile Bottom Navigation Dock -->
+      <nav class="mobile-nav-dock" id="mobileNavDock" aria-label="Mobilnavigering">
+        <button class="mobile-nav-btn active" id="btnMobLayers" type="button" title="Satellitlager &amp; Analys">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+          <span>Lager</span>
+        </button>
+        <button class="mobile-nav-btn" id="btnMobStats" type="button" title="Zonstatistik &amp; Metrik">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          <span>Statistik</span>
+        </button>
+        <button class="mobile-nav-btn" id="btnMobMap" type="button" title="Helskärmskarta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+          <span>Karta</span>
+        </button>
+        <button class="mobile-nav-btn" id="btnMobLegend" type="button" title="Teckenförklaring">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+          <span>Legend</span>
+        </button>
+      </nav>
+    </main>
+
+    <!-- Modal: Methodology & Scientific Transparency -->
+    <div class="modal-backdrop" id="methodologyModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 style="font-size: 16px; font-weight: 600;">Metodik, Spektralfysik &amp; Källor</h2>
+          <button class="btn btn-secondary btn-icon" id="btnCloseMethodology">&times;</button>
+        </div>
+        <div class="modal-body">
+          <h3>1. Vad mäter NDVI och varför B04 &amp; B08?</h3>
+          <p>
+            Normalized Difference Vegetation Index (NDVI) utnyttjar klorofylls specifika absorption och reflektans.
+            Frisk grön vegetation absorberar rött ljus (Sentinel-2 band <code>B04</code>, 665 nm) för fotosyntes,
+            samtidigt som den reflekterar starkt i det nära infraröda spektrumet (band <code>B08</code>, 842 nm)
+            genom cellstrukturen i bladens mesofyll.
+          </p>
+          <p>
+            Formel: <code>NDVI = (B08 - B04) / (B08 + B04)</code>. Alla beräkningar genomförs på fysikalisk
+            markreflektans (Bottom-of-Atmosphere, BOA Level-2A), inte på komprimerade 8-bitars skärmpixlar.
+          </p>
+
+          <h3>2. Kvalitetsmaskering med Scene Classification (SCL)</h3>
+          <p>
+            Sentinel-2 Level-2A inkluderar ett klassificeringsraster (SCL). För att förhindra felaktiga tolkningar
+            exkluderas följande klasser självständigt för varje datum:
+          </p>
+          <ul>
+            <li>Klass 0: Saknad data (NoData)</li>
+            <li>Klass 1: Mättade eller defekta pixlar</li>
+            <li>Klass 3: Molnskugga</li>
+            <li>Klass 8, 9 &amp; 10: Moln (medel/hög sannolikhet) samt tunn cirrus</li>
+          </ul>
+          <p>
+            En pixel i förändringsanalysen (ΔNDVI) analyseras endast om <em>båda</em> tidpunkterna uppfyller kvalitetskraven.
+          </p>
+
+          <h3>3. Vad modellen visar — och INTE visar</h3>
+          <p>
+            En minskning i NDVI (negativ ΔNDVI) representerar <strong>inte automatiskt skogsavverkning eller miljöskada</strong>.
+            I ett jordbrukslandskap som Östgötaslätten indikerar det normala fenologiska processer: skörd av spannmål (vete, raps, korn),
+            plöjning eller naturlig sensommarmognad. På motsvarande sätt speglar positiva värden grödans uppkomst och våtmarksvegetationens tillväxt.
+          </p>
+
+          <h3>4. Datakälla &amp; Licensiering</h3>
+          <p>
+            Data härrör från European Space Agency (ESA) Copernicus Sentinel-2 MSI via Copernicus Data Space Ecosystem (CDSE)
+            och AWS Open Data. Användning sker under Copernicus Open Access / Creative Commons CC-BY 4.0.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Downloads -->
+    <div class="modal-backdrop" id="downloadsModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 style="font-size: 16px; font-weight: 600;">Exportera Raster &amp; Statistik</h2>
+          <button class="btn btn-secondary btn-icon" id="btnCloseDownloads">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Ladda ned georefererade GeoTIFFs (Float32 med EPSG:32633 koordinatsystem och NoData-värden),
+            beräknad zonstatistik i CSV eller metadata för vidare analys i QGIS eller Python.
+          </p>
+          <div class="download-list">
+            <a href="data/downloads/sentinel_lab_ndvi_20240604.tif" download class="download-item">
+              <div>
+                <strong style="color: var(--accent-cyan);">NDVI 2024-06-04 GeoTIFF</strong>
+                <div style="font-size: 11px; color: var(--text-muted);">1500×1500 celler · 10 m upplösning · Float32 (7 MB)</div>
+              </div>
+              <span class="btn btn-secondary">Ladda ned</span>
+            </a>
+
+            <a href="data/downloads/sentinel_lab_ndvi_20240905.tif" download class="download-item">
+              <div>
+                <strong style="color: var(--accent-cyan);">NDVI 2024-09-05 GeoTIFF</strong>
+                <div style="font-size: 11px; color: var(--text-muted);">1500×1500 celler · 10 m upplösning · Float32 (7.2 MB)</div>
+              </div>
+              <span class="btn btn-secondary">Ladda ned</span>
+            </a>
+
+            <a href="data/downloads/sentinel_lab_delta_ndvi.tif" download class="download-item">
+              <div>
+                <strong style="color: var(--accent-cyan);">ΔNDVI Förändringsraster GeoTIFF</strong>
+                <div style="font-size: 11px; color: var(--text-muted);">Tidsdifferens (Sep - Jun) · Float32 (7.7 MB)</div>
+              </div>
+              <span class="btn btn-secondary">Ladda ned</span>
+            </a>
+
+            <a href="data/downloads/sentinel_lab_statistics.csv" download class="download-item">
+              <div>
+                <strong style="color: var(--text-primary);">Zonstatistik CSV</strong>
+                <div style="font-size: 11px; color: var(--text-muted);">Medelvärden, min/max, spridning och giltiga pixlar</div>
+              </div>
+              <span class="btn btn-secondary">Ladda ned</span>
+            </a>
+
+            <a href="data/downloads/sentinel_lab_metadata.json" download class="download-item">
+              <div>
+                <strong style="color: var(--text-primary);">Analysmetadata JSON</strong>
+                <div style="font-size: 11px; color: var(--text-muted);">Fullständig katalog med satellit-ID och koordinater</div>
+              </div>
+              <span class="btn btn-secondary">Ladda ned</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Topographic Profile -->
+    <div class="modal-backdrop" id="profileModal">
+      <div class="modal-content" style="max-width: 720px;">
+        <div class="modal-header">
+          <h2 style="font-size: 16px; font-weight: 600;">Topografisk Höjdprofil: Vättern ➔ Omberg (Hjässan) ➔ Tåkern</h2>
+          <button class="btn btn-secondary btn-icon" id="btnCloseProfile">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: 12px; color: var(--text-secondary);">
+            Korssektion (15 km W-E transect) genererad från Copernicus DEM GLO-30. Visar den dramatiska förkastningsbranten där Omberg reser sig direkt ur Vätterns djupa vattenyta (86.7 m ö.h.) upp till Hjässans krön (167 m ö.h.) innan landskapet övergår i Östgötaslättens bördiga jordar och Tåkerns våtmark.
+          </p>
+          <div id="profileChartContainer" style="width: 100%; height: 240px; background: rgba(0,0,0,0.4); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 10px; margin-top: 10px; display: flex; align-items: center; justify-content: center;">
+            <svg id="profileSvg" width="100%" height="100%" viewBox="0 0 680 220" preserveAspectRatio="none"></svg>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); margin-top: 6px;">
+            <span>0 km (Vättern, 86.7 m)</span>
+            <span>7.5 km (Ombergsbranten / Hjässan)</span>
+            <span>15 km (Tåkerns strandkant)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="vendor/leaflet.js"></script>
+  <script src="app.js?v=20261011-3"></script>
+</body>
+</html>
