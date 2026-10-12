@@ -40,10 +40,10 @@ const translations = {
     intro: 'Compare sea-level change alone with a scenario where land motion, erosion and deposition also reshape terrain. Experimental, under development.',
     eyebrow: 'PALAEOCOAST · EUROPE · EXPERIMENTAL, UNDER DEVELOPMENT',
     regionEurope: 'Europe',
-    overview: '5 km overview',
+    overview: '5 km',
     aegean: 'Aegean Sea',
-    ready: 'Analysis data',
-    nextRegion: '450 m regional demo',
+    ready: '600 m',
+    nextRegion: '450 m',
     timeScenario: 'Time & scenario',
     scenario: 'Scenario',
     selectedTime: 'Selected time',
@@ -71,6 +71,7 @@ const translations = {
     cellAnalysis: 'Cell analysis',
     clickPrompt: 'Click inside the selected model area to inspect a calculated cell.',
     todayTerrain: 'Present terrain',
+    relativeHeightAnomaly: '+ relative height anomaly (land + sea)',
     laterUplift: '− later uplift / + later subsidence',
     laterErosion: '+ later erosion',
     laterDeposition: '− later deposition',
@@ -82,6 +83,7 @@ const translations = {
     legend: 'Legend',
     resolutionQuality: 'Resolution & quality',
     basemapDetail: 'Basemap',
+    basemapNote: 'OpenStreetMap · display detail varies',
     modelCell: 'Model cell',
     terrainSource: 'Terrain source',
     resolutionWarning: 'Zoom enlarges cells but creates no new terrain information.',
@@ -130,7 +132,23 @@ const translations = {
     mobileLayers: 'Layers',
     mobileComparison: 'Compare',
     mobileAnalysis: 'Analysis',
-    cellSplitRequiresApi: 'Cell breakdown requires local Python server. Static map still displays all precomputed layers.'
+    cellSplitRequiresApi: 'Cell breakdown requires local Python server. Static map still displays all precomputed layers.',
+    landMotionDisplay: 'Land motion display',
+    reconstructionTooltip: 'Sea level and all active landscape processes',
+    differenceTooltip: 'Cells that change classification when landscape processes are included',
+    calcStatusPresent: '0 BP is the reference baseline: cumulative change is 0 m; map layers show assumed scenario rates.',
+    calcStatusStatic: 'Static demo: precomputed results work, but custom recalculation requires Python server.',
+    calcStatusDirty: 'Modified assumptions are ready to compute for selected epoch.',
+    calcStatusDefault: 'Disable a process if you wish to run an advanced local recalculation.',
+    modelControlsAria: 'Model controls',
+    analysisRegionsAria: 'Analysis regions',
+    timelineAria: 'Timeline',
+    mapToolsAria: 'Map tools',
+    cellInfoAria: 'Cell information',
+    navigableMapAria: 'Navigable map',
+    searchAria: 'Search',
+    closeAria: 'Close',
+    mapViewAria: 'Map view'
   },
   sv: {
     brandStatus: '— [Experimentell, under utveckling]',
@@ -141,6 +159,49 @@ const translations = {
     verifiedCandidates: 'Verifierade kandidater för lokal förfining',
     datumWarning: 'Dessa underlag får inte fogas ihop utan dokumenterad vertikal datumharmonisering. Finare omprovtagning är inte högre faktisk noggrannhet.',
     regionEurope: 'Europa',
+    overview: '5 km',
+    aegean: 'Egeiska havet',
+    ready: '600 m',
+    nextRegion: '450 m',
+    timeScenario: 'Tid & scenario',
+    scenario: 'Scenario',
+    selectedTime: 'Vald tid',
+    older: 'Äldre',
+    play: 'Spela tidsserie',
+    pause: 'Pausa',
+    comparison: 'Jämförelse',
+    reconstruction: 'Rekonstruktion',
+    difference: 'Skillnad mot bara havsnivå',
+    seaModel: 'Kontroll · bara havsnivå',
+    fullModel: 'Rekonstruktion · alla processer',
+    processLayers: 'Processlager',
+    processTimeNote: 'Äldre tider visar kumulativ förändring i meter. Vid 0 BP visas processområde och antagen hastighet i mm/år.',
+    recalculate: 'Avancerat: räkna om modell',
+    recalcHint: 'Detta ändrar modellens antaganden, inte vilka lager som syns. Stäng av en process och räkna om den valda tidpunkten lokalt.',
+    rateWarning: 'Demots hastigheter är syntetiska och regionalt generaliserade – inte uppmätta erosions- eller sedimentationshastigheter.',
+    landMotion: 'Landrörelse',
+    erosion: 'Erosion',
+    deposition: 'Sedimentation',
+    calculate: 'Räkna om vald tid',
+    cellAnalysis: 'Cellanalys',
+    clickPrompt: 'Klicka inom valt modellområde för att läsa den beräknade cellen.',
+    todayTerrain: 'Dagens markhöjd',
+    relativeHeightAnomaly: '+ relativhöjdsanomali (land + hav)',
+    laterUplift: '− senare landhöjning / + landsänkning',
+    laterErosion: '+ senare erosion',
+    laterDeposition: '− senare sedimentpålagring',
+    reconstructedTerrain: '= rekonstruerad äldre markhöjd',
+    seaSurface: 'Vald havsyta',
+    heightMargin: 'Höjdmarginal',
+    computedClass: 'Beräknad klass',
+    simpleClass: 'Klass endast hav',
+    legend: 'Teckenförklaring',
+    resolutionQuality: 'Upplösning & kvalitet',
+    basemapDetail: 'Bakgrundskarta',
+    basemapNote: 'OpenStreetMap · visningsdetalj varierar',
+    modelCell: 'Modellcell',
+    terrainSource: 'Terrängunderlag',
+    resolutionWarning: 'Zoom visar cellerna större men skapar ingen ny terränginformation.',
     opacity: 'Opacitet',
     lacksRegional: 'Saknar regionalt underlag i detta scenario.',
     iceUnavailableAtTime: 'Ingen integrerad isutbredningskälla matchar den valda tiden. Det betyder inte i sig att området var isfritt.',
@@ -177,7 +238,23 @@ const translations = {
     mobileLayers: 'Lager',
     mobileComparison: 'Jämför',
     mobileAnalysis: 'Analys',
-    cellSplitRequiresApi: 'Celluppdelning kräver den lokala Pythonservern. Den statiska kartan visar fortfarande alla färdigberäknade lager.'
+    cellSplitRequiresApi: 'Celluppdelning kräver den lokala Pythonservern. Den statiska kartan visar fortfarande alla färdigberäknade lager.',
+    landMotionDisplay: 'Visning av landrörelse',
+    reconstructionTooltip: 'Havsnivå och alla aktiva landskapsprocesser',
+    differenceTooltip: 'Celler som får annan klass när landskapsprocesserna räknas med',
+    calcStatusPresent: '0 BP är referensläget: kumulativ förändring är 0 m; kartlagren visar i stället scenariots antagna hastigheter.',
+    calcStatusStatic: 'Statisk demo: färdiga resultat fungerar, men egen beräkning kräver Pythonservern.',
+    calcStatusDirty: 'Ändrade antaganden är redo att beräknas för vald tid.',
+    calcStatusDefault: 'Stäng av en process om du vill göra en avancerad lokal omberäkning.',
+    modelControlsAria: 'Modellkontroller',
+    analysisRegionsAria: 'Analysområden',
+    timelineAria: 'Tidslinje',
+    mapToolsAria: 'Kartverktyg',
+    cellInfoAria: 'Cellinformation',
+    navigableMapAria: 'Navigerbar karta',
+    searchAria: 'Sök',
+    closeAria: 'Stäng',
+    mapViewAria: 'Kartvisning'
   }
 };
 
@@ -205,28 +282,58 @@ const scenarioUi = {
 const processLabels = {
   en: {
     paleo_elevation: 'Terrain relief · background',
+    terrain_change: 'Reconstructed minus modern elevation',
+    relative_height_anomaly: 'Relative sea-surface / land anomaly (GIA)',
+    coastline: 'Reconstructed coastline',
+    sensitivity: 'Sensitivity margin (±5 m)',
+    basins: 'Enclosed basins',
     land_motion: 'Assumed land motion after selected date → 1950',
     erosion: 'Assumed erosion after selected date → 1950',
-    deposition: 'Assumed deposition after selected date → 1950'
+    deposition: 'Assumed deposition after selected date → 1950',
+    ice_extent: 'Ice sheet extent (DATED-1)',
+    palaeodrainage: 'Palaeodrainage channels (EMODnet)'
   },
   sv: {
     paleo_elevation: 'Terrängrelief · bakgrund',
+    terrain_change: 'Rekonstruerad minus dagens höjd',
+    relative_height_anomaly: 'Markhöjd relativt samtidens hav (GIA)',
+    coastline: 'Rekonstruerad kust',
+    sensitivity: 'Känsliga områden (±5 m)',
+    basins: 'Slutna sänkor',
     land_motion: 'Antagen landrörelse efter vald tid → 1950',
     erosion: 'Antagen erosion efter vald tid → 1950',
-    deposition: 'Antagen sedimentpålagring efter vald tid → 1950'
+    deposition: 'Antagen sedimentpålagring efter vald tid → 1950',
+    ice_extent: 'Isutbredning (DATED-1)',
+    palaeodrainage: 'Fornfloddalar / kanaler (EMODnet)'
   }
 };
 
 const rateLabels = {
   en: {
+    paleo_elevation: 'Terrain relief · background',
+    terrain_change: 'Reconstructed minus modern elevation',
+    relative_height_anomaly: 'Relative sea-surface / land anomaly (GIA)',
+    coastline: 'Reconstructed coastline',
+    sensitivity: 'Sensitivity margin (±5 m)',
+    basins: 'Enclosed basins',
     land_motion: 'Assumed land motion at 0 BP',
     erosion: 'Assumed erosion at 0 BP',
-    deposition: 'Assumed deposition at 0 BP'
+    deposition: 'Assumed deposition at 0 BP',
+    ice_extent: 'Ice sheet extent (DATED-1)',
+    palaeodrainage: 'Palaeodrainage channels (EMODnet)'
   },
   sv: {
+    paleo_elevation: 'Terrängrelief · bakgrund',
+    terrain_change: 'Rekonstruerad minus dagens höjd',
+    relative_height_anomaly: 'Markhöjd relativt samtidens hav (GIA)',
+    coastline: 'Rekonstruerad kust',
+    sensitivity: 'Känsliga områden (±5 m)',
+    basins: 'Slutna sänkor',
     land_motion: 'Antagen landrörelse vid 0 BP',
     erosion: 'Antagen erosion vid 0 BP',
-    deposition: 'Antagen sedimentpålagring vid 0 BP'
+    deposition: 'Antagen sedimentpålagring vid 0 BP',
+    ice_extent: 'Isutbredning (DATED-1)',
+    palaeodrainage: 'Fornfloddalar / kanaler (EMODnet)'
   }
 };
 
@@ -273,6 +380,60 @@ const rateDescriptions = {
 };
 
 document.querySelectorAll('[data-i18n]').forEach(el => el.dataset.sv = el.textContent);
+document.querySelectorAll('[data-i18n-title]').forEach(el => el.dataset.svTitle = el.title);
+document.querySelectorAll('[data-i18n-aria]').forEach(el => el.dataset.svAria = el.getAttribute('aria-label'));
+
+const sourceResolutionTranslations = {
+  en: {
+    'GEBCO 2020 · cirka 30 bågsekunder (ungefär 740 × 925 m här)': 'GEBCO 2020 · approx. 30 arcsec (~740 × 925 m here)',
+    'GEBCO 2020 cirka 30 bågsekunder; ICE-6G_C-korrektionens faktiska upplösning är 1 grad': 'GEBCO 2020 ~30 arcsec; ICE-6G_C native resolution 1°',
+    'GEBCO 2020 · cirka 1 bågminut i denna Europaöversikt': 'GEBCO 2020 · approx. 1 arcmin in European overview',
+    'GEBCO 2020 cirka 1 bågminut; ICE-6G_C-korrektionens faktiska upplösning är 1 grad': 'GEBCO 2020 ~1 arcmin; ICE-6G_C native resolution 1°',
+    'EMODnet DTM 2024 · 1/4 bågminut i denna export (cirka 270 × 460 m); modellcell 450 m': 'EMODnet DTM 2024 · 1/4 arcmin export (~270 × 460 m); model cell 450 m',
+    'EMODnet-export cirka 270 × 460 m; ICE-6G_C-korrektionens faktiska upplösning är 1 grad': 'EMODnet export ~270 × 460 m; ICE-6G_C native resolution 1°'
+  }
+};
+
+function formatSourceResolution(val) {
+  if (state.lang === 'en' && val && sourceResolutionTranslations.en[val]) return sourceResolutionTranslations.en[val];
+  return val;
+}
+
+function baseLayerTitle(mode) {
+  if (state.lang === 'en') {
+    if (mode === 'difference') return 'Difference from sea level only';
+    if (mode === 'sea') return 'Sea level only';
+    return 'Full landscape reconstruction';
+  }
+  if (mode === 'difference') return 'Skillnad mot bara havsnivå';
+  if (mode === 'sea') return 'Enbart havsnivå';
+  return 'Hela landskapsscenariot';
+}
+
+function formatUnits(units) {
+  if (state.lang !== 'en' || !units) return units;
+  const unitMap = {
+    'klass': 'class',
+    'ändrad klass': 'changed class',
+    'rasterkant': 'raster edge',
+    'klassändring inom testintervall': 'class change within test interval',
+    'klass 3': 'class 3',
+    'm': 'm',
+    'meter': 'metres',
+    'mm/år': 'mm/yr',
+    'polygon': 'vector'
+  };
+  return unitMap[units] || units;
+}
+
+function layerDetail(name, info) {
+  if (state.lang === 'en') {
+    if (name === 'ice_extent') return 'DATED-1 most credible extent with published minimum and maximum margins (CC BY 3.0).';
+    if (name === 'palaeodrainage') return 'Mapped palaeochannels from EMODnet Geology. Inventory is not a contemporaneous or complete river network.';
+    return layerDescriptions.en[name] || info?.detail || '';
+  }
+  return info?.detail || layerDescriptions.sv[name] || '';
+}
 
 const map = L.map('map', {
   zoomControl: false,
@@ -609,7 +770,7 @@ async function addVector(name, info, opacity) {
           ? {maximum: 'Maximum published extent', most_credible: 'Most credible extent', minimum: 'Minimum published extent'}
           : {maximum: 'Största publicerade utbredning', most_credible: 'Mest trovärdig utbredning', minimum: 'Minsta publicerade utbredning'};
         const extent = extentLabels[feature.properties?.extent];
-        featureLayer.bindPopup(`<b>${info.title}</b>${extent ? `<small>${extent}</small>` : ''}<p>${info.detail || ''}</p>`);
+        featureLayer.bindPopup(`<b>${layerLabel(name, display)}</b>${extent ? `<small>${extent}</small>` : ''}<p>${layerDetail(name, info)}</p>`);
       },
     }).addTo(map);
     state.layers.set(name, layer);
@@ -629,7 +790,7 @@ function buildLayerControls() {
     const row = document.createElement('div'); row.className = `layer-row layer-${name}${info.empty ? ' is-empty' : ''}`; row.title = description;
     const available = !info.empty;
     const visual = name === 'land_motion' ? '<span class="layer-glyphs"><i>+</i><i>+</i></span>' : `<span class="layer-swatch ${name}"></span>`;
-    const motionMode = name === 'land_motion' ? `<select class="motion-display" aria-label="Visning av landrörelse"><option value="surface" ${settings.visual === 'surface' ? 'selected' : ''}>${t('surface')}</option><option value="markers" ${settings.visual === 'markers' ? 'selected' : ''}>${t('markers')}</option><option value="both" ${settings.visual === 'both' ? 'selected' : ''}>${t('both')}</option><option value="off" ${settings.visual === 'off' ? 'selected' : ''}>${t('off')}</option></select>` : '';
+    const motionMode = name === 'land_motion' ? `<select class="motion-display" aria-label="${t('landMotionDisplay')}"><option value="surface" ${settings.visual === 'surface' ? 'selected' : ''}>${t('surface')}</option><option value="markers" ${settings.visual === 'markers' ? 'selected' : ''}>${t('markers')}</option><option value="both" ${settings.visual === 'both' ? 'selected' : ''}>${t('both')}</option><option value="off" ${settings.visual === 'off' ? 'selected' : ''}>${t('off')}</option></select>` : '';
     row.innerHTML = `<input type="checkbox" data-layer="${name}" ${settings.enabled && available ? 'checked' : ''} ${available ? '' : 'disabled'}><div class="layer-copy"><label>${visual}<span>${layerLabel(name, display)}</span></label><small>${description}</small>${motionMode}</div><div class="opacity-control"><span>${t('opacity')}</span><input type="range" min="0" max="100" value="${Math.round(settings.opacity * 100)}" aria-label="${t('opacity')}" title="${t('opacity')} ${Math.round(settings.opacity * 100)} %" ${settings.enabled && available ? '' : 'disabled'}></div>`;
     const toggle = row.children[0], opacity = row.querySelector('input[type=range]');
     toggle.onchange = () => { settings.enabled = toggle.checked; opacity.disabled = !toggle.checked; toggleProcess(name, settings.enabled && available, settings.opacity); };
@@ -678,32 +839,37 @@ function updateLegend(activeName, on = true) {
     return;
   }
   if (info.empty) {
-    $('legend').innerHTML = `<b>${activeName ? layerLabel(activeName) : info.title} · ${info.units}</b><p class="hint">${t('emptyLayerZeroNote')}</p>`;
+    const title = activeName ? layerLabel(activeName, display) : baseLayerTitle(state.mode);
+    $('legend').innerHTML = `<b>${title} · ${formatUnits(info.units)}</b><p class="hint">${t('emptyLayerZeroNote')}</p>`;
     return;
   }
   if (activeName === 'land_motion') {
     const scale = motionScale(display.key), low = fmt.format(scale.low), high = fmt.format(scale.high), max = fmt.format(scale.max);
-    $('legend').innerHTML = `<b>${t('upliftSubsidence')} · ${info.units}</b><div class="motion-symbol-explanation"><span><i class="motion-key uplift level-medium">+</i> ${t('warmUplift')}</span><span><i class="motion-key subsidence level-medium">+</i> ${t('blueSubsidence')}</span></div><div class="motion-legend"><span class="motion-key subsidence level-high">+</span><small>−${max} till −${high}</small><span class="motion-key subsidence level-medium">+</span><small>−${high} till −${low}</small><span class="motion-key subsidence level-low">+</span><small>−${low} till 0</small><span class="motion-key uplift level-low">+</span><small>0 till +${low}</small><span class="motion-key uplift level-medium">+</span><small>+${low} till +${high}</small><span class="motion-key uplift level-high">+</span><small>+${high} till +${max}</small></div><div class="gradient" style="background:linear-gradient(90deg,#344b89,#9cadd3,#f3efe1,#e5a08f,#8f382e)"></div><p class="legend-note">${display.isRate ? t('zeroBPNote') : t('fixedSymbolNote')}</p>`;
+    const to = state.lang === 'en' ? 'to' : 'till';
+    $('legend').innerHTML = `<b>${t('upliftSubsidence')} · ${formatUnits(info.units)}</b><div class="motion-symbol-explanation"><span><i class="motion-key uplift level-medium">+</i> ${t('warmUplift')}</span><span><i class="motion-key subsidence level-medium">+</i> ${t('blueSubsidence')}</span></div><div class="motion-legend"><span class="motion-key subsidence level-high">+</span><small>−${max} ${to} −${high}</small><span class="motion-key subsidence level-medium">+</span><small>−${high} ${to} −${low}</small><span class="motion-key subsidence level-low">+</span><small>−${low} ${to} 0</small><span class="motion-key uplift level-low">+</span><small>0 ${to} +${low}</small><span class="motion-key uplift level-medium">+</span><small>+${low} ${to} +${high}</small><span class="motion-key uplift level-high">+</span><small>+${high} ${to} +${max}</small></div><div class="gradient" style="background:linear-gradient(90deg,#344b89,#9cadd3,#f3efe1,#e5a08f,#8f382e)"></div><p class="legend-note">${display.isRate ? t('zeroBPNote') : t('fixedSymbolNote')}</p>`;
     return;
   }
   if (info.kind === 'ice' || info.kind === 'drainage') {
+    const title = layerLabel(activeName, display);
+    const detail = layerDetail(activeName, info);
     if (info.kind === 'ice' && info.uncertainty) {
       const labels = state.lang === 'en'
         ? ['Maximum published extent', 'Most credible extent', 'Minimum published extent']
         : ['Största publicerade utbredning', 'Mest trovärdig utbredning', 'Minsta publicerade utbredning'];
-      $('legend').innerHTML = `<b>${info.title}</b><div class="ice-uncertainty-legend"><span class="ice-key ice-max"></span><small>${labels[0]}</small><span class="ice-key ice-mc"></span><small>${labels[1]}</small><span class="ice-key ice-min"></span><small>${labels[2]}</small></div><p class="legend-note">${info.detail || layerDescription(activeName, display)}</p>`;
+      $('legend').innerHTML = `<b>${title}</b><div class="ice-uncertainty-legend"><span class="ice-key ice-max"></span><small>${labels[0]}</small><span class="ice-key ice-mc"></span><small>${labels[1]}</small><span class="ice-key ice-min"></span><small>${labels[2]}</small></div><p class="legend-note">${detail}</p>`;
       return;
     }
     const color = info.kind === 'ice' ? '#dff2f7' : '#3aa6b7';
-    $('legend').innerHTML = `<div class="legend-row"><i class="swatch" style="background:${color};border:1px solid #307a8b"></i>${info.title}</div><p class="legend-note">${info.detail || layerDescription(activeName, display)}</p>`;
+    $('legend').innerHTML = `<div class="legend-row"><i class="swatch" style="background:${color};border:1px solid #307a8b"></i>${title}</div><p class="legend-note">${detail}</p>`;
     return;
   }
   if (info.kind === 'state') $('legend').innerHTML = `<div class="legend-row"><i class="swatch" style="background:#d3c091"></i>${t('land')}</div><div class="legend-row"><i class="swatch" style="background:#155870"></i>${t('connectedSea')}</div><p class="legend-note">${t('closedBasinsSeparate')}</p>`;
   else if (['diverging', 'positive', 'terrain'].includes(info.kind)) {
     const gradients = {paleo_elevation: 'linear-gradient(90deg,#10384b,#4f93a0,#d9c89e,#8da672,#8a725e,#e8e3d8)', terrain_change: 'linear-gradient(90deg,#4a63a8,#f3efe1,#cb5b3e)', erosion: 'linear-gradient(90deg,#fff4d5,#d04d2e)', deposition: 'linear-gradient(90deg,#eef5c6,#30896f)', land_motion: 'linear-gradient(90deg,#4a63a8,#f3efe1,#cb5b3e)'};
-    $('legend').innerHTML = `<b>${activeName ? layerLabel(activeName, display) : info.title} · ${info.units}</b><div class="gradient" style="background:${gradients[activeName] || 'linear-gradient(90deg,#133d59,#d8c89a,#6d5139)'}"></div><div class="legend-scale"><span>${info.min}</span><span>${info.kind === 'diverging' ? '0' : ''}</span><span>${info.max}</span></div><p class="legend-note">${activeName ? layerDescription(activeName, display) : ''}</p>`;
+    const title = activeName ? layerLabel(activeName, display) : baseLayerTitle(state.mode);
+    $('legend').innerHTML = `<b>${title} · ${formatUnits(info.units)}</b><div class="gradient" style="background:${gradients[activeName] || 'linear-gradient(90deg,#133d59,#d8c89a,#6d5139)'}"></div><div class="legend-scale"><span>${info.min}</span><span>${info.kind === 'diverging' ? '0' : ''}</span><span>${info.max}</span></div><p class="legend-note">${activeName ? layerDescription(activeName, display) : ''}</p>`;
   } else {
-    const title = state.mode === 'difference' && !activeName ? t('diffFromSeaOnly') : info.title;
+    const title = state.mode === 'difference' && !activeName ? t('diffFromSeaOnly') : (activeName ? layerLabel(activeName, display) : baseLayerTitle(state.mode));
     $('legend').innerHTML = `<div class="legend-row"><i class="swatch" style="background:${info.kind === 'coast' ? '#fff6db' : info.kind === 'basin' ? '#725982' : '#ee7c3f'}"></i>${title}</div>`;
   }
 }
@@ -725,9 +891,9 @@ function renderFrame(frameOverride = null) {
   setText('deltaStats', state.lang === 'en'
     ? `${t('deltaEffect')}: land ${signed(d.land_km2)} km² · sea ${signed(d.ocean_km2)} km² · basins ${signed(d.basin_km2)} km² · ${fmt.format(state.frame.changed_cells)} ${t('changedCells')}`
     : `${t('deltaEffect')}: land ${signed(d.land_km2)} km² · hav ${signed(d.ocean_km2)} km² · sänkor ${signed(d.basin_km2)} km² · ${fmt.format(state.frame.changed_cells)} ${t('changedCells')}`);
-  setText('modelResolution', `${t('modelGrid')} · ${fmt.format(state.scenario.resolution_m)} m · ${state.scenario.source_resolution}`);
+  setText('modelResolution', `${t('modelGrid')} · ${fmt.format(state.scenario.resolution_m)} m · ${formatSourceResolution(state.scenario.source_resolution)}`);
   setText('qualityModelCell', `${fmt.format(state.scenario.resolution_m)} × ${fmt.format(state.scenario.resolution_m)} m · EPSG:3035`);
-  setText('qualityTerrainSource', state.scenario.source_resolution);
+  setText('qualityTerrainSource', formatSourceResolution(state.scenario.source_resolution));
   renderResult(); buildLayerControls();
   const activeProcess = [...availableProcessNames()].reverse().find(name => state.layerSettings.get(name)?.enabled && !processDisplay(name).info.empty);
   updateLegend(activeProcess); clearCell(); updateCalculationControls(); syncMobileControls();
@@ -901,7 +1067,16 @@ function setLanguage(lang) {
     const key = el.dataset.i18n;
     el.textContent = translations[state.lang]?.[key] || el.dataset.sv;
   });
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const key = el.dataset.i18nTitle;
+    el.title = translations[state.lang]?.[key] || el.dataset.svTitle || el.title;
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const key = el.dataset.i18nAria;
+    el.setAttribute('aria-label', translations[state.lang]?.[key] || el.dataset.svAria || el.getAttribute('aria-label'));
+  });
   updateMethodContent();
+  updateCalculationControls();
   if (state.catalog) {
     const currentVal = $('scenario').value;
     const scenarios = scenariosForRegion(state.regionId);
@@ -948,24 +1123,36 @@ async function inspectCell(latlng) {
   const response = await fetch(`/api/cell?${q}`); const data = await response.json();
   if (!response.ok) { $('emptyCell').innerHTML = `<p>${data.error}</p>`; if (activeMobilePanel !== 'cellSection') openMobileSheet('cellSection', analysisTrigger); return; }
   $('emptyCell').hidden = true; $('cellDetails').hidden = false;
-  setText('cellCoordinates', `${data.lat.toFixed(5)}°, ${data.lon.toFixed(5)}° · rad ${data.row}, kolumn ${data.column}`);
+  setText('cellCoordinates', state.lang === 'en'
+    ? `${data.lat.toFixed(5)}°, ${data.lon.toFixed(5)}° · row ${data.row}, col ${data.column}`
+    : `${data.lat.toFixed(5)}°, ${data.lon.toFixed(5)}° · rad ${data.row}, kolumn ${data.column}`);
   setText('todayHeight', `${fmt.format(data.today_m)} m`); setText('upliftValue', `${signed(-data.uplift_since_m)} m`); setText('erosionValue', `${signed(data.erosion_since_m)} m`); setText('depositionValue', `${signed(-data.deposition_since_m)} m`); setText('paleoHeight', `${fmt.format(data.paleo_m)} m`);
   const relRow = $('relativeHeightRow'); if (relRow) { relRow.hidden = Math.abs(data.relative_height_anomaly_m || 0) < 1e-9; setText('relativeHeightValue', `${signed(data.relative_height_anomaly_m || 0)} m`); }
-  setText('seaSurface', `${fmt.format(data.sea_surface_m)} m`); setText('margin', `${fmt.format(data.margin_m)} m`); setText('cellClass', data.full_class_name + (data.sensitive ? ' · känslig' : '')); setText('simpleClass', data.sea_only_class_name);
+  setText('seaSurface', `${fmt.format(data.sea_surface_m)} m`); setText('margin', `${fmt.format(data.margin_m)} m`);
+  const formatClassName = (name) => {
+    if (state.lang !== 'en') return name;
+    if (name === 'Land') return 'Land';
+    if (name === 'Hav med kontakt' || name === 'Hav') return 'Connected sea';
+    if (name === 'Sluten sänka') return 'Closed basin';
+    return name;
+  };
+  const sensitiveTag = state.lang === 'en' ? ' · sensitive' : ' · känslig';
+  setText('cellClass', formatClassName(data.full_class_name) + (data.sensitive ? sensitiveTag : ''));
+  setText('simpleClass', formatClassName(data.sea_only_class_name));
   if (activeMobilePanel !== 'cellSection') openMobileSheet('cellSection', analysisTrigger);
 }
 async function calculate() {
-  const button = $('calculate'); button.disabled = true; setText('calculationStatus', 'Beräknar och skapar kartlager…');
+  const button = $('calculate'); button.disabled = true; setText('calculationStatus', state.lang === 'en' ? 'Computing and generating layers…' : 'Beräknar och skapar kartlager…');
   const overrides = {};
   try {
     const response = await fetch('/api/compute', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({scenario: state.scenario.id, age_bp: state.frame.age_bp, enabled: {uplift: $('enableUplift').checked, erosion: $('enableErosion').checked, deposition: $('enableDeposition').checked}, overrides})});
     const result = await response.json(); if (!response.ok) throw Error(result.error);
     renderFrame({...result, layers: result.layers}); state.customDirty = false; button.disabled = true;
     const effect = result.custom_effect;
-    if (effect?.class_changed_cells) setText('calculationStatus', `Klart · ${fmt.format(effect.class_changed_cells)} celler bytte klass jämfört med standardscenariot; största terrängskillnad ${fmt.format(effect.max_abs_terrain_change_m)} m.`);
-    else if (effect) setText('calculationStatus', `Klart · terrängen ändrades upp till ${fmt.format(effect.max_abs_terrain_change_m)} m, men ingen cell bytte land/hav/sänka vid denna tid.`);
-    else setText('calculationStatus', result.cache_hit ? 'Klart · identiskt resultat hämtat ur cache.' : 'Klart · nytt resultat beräknat och cachat.');
-  } catch (error) { setText('calculationStatus', `Kunde inte beräkna: ${error.message}`); } finally { button.disabled = !state.api || !state.customDirty; }
+    if (effect?.class_changed_cells) setText('calculationStatus', state.lang === 'en' ? `Done · ${fmt.format(effect.class_changed_cells)} cells changed classification vs standard; max terrain change ${fmt.format(effect.max_abs_terrain_change_m)} m.` : `Klart · ${fmt.format(effect.class_changed_cells)} celler bytte klass jämfört med standardscenariot; största terrängskillnad ${fmt.format(effect.max_abs_terrain_change_m)} m.`);
+    else if (effect) setText('calculationStatus', state.lang === 'en' ? `Done · terrain changed up to ${fmt.format(effect.max_abs_terrain_change_m)} m, but no cells changed class at this epoch.` : `Klart · terrängen ändrades upp till ${fmt.format(effect.max_abs_terrain_change_m)} m, men ingen cell bytte land/hav/sänka vid denna tid.`);
+    else setText('calculationStatus', result.cache_hit ? (state.lang === 'en' ? 'Done · identical result loaded from cache.' : 'Klart · identiskt resultat hämtat ur cache.') : (state.lang === 'en' ? 'Done · newly computed result cached.' : 'Klart · nytt resultat beräknat och cachat.'));
+  } catch (error) { setText('calculationStatus', state.lang === 'en' ? `Could not compute: ${error.message}` : `Kunde inte beräkna: ${error.message}`); } finally { button.disabled = !state.api || !state.customDirty; }
 }
 function hasCustomAssumptions() { return !$('enableUplift').checked || !$('enableErosion').checked || !$('enableDeposition').checked; }
 function updateCalculationControls() {
@@ -973,10 +1160,10 @@ function updateCalculationControls() {
   $('customCalculation').closest('section').hidden = true;
   for (const id of ['enableUplift', 'enableErosion', 'enableDeposition']) $(id).disabled = present;
   $('calculate').disabled = present || !state.api || !state.customDirty;
-  if (present) setText('calculationStatus', '0 BP är referensläget: kumulativ förändring är 0 m; kartlagren visar i stället scenariots antagna hastigheter.');
-  else if (!state.api) setText('calculationStatus', 'Statisk demo: färdiga resultat fungerar, men egen beräkning kräver Pythonservern.');
-  else if (state.customDirty) setText('calculationStatus', 'Ändrade antaganden är redo att beräknas för vald tid.');
-  else setText('calculationStatus', 'Stäng av en process om du vill göra en avancerad lokal omberäkning.');
+  if (present) setText('calculationStatus', t('calcStatusPresent'));
+  else if (!state.api) setText('calculationStatus', t('calcStatusStatic'));
+  else if (state.customDirty) setText('calculationStatus', t('calcStatusDirty'));
+  else setText('calculationStatus', t('calcStatusDefault'));
 }
 function markCustomDirty() { state.customDirty = true; updateCalculationControls(); }
 function refreshCustomState() { if (hasCustomAssumptions()) { markCustomDirty(); return; } state.customDirty = false; if (state.resultId) renderFrame(); updateCalculationControls(); }

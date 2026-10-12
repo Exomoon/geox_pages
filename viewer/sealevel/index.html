@@ -64,9 +64,9 @@
 
       <section id="comparisonSection">
         <div class="section-title"><span>02</span><h2 data-i18n="comparison">Jämförelse</h2></div>
-        <div class="segmented comparison-modes" role="group" aria-label="Kartvisning">
-          <button data-mode="full" class="active" title="Havsnivå och alla aktiva landskapsprocesser"><span data-i18n="reconstruction">Rekonstruktion</span></button>
-          <button data-mode="difference" title="Celler som får annan klass när landskapsprocesserna räknas med"><span data-i18n="difference">Skillnad mot bara havsnivå</span></button>
+        <div class="segmented comparison-modes" role="group" aria-label="Kartvisning" data-i18n-aria="mapViewAria">
+          <button data-mode="full" class="active" title="Havsnivå och alla aktiva landskapsprocesser" data-i18n-title="reconstructionTooltip"><span data-i18n="reconstruction">Rekonstruktion</span></button>
+          <button data-mode="difference" title="Celler som får annan klass när landskapsprocesserna räknas med" data-i18n-title="differenceTooltip"><span data-i18n="difference">Skillnad mot bara havsnivå</span></button>
         </div>
         <p class="comparison-help" data-i18n="comparisonHelp">Rekonstruktionen uppdateras direkt med tiden. Skillnad visar bara var landrörelse, erosion eller sedimentpålagring ändrar klass jämfört med samma havsnivå på dagens terräng.</p>
         <div class="comparison-stats">
@@ -141,7 +141,7 @@
           <p id="cellCoordinates" class="cell-coordinates"></p>
           <div class="equation">
             <div><span data-i18n="todayTerrain">Dagens markhöjd</span><b id="todayHeight"></b></div>
-            <div id="relativeHeightRow" hidden><span>+ relativhöjdsanomali (land + hav)</span><b id="relativeHeightValue"></b></div>
+            <div id="relativeHeightRow" hidden><span data-i18n="relativeHeightAnomaly">+ relativhöjdsanomali (land + hav)</span><b id="relativeHeightValue"></b></div>
             <div><span data-i18n="laterUplift">− senare landhöjning / + landsänkning</span><b id="upliftValue"></b></div>
             <div><span data-i18n="laterErosion">+ senare erosion</span><b id="erosionValue"></b></div>
             <div><span data-i18n="laterDeposition">− senare sedimentpålagring</span><b id="depositionValue"></b></div>
@@ -162,7 +162,7 @@
       <section>
         <div class="section-title"><span>07</span><h2 data-i18n="resolutionQuality">Upplösning & kvalitet</h2></div>
         <dl class="quality-list">
-          <div><dt data-i18n="basemapDetail">Bakgrundskarta</dt><dd>OpenStreetMap · visningsdetalj varierar</dd></div>
+          <div><dt data-i18n="basemapDetail">Bakgrundskarta</dt><dd data-i18n="basemapNote">OpenStreetMap · visningsdetalj varierar</dd></div>
           <div><dt data-i18n="modelCell">Modellcell</dt><dd id="qualityModelCell">—</dd></div>
           <div><dt data-i18n="terrainSource">Terrängunderlag</dt><dd id="qualityTerrainSource">—</dd></div>
         </dl>
@@ -218,6 +218,6 @@
   </dialog>
 
   <script src="vendor/leaflet.js"></script>
-  <script src="app.js?v=20261012-2" type="module"></script>
+  <script src="app.js?v=20261012-3" type="module"></script>
 </body>
 </html>
