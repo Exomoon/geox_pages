@@ -360,10 +360,28 @@ function openMobileSheet(panelId, trigger = null) {
 
 const rasterTransitions = new Map();
 
+function tileCoordinateAvailable(tileRanges, coords) {
+  if (!tileRanges) return true;
+  const runs = tileRanges[String(coords.z)]?.[String(coords.y)];
+  return Boolean(runs?.some(([start, end]) => coords.x >= start && coords.x <= end));
+}
+
+const SparseTileLayer = L.TileLayer.extend({
+  createTile(coords, done) {
+    if (tileCoordinateAvailable(this.options.tileRanges, coords)) {
+      return L.TileLayer.prototype.createTile.call(this, coords, done);
+    }
+    const tile = document.createElement('img');
+    tile.alt = '';
+    tile.setAttribute('role', 'presentation');
+    queueMicrotask(() => done(null, tile));
+    return tile;
+  },
+});
+
 function removeMapLayer(key) {
   const trans = rasterTransitions.get(key);
   if (trans) {
-    if (trans.timer) clearTimeout(trans.timer);
     if (trans.pending && map.hasLayer(trans.pending)) map.removeLayer(trans.pending);
     if (trans.current && map.hasLayer(trans.current)) map.removeLayer(trans.current);
     rasterTransitions.delete(key);
@@ -377,7 +395,6 @@ function removeMapLayer(key) {
 
 function clearAllMapLayers() {
   for (const [key, trans] of rasterTransitions) {
-    if (trans.timer) clearTimeout(trans.timer);
     if (trans.pending && map.hasLayer(trans.pending)) map.removeLayer(trans.pending);
     if (trans.current && map.hasLayer(trans.current)) map.removeLayer(trans.current);
   }
@@ -397,48 +414,58 @@ function addImage(key, info, pane = 'process', opacity = .8) {
   const isTile = Boolean(info.tiles);
   let trans = rasterTransitions.get(key);
 
-  if (trans) {
-    if (trans.source === newSource && trans.current && map.hasLayer(trans.current)) {
-      trans.current.setOpacity(opacity);
-      state.layers.set(key, trans.current);
-      return trans.current;
-    }
-  } else {
-    trans = { current: null, pending: null, timer: null, source: null };
+  if (!trans) {
+    trans = {current: null, currentSource: null, pending: null, pendingSource: null};
     rasterTransitions.set(key, trans);
   }
 
+  if (trans.currentSource === newSource && trans.current && map.hasLayer(trans.current)) {
+    if (trans.pending && map.hasLayer(trans.pending)) map.removeLayer(trans.pending);
+    trans.pending = null;
+    trans.pendingSource = null;
+    trans.current.setOpacity(opacity);
+    state.layers.set(key, trans.current);
+    return trans.current;
+  }
+
+  if (trans.pendingSource === newSource && trans.pending && map.hasLayer(trans.pending)) {
+    trans.pending.setOpacity(opacity);
+    state.layers.set(key, trans.pending);
+    return trans.pending;
+  }
+
   const nextLayer = isTile
-    ? L.tileLayer(info.tiles, {pane, opacity, interactive: false, noWrap: true, minNativeZoom: info.min_native_zoom, maxNativeZoom: info.max_native_zoom, maxZoom: 14, className: 'model-raster'})
+    ? new SparseTileLayer(info.tiles, {pane, opacity, interactive: false, noWrap: true, bounds: info.bounds, minNativeZoom: info.min_native_zoom, maxNativeZoom: info.max_native_zoom, maxZoom: 14, tileRanges: info.tile_ranges, className: 'model-raster'})
     : L.imageOverlay(info.url, info.bounds, {pane, opacity, interactive: false, crossOrigin: false, className: 'model-raster'});
 
   if (trans.pending) {
-    if (trans.timer) clearTimeout(trans.timer);
     if (map.hasLayer(trans.pending)) map.removeLayer(trans.pending);
     trans.pending = null;
+    trans.pendingSource = null;
   }
 
   if (!trans.current || !map.hasLayer(trans.current)) {
     nextLayer.addTo(map);
     trans.current = nextLayer;
-    trans.source = newSource;
+    trans.currentSource = newSource;
     state.layers.set(key, nextLayer);
     return nextLayer;
   }
 
   trans.pending = nextLayer;
-  trans.source = newSource;
+  trans.pendingSource = newSource;
   state.layers.set(key, nextLayer);
   nextLayer.addTo(map);
 
   const swapToNext = () => {
     if (trans.pending !== nextLayer) return;
-    if (trans.timer) { clearTimeout(trans.timer); trans.timer = null; }
     if (trans.current && map.hasLayer(trans.current)) {
       map.removeLayer(trans.current);
     }
     trans.current = nextLayer;
+    trans.currentSource = newSource;
     trans.pending = null;
+    trans.pendingSource = null;
   };
 
   if (isTile) {
@@ -449,10 +476,15 @@ function addImage(key, info, pane = 'process', opacity = .8) {
       swapToNext();
     } else {
       nextLayer.once('load', swapToNext);
-      nextLayer.once('error', swapToNext);
+      nextLayer.once('error', () => {
+        if (trans.pending !== nextLayer) return;
+        if (map.hasLayer(nextLayer)) map.removeLayer(nextLayer);
+        trans.pending = null;
+        trans.pendingSource = null;
+        if (trans.current) state.layers.set(key, trans.current);
+      });
     }
   }
-  trans.timer = setTimeout(swapToNext, 350);
 
   return nextLayer;
 }
@@ -1015,4 +1047,4 @@ document.addEventListener('keydown', event => { if (event.key === 'Escape' && ac
 $('methodButton').onclick = () => $('methodDialog').showModal(); $('closeMethod').onclick = () => $('methodDialog').close();
 $('language').onclick = () => setLanguage(state.lang === 'sv' ? 'en' : 'sv');
 
-fetch('data/catalog.json?v=20261011-5', {cache: 'no-store'}).then(r => r.json()).then(catalog => { state.catalog = catalog; populate(); detectApi(); }).catch(error => { document.body.innerHTML = `<main style="padding:3rem"><h1>PalaeoCoast kunde inte starta</h1><p>${error.message}</p><p>Kör <code>python web_server.py</code> och öppna den angivna adressen.</p></main>`; });
+fetch('data/catalog.json?v=20261012-1').then(r => r.json()).then(catalog => { state.catalog = catalog; populate(); detectApi(); }).catch(error => { document.body.innerHTML = `<main style="padding:3rem"><h1>PalaeoCoast kunde inte starta</h1><p>${error.message}</p><p>Kör <code>python web_server.py</code> och öppna den angivna adressen.</p></main>`; });
