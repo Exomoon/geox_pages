@@ -770,7 +770,7 @@ async function addVector(name, info, opacity) {
           ? {maximum: 'Maximum published extent', most_credible: 'Most credible extent', minimum: 'Minimum published extent'}
           : {maximum: 'Största publicerade utbredning', most_credible: 'Mest trovärdig utbredning', minimum: 'Minsta publicerade utbredning'};
         const extent = extentLabels[feature.properties?.extent];
-        featureLayer.bindPopup(`<b>${layerLabel(name, display)}</b>${extent ? `<small>${extent}</small>` : ''}<p>${layerDetail(name, info)}</p>`);
+        featureLayer.bindPopup(`<b>${layerLabel(name)}</b>${extent ? `<small>${extent}</small>` : ''}<p>${layerDetail(name, info)}</p>`);
       },
     }).addTo(map);
     state.layers.set(name, layer);
