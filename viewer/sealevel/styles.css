@@ -133,6 +133,9 @@ select optgroup {
   font-weight: 600;
   font-size: 14px;
   letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
 }
 
 .brand-title a {
@@ -142,6 +145,14 @@ select optgroup {
 
 .brand-title span {
   color: var(--accent-cyan);
+}
+
+.brand-title .brand-status {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: normal;
+  white-space: nowrap;
 }
 
 .brand-badge {
@@ -1275,6 +1286,7 @@ dialog::backdrop {
 }
 
 @media (max-width: 1100px) {
+  .brand-status { display: none; }
   .controls { width: 300px; }
   .inspector { width: 310px; }
   .map-toolbar { left: 330px; }

@@ -33,6 +33,7 @@ const geocoderEndpoint = 'https://nominatim.openstreetmap.org/search';
 
 const translations = {
   en: {
+    brandStatus: '— [Experimental, under development]',
     scenarioPlatform: 'Geospatial scenario platform',
     methodSources: 'Method & sources',
     headline: 'Read coastal change layer by layer.',
@@ -132,6 +133,7 @@ const translations = {
     cellSplitRequiresApi: 'Cell breakdown requires local Python server. Static map still displays all precomputed layers.'
   },
   sv: {
+    brandStatus: '— [Experimentell, under utveckling]',
     methodTitle: 'Vad modellen visar — och inte visar',
     methodIntro: 'Modellen rekonstruerar geometriska och geofysiska forntida kuster. Den daterar inte bosättningar och modellerar inte vågor, erosionstransport eller lokal isfrihet.',
     methodCalcHeading: 'Beräkning av forntida markyta & kustlinje',
