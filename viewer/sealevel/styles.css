@@ -88,6 +88,7 @@ select optgroup {
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   position: relative;
   overflow: hidden;
 }
@@ -1315,6 +1316,9 @@ dialog::backdrop {
     position: relative;
     width: 100vw;
     height: calc(100vh - 48px);
+    height: calc(100dvh - 48px);
+    flex: 1;
+    min-height: 0;
     overflow: hidden;
     display: block;
   }
@@ -1389,11 +1393,11 @@ dialog::backdrop {
   /* Mobile Bottom Time Dock */
   .mobile-time-dock {
     display: block;
-    position: absolute;
-    z-index: 500;
+    position: fixed;
+    z-index: 700;
     left: 10px;
     right: 10px;
-    bottom: 56px;
+    bottom: calc(58px + env(safe-area-inset-bottom, 0px));
     padding: 8px 12px 6px;
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
@@ -1454,7 +1458,7 @@ dialog::backdrop {
   .map-badges {
     left: 10px;
     right: 64px;
-    bottom: 136px;
+    bottom: calc(146px + env(safe-area-inset-bottom, 0px));
   }
   .map-badges span {
     max-width: 100%;
@@ -1464,6 +1468,11 @@ dialog::backdrop {
   }
   .map-badges span:last-child {
     display: none;
+  }
+
+  .leaflet-control-zoom {
+    margin-bottom: calc(146px + env(safe-area-inset-bottom, 0px)) !important;
+    margin-right: 10px !important;
   }
 
   /* Mobile Bottom Navigation Tabs */
@@ -1480,6 +1489,7 @@ dialog::backdrop {
     -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid var(--border-subtle);
     padding: 6px 8px;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
     gap: 6px;
   }
   .mobile-actions:has(#mobileComparisonButton[hidden]) {
@@ -1536,7 +1546,8 @@ dialog::backdrop {
     border-radius: 18px 18px 0 0;
     z-index: 1000;
     box-shadow: 0 -16px 48px rgba(0, 0, 0, 0.85);
-    padding: 14px 16px 20px;
+    padding: 14px 16px;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
     animation: sheet-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .mobile-sheet[hidden] {
