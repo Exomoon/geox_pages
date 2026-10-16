@@ -54,8 +54,8 @@
       </nav>
 
       <div class="header-actions">
-        <a href="https://github.com/Exomoon/marsexplorer" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="padding: 8px 16px; font-size: 13px;">
-          <span>GitHub (Exomoon)</span>
+        <a href="https://mars.geox.dev" target="_blank" rel="noopener noreferrer" class="btn btn-mars" style="padding: 8px 16px; font-size: 13px;">
+          <span>Launch mars.geox.dev</span>
           <span class="arrow-glyph" aria-hidden="true">↗</span>
         </a>
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -73,12 +73,12 @@
         <div class="mars-badge-row">
           <span class="status-badge staging"><span class="pulse-dot"></span> Live on Cloudflare Pages</span>
           <span class="section-category-eyebrow rasterlab">GeoX Raster Lab</span>
-          <span style="font-family: monospace; font-size: 12px; color: var(--text-muted);">Git: Exomoon/marsexplorer (gemini-dev)</span>
+          <span style="font-family: monospace; font-size: 12px; color: var(--text-muted);">Automated CI/CD Pipeline</span>
         </div>
 
         <h1 class="mars-hero-title">Planetary Terrain & <span>Geospatial Analysis</span> Laboratory</h1>
         <p class="mars-hero-lead">
-          An interactive, client-side 3D WebGL engine rendering multi-resolution Martian altimetry, high-resolution orbital ortho-imagery, rover traverse telemetry, and hypothetical paleoceanographic simulations directly in the browser.
+          An interactive, client-side 3D WebGL engine rendering multi-resolution Martian altimetry, high-resolution orbital ortho-imagery, rover traverse telemetry, and hypothetical paleoceanographic simulations directly in the browser. <span style="display: block; margin-top: 8px; color: #fb923c; font-size: 14px; font-weight: 500;">Notice: Not fully mobile adapted YET — best experienced on desktop.</span>
         </p>
 
         <div class="mars-hero-ctas">
@@ -89,10 +89,6 @@
           <a href="#architecture" class="btn btn-mars">
             <span>Cloudflare & Git Deployment Architecture</span>
             <span class="arrow-glyph" aria-hidden="true">↓</span>
-          </a>
-          <a href="https://github.com/Exomoon/marsexplorer" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
-            <span>Explore Source Code on GitHub</span>
-            <span class="arrow-glyph" aria-hidden="true">↗</span>
           </a>
           <a href="index.html" class="btn btn-ghost">
             <span>Return to GeoX Ecosystem</span>
@@ -116,7 +112,7 @@
             <span class="pipeline-card-step">Phase 01 • Staging Branch</span>
             <h3 class="pipeline-card-title">GitHub Version Control</h3>
             <p class="pipeline-card-desc">
-              All active development is tracked in repository <strong><code style="color: #fb923c;">Exomoon/marsexplorer</code></strong>. The <strong><code style="color: #fb923c;">gemini-dev</code></strong> branch acts as the dedicated staging and preview environment, while <strong><code>main</code></strong> remains protected for verified production releases.
+              All active development is tracked in an automated pipeline. The <strong><code style="color: #fb923c;">gemini-dev</code></strong> branch acts as the dedicated staging and preview environment, while <strong><code>main</code></strong> deploys verified production releases to Cloudflare Pages.
             </p>
             <span class="pipeline-card-badge">git push -u origin gemini-dev</span>
           </div>
@@ -289,7 +285,6 @@
               <li><a href="index.html">GeoX Home</a></li>
               <li><a href="index.html#rasterlab">Raster Lab</a></li>
               <li><a href="index.html#applications">Applications</a></li>
-              <li><a href="https://github.com/Exomoon/marsexplorer" target="_blank" rel="noopener noreferrer">Mars Explorer GitHub</a></li>
             </ul>
           </div>
 

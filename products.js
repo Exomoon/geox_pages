@@ -24,7 +24,7 @@ export const products = [
     category: "rasterlab",
     name: "GeoX Mars Explorer",
     eyebrow: "Raster Lab / Planetary Altimetry & 3D WebGL",
-    tagline: "Planetary terrain and geospatial analysis laboratory for Mars.",
+    tagline: "Planetary terrain and geospatial analysis laboratory for Mars. — Not fully mobile adapted YET",
     description: "Interaktiv 3D WebGL-miljö för vetenskaplig utforskning av Mars topografi och landningsplatser med NASA MOLA höjddata (16 ppd), USGS/CTX-bilder och högupplösta HiRISE/CTX-terrängpaket. Inkluderar missionsdata för Perseverance- och Curiosity-rutter, interaktiva topografiska transekter och simulering av hypotetiska forntida oceaner.",
     url: "https://mars.geox.dev",
     previewPage: "mars.html",
@@ -55,7 +55,6 @@ export const products = [
     accentGlow: "rgba(249, 115, 22, 0.20)",
     ctaText: "Starta Mars Explorer",
     ctaLink: "https://mars.geox.dev",
-    repoUrl: "https://github.com/Exomoon/marsexplorer",
     isExternal: true,
     tags: ["3D WebGL Terrain", "NASA MOLA 16 PPD", "CTX 5m & HiRISE DTM", "Rover Traverses", "Topographic Transect", "Cloudflare Pages"],
     featured: true
