@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GeoX Mars Explorer — Planetary Terrain & Geospatial Analysis Laboratory</title>
+  <meta name="description"
+    content="GeoX Mars Explorer is a high-resolution 3D WebGL planetary analysis laboratory combining NASA MOLA elevation, USGS CTX ortho-imagery, HiRISE digital elevation models, rover traverses and ocean simulations.">
+  <meta name="keywords"
+    content="Mars Explorer, GeoX, 3D Mars terrain, NASA MOLA, HiRISE DTM, CTX imagery, Jezero Crater, Valles Marineris transect, Perseverance rover, Cloudflare Pages, WebGL GIS">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://geox.dev/mars.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="GeoX Mars Explorer — Planetary Terrain & Geospatial Analysis Laboratory">
+  <meta property="og:description"
+    content="Interactive 3D WebGL engine for planetary altimetry, rover traverse visualization and scientific terrain modeling on Cloudflare Pages.">
+  <meta property="og:image" content="https://geox.dev/assets/mars-explorer-preview.png">
+  <meta property="og:url" content="https://geox.dev/mars.html">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GeoX Mars Explorer — 3D Planetary Analysis">
+  <meta name="twitter:description"
+    content="Interactive 3D WebGL engine for planetary altimetry, rover telemetry and scientific terrain modeling.">
+  <meta name="twitter:image" content="https://geox.dev/assets/mars-explorer-preview.png">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="mars-page">
+  <!-- Header -->
+  <header class="site-header scrolled" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="GeoX Home">
+        <span class="brand-text">Geo<span class="brand-accent">X</span></span>
+        <span style="font-size: 13px; font-weight: 700; color: #fb923c; margin-left: 8px; letter-spacing: 0.08em; text-transform: uppercase;">Mars Explorer</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Mars Navigation">
+        <a href="#showcase" class="nav-link">Showcase</a>
+        <a href="#architecture" class="nav-link">Cloudflare & Git</a>
+        <a href="#specifications" class="nav-link">Specifications</a>
+        <a href="index.html#rasterlab" class="nav-link">← GeoX Portal</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://github.com/Exomoon/marsexplorer" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="padding: 8px 16px; font-size: 13px;">
+          <span>GitHub (Exomoon)</span>
+          <span class="arrow-glyph" aria-hidden="true">↗</span>
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Mars Staging Hero -->
+    <section class="mars-landing-hero">
+      <div class="container">
+        <div class="mars-badge-row">
+          <span class="status-badge staging"><span class="pulse-dot"></span> Live on Cloudflare Pages</span>
+          <span class="section-category-eyebrow rasterlab">GeoX Raster Lab</span>
+          <span style="font-family: monospace; font-size: 12px; color: var(--text-muted);">Git: Exomoon/marsexplorer (gemini-dev)</span>
+        </div>
+
+        <h1 class="mars-hero-title">Planetary Terrain & <span>Geospatial Analysis</span> Laboratory</h1>
+        <p class="mars-hero-lead">
+          An interactive, client-side 3D WebGL engine rendering multi-resolution Martian altimetry, high-resolution orbital ortho-imagery, rover traverse telemetry, and hypothetical paleoceanographic simulations directly in the browser.
+        </p>
+
+        <div class="mars-hero-ctas">
+          <a href="https://mars.geox.dev" target="_blank" rel="noopener noreferrer" class="btn btn-mars">
+            <span>Launch Mars Explorer</span>
+            <span class="arrow-glyph" aria-hidden="true">↗</span>
+          </a>
+          <a href="#architecture" class="btn btn-mars">
+            <span>Cloudflare & Git Deployment Architecture</span>
+            <span class="arrow-glyph" aria-hidden="true">↓</span>
+          </a>
+          <a href="https://github.com/Exomoon/marsexplorer" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <span>Explore Source Code on GitHub</span>
+            <span class="arrow-glyph" aria-hidden="true">↗</span>
+          </a>
+          <a href="index.html" class="btn btn-ghost">
+            <span>Return to GeoX Ecosystem</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Staging & Deployment Architecture (Cloudflare + Git) -->
+    <section class="pipeline-section" id="architecture">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-category-eyebrow rasterlab">Delivery Infrastructure</span>
+          <h2 class="section-title">Cloudflare Pages & Git Deployment Pipeline</h2>
+          <p class="section-sub">Git-based preview and production deployments on Cloudflare's global edge, with packaged terrain assets and external NASA/ArcGIS imagery streams.</p>
+        </div>
+
+        <div class="pipeline-grid">
+          <!-- 1. Git & Version Control -->
+          <div class="pipeline-card">
+            <span class="pipeline-card-step">Phase 01 • Staging Branch</span>
+            <h3 class="pipeline-card-title">GitHub Version Control</h3>
+            <p class="pipeline-card-desc">
+              All active development is tracked in repository <strong><code style="color: #fb923c;">Exomoon/marsexplorer</code></strong>. The <strong><code style="color: #fb923c;">gemini-dev</code></strong> branch acts as the dedicated staging and preview environment, while <strong><code>main</code></strong> remains protected for verified production releases.
+            </p>
+            <span class="pipeline-card-badge">git push -u origin gemini-dev</span>
+          </div>
+
+          <!-- 2. Cloudflare Pages -->
+          <div class="pipeline-card">
+            <span class="pipeline-card-step">Phase 02 • Global Edge</span>
+            <h3 class="pipeline-card-title">Cloudflare Pages Runtime</h3>
+            <p class="pipeline-card-desc">
+              The client-side Three.js/WebGL bundle compiles with Vite + TypeScript. Continuous integration automatically deploys preview builds to unique Cloudflare edge staging URLs on every push to <code>gemini-dev</code> with zero server runtime overhead.
+            </p>
+            <span class="pipeline-card-badge">Sub-second TTFB • Global Anycast</span>
+          </div>
+
+          <!-- 3. Dataset delivery -->
+          <div class="pipeline-card">
+            <span class="pipeline-card-step">Phase 03 • Dataset Delivery</span>
+            <h3 class="pipeline-card-title">Static Terrain & External Imagery</h3>
+            <p class="pipeline-card-desc">
+              Packaged DEM, ortho, panorama, audio, and traverse assets ship with the Cloudflare Pages deployment. Global THEMIS and CTX imagery streams from NASA Trek and ArcGIS OnMars. R2 remains a future option if dataset volume outgrows Pages.
+            </p>
+            <span class="pipeline-card-badge">Pages Assets • NASA Trek • ArcGIS OnMars</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Showcase & Feature Deep-Dive -->
+    <section class="mars-gallery-section" id="showcase">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-category-eyebrow rasterlab">Scientific Capabilities</span>
+          <h2 class="section-title">Interactive Analysis Showcase</h2>
+          <p class="section-sub">Current laboratory modules verified in staging with real NASA and USGS planetary datasets.</p>
+        </div>
+
+        <!-- 1. Jezero Crater 3D -->
+        <div class="mars-gallery-item">
+          <div class="mars-gallery-header">
+            <div>
+              <h3 class="mars-gallery-title">1. Local Terrain 3D — Jezero Crater & Perseverance Route Corridor</h3>
+              <p class="mars-gallery-desc">
+                Sub-meter digital elevation model rendered in real-time WebGL. Overlays high-resolution USGS CTX 5 m ortho-imagery over HiRISE DTM elevation with authentic NASA M2020 Perseverance rover traverse tracking (Sol 1000+, 46.02 km travelled across 557 drives).
+              </p>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="tag-pill">CTX 5 m / px</span>
+              <span class="tag-pill">HiRISE 20 m DTM</span>
+              <span class="tag-pill">Solar LMST Sun Shading</span>
+              <span class="tag-pill">Perseverance Sol 1000+</span>
+            </div>
+          </div>
+          <div class="mars-gallery-media">
+            <img class="mars-gallery-img" src="assets/mars-explorer-preview.png" alt="Mars Explorer Jezero Crater 3D Terrain and Perseverance Route Corridor" loading="lazy">
+          </div>
+        </div>
+
+        <!-- 2. Valles Marineris Transect -->
+        <div class="mars-gallery-item">
+          <div class="mars-gallery-header">
+            <div>
+              <h3 class="mars-gallery-title">2. Scientific Topographic Transect — Valles Marineris</h3>
+              <p class="mars-gallery-desc">
+                Interactive polyline transect tool sampling NASA MOLA 16 ppd elevation data across a 235.2 km canyon cross-section. Dynamically plots depth profiles relative to the Mars Areoid 0 m datum, revealing elevations from -3,583 m at the chasma floor up to +5,887 m at the plateau rim (8,510 m total relief).
+              </p>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="tag-pill">MOLA 16 PPD</span>
+              <span class="tag-pill">8,510 m Relief</span>
+              <span class="tag-pill">Interactive Drawing</span>
+              <span class="tag-pill">CSV & GeoJSON Export</span>
+            </div>
+          </div>
+          <div class="mars-gallery-media">
+            <img class="mars-gallery-img" src="assets/mars-transect-preview.png" alt="Mars Explorer Valles Marineris Scientific Topographic Transect" loading="lazy">
+          </div>
+        </div>
+
+        <!-- 3. Planetary Ocean Flooding -->
+        <div class="mars-gallery-item">
+          <div class="mars-gallery-header">
+            <div>
+              <h3 class="mars-gallery-title">3. Planetary Ocean Flooding Simulation — Northern Lowlands</h3>
+              <p class="mars-gallery-desc">
+                Hypothetical paleoceanographic simulation exploring ancient shoreline baselines and impact basin inundation. Calculates hypsometric water extents across the Vastitas Borealis, Chryse Planitia, Isidis Planitia, and Hellas Basin.
+              </p>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="tag-pill">Global Sphere Altimetry</span>
+              <span class="tag-pill">Paleocean Modeling</span>
+              <span class="tag-pill">Hypsometric Water Levels</span>
+              <span class="tag-pill">Scientific Landing Sites</span>
+            </div>
+          </div>
+          <div class="mars-gallery-media">
+            <img class="mars-gallery-img" src="assets/mars-ocean-preview.png" alt="Mars Explorer Planetary Ocean Flooding Simulation" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Geodetic & Technical Specifications -->
+    <section class="specs-section" id="specifications">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-category-eyebrow rasterlab">Technical Matrix</span>
+          <h2 class="section-title">Geodetic & Altimetry Specifications</h2>
+          <p class="section-sub">Standardized planetary parameters adhering to IAU and USGS planetary coordinate references.</p>
+        </div>
+
+        <div class="specs-grid">
+          <div class="spec-box">
+            <div class="spec-label">Reference Ellipsoid</div>
+            <div class="spec-value">Mars 2000 Sphere</div>
+            <div class="spec-sub">Application reference radius R = 3,396,190.0 m</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Vertical Elevation Datum</div>
+            <div class="spec-value">MOLA Areoid (0 m)</div>
+            <div class="spec-sub">Standard gravity-potential reference surface</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Global Altimetry Model</div>
+            <div class="spec-value">NASA MOLA 16 PPD</div>
+            <div class="spec-sub">~3.7 km/px resolution at equator</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">High-Resolution DTMs</div>
+            <div class="spec-value">HiRISE & USGS CTX</div>
+            <div class="spec-sub">0.5–5.0 m imagery; DEM resolution varies by package</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Rendering Pipeline</div>
+            <div class="spec-value">Three.js / WebGL 2.0</div>
+            <div class="spec-sub">Client-side GPU shader evaluation</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Solar Dynamics</div>
+            <div class="spec-value">LMST Sun Calculator</div>
+            <div class="spec-sub">Subsolar point & analytical hillshading</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Edge Distribution</div>
+            <div class="spec-value">Cloudflare Pages</div>
+            <div class="spec-sub">Global Anycast edge deployment</div>
+          </div>
+          <div class="spec-box">
+            <div class="spec-label">Dataset Delivery</div>
+            <div class="spec-value">Pages + source streams</div>
+            <div class="spec-sub">Packaged local assets with NASA/ArcGIS global imagery</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand-wrap">
+          <span class="footer-brand">Geo<span class="brand-accent">X</span></span>
+          <p class="footer-tagline">Where location meets data.</p>
+        </div>
+
+        <div class="footer-links-wrap">
+          <div class="footer-col">
+            <span class="footer-col-title">Navigation</span>
+            <ul class="footer-links">
+              <li><a href="index.html">GeoX Home</a></li>
+              <li><a href="index.html#rasterlab">Raster Lab</a></li>
+              <li><a href="index.html#applications">Applications</a></li>
+              <li><a href="https://github.com/Exomoon/marsexplorer" target="_blank" rel="noopener noreferrer">Mars Explorer GitHub</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Connect</span>
+            <ul class="footer-links">
+              <li><a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer">Ronnie Utter on LinkedIn</a></li>
+              <li><a href="mailto:support@geox.dev">support@geox.dev</a></li>
+              <li><a href="https://geox.dev">geox.dev</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-credit">Independent projects by <a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer" class="credit-link">Ronnie Utter</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

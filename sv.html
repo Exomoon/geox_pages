@@ -7,9 +7,9 @@
 
   <title>GeoX — Där plats möter data</title>
   <meta name="description"
-    content="GeoX är ett oberoende utvecklingsnamn för projekt i skärningspunkten mellan geodata, dataintegration och digitala produkter. Skapat av Ronnie Utter.">
+    content="GeoX är ett oberoende utvecklingsnamn för projekt i skärningspunkten mellan geodata, planetära rasterlabb, dataintegration och digitala samhällsverktyg. Skapat av Ronnie Utter.">
   <meta name="keywords"
-    content="GeoX, geodata, GIS, spatial analys, dataintegration, ETL, datapipelines, interaktiva kartor, öppna data, Ronnie Utter">
+    content="GeoX, Mars Explorer, Raster Lab, Sentinel-2, PalaeoCoast, Restidsanalys, Valatlas, Områdesatlas, UtterIDE, KrisGIS, geospatial utveckling, GIS, spatial analys, Ronnie Utter">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://geox.dev/sv.html">
@@ -17,22 +17,21 @@
   <!-- Open Graph -->
   <meta property="og:title" content="GeoX — Där plats möter data">
   <meta property="og:description"
-    content="Geodata, dataintegration och digitala produkter. Fristående projekt skapade av Ronnie Utter.">
+    content="Geospatial utveckling, planetära rasterlabb, dataintegration och digitala samhällsapplikationer. Oberoende projekt av Ronnie Utter.">
   <meta property="og:url" content="https://geox.dev/sv.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GeoX">
-  <meta property="og:locale" content="sv_SE">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="GeoX — Där geodata möter analys">
+  <meta name="twitter:title" content="GeoX — Där plats möter data">
   <meta name="twitter:description"
-    content="Spatial ingenjörskonst, dataintegration och digitala produkter. Fristående projekt skapade av Ronnie Utter.">
+    content="Geospatial utveckling, planetära rasterlabb, dataintegration och digitala samhällsapplikationer. Oberoende projekt av Ronnie Utter.">
 
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -42,7 +41,7 @@
     "@type": "WebSite",
     "name": "GeoX",
     "url": "https://geox.dev/sv.html",
-    "description": "Spatial ingenjörskonst, dataintegration och digitala produkter. Fristående projekt skapade av Ronnie Utter.",
+    "description": "Geospatial utveckling, planetära rasterlabb, dataintegration och digitala produkter. Oberoende projekt av Ronnie Utter.",
     "author": {
       "@type": "Person",
       "name": "Ronnie Utter",
@@ -56,14 +55,15 @@
   <!-- Header -->
   <header class="site-header" id="site-header">
     <div class="header-inner">
-      <a href="sv.html" class="brand" aria-label="GeoX Startsida">
+      <a href="sv.html" class="brand" aria-label="GeoX Hem">
         <span class="brand-text">Geo<span class="brand-accent">X</span></span>
       </a>
 
       <nav class="site-nav" id="site-nav" aria-label="Huvudnavigation">
-        <a href="#projekt" class="nav-link">Projekt</a>
+        <a href="#rasterlab" class="nav-link">Raster Lab</a>
+        <a href="#applikationer" class="nav-link">Applikationer</a>
         <a href="#kompetenser" class="nav-link">Kompetenser</a>
-        <a href="#om" class="nav-link">Om GeoX</a>
+        <a href="#om" class="nav-link">Om</a>
         <a href="#kontakt" class="nav-link">Kontakt</a>
       </nav>
 
@@ -74,7 +74,7 @@
           <span class="lang-active">SV</span>
         </div>
         <a href="mailto:support@geox.dev" class="btn btn-header">Kontakt</a>
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Öppna meny" aria-expanded="false">
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Öppna navigering" aria-expanded="false">
           <span class="toggle-bar"></span>
           <span class="toggle-bar"></span>
         </button>
@@ -95,12 +95,12 @@
 
       <div class="container hero-container">
         <div class="hero-content">
-          <span class="hero-brand-eyebrow">GeoX</span>
+          <span class="hero-brand-eyebrow">GeoX Ekosystem</span>
           <h1 class="hero-title">Där plats möter data.</h1>
-          <p class="hero-lead">Geodata, dataintegration och digitala produkter.</p>
+          <p class="hero-lead">Geospatial utveckling, planetära rasterlabb och digitala samhällsapplikationer.</p>
           <div class="hero-cta-row">
-            <a href="#projekt" class="btn btn-primary">Utforska projekt</a>
-            <a href="#om" class="btn btn-ghost">Om GeoX</a>
+            <a href="#rasterlab" class="btn btn-primary">Utforska Raster Lab</a>
+            <a href="#applikationer" class="btn btn-ghost">Applikationer</a>
           </div>
         </div>
       </div>
@@ -108,126 +108,199 @@
       <div class="hero-bottom-fade" aria-hidden="true"></div>
     </section>
 
-    <!-- Selected Projects -->
-    <section class="section projects-section" id="projekt">
+    <!-- =======================================================================
+         1. RASTER LAB (Planetära & Geovetenskapliga Analyslabb)
+         ======================================================================= -->
+    <section class="section" id="rasterlab">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">Valda projekt</h2>
+          <span class="section-category-eyebrow rasterlab">GeoX Raster Lab</span>
+          <h2 class="section-title">Planetära & Geovetenskapliga Analyslabb</h2>
+          <p class="section-sub">Högupplösta terrängmodeller, multispektrala satellitflöden och interaktiv 3D-analys av planetära ytor.</p>
         </div>
 
-        <div class="projects-list">
+        <div class="product-showcase-stack">
 
-          <!-- 1. Restidsanalys -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">Restidsanalys</h3>
-                <p class="project-summary">Analysera tillgänglighet i tid — inte bara avstånd.</p>
+          <!-- 1. Mars Explorer -->
+          <article class="product-card" id="mars-explorer" style="--product-accent: #F97316; --product-glow: rgba(249, 115, 22, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge staging"><span class="pulse-dot"></span> Live på Cloudflare Pages</span>
+                  <span class="product-category">Planetär Altimetri & 3D WebGL</span>
+                </div>
+                <h3 class="product-name">GeoX Mars Explorer</h3>
+                <p class="product-punchline">
+                  Planetärt analyslaboratorium för Mars i interaktiv 3D WebGL.
+                </p>
+                <p class="product-description">
+                  Kombinerar NASA MOLA global höjddata (16 ppd), USGS/CTX-bilder och högupplösta HiRISE/CTX-terrängpaket. Inkluderar missionsdata för Perseverance- och Curiosity-rutter, vetenskapliga transekter med höjdprofiler samt simulering av hypotetiska forntida oceaner.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">3D WebGL Terräng</span>
+                  <span class="tag-item">NASA MOLA 16 PPD</span>
+                  <span class="tag-item">CTX 5m & HiRISE DTM</span>
+                  <span class="tag-item">Rover-rutter</span>
+                  <span class="tag-item">Topografiska transekter</span>
+                  <span class="tag-item">Cloudflare Pages</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://mars.geox.dev" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Starta Mars Explorer</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                  <a href="mars.html" class="btn-product-sub">
+                    <span>Projektöversikt</span>
+                  </a>
+                  <a href="https://github.com/Exomoon/marsexplorer" target="_blank" rel="noopener noreferrer" class="btn-product-sub">
+                    <span>GitHub</span>
+                    <span class="arrow-glyph" aria-hidden="true">↗</span>
+                  </a>
+                </div>
               </div>
-              <div class="project-action">
-                <a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Besök restidsanalys.se</span>
-                  <span class="arrow-glyph" aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/restidsanalys-preview.png" alt="Restidsanalys användargränssnitt" loading="lazy">
-                </a>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot red"></span>
+                      <span class="ctrl-dot yellow"></span>
+                      <span class="ctrl-dot green"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>mars.geox.dev</span>
+                    </div>
+                    <div class="view-switcher-group" data-view-switcher data-target-img="mars-showcase-img" data-target-caption="mars-showcase-caption" style="gap: 4px;">
+                      <button type="button" class="view-tab-btn active" style="padding: 2px 8px; font-size: 11px;"
+                        data-src="assets/mars-explorer-preview.png"
+                        data-alt="Mars Explorer Jezero 3D Terräng"
+                        data-caption="3D Lokal Terräng — Jezero Crater med Perseverance-rutten.">
+                        3D
+                      </button>
+                      <button type="button" class="view-tab-btn" style="padding: 2px 8px; font-size: 11px;"
+                        data-src="assets/mars-transect-preview.png"
+                        data-alt="Mars Explorer Transektprofil"
+                        data-caption="Vetenskaplig transekt — Valles Marineris kanjonprofil.">
+                        Profil
+                      </button>
+                      <button type="button" class="view-tab-btn" style="padding: 2px 8px; font-size: 11px;"
+                        data-src="assets/mars-ocean-preview.png"
+                        data-alt="Mars Explorer Oceansimulering"
+                        data-caption="Global forntida ocean — Simulering av havsnivåer.">
+                        Ocean
+                      </button>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://mars.geox.dev" target="_blank" rel="noopener noreferrer" aria-label="Starta GeoX Mars Explorer">
+                      <img id="mars-showcase-img" src="assets/mars-explorer-preview.png" alt="GeoX Mars Explorer 3D Terräng" loading="lazy">
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- 2. Områdesatlas -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">Områdesatlas</h3>
-                <p class="project-summary">Utforska svensk samhällsdata, ekonomi och geografiska mönster genom data och kartor.</p>
+          <!-- 2. PalaeoCoast (SeaLevelRize) -->
+          <article class="product-card card-reverse" id="palaeocoast" style="--product-accent: #06B6D4; --product-glow: rgba(6, 182, 212, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge lab">Lab / Forskning</span>
+                  <span class="product-category">Paleogeografi & Isostasi</span>
+                </div>
+                <h3 class="product-name">PalaeoCoast</h3>
+                <p class="product-punchline">
+                  Postglacial landhöjning och forntida strandlinjeförskjutning.
+                </p>
+                <p class="product-description">
+                  Modellering av Östersjöns och Fennoskandiens postglaciala strandlinjeförskjutning genom integrering av paleodata, digitala höjdmodeller och sedimentologiska lager.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Postglacial landhöjning</span>
+                  <span class="tag-item">Östersjöns utveckling</span>
+                  <span class="tag-item">Paleostrandlinjer</span>
+                  <span class="tag-item">DEM-rekonstruktioner</span>
+                  <span class="tag-item">Kvartärgeologi</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://github.com/Exomoon/palaeocoast" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Utforska PalaeoCoast</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
               </div>
-              <div class="project-action">
-                <a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Besök omradesatlas.se</span>
-                  <span class="arrow-glyph" aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/omradesatlas-preview.png" alt="Områdesatlas jämförande data" loading="lazy">
-                </a>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>palaeocoast.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://github.com/Exomoon/palaeocoast" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/paleocoast-preview.png" alt="PalaeoCoast postglacial strandlinjeförskjutning" loading="lazy">
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- 3. KrisGIS -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">KrisGIS</h3>
-                <p class="project-summary">Geografisk tillgång till samhällskritisk information och beredskapsdata.</p>
+          <!-- 3. Sentinel Lab -->
+          <article class="product-card" id="sentinel-lab" style="--product-accent: #10B981; --product-glow: rgba(16, 185, 129, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge lab">Lab / Pipeline</span>
+                  <span class="product-category">Satellitfjärranalys</span>
+                </div>
+                <h3 class="product-name">Sentinel Lab</h3>
+                <p class="product-punchline">
+                  Automatiserad analys av Copernicus Sentinel-2 MSI Level-2A data i 10 m upplösning.
+                </p>
+                <p class="product-description">
+                  Högpresterande analyspipeline för europeiska Copernicus satellitdata. Automatisk beräkning av vegetationshälsa (NDVI), brandskador (dNBR) och fuktindex (MNDWI) baserat på botten-av-atmosfär (BOA) reflektans.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Copernicus Sentinel-2</span>
+                  <span class="tag-item">10m BOA multispektral</span>
+                  <span class="tag-item">NDVI Vegetationshälsa</span>
+                  <span class="tag-item">dNBR Brandskador</span>
+                  <span class="tag-item">Automatiserad Raster-ETL</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://github.com/Exomoon/rasterlab" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Utforska Sentinel Lab</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
               </div>
-              <div class="project-action">
-                <a href="https://krisgis.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Besök krisgis.se</span>
-                  <span class="arrow-glyph" aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://krisgis.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/krisgis-preview.png" alt="KrisGIS lägeskarta" loading="lazy">
-                </a>
-              </div>
-            </div>
-          </article>
 
-          <!-- 4. Valatlas -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">Valatlas</h3>
-                <p class="project-summary">Officiella valresultat, valdistriktsanalys och politisk geografi.</p>
-              </div>
-              <div class="project-action">
-                <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Besök valatlas.se</span>
-                  <span class="arrow-glyph" aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/valatlas-preview.png" alt="Valatlas valresultat och kartor" loading="lazy">
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 5. UtterIDE -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">UtterIDE</h3>
-                <p class="project-summary">Review-first AI-kodagent med bring-your-own-key (BYOK) och utvecklaren i full kontroll.</p>
-              </div>
-              <div class="project-action">
-                <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Besök utteride.se</span>
-                  <span class="arrow-glyph" aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/utteride-preview.jpg" alt="UtterIDE utvecklingsmiljö" loading="lazy">
-                </a>
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>sentinel.geox.dev</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://github.com/Exomoon/rasterlab" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/sentinel-preview.png" alt="Sentinel Lab multispektral analys" loading="lazy">
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
@@ -236,50 +309,322 @@
       </div>
     </section>
 
-    <!-- Capabilities -->
+    <!-- =======================================================================
+         2. APPLIKATIONER & BESLUTSTÖD (Det andra sen)
+         ======================================================================= -->
+    <section class="section" id="applikationer" style="border-top: 1px solid rgba(255, 255, 255, 0.05);">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-category-eyebrow applications">GeoX Applikationer</span>
+          <h2 class="section-title">Applikationer & Beslutsstöd</h2>
+          <p class="section-sub">Produktionsverktyg, öppna dataportaler, tillgänglighetsmodellering och utvecklingsmiljöer.</p>
+        </div>
+
+        <div class="product-showcase-stack">
+
+          <!-- 4. Restidsanalys -->
+          <article class="product-card card-reverse" id="restidsanalys" style="--product-accent: #0284C7; --product-glow: rgba(2, 132, 199, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge pilot">Pilot</span>
+                  <span class="product-category">Beslutsstöd • Tillgänglighet • GIS</span>
+                </div>
+                <h3 class="product-name">Restidsanalys</h3>
+                <p class="product-punchline">
+                  Hur många invånare når viktig service inom 15 minuter?
+                </p>
+                <p class="product-description">
+                  Analysera verklig tillgänglighet i restid med gång, cykel, kollektivtrafik och bil. Skapa multimodala isokroner, upptagningsområden och simulera störningar i transportnätet.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Isokroner & räckvidd</span>
+                  <span class="tag-item">Multimodal ruttanalys</span>
+                  <span class="tag-item">Störningsscenarier</span>
+                  <span class="tag-item">Beslutsunderlag</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Besök restidsanalys.se</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>restidsanalys.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/restidsanalys-preview.png" alt="Restidsanalys multimodal tillgänglighetsanalys" loading="lazy">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Valatlas -->
+          <article class="product-card" id="valatlas" style="--product-accent: #6366F1; --product-glow: rgba(99, 102, 241, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge live">Live / Offentlig</span>
+                  <span class="product-category">Samhällsdata • Valanalys • Kartor</span>
+                </div>
+                <h3 class="product-name">Valatlas</h3>
+                <p class="product-punchline">
+                  Utforska svensk politik från riksnivå till ditt eget valdistrikt.
+                </p>
+                <p class="product-description">
+                  Kombinerar officiell valdata, kartor, partier, budgetar och kommunjämförelser för att göra svensk politik och demokratidata enklare att undersöka och analysera på djupet.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Officiell valdata</span>
+                  <span class="tag-item">Valdistrikt & kommuner</span>
+                  <span class="tag-item">Kommunjämförelser</span>
+                  <span class="tag-item">Interaktiv kartografi</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Besök valatlas.se</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>valatlas.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/valatlas-preview.png" alt="Valatlas svensk valdata och kartor" loading="lazy">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Områdesatlas -->
+          <article class="product-card card-reverse" id="omradesatlas" style="--product-accent: #38BDF8; --product-glow: rgba(56, 189, 248, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge live">Live</span>
+                  <span class="product-category">Demografi • Socioekonomi • Regionala data</span>
+                </div>
+                <h3 class="product-name">Områdesatlas</h3>
+                <p class="product-punchline">
+                  Utforska Sveriges samhälle, ekonomi och geografi genom data och kartor.
+                </p>
+                <p class="product-description">
+                  Ett interaktivt atlasverktyg som sammanför demografi, socioekonomi, sysselsättning och regionala mönster i jämförbara geografiska områden över hela Sverige.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Befolkningsstruktur</span>
+                  <span class="tag-item">Socioekonomi</span>
+                  <span class="tag-item">Regionala index</span>
+                  <span class="tag-item">Offentlig statistik</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Besök omradesatlas.se</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>omradesatlas.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/omradesatlas-preview.png" alt="Områdesatlas jämförande statistik" loading="lazy">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. UtterIDE -->
+          <article class="product-card" id="utteride" style="--product-accent: #10B981; --product-glow: rgba(16, 185, 129, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge dev">Under utveckling</span>
+                  <span class="product-category">Utvecklarverktyg • AI-kodagent • BYOK</span>
+                </div>
+                <h3 class="product-name">UtterIDE</h3>
+                <p class="product-punchline">
+                  AI-kodagent med utvecklaren i full kontroll.
+                </p>
+                <p class="product-description">
+                  Ett experimentellt utvecklarverktyg som utforskar ett review-first arbetssätt för AI-assisterad utveckling med stöd för BYOK, flermodellskoppling, databaser och specialiserade verktyg.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Review-First</span>
+                  <span class="tag-item">BYOK</span>
+                  <span class="tag-item">Flermodeller</span>
+                  <span class="tag-item">Full kontroll</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Besök utteride.se</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>utteride.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/utteride-preview.jpg" alt="UtterIDE utvecklingsmiljö" loading="lazy">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. KrisGIS -->
+          <article class="product-card card-reverse" id="krisgis" style="--product-accent: #38BDF8; --product-glow: rgba(56, 189, 248, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge live">Live</span>
+                  <span class="product-category">Krisberedskap • Lägesbild • Geodata</span>
+                </div>
+                <h3 class="product-name">KrisGIS</h3>
+                <p class="product-punchline">
+                  Samlad geografisk lägesbild för kriser och samhällsstörningar.
+                </p>
+                <p class="product-description">
+                  Samlar flera verifierbara och offentliga datakällor i en gemensam karta för att göra störningar, risker och skyddsrum enklare att överblicka. KrisGIS är en oberoende informationstjänst.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Realtidskarta</span>
+                  <span class="tag-item">Öppna myndighetsdata</span>
+                  <span class="tag-item">Samhällsstörningar</span>
+                  <span class="tag-item">Oberoende lägesbild</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://krisgis.se" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Besök krisgis.se</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>krisgis.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://krisgis.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/krisgis-preview.png" alt="KrisGIS lägeskarta" loading="lazy">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Kompetenser -->
     <section class="section capabilities-section" id="kompetenser">
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">Kompetenser</h2>
-          <p class="section-sub">Tekniska fokusområden inom spatial analys, data pipelines och digitala gränssnitt.</p>
+          <p class="section-sub">Tekniska fokusområden inom planetär altimetri, spatial modellering, datapipelines och digitala gränssnitt.</p>
         </div>
 
         <div class="capabilities-grid">
           <div class="capability-item">
-            <h3 class="capability-title">Geospatial utveckling</h3>
-            <p class="capability-desc">Koordinatsystem, vektor-tiles, spatial indexering och geometriska transformationer.</p>
+            <h3 class="capability-title">Planetär & Terrängmodellering</h3>
+            <p class="capability-desc">NASA MOLA datum, USGS/CTX ortomosaiker, HiRISE sub-meter DTM, hypsometriska färgskalor och 3D-terrängrendering.</p>
           </div>
           <div class="capability-item">
-            <h3 class="capability-title">Datapipelines & ETL</h3>
-            <p class="capability-desc">Automatiserad insamling, schemanormalisering, batchbearbetning och reproducerbara flöden.</p>
+            <h3 class="capability-title">Multispektrala Satellitpipelines</h3>
+            <p class="capability-desc">Automatiserad Copernicus Sentinel-2 MSI Level-2A bearbetning, botten-av-atmosfär (BOA) reflektans, NDVI och dNBR.</p>
           </div>
           <div class="capability-item">
-            <h3 class="capability-title">Isokroner & ruttanalys</h3>
-            <p class="capability-desc">Multimodal ruttberäkning, tillgänglighetsmodellering, upptagningsområden och restider.</p>
+            <h3 class="capability-title">Geospatial Utveckling</h3>
+            <p class="capability-desc">Koordinatsystem (CRS), vektor-tiles, spatial indexering, geodetiska beräkningar och geometriska transformationer.</p>
           </div>
           <div class="capability-item">
-            <h3 class="capability-title">API:er & integrationer</h3>
-            <p class="capability-desc">Stabila integrationer som kopplar samman offentliga register, geodatabaser och webbappar.</p>
+            <h3 class="capability-title">Datapipelines & Spatial ETL</h3>
+            <p class="capability-desc">Automatiserad insamling, schemanormalisering, batchbearbetning och reproducerbara flöden för komplexa datamängder.</p>
           </div>
           <div class="capability-item">
-            <h3 class="capability-title">Interaktiv kartutveckling</h3>
-            <p class="capability-desc">Lättviktiga kartvisare med fokus på tydlighet, snabbhet och responsiv användarupplevelse.</p>
+            <h3 class="capability-title">Isokroner & Ruttanalys</h3>
+            <p class="capability-desc">Multimodal ruttberäkning, tillgänglighetsmodellering, upptagningsområden och nätverksstörningsscenarier.</p>
           </div>
           <div class="capability-item">
-            <h3 class="capability-title">Öppna data & normalisering</h3>
-            <p class="capability-desc">Strukturering, validering och kvalitetssäkring av offentliga samhällsdata till fungerande verktyg.</p>
+            <h3 class="capability-title">Interaktiv WebGL & Kartografi</h3>
+            <p class="capability-desc">Ultrasnabba klientsidiga WebGL- och canvasvisare skapade för smidig utforskning utan serverbaserad GPU-belastning.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- About -->
+    <!-- Om -->
     <section class="section about-section" id="om">
       <div class="container">
         <div class="about-card">
           <h2 class="section-title">Om GeoX</h2>
           <p class="about-lead">
-            GeoX är ett oberoende utvecklingsnamn för projekt i skärningspunkten mellan geodata, dataintegration och digitala produkter.
+            GeoX är ett oberoende utvecklingsnamn i skärningspunkten mellan planetär altimetri, satellitfjärranalys, geospatial utveckling och digitala produkter.
           </p>
           <div class="about-author-wrap">
             <span class="about-author">Skapat av <a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer" class="author-link">Ronnie Utter</a></span>
@@ -304,20 +649,29 @@
 
         <div class="footer-links-wrap">
           <div class="footer-col">
-            <span class="footer-col-title">Projekt</span>
+            <span class="footer-col-title">Raster Lab</span>
+            <ul class="footer-links">
+              <li><a href="mars.html">Mars Explorer</a></li>
+              <li><a href="https://github.com/Exomoon/palaeocoast" target="_blank" rel="noopener noreferrer">PalaeoCoast</a></li>
+              <li><a href="https://github.com/Exomoon/rasterlab" target="_blank" rel="noopener noreferrer">Sentinel Lab</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Applikationer</span>
             <ul class="footer-links">
               <li><a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer">Restidsanalys</a></li>
-              <li><a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer">Områdesatlas</a></li>
-              <li><a href="https://krisgis.se" target="_blank" rel="noopener noreferrer">KrisGIS</a></li>
               <li><a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer">Valatlas</a></li>
+              <li><a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer">Områdesatlas</a></li>
               <li><a href="https://utteride.se" target="_blank" rel="noopener noreferrer">UtterIDE</a></li>
+              <li><a href="https://krisgis.se" target="_blank" rel="noopener noreferrer">KrisGIS</a></li>
             </ul>
           </div>
 
           <div class="footer-col">
             <span class="footer-col-title">Kontakt</span>
             <ul class="footer-links">
-              <li><a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer" class="linkedin-btn" style="padding: 0; background: none; border: none; font-size: inherit;">LinkedIn</a></li>
               <li><a href="mailto:support@geox.dev">support@geox.dev</a></li>
               <li><a href="https://geox.dev">geox.dev</a></li>
             </ul>

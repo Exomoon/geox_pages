@@ -43,4 +43,35 @@ document.addEventListener('DOMContentLoaded', () => {
       // Autoplay blocked (e.g. battery saver mode) — poster will seamlessly display
     });
   }
+
+  // 4. Interactive Visual Switcher for Showcase Items (Mars Explorer, etc.)
+  const switchers = document.querySelectorAll('[data-view-switcher]');
+  switchers.forEach(switcher => {
+    const targetImgId = switcher.getAttribute('data-target-img');
+    const targetCaptionId = switcher.getAttribute('data-target-caption');
+    const targetImg = document.getElementById(targetImgId);
+    const targetCaption = document.getElementById(targetCaptionId);
+    const buttons = switcher.querySelectorAll('.view-tab-btn');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const src = btn.getAttribute('data-src');
+        const alt = btn.getAttribute('data-alt');
+        const caption = btn.getAttribute('data-caption');
+
+        if (targetImg && src) {
+          targetImg.src = src;
+          if (alt) targetImg.alt = alt;
+        }
+
+        if (targetCaption && caption) {
+          targetCaption.textContent = caption;
+        }
+
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  });
 });

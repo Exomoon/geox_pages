@@ -7,9 +7,9 @@
 
   <title>GeoX — Where location meets data</title>
   <meta name="description"
-    content="GeoX is an independent development identity for projects exploring the intersection of geospatial engineering, data integration and digital products. Created by Ronnie Utter.">
+    content="GeoX is an independent development identity for projects exploring the intersection of geospatial engineering, planetary raster labs, data integration and digital products. Created by Ronnie Utter.">
   <meta name="keywords"
-    content="GeoX, geospatial engineering, data integration, GIS, spatial analysis, ETL, data pipelines, interactive mapping, open data, Ronnie Utter">
+    content="GeoX, Mars Explorer, Raster Lab, Sentinel-2, PalaeoCoast, Restidsanalys, Valatlas, Områdesatlas, UtterIDE, KrisGIS, geospatial engineering, GIS, spatial analysis, Ronnie Utter">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://geox.dev">
@@ -17,7 +17,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="GeoX — Where location meets data">
   <meta property="og:description"
-    content="Geospatial engineering, data integration and digital products. Independent projects by Ronnie Utter.">
+    content="Geospatial engineering, planetary raster labs, data integration and digital applications. Independent projects by Ronnie Utter.">
   <meta property="og:url" content="https://geox.dev">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GeoX">
@@ -26,12 +26,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="GeoX — Where location meets data">
   <meta name="twitter:description"
-    content="Geospatial engineering, data integration and digital products. Independent projects by Ronnie Utter.">
+    content="Geospatial engineering, planetary raster labs, data integration and digital applications. Independent projects by Ronnie Utter.">
 
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 
@@ -41,7 +41,7 @@
     "@type": "WebSite",
     "name": "GeoX",
     "url": "https://geox.dev",
-    "description": "Geospatial engineering, data integration and digital products. Independent projects by Ronnie Utter.",
+    "description": "Geospatial engineering, planetary raster labs, data integration and digital products. Independent projects by Ronnie Utter.",
     "author": {
       "@type": "Person",
       "name": "Ronnie Utter",
@@ -60,7 +60,8 @@
       </a>
 
       <nav class="site-nav" id="site-nav" aria-label="Main Navigation">
-        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#rasterlab" class="nav-link">Raster Lab</a>
+        <a href="#applications" class="nav-link">Applications</a>
         <a href="#capabilities" class="nav-link">Capabilities</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#contact" class="nav-link">Contact</a>
@@ -94,12 +95,12 @@
 
       <div class="container hero-container">
         <div class="hero-content">
-          <span class="hero-brand-eyebrow">GeoX</span>
+          <span class="hero-brand-eyebrow">GeoX Ecosystem</span>
           <h1 class="hero-title">Where location meets data.</h1>
-          <p class="hero-lead">Geospatial engineering, data integration and digital products.</p>
+          <p class="hero-lead">Geospatial engineering, planetary raster laboratories and public digital applications.</p>
           <div class="hero-cta-row">
-            <a href="#projects" class="btn btn-primary">Explore projects</a>
-            <a href="#about" class="btn btn-ghost">About GeoX</a>
+            <a href="#rasterlab" class="btn btn-primary">Explore Raster Lab</a>
+            <a href="#applications" class="btn btn-ghost">Applications Suite</a>
           </div>
         </div>
       </div>
@@ -107,126 +108,471 @@
       <div class="hero-bottom-fade" aria-hidden="true"></div>
     </section>
 
-    <!-- Selected Projects -->
-    <section class="section projects-section" id="projects">
+    <!-- =======================================================================
+         1. RASTER LAB (Planetary & Earth Observation)
+         ======================================================================= -->
+    <section class="section" id="rasterlab">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">Selected projects</h2>
+          <span class="section-category-eyebrow rasterlab">GeoX Raster Lab</span>
+          <h2 class="section-title">Planetary & Earth Observation Labs</h2>
+          <p class="section-sub">High-resolution elevation models, multispectral remote sensing pipelines, and 3D planetary terrain exploration.</p>
         </div>
 
-        <div class="projects-list">
+        <div class="product-showcase-stack">
 
-          <!-- 1. Restidsanalys -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">Restidsanalys</h3>
-                <p class="project-summary">Analyze accessibility in time — not just distance.</p>
+          <!-- 1. Mars Explorer -->
+          <article class="product-card" id="mars-explorer" style="--product-accent: #F97316; --product-glow: rgba(249, 115, 22, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge staging"><span class="pulse-dot"></span> Live on Cloudflare Pages</span>
+                  <span class="product-category">Planetary Altimetry & 3D WebGL</span>
+                </div>
+                <h3 class="product-name">GeoX Mars Explorer</h3>
+                <p class="product-punchline">
+                  Planetary terrain & geospatial analysis laboratory for Mars.
+                </p>
+                <p class="product-description">
+                  Interactive 3D WebGL engine combining NASA MOLA global elevation data (16 ppd), USGS/CTX imagery, and high-resolution HiRISE/CTX terrain packages. Features mission traverse data for Perseverance and Curiosity, cross-sectional transects, and paleocean flooding simulations.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">3D WebGL Terrain</span>
+                  <span class="tag-item">NASA MOLA 16 PPD</span>
+                  <span class="tag-item">CTX 5m & HiRISE DTM</span>
+                  <span class="tag-item">Rover Traverses</span>
+                  <span class="tag-item">Topographic Transects</span>
+                  <span class="tag-item">Cloudflare Pages</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://mars.geox.dev" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Launch Mars Explorer</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                  <a href="mars.html" class="btn-product-sub">
+                    <span>Project overview</span>
+                  </a>
+                  <a href="https://github.com/Exomoon/marsexplorer" target="_blank" rel="noopener noreferrer" class="btn-product-sub">
+                    <span>GitHub</span>
+                    <span class="arrow-glyph" aria-hidden="true">↗</span>
+                  </a>
+                </div>
               </div>
-              <div class="project-action">
-                <a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Explore restidsanalys.se</span>
-                  <span class="arrow-glyph" aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/restidsanalys-preview.png" alt="Restidsanalys interface" loading="lazy">
-                </a>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot red"></span>
+                      <span class="ctrl-dot yellow"></span>
+                      <span class="ctrl-dot green"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>mars.geox.dev</span>
+                    </div>
+                    <div class="view-switcher-group" data-view-switcher data-target-img="mars-showcase-img" data-target-caption="mars-showcase-caption" style="gap: 4px;">
+                      <button type="button" class="view-tab-btn active" style="padding: 2px 8px; font-size: 11px;"
+                        data-src="assets/mars-explorer-preview.png"
+                        data-alt="Mars Explorer Jezero 3D Terrain"
+                        data-caption="3D Local Terrain — Jezero Crater with Perseverance route corridor.">
+                        3D
+                      </button>
+                      <button type="button" class="view-tab-btn" style="padding: 2px 8px; font-size: 11px;"
+                        data-src="assets/mars-transect-preview.png"
+                        data-alt="Mars Explorer Transect Profile"
+                        data-caption="Topographic Transect — Valles Marineris canyon profile.">
+                        Profile
+                      </button>
+                      <button type="button" class="view-tab-btn" style="padding: 2px 8px; font-size: 11px;"
+                        data-src="assets/mars-ocean-preview.png"
+                        data-alt="Mars Explorer Ocean Flooding"
+                        data-caption="Planetary Ocean Flooding — Northern lowlands simulation.">
+                        Ocean
+                      </button>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://mars.geox.dev" target="_blank" rel="noopener noreferrer" aria-label="Launch GeoX Mars Explorer">
+                      <img id="mars-showcase-img" src="assets/mars-explorer-preview.png" alt="GeoX Mars Explorer 3D Terrain" loading="lazy">
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- 2. Områdesatlas -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">Områdesatlas</h3>
-                <p class="project-summary">Explore Swedish society, economy and geographic patterns through data and maps.</p>
+          <!-- 2. PalaeoCoast (SeaLevelRize) -->
+          <article class="product-card card-reverse" id="palaeocoast" style="--product-accent: #06B6D4; --product-glow: rgba(6, 182, 212, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge lab">Lab / Research</span>
+                  <span class="product-category">Paleogeography & Isostasy</span>
+                </div>
+                <h3 class="product-name">PalaeoCoast</h3>
+                <p class="product-punchline">
+                  Postglacial land uplift and shoreline displacement modeling.
+                </p>
+                <p class="product-description">
+                  Reconstructing millennia of coastal evolution across the Baltic Sea and Fennoscandia through integration of sedimentological data, digital elevation models, and glacial isostatic adjustment.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Postglacial Land Uplift</span>
+                  <span class="tag-item">Baltic Sea Evolution</span>
+                  <span class="tag-item">Paleo Shorelines</span>
+                  <span class="tag-item">DEM Reconstructions</span>
+                  <span class="tag-item">Quaternary Geology</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://github.com/Exomoon/palaeocoast" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Explore PalaeoCoast</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
               </div>
-              <div class="project-action">
-                <a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Explore omradesatlas.se</span>
-                  <span class="arrow-glyph" aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/omradesatlas-preview.png" alt="Områdesatlas comparative data" loading="lazy">
-                </a>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>palaeocoast.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://github.com/Exomoon/palaeocoast" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/paleocoast-preview.png" alt="PalaeoCoast postglacial shoreline displacement" loading="lazy">
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- 3. KrisGIS -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">KrisGIS</h3>
-                <p class="project-summary">Location-based access to critical public information and preparedness data.</p>
+          <!-- 3. Sentinel Lab -->
+          <article class="product-card" id="sentinel-lab" style="--product-accent: #10B981; --product-glow: rgba(16, 185, 129, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge lab">Lab / Pipeline</span>
+                  <span class="product-category">Satellite Remote Sensing</span>
+                </div>
+                <h3 class="product-name">Sentinel Lab</h3>
+                <p class="product-punchline">
+                  High-throughput Copernicus Sentinel-2 MSI Level-2A processing.
+                </p>
+                <p class="product-description">
+                  Automated extraction of 10-meter Bottom-of-Atmosphere (BOA) reflectance, Normalized Difference Vegetation Index (NDVI), burn severity (dNBR), and water indices directly from European Copernicus satellite acquisitions.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Copernicus Sentinel-2</span>
+                  <span class="tag-item">10m BOA Multispectral</span>
+                  <span class="tag-item">NDVI Vegetation Health</span>
+                  <span class="tag-item">dNBR Fire Severity</span>
+                  <span class="tag-item">Automated Raster ETL</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://github.com/Exomoon/rasterlab" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Explore Sentinel Lab</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
               </div>
-              <div class="project-action">
-                <a href="https://krisgis.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Explore krisgis.se</span>
-                  <span class="arrow-glyph" aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://krisgis.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/krisgis-preview.png" alt="KrisGIS situation map" loading="lazy">
-                </a>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>sentinel.geox.dev</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://github.com/Exomoon/rasterlab" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/sentinel-preview.png" alt="Sentinel Lab multispectral analysis" loading="lazy">
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- 4. Valatlas -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">Valatlas</h3>
-                <p class="project-summary">Official Swedish election data, district analytics and political geography.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         2. APPLICATIONS & PUBLIC DATA SUITE (Det andra sen)
+         ======================================================================= -->
+    <section class="section" id="applications" style="border-top: 1px solid rgba(255, 255, 255, 0.05);">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-category-eyebrow applications">GeoX Applications</span>
+          <h2 class="section-title">Applications & Decision Support</h2>
+          <p class="section-sub">Production platforms, public data portals, accessibility modeling, and developer tooling.</p>
+        </div>
+
+        <div class="product-showcase-stack">
+
+          <!-- 4. Restidsanalys -->
+          <article class="product-card card-reverse" id="restidsanalys" style="--product-accent: #0284C7; --product-glow: rgba(2, 132, 199, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge pilot">Pilot</span>
+                  <span class="product-category">Decision Support • Accessibility • GIS</span>
+                </div>
+                <h3 class="product-name">Restidsanalys</h3>
+                <p class="product-punchline">
+                  Analyze accessibility in travel time — not just distance.
+                </p>
+                <p class="product-description">
+                  Restidsanalys models multimodal travel-time isochrones and service catchment areas for public transit, cycling, walking, and driving — helping municipalities analyze healthcare and school accessibility.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Isochrones & Reach</span>
+                  <span class="tag-item">Multimodal Routing</span>
+                  <span class="tag-item">Disruption Scenarios</span>
+                  <span class="tag-item">Decision Support</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Explore restidsanalys.se</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
               </div>
-              <div class="project-action">
-                <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Explore valatlas.se</span>
-                  <span class="arrow-glyph" aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/valatlas-preview.png" alt="Valatlas election results and maps" loading="lazy">
-                </a>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>restidsanalys.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/restidsanalys-preview.png" alt="Restidsanalys multimodal accessibility analysis" loading="lazy">
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- 5. UtterIDE -->
-          <article class="project-item">
-            <div class="project-content-bar">
-              <div class="project-info">
-                <h3 class="project-title">UtterIDE</h3>
-                <p class="project-summary">Review-first AI coding agent with bring-your-own-key (BYOK) architecture and local developer control.</p>
+          <!-- 5. Valatlas -->
+          <article class="product-card" id="valatlas" style="--product-accent: #6366F1; --product-glow: rgba(99, 102, 241, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge live">Live / Public</span>
+                  <span class="product-category">Public Data • Election Analytics • Maps</span>
+                </div>
+                <h3 class="product-name">Valatlas</h3>
+                <p class="product-punchline">
+                  Explore Swedish election data from nationwide results to voting districts.
+                </p>
+                <p class="product-description">
+                  Combines official election results, party positions, municipal budgets, and demographic data to make Swedish political geography accessible and transparent.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Official Election Data</span>
+                  <span class="tag-item">Voting Districts</span>
+                  <span class="tag-item">Municipal Comparisons</span>
+                  <span class="tag-item">Interactive Cartography</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Explore valatlas.se</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
               </div>
-              <div class="project-action">
-                <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <span>Explore utteride.se</span>
-                  <span class="arrow-glyph" aria-hidden="true">→</span>
-                </a>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>valatlas.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/valatlas-preview.png" alt="Valatlas election analytics" loading="lazy">
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="project-visual-stage">
-              <div class="project-visual-wrap">
-                <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                  <img src="assets/utteride-preview.jpg" alt="UtterIDE development interface" loading="lazy">
-                </a>
+          </article>
+
+          <!-- 6. Områdesatlas -->
+          <article class="product-card card-reverse" id="omradesatlas" style="--product-accent: #38BDF8; --product-glow: rgba(56, 189, 248, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge live">Live</span>
+                  <span class="product-category">Demographics • Socioeconomics • Regional Data</span>
+                </div>
+                <h3 class="product-name">Områdesatlas</h3>
+                <p class="product-punchline">
+                  Explore Swedish society, economy, and geographic patterns through data.
+                </p>
+                <p class="product-description">
+                  An interactive regional atlas comparing demographic structure, employment, income levels, and socioeconomic indicators across municipalities and local districts.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Demographic Structure</span>
+                  <span class="tag-item">Socioeconomics</span>
+                  <span class="tag-item">Regional Indices</span>
+                  <span class="tag-item">Public Statistics</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Explore omradesatlas.se</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>omradesatlas.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/omradesatlas-preview.png" alt="Områdesatlas socioeconomic patterns" loading="lazy">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. UtterIDE -->
+          <article class="product-card" id="utteride" style="--product-accent: #10B981; --product-glow: rgba(16, 185, 129, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge dev">In Development</span>
+                  <span class="product-category">Developer Tools • AI Agent • Coding</span>
+                </div>
+                <h3 class="product-name">UtterIDE</h3>
+                <p class="product-punchline">
+                  Review-first AI coding agent with the developer in full control.
+                </p>
+                <p class="product-description">
+                  An experimental developer environment exploring review-first workflows, bring-your-own-key (BYOK) architecture, multi-model orchestrations, and granular inspection of automated codebase changes.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Review-First</span>
+                  <span class="tag-item">BYOK</span>
+                  <span class="tag-item">Multi-Model</span>
+                  <span class="tag-item">Local Control</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Explore utteride.se</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>utteride.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://utteride.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/utteride-preview.jpg" alt="UtterIDE developer coding interface" loading="lazy">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. KrisGIS -->
+          <article class="product-card card-reverse" id="krisgis" style="--product-accent: #38BDF8; --product-glow: rgba(56, 189, 248, 0.25);">
+            <div class="product-grid">
+              <div class="product-info-col">
+                <div class="product-meta-row">
+                  <span class="status-badge live">Live</span>
+                  <span class="product-category">Preparedness • Situation Map • Geodata</span>
+                </div>
+                <h3 class="product-name">KrisGIS</h3>
+                <p class="product-punchline">
+                  Unified geographical situational awareness for crises and disruptions.
+                </p>
+                <p class="product-description">
+                  Aggregates verified public sources and open government geodata into a unified map interface, providing spatial overviews of disruptions, weather alerts, and civil infrastructure.
+                </p>
+                <div class="product-tags">
+                  <span class="tag-item">Situation Map</span>
+                  <span class="tag-item">Open Government Feeds</span>
+                  <span class="tag-item">Public Infrastructure</span>
+                  <span class="tag-item">Independent GIS</span>
+                </div>
+                <div class="product-cta-wrap">
+                  <a href="https://krisgis.se" target="_blank" rel="noopener noreferrer" class="btn-product-link">
+                    <span>Explore krisgis.se</span>
+                    <span class="arrow-glyph" aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="product-visual-col">
+                <div class="browser-frame">
+                  <div class="browser-bar">
+                    <div class="window-controls">
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                      <span class="ctrl-dot"></span>
+                    </div>
+                    <div class="browser-address">
+                      <span>krisgis.se</span>
+                    </div>
+                  </div>
+                  <div class="browser-content">
+                    <a href="https://krisgis.se" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                      <img src="assets/krisgis-preview.png" alt="KrisGIS situation map" loading="lazy">
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
@@ -240,33 +586,33 @@
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">Capabilities</h2>
-          <p class="section-sub">Technical focus areas across spatial analysis, pipelines and digital interfaces.</p>
+          <p class="section-sub">Technical focus areas across planetary altimetry, spatial modeling, data pipelines, and digital interfaces.</p>
         </div>
 
         <div class="capabilities-grid">
           <div class="capability-item">
-            <h3 class="capability-title">Geospatial Engineering</h3>
-            <p class="capability-desc">Coordinate reference systems, vector tiling, spatial indexing and geometric transformations.</p>
+            <h3 class="capability-title">Planetary & Elevation Modeling</h3>
+            <p class="capability-desc">NASA MOLA datum, USGS/CTX orthomosaics, HiRISE sub-meter DTMs, hypsometric ramps, and 3D terrain rendering.</p>
           </div>
           <div class="capability-item">
-            <h3 class="capability-title">Data Pipelines & ETL</h3>
-            <p class="capability-desc">Automated ingestion, schema normalization, batch processing and reproducible pipelines.</p>
+            <h3 class="capability-title">Multispectral Satellite Pipelines</h3>
+            <p class="capability-desc">Automated Copernicus Sentinel-2 MSI Level-2A processing, Bottom-of-Atmosphere (BOA) reflectance, NDVI, and dNBR.</p>
+          </div>
+          <div class="capability-item">
+            <h3 class="capability-title">Geospatial Engineering</h3>
+            <p class="capability-desc">Coordinate reference systems, vector tiling, spatial indexing, geodesic calculations, and geometric transformations.</p>
+          </div>
+          <div class="capability-item">
+            <h3 class="capability-title">Data Pipelines & Spatial ETL</h3>
+            <p class="capability-desc">Automated ingestion, schema normalization, batch processing, and reproducible pipelines for complex datasets.</p>
           </div>
           <div class="capability-item">
             <h3 class="capability-title">Spatial & Isochrone Analysis</h3>
-            <p class="capability-desc">Multimodal routing, accessibility modeling, catchment areas and geographic travel times.</p>
+            <p class="capability-desc">Multimodal routing, accessibility modeling, travel-time catchment areas, and network disruption scenarios.</p>
           </div>
           <div class="capability-item">
-            <h3 class="capability-title">APIs & Integrations</h3>
-            <p class="capability-desc">Robust services bridging public records, geospatial databases and production web apps.</p>
-          </div>
-          <div class="capability-item">
-            <h3 class="capability-title">Interactive Mapping</h3>
-            <p class="capability-desc">Lightweight, accessible map renderers designed for clarity and fast user interaction.</p>
-          </div>
-          <div class="capability-item">
-            <h3 class="capability-title">Open Data Processing</h3>
-            <p class="capability-desc">Structuring, validating and enriching official public datasets into actionable tools.</p>
+            <h3 class="capability-title">Interactive WebGL & Mapping</h3>
+            <p class="capability-desc">Ultra-fast client-side WebGL and canvas renderers designed for smooth exploration without server GPU overhead.</p>
           </div>
         </div>
       </div>
@@ -278,7 +624,7 @@
         <div class="about-card">
           <h2 class="section-title">About GeoX</h2>
           <p class="about-lead">
-            GeoX is an independent development identity for projects exploring the intersection of geospatial technology, data engineering and digital products.
+            GeoX is an independent development identity exploring the intersection of planetary altimetry, remote sensing, geospatial engineering, and digital products.
           </p>
           <div class="about-author-wrap">
             <span class="about-author">Created by <a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer" class="author-link">Ronnie Utter</a></span>
@@ -303,13 +649,22 @@
 
         <div class="footer-links-wrap">
           <div class="footer-col">
-            <span class="footer-col-title">Projects</span>
+            <span class="footer-col-title">Raster Lab</span>
+            <ul class="footer-links">
+              <li><a href="mars.html">Mars Explorer</a></li>
+              <li><a href="https://github.com/Exomoon/palaeocoast" target="_blank" rel="noopener noreferrer">PalaeoCoast</a></li>
+              <li><a href="https://github.com/Exomoon/rasterlab" target="_blank" rel="noopener noreferrer">Sentinel Lab</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Applications</span>
             <ul class="footer-links">
               <li><a href="https://restidsanalys.se" target="_blank" rel="noopener noreferrer">Restidsanalys</a></li>
-              <li><a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer">Områdesatlas</a></li>
-              <li><a href="https://krisgis.se" target="_blank" rel="noopener noreferrer">KrisGIS</a></li>
               <li><a href="https://www.valatlas.se" target="_blank" rel="noopener noreferrer">Valatlas</a></li>
+              <li><a href="https://omradesatlas.se" target="_blank" rel="noopener noreferrer">Områdesatlas</a></li>
               <li><a href="https://utteride.se" target="_blank" rel="noopener noreferrer">UtterIDE</a></li>
+              <li><a href="https://krisgis.se" target="_blank" rel="noopener noreferrer">KrisGIS</a></li>
             </ul>
           </div>
 
