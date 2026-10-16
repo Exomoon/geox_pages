@@ -1,0 +1,37 @@
+{
+  "dataset": "DATED-1",
+  "citation": "Hughes et al. (2015/2016), DATED-1",
+  "doi": "https://doi.org/10.1594/PANGAEA.848117",
+  "license": "CC BY 3.0",
+  "source_url": "https://store.pangaea.de/Publications/HughesA-etal_2015/DATED-1_TimeSlices_shp.zip",
+  "source_sha256": "a916de31ff31b0bb63863b82d61a6be02659ecfe36a7cab0fdf00034b38be1f1",
+  "display_processing": "Reprojected to EPSG:4326 and simplified by 5000 m on the source projected grid.",
+  "warning": "Independent visualization overlay; it does not alter or duplicate the GIA/coastline calculation.",
+  "outputs": [
+    {
+      "source_age_bp": 22000,
+      "file": "ice_dated1_22000.geojson",
+      "features": 4
+    },
+    {
+      "source_age_bp": 16000,
+      "file": "ice_dated1_16000.geojson",
+      "features": 17
+    },
+    {
+      "source_age_bp": 13000,
+      "file": "ice_dated1_13000.geojson",
+      "features": 14
+    },
+    {
+      "source_age_bp": 12000,
+      "file": "ice_dated1_12000.geojson",
+      "features": 16
+    },
+    {
+      "source_age_bp": 10000,
+      "file": "ice_dated1_10000.geojson",
+      "features": 19
+    }
+  ]
+}

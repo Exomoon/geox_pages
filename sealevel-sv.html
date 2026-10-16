@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PalaeoCoast — Historisk kustlinjeutforskare | GeoX Raster Lab</title>
+  <meta name="description"
+    content="Vetenskaplig fallstudie och experimentell geospatial sandlåda som rekonstruerar europeiska forntida kustlinjer från 22 000 BP till nutid inom GeoX Raster Lab.">
+  <meta name="keywords"
+    content="PalaeoCoast, SeaLevelRize, paleogeografi, kustrekonstruktion, GIS, batymetri, GEBCO 2020, EMODnet, isostasi, GIA, Doggerland, Egeiska havet, GeoX Raster Lab">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://geox.dev/sealevel-sv.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PalaeoCoast — Historisk kustlinjeutforskare | GeoX Raster Lab">
+  <meta property="og:description"
+    content="Vetenskaplig fallstudie och experimentell geospatial sandlåda som rekonstruerar europeiska forntida kustlinjer från 22 000 BP till nutid.">
+  <meta property="og:url" content="https://geox.dev/sealevel-sv.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GeoX">
+  <meta property="og:image" content="https://geox.dev/assets/sealevel-preview.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PalaeoCoast — Historisk kustlinjeutforskare">
+  <meta name="twitter:description"
+    content="Vetenskaplig fallstudie och experimentell geospatial sandlåda som rekonstruerar europeiska forntida kustlinjer från 22 000 BP till nutid.">
+  <meta name="twitter:image" content="https://geox.dev/assets/sealevel-preview.png">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=20261011-1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PalaeoCoast",
+    "applicationCategory": "Geographic Information System",
+    "operatingSystem": "Web Browser",
+    "url": "https://geox.dev/sealevel-sv.html",
+    "description": "Experimentell geospatial modellerings- och visualiseringssandlåda som utforskar forntida kustlandskap.",
+    "author": {
+      "@type": "Person",
+      "name": "Ronnie Utter",
+      "sameAs": "https://www.linkedin.com/in/fme-dev/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header (Nordic Slate Light Styling) -->
+  <header class="site-header site-header-light" id="site-header">
+    <div class="header-inner">
+      <a href="sv.html" class="brand" aria-label="GeoX Startsida">
+        <span class="brand-text">Geo<span class="brand-accent">X</span></span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Huvudnavigation">
+        <a href="sv.html#projekt" class="nav-link">Projekt</a>
+        <a href="sv.html#raster-lab" class="nav-link">Raster Lab</a>
+        <a href="#oversikt" class="nav-link">Fallstudie</a>
+        <a href="#karta" class="nav-link">Interaktiv karta</a>
+        <a href="#metod" class="nav-link">Metodik</a>
+        <a href="#kallor" class="nav-link">Datakällor</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switch" aria-label="Val av språk">
+          <a href="sealevel.html" class="lang-link">EN</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-active">SV</span>
+        </div>
+        <a href="mailto:support@geox.dev" class="btn btn-header">Kontakt</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Öppna navigering" aria-expanded="false">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="oversikt">
+    <!-- Case Study Header -->
+    <section class="case-study-hero">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="Brödsmulor">
+          <a href="sv.html">GeoX Hem</a>
+          <span>/</span>
+          <a href="sv.html#raster-lab">Raster Lab</a>
+          <span>/</span>
+          <span>PalaeoCoast</span>
+        </nav>
+
+        <span class="case-study-eyebrow">GeoX Raster Lab · Projekt 01 · Teknisk Fallstudie</span>
+        <h1 class="case-study-title">PalaeoCoast — Historisk kustlinjeutforskare</h1>
+        <p class="case-study-lead">
+          En experimentell geospatial modellerings- och visualiseringssandlåda som undersöker Europas forntida kuster från 22 000 BP till nutid. Projektet utforskar hur batymetriska underlag kan kopplas till havsnivåkurvor, topologisk havskontakt och geomorfologisk terrängförskjutning. Drivs av beräkningsmotorn <em>SeaLevelRize</em>.
+        </p>
+
+        <!-- Scientific Notice & Methodological Disclaimer -->
+        <aside class="scientific-notice-box" aria-label="Vetenskaplig disclaimer">
+          <span class="notice-badge">Vetenskapligt förtydligande &amp; Disclaimer</span>
+          <h2 class="notice-title">Experimentell modelleringssandlåda — Inte en validerad historisk rekonstruktion</h2>
+          <p class="notice-text">
+            <strong>Distinkta fysiska processer:</strong> Landhöjning, glacial isostatisk justering (GIA), erosion, sedimentation och historiska eustatiska havsnivåförändringar är separata och distinkta geologiska och geografiska processer som drivs av fundamentalt olika fysikaliska mekanismer, mantelviskositet och tidsskalor.
+          </p>
+          <p class="notice-text">
+            <strong>Batymetrisk flodning vs. historisk rekonstruktion:</strong> Att enbart ändra havsnivån mot en modern digital höjdmodell (DEM) representerar inte en vetenskapligt validerad historisk kustlinjerekonstruktion. Dagens batymetri återspeglar tusentals år av efterföljande jordskorpejusteringar, glacio-isostatisk återhämtning och sedimentering som inte existerade i dagens utformning vid istidsmaximum (LGM).
+          </p>
+          <p class="notice-text">
+            <strong>Projektets omfattning &amp; GIA-status:</strong> Denna sandlåda utforskar dessa processer experimentellt och skiljer strikt mellan implementerad funktionalitet (topologisk havskontakt och geometriska scenariotillägg) och planerad eller konceptuell funktionalitet. <em>En numerisk geofysisk GIA-motor (ICE-6G_C / NKG2016LU) utvecklas för närvarande aktivt.</em>
+          </p>
+        </aside>
+
+        <div class="case-study-actions">
+          <a href="#karta" class="btn btn-primary">Granska kartvisaren ↓</a>
+          <a href="viewer/sealevel/index.html?lang=sv" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="color:var(--text-primary);border-color:var(--border);">
+            <span>Öppna kartvisaren fullskärm ↗</span>
+          </a>
+          <a href="#metod" class="btn btn-ghost" style="color:var(--text-secondary);border-color:var(--border);">
+            <span>Läs metodik ↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Embedded Viewer Section -->
+    <section class="case-study-viewer-section" id="karta">
+      <div class="container">
+        <div class="section-head" style="margin-bottom: 24px;">
+          <h2 class="section-title">Interaktiv scenariovisare</h2>
+          <p class="section-sub">
+            Utforska kusthorisonter, slå av och på topologisk havskontakt och granska simulerade terrängscenarier.
+          </p>
+        </div>
+
+        <div class="viewer-frame-container">
+          <div class="viewer-top-bar">
+            <span class="viewer-bar-title">PalaeoCoast Console · Europa · Egeiska havet · Doggerland</span>
+            <a href="viewer/sealevel/index.html?lang=sv" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 12px; padding: 6px 14px;">
+              <span>Fullskärm ↗</span>
+            </a>
+          </div>
+          <iframe src="viewer/sealevel/index.html?embed=1&lang=sv&v=20261011-1" class="viewer-frame" title="PalaeoCoast interaktiv kartvisare" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methodology & Equations Section -->
+    <section class="case-study-body-section" id="metod">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Beräkningsmetodik &amp; Fysikaliska Modeller</span>
+          <h2 class="section-title">Hur kustrekonstruktion och landhöjning beräknas</h2>
+          <p class="section-sub">
+            Från moderna batymetriska och geodetiska baslinjer till forntida terräng via GIA-anomalier, isostas och topologisk havsfyllnad.
+          </p>
+        </div>
+
+        <!-- 1. Principskiss: Panel A vs Panel B -->
+        <div class="sketch-section">
+          <div class="sketch-grid">
+            
+            <!-- Panel A -->
+            <div class="sketch-panel">
+              <span class="sketch-panel-tag">Panel A · Pedagogisk kontroll</span>
+              <h3 class="sketch-panel-title">Bara havsnivå (förenklad kontroll)</h3>
+              <p class="sketch-panel-desc">
+                Dagens terräng används oförändrad. Endast den valda havsnivån ändras. Detta är ett förenklat jämförelsealternativ och inte en fullständig rekonstruktion av landskapet.
+              </p>
+              <div class="sketch-svg-wrap">
+                <svg viewBox="0 0 440 210" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Principskiss Panel A: Oförändrad terräng med ändrad havsnivå">
+                  <defs>
+                    <linearGradient id="waterGradA" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.38" />
+                      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.10" />
+                    </linearGradient>
+                  </defs>
+                  <!-- Background grid -->
+                  <rect width="440" height="210" fill="#040912" rx="6" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1"/>
+                  <!-- Today's Sea Level (0 m) dashed -->
+                  <line x1="10" y1="85" x2="430" y2="85" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,4" />
+                  <text x="16" y="78" font-size="10.5" fill="#94A3B8" font-family="sans-serif" font-weight="600">Dagens havsnivå (0 m datum)</text>
+                  <!-- Older Sea Level (e.g. -120m at LGM) -->
+                  <line x1="10" y1="135" x2="430" y2="135" stroke="#38BDF8" stroke-width="2" />
+                  <text x="16" y="128" font-size="10.5" fill="#38BDF8" font-family="sans-serif" font-weight="700">Äldre vattennivå S (t.ex. -120 m)</text>
+                  <!-- Water Fill under older sea level -->
+                  <path d="M 10 135 L 140 135 L 140 200 L 10 200 Z" fill="url(#waterGradA)" />
+                  <!-- Today's Terrain Profile (unchanged) -->
+                  <path d="M 10 185 Q 60 170 110 150 T 190 95 T 270 125 T 350 45 L 430 35 L 430 200 L 10 200 Z" fill="#0B1A2C" stroke="#38BDF8" stroke-width="2" />
+                  <!-- Intersection Coastline Dot -->
+                  <circle cx="128" cy="135" r="4.5" fill="#38BDF8" stroke="#FFFFFF" stroke-width="1.5" />
+                  <text x="138" y="139" font-size="10.5" fill="#F8FAFC" font-family="sans-serif" font-weight="700">Kustlinje (ren DEM-skärning)</text>
+                  <text x="250" y="65" font-size="11" fill="#64748B" font-family="sans-serif" font-style="italic">Dagens markhöjd (Z_now) oförändrad</text>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Panel B -->
+            <div class="sketch-panel">
+              <span class="sketch-panel-tag">Panel B · Geofysisk modellering</span>
+              <h3 class="sketch-panel-title">GIA / RSL-informerad rekonstruktion</h3>
+              <p class="sketch-panel-desc">
+                En tids- och rumsberoende relativhöjdsanomali förändrar cellernas läge i förhållande till samtidens hav innan land och hav klassificeras.
+              </p>
+              <div class="sketch-svg-wrap">
+                <svg viewBox="0 0 440 210" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Principskiss Panel B: GIA-informerad terräng och relativ markförskjutning">
+                  <defs>
+                    <linearGradient id="waterGradB" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.38" />
+                      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.10" />
+                    </linearGradient>
+                    <marker id="arrowUp" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                      <polygon points="1 5, 3 1, 5 5" fill="#F87171" />
+                    </marker>
+                    <marker id="arrowDown" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                      <polygon points="1 1, 3 5, 5 1" fill="#F87171" />
+                    </marker>
+                  </defs>
+                  <rect width="440" height="210" fill="#040912" rx="6" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1"/>
+                  <!-- Today's Sea Level (0 m) dashed -->
+                  <line x1="10" y1="85" x2="430" y2="85" stroke="#475569" stroke-width="1.2" stroke-dasharray="4,4" />
+                  <text x="16" y="78" font-size="10.5" fill="#94A3B8" font-family="sans-serif">Dagens referensnivå (0 m)</text>
+                  <!-- Contemporaneous Sea Level -->
+                  <line x1="10" y1="135" x2="430" y2="135" stroke="#38BDF8" stroke-width="2" />
+                  <text x="16" y="128" font-size="10.5" fill="#38BDF8" font-family="sans-serif" font-weight="700">Samtidens havsyta</text>
+                  <!-- Reference Today's DEM (dashed faint gray) -->
+                  <path d="M 10 185 Q 60 170 110 150 T 190 95 T 270 125 T 350 45 L 430 35" fill="none" stroke="#64748B" stroke-width="1.6" stroke-dasharray="3,3" />
+                  <!-- Reconstructed Land Surface (Z_past) shifted down in ice-depressed zone -->
+                  <path d="M 10 195 Q 60 185 110 170 T 190 125 T 270 145 T 350 75 L 430 65 L 430 200 L 10 200 Z" fill="#0B2320" stroke="#10B981" stroke-width="2.2" />
+                  <!-- Displacement Vector A_rel Arrow -->
+                  <line x1="190" y1="98" x2="190" y2="122" stroke="#F87171" stroke-width="2" marker-end="url(#arrowDown)" />
+                  <text x="198" y="112" font-size="11" fill="#F87171" font-family="sans-serif" font-weight="700">A_rel (GIA)</text>
+                  <!-- Water Fill under contemporaneous sea -->
+                  <path d="M 10 135 L 180 135 L 180 200 L 10 200 Z" fill="url(#waterGradB)" />
+                  <!-- Reconstructed Coastline Intersection -->
+                  <circle cx="178" cy="135" r="4.5" fill="#10B981" stroke="#FFFFFF" stroke-width="1.5" />
+                  <text x="188" y="145" font-size="10.5" fill="#F8FAFC" font-family="sans-serif" font-weight="700">Rekonstruerad kustlinje</text>
+                  <text x="280" y="60" font-size="10.5" fill="#10B981" font-family="sans-serif" font-weight="600">Mark relativt samtidens hav</text>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Teckenförklaring & Förtydligande -->
+          <div class="sketch-legend">
+            <span class="legend-item"><span class="legend-swatch legend-swatch-today"></span> Dagens terräng (DEM)</span>
+            <span class="legend-item"><span class="legend-swatch legend-swatch-recon"></span> Rekonstruerad markhöjd (Z_past)</span>
+            <span class="legend-item"><span class="legend-swatch legend-swatch-sea0"></span> Dagens referensnivå (0 m)</span>
+            <span class="legend-item"><span class="legend-swatch legend-swatch-pastsea"></span> Äldre vattennivå / samtidens hav</span>
+          </div>
+          <p class="sketch-caption">
+            * Förenklad principskiss — inte faktiska modellvärden och inte skalenlig. Panel A visar en pedagogisk kontrollprincip där endast havsnivån sänks. Panel B visar modellens kombinerade förändring av markhöjd relativt samtidens hav. ICE-6G_C-fältet kombinerar solid-jord-, geoid-/havsyt- och havsvolymeffekter (inte enbart ren vertikal landrörelse).
+          </p>
+        </div>
+
+        <!-- 2. Huvudekvationen & Teckenförklaring -->
+        <div class="method-card" style="margin-bottom: 24px;">
+          <h3 class="method-card-title">Den generella terrängberäkningen</h3>
+          <p class="method-card-desc">
+            För varje gridcell beräknas den historiska markhöjden <code>Z_past</code> och den vertikala höjdmarginalen <code>M</code> mot dåtidens havsyta enligt:
+          </p>
+          <div class="math-code-box">
+Z_past = Z_now + A_rel − U + E − D
+M      = Z_past − S
+          </div>
+          <p class="method-card-desc" style="margin-bottom: 8px;">
+            För scenarier med konstanta hastigheter beräknas de kumulativa processerna som:
+          </p>
+          <div class="math-code-box">
+kumulativ förändring [m] = hastighet [mm/år] × ålder [år] / 1000
+          </div>
+
+          <h4 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 18px 0 8px;">Fysikalisk förklaring av minustecknen:</h4>
+          <div style="background-color: var(--bg-surface-alt); border-radius: var(--radius-sm); padding: 14px 18px; margin-bottom: 14px;">
+            <ul style="margin: 0; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--text-primary);">
+              <li><strong>− U (senare landhöjning):</strong> Om marken har höjts <em>efter</em> den valda tidpunkten fram till nutid (t.ex. postglacial landhöjning) låg den forntida markytan <em>lägre</em> än idag. Ett negativt värde på U innebär landsänkning (vilket ger plus, marken låg högre).</li>
+              <li><strong>+ E (senare erosion):</strong> Om material har nötts bort och eroderats efter den forntida tidpunkten låg den äldre markytan <em>högre</em> än dagens avskalade profil.</li>
+              <li><strong>− D (senare sedimentpålagring):</strong> Om sediment och flodslam har lagts på efteråt låg den forntida markytan <em>lägre</em> än dagens mätta botten.</li>
+              <li>Processerna definieras retroaktivt från vald forntida tid fram till referensläget 1950 (0 BP).</li>
+            </ul>
+          </div>
+
+          <p style="font-size: 13px; color: var(--text-secondary); margin: 0;">
+            <em>I cellanalysen i kartvisaren visas detta steg för steg:</em> <code>Dagens markhöjd − senare landhöjning + senare erosion − senare sedimentpålagring = rekonstruerad äldre markhöjd</code>.
+          </p>
+        </div>
+
+        <!-- 3. Expanderbara tekniska fördjupningar -->
+        <div class="method-expandable-wrap">
+
+          <!-- A. Tre referenslägen -->
+          <details class="method-expandable" open>
+            <summary class="method-summary">
+              <span>Modellens tre referenslägen &amp; skydd mot dubbelräkning</span>
+              <span class="summary-chevron">▼</span>
+            </summary>
+            <div class="method-details-body">
+              <p>För att förhindra att samma fysikaliska fenomen räknas flera gånger hanterar motorn tre strikta referenslägen:</p>
+              <table class="method-table">
+                <thead>
+                  <tr>
+                    <th>Läge (Mode)</th>
+                    <th>Beskrivning</th>
+                    <th>Stopp för dubbelräkning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>relative</code></td>
+                    <td>Havsnivån är redan en lokal relativ havsnivå (RSL).</td>
+                    <td>Separat landhöjning får inte läggas till. Koden stoppar denna kombination automatiskt.</td>
+                  </tr>
+                  <tr>
+                    <td><code>separate</code></td>
+                    <td>Havsytan uttrycks i samma fasta referensram som dagens DEM.</td>
+                    <td>Avsedd vertikal landförskjutning anges separat. Får inte kombineras med en RSL-kurva.</td>
+                  </tr>
+                  <tr>
+                    <td><code>relative_anomaly</code></td>
+                    <td>En komplett rumslig förändring i markens höjd relativt samtidens hav används (t.ex. ICE-6G_C).</td>
+                    <td>Separata havsnivå- och landrörelsetermer måste vara noll. Detta är läget för de vetenskapliga ICE-6G_C-scenarierna.</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="padding: 12px 16px; background: rgba(87, 122, 112, 0.1); border-left: 3px solid var(--accent); border-radius: 4px; margin-top: 10px;">
+                <strong>Viktigt faktum:</strong> GIA påverkar kustlinjen först när ett vetenskapligt relativhöjdsfält ingår i själva cellberäkningen. Ett synligt islager eller ett rent landrörelselager i kartan är inte i sig en kustkorrigering.
+              </div>
+            </div>
+          </details>
+
+          <!-- B. ICE-6G_C beräkning & begränsningar -->
+          <details class="method-expandable">
+            <summary class="method-summary">
+              <span>ICE-6G_C (VM5a) beräkning &amp; geofysiska begränsningar</span>
+              <span class="summary-chevron">▼</span>
+            </summary>
+            <div class="method-details-body">
+              <p>Förbearbetningen av den vetenskapliga GIA-modellen använder ICE-6G_C (VM5a) och beräknar den relativa anomalin:</p>
+              <div class="math-code-box">
+H_rel(t) = Topo(t) − stgit(t)
+A_rel(t) = H_rel(t) − H_rel(0) = [Topo(t) − stgit(t)] − [Topo(0) − stgit(0)]
+Z_past   = Z_now + A_rel(t)
+M        = Z_past
+              </div>
+              <p>I detta läge är havets samtidiga referens redan inbyggd i den relativa anomalin, varför separata havsnivåtermer är noll.</p>
+              <h4 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin: 12px 0 6px;">Bekräftade vetenskapliga begränsningar:</h4>
+              <ul style="margin: 0; padding-left: 20px; font-size: 13.5px; line-height: 1.6;">
+                <li><strong>Gridupplösning:</strong> ICE-6G_C:s ursprungliga grid är ca 1° (~100 km). Bilinjär omprovtagning till 5 km, 600 m eller 450 m skapar jämnare grafik men <em>inte ny vetenskaplig detalj</em>.</li>
+                <li><strong>Kombinerad storhet:</strong> Fältet representerar en kombinerad relativhöjdsstorhet (solid jord + geoid/havsyta), inte enbart ren vertikal berggrundsförskjutning.</li>
+                <li><strong>Datumharmonisering:</strong> För Doggerland är den vertikala datumharmoniseringen mellan land-DEM och EMODnet-batymetri fortfarande preliminär.</li>
+                <li><strong>Tektonik:</strong> Det Egeiska scenariot innehåller inte en fullständig regional tektonisk rekonstruktion.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- C. Topologisk havsfyllnad -->
+          <details class="method-expandable">
+            <summary class="method-summary">
+              <span>Topologisk havsfyllnad: Land, sammanhängande hav och slutna sänkor</span>
+              <span class="summary-chevron">▼</span>
+            </summary>
+            <div class="method-details-body">
+              <p>När höjdmarginalen <code>M</code> har beräknats klassificeras cellerna:</p>
+              <div class="math-code-box">
+M > 0  → Land
+M ≤ 0  → Kandidat för vatten
+              </div>
+              <p>Alla celler under havsytan blir <strong>inte</strong> automatiskt hav. Modellen kör en breddförst-sökande fyrgrannskapsanalys (4-neighbour connectivity) från kända öppna havsfrön:</p>
+              <ul style="margin: 0; padding-left: 20px; font-size: 13.5px; line-height: 1.6;">
+                <li><strong>Sammanhängande hav:</strong> Undervattensceller med obruten hydraulisk förbindelse till öppet hav.</li>
+                <li><strong>Slutna sänkor:</strong> Undervattensceller bakom en subaerial tröskel. Dessa förblir torrlagda. <em>En sluten sänka är inte automatiskt en sjö</em> — lokal hydrologi, nederbörd och avrinning modelleras inte i nuläget.</li>
+                <li><strong>Kustlinjevektorer:</strong> Skapas strikt längs gemensamma cellkanter mellan land och sammanhängande hav, aldrig längs analysrutans yttre gräns. Nodata tillåts aldrig skapa falska förbindelser.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- D. Indata vs Visningslager -->
+          <details class="method-expandable">
+            <summary class="method-summary">
+              <span>Datakatalog: Beräkningsindata kontra Visningslager</span>
+              <span class="summary-chevron">▼</span>
+            </summary>
+            <div class="method-details-body">
+              <p>Det är metodologiskt avgörande att skilja lager som styr beräkningen från lager som enbart är visuella referenser:</p>
+              <table class="method-table">
+                <thead>
+                  <tr>
+                    <th>Lager / Datamängd</th>
+                    <th>Roll i applikationen</th>
+                    <th>Påverkar kustberäkningen?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Dagens DEM / Batymetri (GEBCO / EMODnet)</td>
+                    <td>Grundläggande höjdraster (Z_now)</td>
+                    <td><span class="badge-tag badge-calc">Ja · Primär baslinje</span></td>
+                  </tr>
+                  <tr>
+                    <td>Vald havsnivå eller ICE-6G_C anomali</td>
+                    <td>Relativhöjdsförändring och vattennivå</td>
+                    <td><span class="badge-tag badge-calc">Ja · Avgör höjdmarginal</span></td>
+                  </tr>
+                  <tr>
+                    <td>Konfigurerad landhöjning / erosion / deposition</td>
+                    <td>Geometrisk förskjutning (U, E, D)</td>
+                    <td><span class="badge-tag badge-calc">Ja · Ändrar markhöjd</span></td>
+                  </tr>
+                  <tr>
+                    <td>Havsfrön &amp; Känslighetstolerans</td>
+                    <td>Styr flodfyllning och osäkerhetsband</td>
+                    <td><span class="badge-tag badge-calc">Ja · Styr topologi</span></td>
+                  </tr>
+                  <tr>
+                    <td>DATED-1 Eurasisk inlandsis (22–10 ka)</td>
+                    <td>Visuell referens för isutbredning</td>
+                    <td><span class="badge-tag badge-view">Nej · Visningslager</span></td>
+                  </tr>
+                  <tr>
+                    <td>BRITICE-CHRONO Brittisk isrand (22 &amp; 16 ka)</td>
+                    <td>Visuell referens för isutbredning</td>
+                    <td><span class="badge-tag badge-view">Nej · Visningslager</span></td>
+                  </tr>
+                  <tr>
+                    <td>EMODnet Geology palaeokanaler</td>
+                    <td>Historiska flodfåror och dränering</td>
+                    <td><span class="badge-tag badge-view">Nej · Visningslager</span></td>
+                  </tr>
+                  <tr>
+                    <td>Hillshade &amp; Terrängskuggning</td>
+                    <td>Ljus- och djupvisning</td>
+                    <td><span class="badge-tag badge-view">Nej · Visningslager</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">
+                * Användaren kan tända och släcka visningslagren utan att kustlinjen eller cellvärdena räknas om.
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sources & Datasets Section -->
+    <section class="section" id="kallor" style="background-color: var(--bg-surface-alt); border-top: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Dataarkitektur</span>
+          <h2 class="section-title">Datakällor &amp; Referensbaslinjer</h2>
+          <p class="section-sub">
+            Modellen sammanför högupplösta batymetriska lodningar med vetenskapligt granskade eustatiska havsnivåkurvor.
+          </p>
+        </div>
+
+        <div class="sources-grid">
+          <div class="source-item">
+            <div class="source-tag">Batymetri</div>
+            <h3 class="source-title">GEBCO 2020 Grid</h3>
+            <p class="source-detail">Global terräng- och havsbottenbatymetri med 15 bågsekunders upplösning (~450m europeisk ekvivalent), som utgör den grundläggande höjdreferensen.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Kustbatymetri</div>
+            <h3 class="source-title">EMODnet DTM 2024</h3>
+            <p class="source-detail">Högupplösta europeiska marindata med grunda akustiska lodningar över Nordsjön, Östersjön och Medelhavet.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Eustasi</div>
+            <h3 class="source-title">Havsnivåkurvor</h3>
+            <p class="source-detail">Globala eustatiska havsnivåkurvor (Lambeck et al. 2014, Peltier et al.) som kalibrerar havsvolymens sänkning (~125m vid LGM).</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Projektion</div>
+            <h3 class="source-title">EPSG:3035 (ETRS89-LAEA)</h3>
+            <p class="source-detail">Ytriktig Lambert-azimutprojektion som bevarar korrekta geografiska areamått över alla europeiska kontinentalsockelscenarier.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Geodynamik</div>
+            <h3 class="source-title">ICE-6G_C &amp; NKG2016LU</h3>
+            <p class="source-detail">Viskoelastiska mantelmodeller och nordiska geodetiska landhöjningsmätningar som integreras i den pågående GIA-modulen.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Upplösning</div>
+            <h3 class="source-title">600m Rasterceller</h3>
+            <p class="source-detail">Optimerad balans mellan kontinental skala, beräkningshastighet för topologisk flodfyllning och responsiv webbvisning.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (Grounding Dark Slate) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-wrap">
+          <a href="sv.html" class="brand" aria-label="GeoX Startsida">
+            <span class="brand-text">Geo<span class="brand-accent">X</span></span>
+          </a>
+          <p class="footer-tagline">Där plats möter data. Geodatateknik, dataintegration och digitala produkter.</p>
+        </div>
+
+        <div class="footer-links-wrap">
+          <div class="footer-col">
+            <span class="footer-col-title">Raster Lab</span>
+            <ul class="footer-links">
+              <li><a href="sealevel-sv.html">PalaeoCoast</a></li>
+              <li><a href="viewer/sealevel/index.html?lang=sv" target="_blank" rel="noopener noreferrer">PalaeoCoast Karta ↗</a></li>
+              <li><a href="sentinel-sv.html">Sentinel Lab</a></li>
+              <li><a href="viewer/sentinel/index.html" target="_blank" rel="noopener noreferrer">Sentinel Lab Karta ↗</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Navigation</span>
+            <ul class="footer-links">
+              <li><a href="sv.html">GeoX Hem</a></li>
+              <li><a href="sv.html#projekt">Portfolio</a></li>
+              <li><a href="sv.html#raster-lab">Raster Lab</a></li>
+              <li><a href="#oversikt">Fallstudie</a></li>
+              <li><a href="#karta">Interaktiv karta</a></li>
+              <li><a href="#metod">Metodik</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Kontakt</span>
+            <ul class="footer-links">
+              <li><a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="mailto:support@geox.dev">support@geox.dev</a></li>
+              <li><a href="https://geox.dev">geox.dev</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-credit">Fristående geospatiala ingenjörsprojekt skapade av <a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer" class="credit-link">Ronnie Utter</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

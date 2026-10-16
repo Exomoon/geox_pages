@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="description" content="PalaeoCoast — en geospatial scenarioplattform för äldre europeiska kustlandskap.">
+  <title>PalaeoCoast Europe · GeoX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b3038'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='sans-serif' font-size='22' font-weight='700' fill='%2300d2ff'%3EGX%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="vendor/leaflet.css">
+  <link rel="stylesheet" href="styles.css?v=20261012-3">
+</head>
+<body>
+  <div class="app-container">
+    <header class="topbar">
+      <div class="brand-section">
+        <a class="brand-mark" href="https://geox.dev" target="_blank" rel="noopener noreferrer" title="GeoX Hem">GX</a>
+        <div class="brand-title">
+          <a href="https://geox.dev">GeoX</a> / <span class="brand-product">PalaeoCoast</span> <span class="brand-status" data-i18n="brandStatus">— [Experimentell, under utveckling]</span>
+        </div>
+        <span class="brand-badge">22 ka – 0 BP · GIA</span>
+      </div>
+
+      <div class="topbar-center">
+        <div class="study-area-pill">
+          <span class="status-dot"></span>
+          <nav class="region-nav" aria-label="Analysområden">
+            <button data-region="europe" class="region-pill" type="button"><b data-i18n="regionEurope">Europa</b><small data-i18n="overview">5 km</small></button>
+            <button data-region="aegean" class="region-pill active" type="button"><b data-i18n="aegean">Egeiska havet</b><small data-i18n="ready">600 m</small></button>
+            <button data-region="doggerland" class="region-pill" type="button"><b>Doggerland</b><small data-i18n="nextRegion">450 m</small></button>
+          </nav>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button class="btn btn-secondary" id="methodButton" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <span data-i18n="methodSources">Metod &amp; källor</span>
+        </button>
+        <button class="btn btn-secondary" id="language" type="button">EN</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="panel controls" aria-label="Modellkontroller">
+        <div class="intro-card">
+          <p class="eyebrow" data-i18n="eyebrow">PALAEOCOAST · EUROPA · EXPERIMENTAL, UNDER DEVELOPMENT</p>
+          <h1 data-i18n="headline">Läs kustens förändring lager för lager.</h1>
+          <p data-i18n="intro">Jämför enbart ändrad havsnivå med ett scenario där även landrörelse, erosion och sedimentpålagring förändrar terrängen.</p>
+        </div>
+
+        <section id="timeSection">
+          <div class="section-title"><span>01</span><h2 data-i18n="timeScenario">Tid & scenario</h2></div>
+          <label for="scenario" data-i18n="scenario">Scenario</label>
+          <select id="scenario"></select>
+        <div id="scenarioStatus" class="notice"></div>
+        <div class="time-row"><label for="time" data-i18n="selectedTime">Vald tid</label><output id="age">—</output></div>
+        <input id="time" type="range" min="0" max="6" value="0" step="1">
+        <div class="time-axis"><span data-i18n="older">Äldre</span><span>0 BP · 1950</span></div>
+        <button id="play" class="primary" type="button"><span>▶</span><span data-i18n="play">Spela tidsserie</span></button>
+      </section>
+
+      <section id="comparisonSection">
+        <div class="section-title"><span>02</span><h2 data-i18n="comparison">Jämförelse</h2></div>
+        <div class="segmented comparison-modes" role="group" aria-label="Kartvisning" data-i18n-aria="mapViewAria">
+          <button data-mode="full" class="active" title="Havsnivå och alla aktiva landskapsprocesser" data-i18n-title="reconstructionTooltip"><span data-i18n="reconstruction">Rekonstruktion</span></button>
+          <button data-mode="difference" title="Celler som får annan klass när landskapsprocesserna räknas med" data-i18n-title="differenceTooltip"><span data-i18n="difference">Skillnad mot bara havsnivå</span></button>
+        </div>
+        <p class="comparison-help" data-i18n="comparisonHelp">Rekonstruktionen uppdateras direkt med tiden. Skillnad visar bara var landrörelse, erosion eller sedimentpålagring ändrar klass jämfört med samma havsnivå på dagens terräng.</p>
+        <div class="comparison-stats">
+          <article><div><small data-i18n="seaModel">Kontroll · bara havsnivå</small><b id="seaLand">—</b></div></article>
+          <article><div><small data-i18n="fullModel">Rekonstruktion · alla processer</small><b id="fullLand">—</b></div></article>
+          <p id="deltaStats">—</p>
+        </div>
+      </section>
+
+      <section id="processSection">
+        <div class="section-title"><span>03</span><h2 data-i18n="processLayers">Processlager</h2></div>
+        <p class="process-time-note" data-i18n="processTimeNote">Äldre tider visar kumulativ förändring i meter. Vid 0 BP visas processområde och antagen hastighet i mm/år.</p>
+        <div id="layerControls" class="layer-controls"></div>
+      </section>
+
+      <section class="advanced-calculation" hidden>
+        <details id="customCalculation">
+          <summary><span>04</span><strong data-i18n="recalculate">Avancerat: räkna om modell</strong></summary>
+          <p class="hint" data-i18n="recalcHint">Detta ändrar modellens antaganden, inte vilka lager som syns. Stäng av en process och räkna om den valda tidpunkten lokalt.</p>
+          <p class="assumption-warning" data-i18n="rateWarning">Demots hastigheter är syntetiska och regionalt generaliserade – inte uppmätta erosions- eller sedimentationshastigheter.</p>
+          <div class="process-switches">
+            <label><input id="enableUplift" type="checkbox" checked><span data-i18n="landMotion">Landrörelse</span></label>
+            <label><input id="enableErosion" type="checkbox" checked><span data-i18n="erosion">Erosion</span></label>
+            <label><input id="enableDeposition" type="checkbox" checked><span data-i18n="deposition">Sedimentation</span></label>
+          </div>
+          <button id="calculate" class="calculate" type="button" data-i18n="calculate" disabled>Räkna om vald tid</button>
+          <p id="calculationStatus" class="calculation-status">Kontrollerar lokal beräkningsmotor…</p>
+        </details>
+      </section>
+    </aside>
+
+    <section class="map-shell" aria-label="Navigerbar karta">
+      <div id="map"></div>
+      <div class="map-toolbar">
+        <form id="gotoForm" role="search">
+          <label class="sr-only" for="goto" data-i18n="gotoCoordinates">Sök ort eller koordinater</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="goto" placeholder="Sök ort eller lat, lon" autocomplete="off" aria-autocomplete="list" aria-controls="searchResults" aria-expanded="false">
+          <button type="submit" aria-label="Sök">→</button>
+          <div id="searchResults" class="search-results" role="listbox" hidden></div>
+        </form>
+      </div>
+      <div class="map-badges"><span id="modelResolution">Modellgrid · 600 m</span><span id="cursorCoordinates">—</span></div>
+      <div class="orientation"><b>N</b><i></i></div>
+      <div id="aoiMessage" class="aoi-message" hidden></div>
+      <div class="mobile-scenario-control">
+        <label for="mobileScenario" data-i18n="scenario">Scenario</label>
+        <select id="mobileScenario" aria-label="Scenario"></select>
+      </div>
+      <section class="mobile-time-dock" aria-label="Tidslinje">
+        <div class="mobile-time-head">
+          <span data-i18n="selectedTime">Vald tid</span>
+          <output id="mobileAge">—</output>
+          <button id="mobilePlay" type="button"><span aria-hidden="true">▶</span><span data-i18n="play">Spela tidsserie</span></button>
+        </div>
+        <input id="mobileTime" type="range" min="0" max="6" value="0" step="1" aria-label="Vald tid">
+        <div class="time-axis"><span data-i18n="older">Äldre</span><span>0 BP · 1950</span></div>
+      </section>
+    </section>
+
+    <nav class="mobile-actions" aria-label="Kartverktyg">
+      <button type="button" data-mobile-panel="processSection"><span aria-hidden="true">◫</span><span data-i18n="mobileLayers">Lager</span></button>
+      <button id="mobileComparisonButton" type="button" data-mobile-panel="comparisonSection"><span aria-hidden="true">◐</span><span data-i18n="mobileComparison">Jämför</span></button>
+      <button type="button" data-mobile-panel="cellSection"><span aria-hidden="true">＋</span><span data-i18n="mobileAnalysis">Analys</span></button>
+    </nav>
+
+    <aside class="panel inspector" aria-label="Cellinformation">
+      <section id="cellSection">
+        <div class="section-title"><span>05</span><h2 data-i18n="cellAnalysis">Cellanalys</h2></div>
+        <div id="emptyCell" class="empty-cell"><div class="crosshair">＋</div><p data-i18n="clickPrompt">Klicka inom valt modellområde för att läsa den beräknade cellen.</p></div>
+        <div id="cellDetails" hidden>
+          <p id="cellCoordinates" class="cell-coordinates"></p>
+          <div class="equation">
+            <div><span data-i18n="todayTerrain">Dagens markhöjd</span><b id="todayHeight"></b></div>
+            <div id="relativeHeightRow" hidden><span data-i18n="relativeHeightAnomaly">+ relativhöjdsanomali (land + hav)</span><b id="relativeHeightValue"></b></div>
+            <div><span data-i18n="laterUplift">− senare landhöjning / + landsänkning</span><b id="upliftValue"></b></div>
+            <div><span data-i18n="laterErosion">+ senare erosion</span><b id="erosionValue"></b></div>
+            <div><span data-i18n="laterDeposition">− senare sedimentpålagring</span><b id="depositionValue"></b></div>
+            <div class="total"><span data-i18n="reconstructedTerrain">= rekonstruerad äldre markhöjd</span><b id="paleoHeight"></b></div>
+          </div>
+          <dl class="cell-metrics">
+            <div><dt data-i18n="seaSurface">Vald havsyta</dt><dd id="seaSurface"></dd></div>
+            <div><dt data-i18n="heightMargin">Höjdmarginal</dt><dd id="margin"></dd></div>
+            <div><dt data-i18n="computedClass">Beräknad klass</dt><dd id="cellClass"></dd></div>
+            <div><dt data-i18n="simpleClass">Klass endast hav</dt><dd id="simpleClass"></dd></div>
+          </dl>
+        </div>
+      </section>
+      <section>
+        <div class="section-title"><span>06</span><h2 data-i18n="legend">Teckenförklaring</h2></div>
+        <div id="legend" class="legend"></div>
+      </section>
+      <section>
+        <div class="section-title"><span>07</span><h2 data-i18n="resolutionQuality">Upplösning & kvalitet</h2></div>
+        <dl class="quality-list">
+          <div><dt data-i18n="basemapDetail">Bakgrundskarta</dt><dd data-i18n="basemapNote">OpenStreetMap · visningsdetalj varierar</dd></div>
+          <div><dt data-i18n="modelCell">Modellcell</dt><dd id="qualityModelCell">—</dd></div>
+          <div><dt data-i18n="terrainSource">Terrängunderlag</dt><dd id="qualityTerrainSource">—</dd></div>
+        </dl>
+        <p class="warning" data-i18n="resolutionWarning">Zoom visar cellerna större men skapar ingen ny terränginformation.</p>
+      </section>
+    </aside>
+  </main>
+  </div>
+
+  <div id="mobileSheetBackdrop" class="mobile-sheet-backdrop" hidden></div>
+  <aside id="mobileSheet" class="mobile-sheet" role="dialog" aria-modal="true" aria-labelledby="mobileSheetTitle" hidden>
+    <div class="mobile-sheet-handle" aria-hidden="true"></div>
+    <header><h2 id="mobileSheetTitle">Panel</h2><button id="closeMobileSheet" type="button" aria-label="Stäng">×</button></header>
+    <div id="mobileSheetContent" class="mobile-sheet-content"></div>
+  </aside>
+
+  <dialog id="methodDialog">
+    <button id="closeMethod" class="dialog-close" aria-label="Stäng">×</button>
+    <p class="eyebrow">PALAEOCOAST · METHOD / SOURCES</p>
+    <h2 data-i18n="methodTitle">Vad modellen visar — och inte visar</h2>
+    <p data-i18n="methodIntro">Modellen rekonstruerar geometriska och geofysiska forntida kuster. Den daterar inte bosättningar och modellerar inte vågor, erosionstransport eller lokal isfrihet.</p>
+
+    <!-- Calculation & Uplift Summary -->
+    <div style="margin: 14px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: #fff;">
+      <h3 style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px; color: var(--teal);" data-i18n="methodCalcHeading">Beräkning av forntida markyta &amp; kustlinje</h3>
+      <div style="font-family: monospace; font-size: 11px; padding: 6px 8px; background: #f2f6f4; border-radius: 4px; margin-bottom: 8px;">
+        Z_past = Z_now + A_rel − U + E − D<br>
+        M = Z_past − S
+      </div>
+      <ul style="margin: 0; padding-left: 16px; font-size: 10.5px; line-height: 1.5; color: #496068;" id="methodCalcList">
+        <li><strong>− U (Landhöjning):</strong> Om marken höjts efter vald forntid låg den äldre markytan lägre än dagens DEM (−U). Landsänkning innebär att marken låg högre (+).</li>
+        <li><strong>A_rel (GIA / ICE-6G_C):</strong> Geofysiskt beräknad relativhöjdsanomali (jordskorpans deformation + gravitationsskift i havsytan) från ICE-6G_C VM5a. Används i ICE-6G_C-scenarierna.</li>
+        <li><strong>Topologisk kontakt:</strong> Celler under havsytan (M ≤ 0) kräver hydraulisk fyrgrannskapsförbindelse till havsfrö för att bli sammanhängande hav. Slutna sänkor förblir torrlagda.</li>
+      </ul>
+      <div style="margin-top: 10px;">
+        <a id="geoxReportLink" href="https://geox.dev/sealevel-sv.html#metod" target="_blank" rel="noopener noreferrer" style="font-size: 11px; font-weight: 700; color: var(--sea); text-decoration: underline;" data-i18n="geoxReportLink">
+          Läs fullständig vetenskaplig rapport &amp; interaktiv principskiss på GeoX ↗
+        </a>
+      </div>
+    </div>
+
+    <div id="dataStatus" class="data-status"></div>
+    <h3 data-i18n="verifiedCandidates">Verifierade kandidater för lokal förfining</h3>
+    <ul id="verifiedCandidatesList">
+      <li><a href="https://emodnet.ec.europa.eu/en/emodnet-bathymetry-dtm-2024-release" target="_blank" rel="noreferrer">EMODnet Bathymetry DTM 2024</a> · integrerat i Doggerland som 1/4 bågminutsexport · batymetri i LAT och sammansatt landdel.</li>
+      <li><a href="https://doi.org/10.1594/PANGAEA.945729" target="_blank" rel="noreferrer">BRITICE-CHRONO</a> · empirisk isutbredning vid 22 ka och 16 ka · CC BY 4.0.</li>
+      <li><a href="https://doi.org/10.1594/PANGAEA.848117" target="_blank" rel="noreferrer">DATED-1</a> · eurasisk isutbredning med minimi-, mest trovärdig och maximigräns vid 22–10 ka · CC BY 3.0.</li>
+      <li><a href="https://emodnet.ec.europa.eu/en/geology" target="_blank" rel="noreferrer">EMODnet Geology</a> · palaeokanaler som featureinventarium.</li>
+      <li><a href="https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM" target="_blank" rel="noreferrer">Copernicus DEM GLO-30</a> · 30 m DSM · EGM2008.</li>
+      <li><a href="https://www.gebco.net/data_and_products/gridded_bathymetry_data/" target="_blank" rel="noreferrer">GEBCO 2025</a> · globalt 15″ grid · heterogena höjddatum i delar av kustzonen.</li>
+    </ul>
+    <p class="warning" data-i18n="datumWarning">Dessa underlag får inte fogas ihop utan dokumenterad vertikal datumharmonisering. Finare omprovtagning är inte högre faktisk noggrannhet.</p>
+  </dialog>
+
+  <script src="vendor/leaflet.js"></script>
+  <script src="app.js?v=20261012-4" type="module"></script>
+</body>
+</html>

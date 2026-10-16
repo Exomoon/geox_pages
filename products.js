@@ -204,6 +204,49 @@ export const products = [
   }
 ];
 
+export const rasterLabProjects = [
+  {
+    id: "palaeocoast",
+    projectNumber: "01",
+    name: "PalaeoCoast – Historical Coastline Explorer",
+    nameSv: "PalaeoCoast – Historisk kustlinjeutforskare",
+    eyebrow: "GeoX Raster Lab · Project 01",
+    tagline: "Experimental Geospatial Modelling & Visualisation Sandbox",
+    description: "Experimental modelling sandbox investigating European prehistoric coastlines from 22 000 BP through present day by coupling bathymetry (GEBCO & EMODnet) with relative sea-level curves and topological ocean connectivity. Land uplift, GIA, erosion and sedimentation are treated as distinct physical processes.",
+    descriptionSv: "Experimentell modelleringssandlåda som utforskar forntida europeiska kustlinjer från 22 000 BP till nutid genom att koppla batymetri till havsnivåkurvor och topologisk havskontakt. Landhöjning, GIA, erosion och sedimentation behandlas som distinkta fysiska processer.",
+    url: "sealevel.html",
+    urlSv: "sealevel-sv.html",
+    viewerUrl: "viewer/sealevel/index.html",
+    image: "assets/sealevel-preview-en.png",
+    imageSv: "assets/sealevel-preview.png",
+    status: "EXPERIMENTAL SANDBOX",
+    statusVariant: "sandbox",
+    accentColor: "#ee7c3f",
+    accentGlow: "rgba(238, 124, 63, 0.16)",
+    tags: ["22 000 BP → 1950", "Topologisk havskontakt", "GEBCO & EMODnet", "GIA under utveckling"]
+  },
+  {
+    id: "sentinel-lab",
+    projectNumber: "02",
+    name: "Sentinel Lab",
+    nameSv: "Sentinel Lab",
+    eyebrow: "GeoX Raster Lab · Project 02",
+    tagline: "Multispectral satellite analytics, terrain modeling & band algebra",
+    description: "High-resolution multi-temporal satellite imagery analysis across Copernicus Sentinel-2 Level-2A and Copernicus DEM GLO-30. Includes 5 analytical modules: vegetation phenology, wetland dynamics, wildfire burn severity, terrain topography, and AST band algebra.",
+    descriptionSv: "Multitemporal satellit- och rasteranalys i 10 m upplösning med Copernicus Sentinel-2 Level-2A och Copernicus DEM GLO-30. Innehåller 5 analysmoduler: vegetationsdynamik, våtmarksförändring, brandskadegrad, terrängtopografi och sandlådad AST-rasterkalkylator.",
+    url: "sentinel.html",
+    urlSv: "sentinel-sv.html",
+    viewerUrl: "viewer/sentinel/index.html",
+    image: "assets/sentinel-viewer-preview.png",
+    status: "EXPERIMENTAL SANDBOX",
+    statusVariant: "sandbox",
+    accentColor: "#00d2ff",
+    accentGlow: "rgba(0, 210, 255, 0.18)",
+    tags: ["Sentinel-2 Level-2A", "Copernicus DEM (10m/30m)", "5 Analysmoduler", "Under utveckling"]
+  }
+];
+
+
 export const focusAreas = [
   {
     id: "rasterlab",

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PalaeoCoast — Historical Coastline Explorer | GeoX Raster Lab</title>
+  <meta name="description"
+    content="Scientific case study and experimental geospatial sandbox reconstructing European prehistoric coastlines from 22 000 BP through present day within GeoX Raster Lab.">
+  <meta name="keywords"
+    content="PalaeoCoast, SeaLevelRize, paleogeography, coastal reconstruction, GIS, bathymetry, GEBCO 2020, EMODnet, isostasy, GIA, Doggerland, Aegean Sea, GeoX Raster Lab">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://geox.dev/sealevel.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PalaeoCoast — Historical Coastline Explorer | GeoX Raster Lab">
+  <meta property="og:description"
+    content="Scientific case study and experimental geospatial sandbox reconstructing European prehistoric coastlines from 22 000 BP through present day.">
+  <meta property="og:url" content="https://geox.dev/sealevel.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GeoX">
+  <meta property="og:image" content="https://geox.dev/assets/sealevel-preview-en.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PalaeoCoast — Historical Coastline Explorer">
+  <meta name="twitter:description"
+    content="Scientific case study and experimental geospatial sandbox reconstructing European prehistoric coastlines from 22 000 BP through present day.">
+  <meta name="twitter:image" content="https://geox.dev/assets/sealevel-preview-en.png">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=20261011-1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PalaeoCoast",
+    "applicationCategory": "Geographic Information System",
+    "operatingSystem": "Web Browser",
+    "url": "https://geox.dev/sealevel.html",
+    "description": "Experimental geospatial modelling and visualisation sandbox exploring prehistoric coastal landscapes.",
+    "author": {
+      "@type": "Person",
+      "name": "Ronnie Utter",
+      "sameAs": "https://www.linkedin.com/in/fme-dev/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header (Nordic Slate Light Styling) -->
+  <header class="site-header site-header-light" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="GeoX Home">
+        <span class="brand-text">Geo<span class="brand-accent">X</span></span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main Navigation">
+        <a href="index.html#projects" class="nav-link">Projects</a>
+        <a href="index.html#raster-lab" class="nav-link">Raster Lab</a>
+        <a href="#overview" class="nav-link">Case Study</a>
+        <a href="#viewer" class="nav-link">Interactive Map</a>
+        <a href="#methodology" class="nav-link">Methodology</a>
+        <a href="#sources" class="nav-link">Data Sources</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switch" aria-label="Language selection">
+          <span class="lang-active">EN</span>
+          <span class="lang-sep">/</span>
+          <a href="sealevel-sv.html" class="lang-link">SV</a>
+        </div>
+        <a href="mailto:support@geox.dev" class="btn btn-header">Contact</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="overview">
+    <!-- Case Study Header -->
+    <section class="case-study-hero">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="index.html">GeoX Home</a>
+          <span>/</span>
+          <a href="index.html#raster-lab">Raster Lab</a>
+          <span>/</span>
+          <span>PalaeoCoast</span>
+        </nav>
+
+        <span class="case-study-eyebrow">GeoX Raster Lab · Project 01 · Engineering Case Study</span>
+        <h1 class="case-study-title">PalaeoCoast — Historical Coastline Explorer</h1>
+        <p class="case-study-lead">
+          An experimental geospatial modelling and visualisation sandbox investigating European prehistoric coastlines from 22 000 BP through present day. The project explores how bathymetric baselines can be coupled with relative sea-level curves, topological ocean connectivity, and geomorphological displacement. Powered by the computational engine <em>SeaLevelRize</em>.
+        </p>
+
+        <!-- Scientific Notice & Methodological Disclaimer -->
+        <aside class="scientific-notice-box" aria-label="Scientific disclaimer">
+          <span class="notice-badge">Scientific Notice &amp; Methodological Disclaimer</span>
+          <h2 class="notice-title">Experimental Modelling Sandbox — Not a Ground-Truth Reconstruction</h2>
+          <p class="notice-text">
+            <strong>Distinct Physical Processes:</strong> Land uplift, glacial isostatic adjustment (GIA), erosion, sedimentation, and historical eustatic sea-level change are distinct geological and geographical processes governed by fundamentally different physical drivers, mantle rheologies and spatio-temporal timescales.
+          </p>
+          <p class="notice-text">
+            <strong>Bathymetric Flooding vs. Historical Reconstruction:</strong> Simply changing sea level against a modern digital elevation model (DEM) does not represent a scientifically validated historical coastline reconstruction. Modern bathymetry reflects thousands of years of subsequent crustal movement, postglacial rebound, and coastal sedimentation that did not exist in their present configuration at the Last Glacial Maximum (LGM).
+          </p>
+          <p class="notice-text">
+            <strong>Project Scope &amp; GIA Engine Status:</strong> This sandbox explores these processes experimentally and distinguishes implemented functionality (hydraulic topological ocean connectivity and geometric displacement layers) from planned or conceptual capabilities. <em>A genuine numerical geophysical GIA engine (ICE-6G_C / NKG2016LU) is currently under active development.</em>
+          </p>
+        </aside>
+
+        <div class="case-study-actions">
+          <a href="#viewer" class="btn btn-primary">Inspect Map Preview ↓</a>
+          <a href="viewer/sealevel/index.html?lang=en" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="color:var(--text-primary);border-color:var(--border);">
+            <span>Open Interactive Map Fullscreen ↗</span>
+          </a>
+          <a href="#methodology" class="btn btn-ghost" style="color:var(--text-secondary);border-color:var(--border);">
+            <span>Read Methodology ↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Embedded Viewer Section -->
+    <section class="case-study-viewer-section" id="viewer">
+      <div class="container">
+        <div class="section-head" style="margin-bottom: 24px;">
+          <h2 class="section-title">Interactive Scenario Viewer</h2>
+          <p class="section-sub">
+            Explore coastal horizons, toggle topological ocean connectivity, and inspect simulated terrain scenarios.
+          </p>
+        </div>
+
+        <div class="viewer-frame-container">
+          <div class="viewer-top-bar">
+            <span class="viewer-bar-title">PalaeoCoast Console · Europe · Aegean · Doggerland</span>
+            <a href="viewer/sealevel/index.html?lang=en" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 12px; padding: 6px 14px;">
+              <span>Fullscreen Window ↗</span>
+            </a>
+          </div>
+          <iframe src="viewer/sealevel/index.html?embed=1&lang=en&v=20261011-1" class="viewer-frame" title="PalaeoCoast Interactive GIS Viewer" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methodology & Equations Section -->
+    <section class="case-study-body-section" id="methodology">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Computational Physics &amp; Methodology</span>
+          <h2 class="section-title">How Coastline Reconstruction &amp; Land Uplift are Calculated</h2>
+          <p class="section-sub">
+            From modern DEM and bathymetry baselines to prehistoric topography via GIA anomalies, isostasy, and topological ocean fill.
+          </p>
+        </div>
+
+        <!-- 1. Principle Sketch: Panel A vs Panel B -->
+        <div class="sketch-section">
+          <div class="sketch-grid">
+            
+            <!-- Panel A -->
+            <div class="sketch-panel">
+              <span class="sketch-panel-tag">Panel A · Pedagogical Control</span>
+              <h3 class="sketch-panel-title">Sea Level Only (Simplified Control)</h3>
+              <p class="sketch-panel-desc">
+                Modern topography is used without modification. Only the selected sea level is varied. This serves as a simplified baseline and is not a complete historical reconstruction of the landscape.
+              </p>
+              <div class="sketch-svg-wrap">
+                <svg viewBox="0 0 440 210" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Principle Sketch Panel A: Unchanged terrain with changed sea level">
+                  <defs>
+                    <linearGradient id="waterGradAEn" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.38" />
+                      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.10" />
+                    </linearGradient>
+                  </defs>
+                  <rect width="440" height="210" fill="#040912" rx="6" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1"/>
+                  <!-- Today's Sea Level (0 m) dashed -->
+                  <line x1="10" y1="85" x2="430" y2="85" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,4" />
+                  <text x="16" y="78" font-size="10.5" fill="#94A3B8" font-family="sans-serif" font-weight="600">Modern Sea Level (0 m datum)</text>
+                  <!-- Older Sea Level -->
+                  <line x1="10" y1="135" x2="430" y2="135" stroke="#38BDF8" stroke-width="2" />
+                  <text x="16" y="128" font-size="10.5" fill="#38BDF8" font-family="sans-serif" font-weight="700">Past Sea Level S (e.g. -120 m)</text>
+                  <!-- Water Fill under older sea level -->
+                  <path d="M 10 135 L 140 135 L 140 200 L 10 200 Z" fill="url(#waterGradAEn)" />
+                  <!-- Today's Terrain Profile (unchanged) -->
+                  <path d="M 10 185 Q 60 170 110 150 T 190 95 T 270 125 T 350 45 L 430 35 L 430 200 L 10 200 Z" fill="#0B1A2C" stroke="#38BDF8" stroke-width="2" />
+                  <!-- Intersection Coastline Dot -->
+                  <circle cx="128" cy="135" r="4.5" fill="#38BDF8" stroke="#FFFFFF" stroke-width="1.5" />
+                  <text x="138" y="139" font-size="10.5" fill="#F8FAFC" font-family="sans-serif" font-weight="700">Coastline (DEM slice)</text>
+                  <text x="250" y="65" font-size="11" fill="#64748B" font-family="sans-serif" font-style="italic">Modern Elevation (Z_now) unchanged</text>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Panel B -->
+            <div class="sketch-panel">
+              <span class="sketch-panel-tag">Panel B · Geophysical Modelling</span>
+              <h3 class="sketch-panel-title">GIA / RSL-Informed Reconstruction</h3>
+              <p class="sketch-panel-desc">
+                A spatially and temporally varying relative height anomaly shifts cell elevations relative to the contemporaneous sea before land and ocean are classified.
+              </p>
+              <div class="sketch-svg-wrap">
+                <svg viewBox="0 0 440 210" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Principle Sketch Panel B: GIA-informed terrain displacement">
+                  <defs>
+                    <linearGradient id="waterGradBEn" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.38" />
+                      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.10" />
+                    </linearGradient>
+                    <marker id="arrowDownEn" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                      <polygon points="1 1, 3 5, 5 1" fill="#F87171" />
+                    </marker>
+                  </defs>
+                  <rect width="440" height="210" fill="#040912" rx="6" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1"/>
+                  <!-- Today's Sea Level (0 m) dashed -->
+                  <line x1="10" y1="85" x2="430" y2="85" stroke="#475569" stroke-width="1.2" stroke-dasharray="4,4" />
+                  <text x="16" y="78" font-size="10.5" fill="#94A3B8" font-family="sans-serif">Modern Datum (0 m)</text>
+                  <!-- Contemporaneous Sea Level -->
+                  <line x1="10" y1="135" x2="430" y2="135" stroke="#38BDF8" stroke-width="2" />
+                  <text x="16" y="128" font-size="10.5" fill="#38BDF8" font-family="sans-serif" font-weight="700">Contemporaneous Sea Level</text>
+                  <!-- Reference Modern DEM (dashed faint gray) -->
+                  <path d="M 10 185 Q 60 170 110 150 T 190 95 T 270 125 T 350 45 L 430 35" fill="none" stroke="#64748B" stroke-width="1.6" stroke-dasharray="3,3" />
+                  <!-- Reconstructed Land Surface (Z_past) shifted down under past ice load -->
+                  <path d="M 10 195 Q 60 185 110 170 T 190 125 T 270 145 T 350 75 L 430 65 L 430 200 L 10 200 Z" fill="#0B2320" stroke="#10B981" stroke-width="2.2" />
+                  <!-- Displacement Vector A_rel Arrow -->
+                  <line x1="190" y1="98" x2="190" y2="122" stroke="#F87171" stroke-width="2" marker-end="url(#arrowDownEn)" />
+                  <text x="198" y="112" font-size="11" fill="#F87171" font-family="sans-serif" font-weight="700">A_rel (GIA)</text>
+                  <!-- Water Fill under contemporaneous sea -->
+                  <path d="M 10 135 L 180 135 L 180 200 L 10 200 Z" fill="url(#waterGradBEn)" />
+                  <!-- Reconstructed Coastline Intersection -->
+                  <circle cx="178" cy="135" r="4.5" fill="#10B981" stroke="#FFFFFF" stroke-width="1.5" />
+                  <text x="188" y="145" font-size="10.5" fill="#F8FAFC" font-family="sans-serif" font-weight="700">Reconstructed Coastline</text>
+                  <text x="280" y="60" font-size="10.5" fill="#10B981" font-family="sans-serif" font-weight="600">Land relative to past sea</text>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Legend & Note -->
+          <div class="sketch-legend">
+            <span class="legend-item"><span class="legend-swatch legend-swatch-today"></span> Modern DEM</span>
+            <span class="legend-item"><span class="legend-swatch legend-swatch-recon"></span> Reconstructed Elevation (Z_past)</span>
+            <span class="legend-item"><span class="legend-swatch legend-swatch-sea0"></span> Modern 0m Datum</span>
+            <span class="legend-item"><span class="legend-swatch legend-swatch-pastsea"></span> Contemporaneous Sea Level</span>
+          </div>
+          <p class="sketch-caption">
+            * Simplified principle sketch — not actual model values and not to scale. Panel A illustrates a pedagogical control where only sea level drops. Panel B illustrates the model's combined elevation adjustment relative to contemporaneous sea. The ICE-6G_C field combines solid-Earth, geoid/sea-surface and ocean volume dynamics (not solely vertical land movement).
+          </p>
+        </div>
+
+        <!-- 2. General Terrain Equation & Sign Conventions -->
+        <div class="method-card" style="margin-bottom: 24px;">
+          <h3 class="method-card-title">General Terrain Elevation Calculation</h3>
+          <p class="method-card-desc">
+            For each raster grid cell, reconstructed elevation <code>Z_past</code> and vertical elevation margin <code>M</code> relative to the contemporaneous sea surface are calculated as:
+          </p>
+          <div class="math-code-box">
+Z_past = Z_now + A_rel − U + E − D
+M      = Z_past − S
+          </div>
+          <p class="method-card-desc" style="margin-bottom: 8px;">
+            For scenarios with constant process rates, cumulative displacement is computed as:
+          </p>
+          <div class="math-code-box">
+cumulative displacement [m] = rate [mm/yr] × age [yr] / 1000
+          </div>
+
+          <h4 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 18px 0 8px;">Physical Explanation of Signs:</h4>
+          <div style="background-color: var(--bg-surface-alt); border-radius: var(--radius-sm); padding: 14px 18px; margin-bottom: 14px;">
+            <ul style="margin: 0; padding-left: 20px; font-size: 13.5px; line-height: 1.7; color: var(--text-primary);">
+              <li><strong>− U (Subsequent Land Uplift):</strong> If land has risen <em>after</em> the historical epoch (e.g. postglacial crustal rebound in Scandinavia), the ancient ground surface lay <em>lower</em> relative to the geoid than today. A negative U value denotes land subsidence (which adds height, as the ancient surface stood higher).</li>
+              <li><strong>+ E (Subsequent Erosion):</strong> If surface material was eroded away in subsequent millennia, the original ancient land surface stood <em>higher</em> than modern bathymetric soundings.</li>
+              <li><strong>− D (Subsequent Deposition):</strong> If sediment deltas accumulated later, the ancient land surface lay <em>lower</em> than modern soundings.</li>
+              <li>All processes are defined retroactively from the selected historical age to the reference baseline 1950 (0 BP).</li>
+            </ul>
+          </div>
+
+          <p style="font-size: 13px; color: var(--text-secondary); margin: 0;">
+            <em>Inside the interactive cell inspector:</em> <code>Modern Elevation − subsequent uplift + subsequent erosion − subsequent deposition = reconstructed past elevation</code>.
+          </p>
+        </div>
+
+        <!-- 3. Expandable Deep-Dive Sections -->
+        <div class="method-expandable-wrap">
+
+          <!-- A. Three Reference Modes -->
+          <details class="method-expandable" open>
+            <summary class="method-summary">
+              <span>Three Reference Modes &amp; Double-Counting Guard</span>
+              <span class="summary-chevron">▼</span>
+            </summary>
+            <div class="method-details-body">
+              <p>To prevent geological processes from being accidentally compounded, the computation engine enforces three mutually exclusive reference modes:</p>
+              <table class="method-table">
+                <thead>
+                  <tr>
+                    <th>Mode</th>
+                    <th>Description</th>
+                    <th>Double-Counting Protection</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>relative</code></td>
+                    <td>Sea level is already expressed as a local relative sea-level (RSL) curve.</td>
+                    <td>Separate land uplift must not be added. The engine rejects this combination automatically.</td>
+                  </tr>
+                  <tr>
+                    <td><code>separate</code></td>
+                    <td>Sea surface is expressed in the modern DEM datum.</td>
+                    <td>Intended crustal displacement is supplied separately. Cannot be combined with an RSL curve.</td>
+                  </tr>
+                  <tr>
+                    <td><code>relative_anomaly</code></td>
+                    <td>A complete spatial relative elevation anomaly relative to contemporaneous sea is supplied (ICE-6G_C).</td>
+                    <td>Separate sea-level and land uplift terms must be zero. This is the mode for ICE-6G_C scenarios.</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="padding: 12px 16px; background: rgba(87, 122, 112, 0.1); border-left: 3px solid var(--accent); border-radius: 4px; margin-top: 10px;">
+                <strong>Key Geological Principle:</strong> Glacial Isostatic Adjustment affects the coastline only when a validated relative height grid is part of the cell calculation. A visual ice sheet layer or tectonic vector map in the viewer is not in itself a coastal correction.
+              </div>
+            </div>
+          </details>
+
+          <!-- B. ICE-6G_C Calculation & Limits -->
+          <details class="method-expandable">
+            <summary class="method-summary">
+              <span>ICE-6G_C (VM5a) Formulation &amp; Geophysical Limitations</span>
+              <span class="summary-chevron">▼</span>
+            </summary>
+            <div class="method-details-body">
+              <p>Preprocessing for the scientific GIA engine employs ICE-6G_C (VM5a) and calculates the net relative anomaly:</p>
+              <div class="math-code-box">
+H_rel(t) = Topo(t) − stgit(t)
+A_rel(t) = H_rel(t) − H_rel(0) = [Topo(t) − stgit(t)] − [Topo(0) − stgit(0)]
+Z_past   = Z_now + A_rel(t)
+M        = Z_past
+              </div>
+              <p>In this mode, the contemporaneous sea level is mathematically inherent to the relative anomaly, setting independent sea-level terms to zero.</p>
+              <h4 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin: 12px 0 6px;">Confirmed Scientific Limitations:</h4>
+              <ul style="margin: 0; padding-left: 20px; font-size: 13.5px; line-height: 1.6;">
+                <li><strong>Grid Resolution:</strong> ICE-6G_C has a native resolution of ~1° (~100 km). Bilinear resampling to 5 km, 600 m or 450 m creates smoother raster display but <em>adds no new geophysical ground truth</em>.</li>
+                <li><strong>Combined Quantity:</strong> The anomaly is a composite field (solid Earth displacement + geoid/sea-surface shift), not pure vertical crustal motion.</li>
+                <li><strong>Datum Harmonization:</strong> For Doggerland, vertical datum alignment between terrestrial DEMs and EMODnet bathymetry is provisional.</li>
+                <li><strong>Tectonics:</strong> The Aegean sandbox does not yet include a complete regional tectonic reconstruction.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- C. Topological Ocean Fill -->
+          <details class="method-expandable">
+            <summary class="method-summary">
+              <span>Topological Ocean Fill: Land, Connected Sea, and Enclosed Basins</span>
+              <span class="summary-chevron">▼</span>
+            </summary>
+            <div class="method-details-body">
+              <p>Once the vertical margin <code>M</code> is calculated, cells are categorized:</p>
+              <div class="math-code-box">
+M > 0  → Land
+M ≤ 0  → Candidate for Water
+              </div>
+              <p>Sub-sea-level cells are <strong>not</strong> automatically flooded. The engine executes a breadth-first 4-neighbour connectivity flood fill initiated exclusively from verified open-ocean seeds:</p>
+              <ul style="margin: 0; padding-left: 20px; font-size: 13.5px; line-height: 1.6;">
+                <li><strong>Connected Ocean:</strong> Subaqueous cells possessing an unbroken hydraulic conduit to the open marine boundary.</li>
+                <li><strong>Enclosed Basins:</strong> Depressions below contemporaneous sea level protected by a subaerial topography sill. These remain dry. <em>An enclosed basin is not automatically a lake</em> — hydrology, precipitation and drainage are not yet modelled.</li>
+                <li><strong>Coastline Vectors:</strong> Generated strictly along shared raster edges between Land and Connected Ocean, never along dataset borders. Nodata never bridges marine connectivity.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- D. Calculation Inputs vs Display Layers -->
+          <details class="method-expandable">
+            <summary class="method-summary">
+              <span>Data Register: Calculation Inputs vs. Display Layers</span>
+              <span class="summary-chevron">▼</span>
+            </summary>
+            <div class="method-details-body">
+              <p>To avoid misinterpreting map overlays as physical model parameters, layers are strictly segregated:</p>
+              <table class="method-table">
+                <thead>
+                  <tr>
+                    <th>Layer / Dataset</th>
+                    <th>Application Function</th>
+                    <th>Affects Coastline Calculation?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Modern DEM / Bathymetry (GEBCO / EMODnet)</td>
+                    <td>Primary topographic datum (Z_now)</td>
+                    <td><span class="badge-tag badge-calc">Yes · Baseline</span></td>
+                  </tr>
+                  <tr>
+                    <td>Selected Sea Level or ICE-6G_C Anomaly</td>
+                    <td>Relative height displacement &amp; water line</td>
+                    <td><span class="badge-tag badge-calc">Yes · Determines Margin</span></td>
+                  </tr>
+                  <tr>
+                    <td>Configured Uplift / Erosion / Deposition</td>
+                    <td>Geometric displacement (U, E, D)</td>
+                    <td><span class="badge-tag badge-calc">Yes · Alters Terrain</span></td>
+                  </tr>
+                  <tr>
+                    <td>Ocean Seeds &amp; Sensitivity Tolerance</td>
+                    <td>Hydraulic connectivity &amp; uncertainty bands</td>
+                    <td><span class="badge-tag badge-calc">Yes · Controls Topology</span></td>
+                  </tr>
+                  <tr>
+                    <td>DATED-1 Eurasian Ice Sheet (22–10 ka)</td>
+                    <td>Empirical visual reference margin</td>
+                    <td><span class="badge-tag badge-view">No · Display Layer</span></td>
+                  </tr>
+                  <tr>
+                    <td>BRITICE-CHRONO British-Irish Ice (22 &amp; 16 ka)</td>
+                    <td>Empirical visual reference margin</td>
+                    <td><span class="badge-tag badge-view">No · Display Layer</span></td>
+                  </tr>
+                  <tr>
+                    <td>EMODnet Geology Palaeochannels</td>
+                    <td>Ancient river channel features</td>
+                    <td><span class="badge-tag badge-view">No · Display Layer</span></td>
+                  </tr>
+                  <tr>
+                    <td>Hillshade &amp; Shaded Relief</td>
+                    <td>Visual depth rendering</td>
+                    <td><span class="badge-tag badge-view">No · Display Layer</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">
+                * Toggling display layers does not trigger coastline recalculation or alter physical cell attributes.
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sources & Datasets Section -->
+    <section class="section" id="sources" style="background-color: var(--bg-surface-alt); border-top: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Data Architecture</span>
+          <h2 class="section-title">Datasets &amp; Reference Baselines</h2>
+          <p class="section-sub">
+            The model synthesizes high-resolution bathymetric soundings with peer-reviewed eustatic sea-level curves.
+          </p>
+        </div>
+
+        <div class="sources-grid">
+          <div class="source-item">
+            <div class="source-tag">Bathymetry</div>
+            <h3 class="source-title">GEBCO 2020 Grid</h3>
+            <p class="source-detail">Global terrain and ocean bathymetry at 15 arc-second resolution (~450m European equivalent), providing the foundational elevation datum.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Coastal Bathymetry</div>
+            <h3 class="source-title">EMODnet DTM 2024</h3>
+            <p class="source-detail">High-density European marine data providing shallow-water acoustic soundings across the North Sea, Baltic, and Mediterranean basins.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Eustasy</div>
+            <h3 class="source-title">Sea Level Curves</h3>
+            <p class="source-detail">Global eustatic sea-level curves (Lambeck et al. 2014, Peltier et al.) calibrating global ocean volume drops (~125m at LGM).</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Projection</div>
+            <h3 class="source-title">EPSG:3035 (ETRS89-LAEA)</h3>
+            <p class="source-detail">Lambert Azimuthal Equal-Area projection preserving true geographic area measurements across all European continental shelf scenarios.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Geodynamics</div>
+            <h3 class="source-title">ICE-6G_C &amp; NKG2016LU</h3>
+            <p class="source-detail">Viscoelastic mantle rheology grids and Nordic geodetic uplift measurements incorporated into the active GIA development module.</p>
+          </div>
+
+          <div class="source-item">
+            <div class="source-tag">Resolution</div>
+            <h3 class="source-title">600m Model Raster Cells</h3>
+            <p class="source-detail">Optimized balance between regional continental shelf scale, computational topological flood fill speed, and client-side rendering.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (Grounding Dark Slate) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-wrap">
+          <a href="index.html" class="brand" aria-label="GeoX Home">
+            <span class="brand-text">Geo<span class="brand-accent">X</span></span>
+          </a>
+          <p class="footer-tagline">Where location meets data. Geospatial engineering, data integration and digital products.</p>
+        </div>
+
+        <div class="footer-links-wrap">
+          <div class="footer-col">
+            <span class="footer-col-title">Raster Lab</span>
+            <ul class="footer-links">
+              <li><a href="sealevel.html">PalaeoCoast</a></li>
+              <li><a href="viewer/sealevel/index.html?lang=en" target="_blank" rel="noopener noreferrer">PalaeoCoast Map ↗</a></li>
+              <li><a href="sentinel.html">Sentinel Lab</a></li>
+              <li><a href="viewer/sentinel/index.html" target="_blank" rel="noopener noreferrer">Sentinel Lab Map ↗</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Navigation</span>
+            <ul class="footer-links">
+              <li><a href="index.html">GeoX Home</a></li>
+              <li><a href="index.html#projects">Portfolio</a></li>
+              <li><a href="index.html#raster-lab">Raster Lab</a></li>
+              <li><a href="#overview">Case Study</a></li>
+              <li><a href="#viewer">Interactive Map</a></li>
+              <li><a href="#methodology">Methodology</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Connect</span>
+            <ul class="footer-links">
+              <li><a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="mailto:support@geox.dev">support@geox.dev</a></li>
+              <li><a href="https://geox.dev">geox.dev</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-credit">Independent geospatial engineering projects by <a href="https://www.linkedin.com/in/fme-dev/" target="_blank" rel="noopener noreferrer" class="credit-link">Ronnie Utter</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

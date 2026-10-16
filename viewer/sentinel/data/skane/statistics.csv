@@ -1,0 +1,4 @@
+zone_id,zone_name,metric,date_a_mean,date_b_mean,delta_mean,delta_min,delta_max,delta_std,valid_pixels,valid_percentage
+entire_study_area,"Hela studieområdet (Tåkern)",NDVI,0.697,0.398,-0.302,-0.973,0.924,0.367,1363196,60.59
+stangby_wheat,"Stångby / Kävlinge åkermark",NDVI,0.695,0.47,-0.225,-0.764,0.733,0.397,34020,1.51
+kavlingean_wetland,"Kävlingeåns våtmarkskorridor",NDVI,0.665,0.395,-0.27,-0.775,0.69,0.361,32688,1.45
