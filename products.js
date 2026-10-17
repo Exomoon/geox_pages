@@ -24,7 +24,7 @@ export const products = [
     category: "rasterlab",
     name: "GeoX Mars Explorer",
     eyebrow: "Raster Lab / Planetary Altimetry & 3D WebGL",
-    tagline: "Planetary terrain and geospatial analysis laboratory for Mars. — Not fully mobile adapted YET",
+    tagline: "Planetary terrain and geospatial analysis laboratory for Mars.",
     description: "Interaktiv 3D WebGL-miljö för vetenskaplig utforskning av Mars topografi och landningsplatser med NASA MOLA höjddata (16 ppd), USGS/CTX-bilder och högupplösta HiRISE/CTX-terrängpaket. Inkluderar missionsdata för Perseverance- och Curiosity-rutter, interaktiva topografiska transekter och simulering av hypotetiska forntida oceaner.",
     url: "https://mars.geox.dev",
     previewPage: "mars.html",
