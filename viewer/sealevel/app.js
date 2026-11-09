@@ -495,13 +495,13 @@ function layerDetail(name, info) {
 
 const map = L.map('map', {
   zoomControl: false,
-  minZoom: 2,
+  minZoom: 1,
   maxZoom: 14,
   zoomSnap: .25,
   zoomDelta: .25,
   wheelPxPerZoomLevel: 90,
   worldCopyJump: false,
-  maxBoundsViscosity: 1.0
+  maxBoundsViscosity: 0.5
 }).setView([37.6, 25.4], 6);
 L.control.zoom({position: 'bottomright'}).addTo(map);
 L.control.scale({imperial: false, position: 'bottomleft'}).addTo(map);
@@ -1103,12 +1103,10 @@ function configureAnalysisBounds(fit = true) {
   if (!raw) return;
   state.analysisBounds = L.latLngBounds(raw);
   if (state.regionId === 'global') {
-    const worldBounds = L.latLngBounds([[-85.051129, -180.0], [85.051129, 180.0]]);
-    map.setMaxBounds(worldBounds);
-    const fitZoom = map.getBoundsZoom(worldBounds, false, [0, 0]);
-    map.setMinZoom(Math.max(1.75, fitZoom));
-    map.setMaxZoom(7.5);
-    if (fit) map.fitBounds(worldBounds, {animate: false});
+    map.setMinZoom(1);
+    map.setMaxZoom(14);
+    map.setMaxBounds(L.latLngBounds([[-85.051129, -210.0], [85.051129, 210.0]]));
+    if (fit) map.setView([12, 20], 1.5);
     return;
   }
   map.setMaxZoom(14);
