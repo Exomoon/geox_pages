@@ -56,6 +56,7 @@ const translations = {
     inundationIntervalLabel: 'Inundation interval',
     todayDepthLabel: 'Present depth / height',
     epochClassLabel: 'Model class at selected time',
+    rslDriverLabel: 'Relative sea level (GIA)',
     dataSourceLabel: 'Data source',
     resolutionLabel: 'Resolution & time step',
     shelf80_100: 'Seabed 80–100 m depth (exploration filter)',
@@ -189,6 +190,7 @@ const translations = {
     inundationIntervalLabel: 'Översvämningsintervall',
     todayDepthLabel: 'Dagens djup / höjd',
     epochClassLabel: 'Modellens klass vid vald tid',
+    rslDriverLabel: 'Relativ havsnivå (GIA)',
     dataSourceLabel: 'Datakälla',
     resolutionLabel: 'Upplösning & tidssteg',
     shelf80_100: 'Havsbotten 80–100 m djup (utforskningsfilter)',
@@ -1030,9 +1032,21 @@ function renderFrame(frameOverride = null) {
   setText('deltaStats', state.lang === 'en'
     ? `${t('deltaEffect')}: land ${signed(d.land_km2)} km² · sea ${signed(d.ocean_km2)} km² · basins ${signed(d.basin_km2)} km² · ${fmt.format(state.frame.changed_cells)} ${t('changedCells')}`
     : `${t('deltaEffect')}: land ${signed(d.land_km2)} km² · hav ${signed(d.ocean_km2)} km² · sänkor ${signed(d.basin_km2)} km² · ${fmt.format(state.frame.changed_cells)} ${t('changedCells')}`);
-  setText('modelResolution', `${t('modelGrid')} · ${fmt.format(state.scenario.resolution_m)} m · ${formatSourceResolution(state.scenario.source_resolution)}`);
-  setText('qualityModelCell', `${fmt.format(state.scenario.resolution_m)} × ${fmt.format(state.scenario.resolution_m)} m · EPSG:3035`);
-  setText('qualityTerrainSource', formatSourceResolution(state.scenario.source_resolution));
+  const resM = state.scenario.resolution_m;
+  const crsStr = state.scenario.crs || (['global', 'sundaland'].includes(state.regionId) ? 'EPSG:3857 (Web Mercator)' : 'EPSG:3035 (ETRS89-LAEA)');
+  const terrainSrc = state.scenario.terrain_source || formatSourceResolution(state.scenario.source_resolution);
+  if (resM) {
+    const formattedRes = resM >= 1000 ? `${(resM / 1000).toFixed(resM % 1000 === 0 ? 0 : 1)} km` : `${fmt.format(resM)} m`;
+    setText('modelResolution', `${t('modelGrid')} · ${formattedRes} · ${formatSourceResolution(state.scenario.source_resolution)}`);
+    setText('qualityModelCell', `${formattedRes} × ${formattedRes} · ${crsStr}`);
+  } else if (state.scenario.model_resolution) {
+    setText('modelResolution', state.scenario.model_resolution);
+    setText('qualityModelCell', `${state.scenario.model_resolution} · ${crsStr}`);
+  } else {
+    setText('modelResolution', t('modelGrid'));
+    setText('qualityModelCell', `— · ${crsStr}`);
+  }
+  setText('qualityTerrainSource', terrainSrc);
   renderResult(); buildLayerControls();
   const activeProcess = [...availableProcessNames()].reverse().find(name => state.layerSettings.get(name)?.enabled && !processDisplay(name).info.empty);
   updateLegend(activeProcess); clearCell(); updateCalculationControls(); syncMobileControls();
@@ -1315,6 +1329,18 @@ async function inspectCell(latlng) {
     setText('inundationStatus', statusText);
     setText('inundationDepth', `${fmt.format(data.today_m)} m`);
     setText('inundationEpochClass', formatClassName(data.full_class_name));
+    const rslRow = $('inundationRslRow');
+    if (rslRow) {
+      if (data.local_rsl_m !== null && data.local_rsl_m !== undefined) {
+        rslRow.hidden = false;
+        const signDiff = data.gia_driver_m >= 0 ? `+${data.gia_driver_m}` : `${data.gia_driver_m}`;
+        setText('inundationRsl', state.lang === 'en'
+          ? `${data.local_rsl_m} m (SELEN4) · Eustatic ${data.uniform_eustatic_m} m (GIA diff ${signDiff} m)`
+          : `${data.local_rsl_m} m (SELEN4) · Eustatisk ${data.uniform_eustatic_m} m (GIA-skillnad ${signDiff} m)`);
+      } else {
+        rslRow.hidden = true;
+      }
+    }
     setText('inundationSource', data.data_source || 'De Groeve et al. (2022) / GEBCO 2021');
     setText('inundationResolution', `${data.cell_size} · ${data.time_resolution}`);
   } else {
