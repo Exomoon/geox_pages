@@ -494,11 +494,12 @@ function layerDetail(name, info) {
 const map = L.map('map', {
   zoomControl: false,
   minZoom: 2,
+  maxZoom: 14,
   zoomSnap: .25,
   zoomDelta: .25,
   wheelPxPerZoomLevel: 90,
   worldCopyJump: false,
-  maxBoundsViscosity: 0.7
+  maxBoundsViscosity: 1.0
 }).setView([37.6, 25.4], 6);
 L.control.zoom({position: 'bottomright'}).addTo(map);
 L.control.scale({imperial: false, position: 'bottomleft'}).addTo(map);
@@ -506,15 +507,18 @@ L.control.scale({imperial: false, position: 'bottomleft'}).addTo(map);
 const basemaps = {
   ocean: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}', {
     maxZoom: 13,
+    noWrap: true,
     attribution: '© Esri, GEBCO, NOAA'
   }),
   carto_dark: L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     maxZoom: 19,
+    noWrap: true,
     subdomains: 'abcd',
     attribution: '© OpenStreetMap, © CARTO'
   }),
   osm: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
+    noWrap: true,
     attribution: '© OpenStreetMap contributors'
   })
 };
@@ -1085,12 +1089,15 @@ function configureAnalysisBounds(fit = true) {
   if (!raw) return;
   state.analysisBounds = L.latLngBounds(raw);
   if (state.regionId === 'global') {
-    map.setMinZoom(1);
-    map.setMaxBounds(null);
-    if (fit) map.setView([15, 0], 2);
+    const worldBounds = L.latLngBounds([[-85.051129, -180.0], [85.051129, 180.0]]);
+    map.setMaxBounds(worldBounds);
+    const fitZoom = map.getBoundsZoom(worldBounds, false, [0, 0]);
+    map.setMinZoom(Math.max(1.75, fitZoom));
+    map.setMaxZoom(7.5);
+    if (fit) map.fitBounds(worldBounds, {animate: false});
     return;
   }
-  map.setMinZoom(1);
+  map.setMaxZoom(14);
   map.setMaxBounds(state.analysisBounds.pad(0.12));
   const regionMinZoom = map.getBoundsZoom(state.analysisBounds, false, [8, 8]);
   map.setMinZoom(Math.max(1, regionMinZoom - 1));
