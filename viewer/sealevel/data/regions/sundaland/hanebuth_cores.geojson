@@ -1,0 +1,270 @@
+{
+  "type": "FeatureCollection",
+  "name": "Hanebuth_Sunda_Cores_SO115",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.98845,
+          9.249983
+        ]
+      },
+      "properties": {
+        "name": "GIK18262-3 (SO115_15)",
+        "depth_m": -56.0,
+        "recovery_m": 9.38,
+        "device": "Gravity corer (Kiel type)",
+        "unit": "Upper shelf / deltaic sand",
+        "doi": "10.1594/PANGAEA.869917",
+        "campaign": "SO115 (SUNDAFLUT)",
+        "ship": "R/V Sonne",
+        "source": "Hanebuth (2000), PANGAEA.869934",
+        "license": "CC BY 3.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.438683,
+          4.766883
+        ]
+      },
+      "properties": {
+        "name": "GIK18269-2 (SO115_22)",
+        "depth_m": -113.0,
+        "recovery_m": 8.815,
+        "device": "Gravity corer (Kiel type)",
+        "unit": "North Sunda River outer estuary (MWP-1A)",
+        "doi": "10.1594/PANGAEA.869914",
+        "campaign": "SO115 (SUNDAFLUT)",
+        "ship": "R/V Sonne",
+        "source": "Hanebuth (2000), PANGAEA.869934",
+        "license": "CC BY 3.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.549483,
+          4.638833
+        ]
+      },
+      "properties": {
+        "name": "GIK18271-2 (SO115_24)",
+        "depth_m": -122.0,
+        "recovery_m": 5.62,
+        "device": "Gravity corer (Kiel type)",
+        "unit": "North Sunda incised valley fill (-120m lowstand)",
+        "doi": "10.1594/PANGAEA.869918",
+        "campaign": "SO115 (SUNDAFLUT)",
+        "ship": "R/V Sonne",
+        "source": "Hanebuth (2000), PANGAEA.869934",
+        "license": "CC BY 3.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.58055,
+          4.6053
+        ]
+      },
+      "properties": {
+        "name": "GIK18274-2 (SO115_27)",
+        "depth_m": -118.0,
+        "recovery_m": 5.61,
+        "device": "Gravity corer (Kiel type)",
+        "unit": "Transgressive intertidal facies / plant remnants",
+        "doi": "10.1594/PANGAEA.869923",
+        "campaign": "SO115 (SUNDAFLUT)",
+        "ship": "R/V Sonne",
+        "source": "Hanebuth (2000), PANGAEA.869934",
+        "license": "CC BY 3.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.031933,
+          4.739117
+        ]
+      },
+      "properties": {
+        "name": "GIK18297-3 (SO115_50)",
+        "depth_m": -111.0,
+        "recovery_m": 3.96,
+        "device": "Gravity corer (Kiel type)",
+        "unit": "Outer shelf transgressive muds",
+        "doi": "10.1594/PANGAEA.869931",
+        "campaign": "SO115 (SUNDAFLUT)",
+        "ship": "R/V Sonne",
+        "source": "Hanebuth (2000), PANGAEA.869934",
+        "license": "CC BY 3.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.825133,
+          4.533117
+        ]
+      },
+      "properties": {
+        "name": "GIK18298-2 (SO115_51)",
+        "depth_m": -102.0,
+        "recovery_m": 5.87,
+        "device": "Vibro corer",
+        "unit": "North Sunda River channel fill (80-100m shelf)",
+        "doi": "10.1594/PANGAEA.869919",
+        "campaign": "SO115 (SUNDAFLUT)",
+        "ship": "R/V Sonne",
+        "source": "Hanebuth (2000), PANGAEA.869934",
+        "license": "CC BY 3.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.825617,
+          4.5334
+        ]
+      },
+      "properties": {
+        "name": "GIK18299-1 (SO115_52)",
+        "depth_m": -102.0,
+        "recovery_m": 5.8,
+        "device": "Vibro corer",
+        "unit": "Channel bed gravel / mangrove mud",
+        "doi": "10.1594/PANGAEA.869924",
+        "campaign": "SO115 (SUNDAFLUT)",
+        "ship": "R/V Sonne",
+        "source": "Hanebuth (2000), PANGAEA.869934",
+        "license": "CC BY 3.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.653583,
+          4.362967
+        ]
+      },
+      "properties": {
+        "name": "GIK18300-2 (SO115_53)",
+        "depth_m": -91.0,
+        "recovery_m": 8.85,
+        "device": "Gravity corer (Kiel type)",
+        "unit": "Mid-shelf transgressive succession (MWP-1A rapid drowning)",
+        "doi": "10.1594/PANGAEA.869925",
+        "campaign": "SO115 (SUNDAFLUT)",
+        "ship": "R/V Sonne",
+        "source": "Hanebuth (2000), PANGAEA.869934",
+        "license": "CC BY 3.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.575583,
+          4.15975
+        ]
+      },
+      "properties": {
+        "name": "GIK18302-2 (SO115_55)",
+        "depth_m": -83.0,
+        "recovery_m": 5.98,
+        "device": "Gravity corer (Kiel type)",
+        "unit": "Sunda Shelf 80-100m terrace (flooded ~14.5 ka BP)",
+        "doi": "10.1594/PANGAEA.869921",
+        "campaign": "SO115 (SUNDAFLUT)",
+        "ship": "R/V Sonne",
+        "source": "Hanebuth (2000), PANGAEA.869934",
+        "license": "CC BY 3.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.45155,
+          3.686517
+        ]
+      },
+      "properties": {
+        "name": "GIK18311-2 (SO115_64)",
+        "depth_m": -60.0,
+        "recovery_m": 4.68,
+        "device": "Vibro corer",
+        "unit": "Inner-shelf sand sheet (Holocene transgression)",
+        "doi": "10.1594/PANGAEA.869920",
+        "campaign": "SO115 (SUNDAFLUT)",
+        "ship": "R/V Sonne",
+        "source": "Hanebuth (2000), PANGAEA.869934",
+        "license": "CC BY 3.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.706333,
+          3.70585
+        ]
+      },
+      "properties": {
+        "name": "GIK18312-2 (SO115_65)",
+        "depth_m": -101.0,
+        "recovery_m": 6.67,
+        "device": "Gravity corer (Kiel type)",
+        "unit": "Valley fill / estuarine mangrove peat",
+        "doi": "10.1594/PANGAEA.869930",
+        "campaign": "SO115 (SUNDAFLUT)",
+        "ship": "R/V Sonne",
+        "source": "Hanebuth (2000), PANGAEA.869934",
+        "license": "CC BY 3.0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.991217,
+          3.99115
+        ]
+      },
+      "properties": {
+        "name": "GIK18314-2 (SO115_67)",
+        "depth_m": -100.0,
+        "recovery_m": 3.7,
+        "device": "Gravity corer (Kiel type)",
+        "unit": "Palaeo-fluvial levee deposit",
+        "doi": "10.1594/PANGAEA.869929",
+        "campaign": "SO115 (SUNDAFLUT)",
+        "ship": "R/V Sonne",
+        "source": "Hanebuth (2000), PANGAEA.869934",
+        "license": "CC BY 3.0"
+      }
+    }
+  ]
+}

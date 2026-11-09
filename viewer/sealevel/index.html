@@ -27,6 +27,8 @@
         <div class="study-area-pill">
           <span class="status-dot"></span>
           <nav class="region-nav" aria-label="Analysområden">
+            <button data-region="global" class="region-pill" type="button"><b data-i18n="regionGlobal">Globalt</b><small data-i18n="globalYears">26 ka</small></button>
+            <button data-region="sundaland" class="region-pill" type="button"><b data-i18n="regionSundaland">Sundaland</b><small data-i18n="sundaTag">2′</small></button>
             <button data-region="europe" class="region-pill" type="button"><b data-i18n="regionEurope">Europa</b><small data-i18n="overview">5 km</small></button>
             <button data-region="aegean" class="region-pill active" type="button"><b data-i18n="aegean">Egeiska havet</b><small data-i18n="ready">600 m</small></button>
             <button data-region="doggerland" class="region-pill" type="button"><b>Doggerland</b><small data-i18n="nextRegion">450 m</small></button>
@@ -108,6 +110,14 @@
           <button type="submit" aria-label="Sök">→</button>
           <div id="searchResults" class="search-results" role="listbox" hidden></div>
         </form>
+        <button id="sundalandShortcut" class="btn btn-secondary btn-sunda-shortcut" type="button" title="Zooma till Sundasockeln mellan Malackahalvön, Sumatra, Java och Borneo">
+          <span>🔍</span> <span data-i18n="zoomToSundaland">Sundaland</span>
+        </button>
+        <select id="basemapSelect" class="basemap-select" title="Välj bakgrundskarta (Havsbottenrelief, Mörk karta, OSM)" aria-label="Bakgrundskarta">
+          <option value="ocean">🌊 Havsbottenrelief</option>
+          <option value="carto_dark">🌑 Mörk karta</option>
+          <option value="osm">🗺️ OpenStreetMap</option>
+        </select>
       </div>
       <div class="map-badges"><span id="modelResolution">Modellgrid · 600 m</span><span id="cursorCoordinates">—</span></div>
       <div class="orientation"><b>N</b><i></i></div>
@@ -139,7 +149,23 @@
         <div id="emptyCell" class="empty-cell"><div class="crosshair">＋</div><p data-i18n="clickPrompt">Klicka inom valt modellområde för att läsa den beräknade cellen.</p></div>
         <div id="cellDetails" hidden>
           <p id="cellCoordinates" class="cell-coordinates"></p>
-          <div class="equation">
+          <div id="inundationBox" class="inundation-box" hidden>
+            <div class="inundation-header">
+              <span class="inundation-badge" data-i18n="inundationBadge">Översvämningshistorik</span>
+              <span id="inundationStatus" class="inundation-status">—</span>
+            </div>
+            <div class="inundation-interval-row">
+              <span data-i18n="inundationIntervalLabel">Översvämningsintervall</span>
+              <b id="inundationInterval">—</b>
+            </div>
+            <dl class="inundation-meta">
+              <div><dt data-i18n="todayDepthLabel">Dagens djup / höjd</dt><dd id="inundationDepth">—</dd></div>
+              <div><dt data-i18n="epochClassLabel">Modellens klass vid vald tid</dt><dd id="inundationEpochClass">—</dd></div>
+              <div><dt data-i18n="dataSourceLabel">Datakälla</dt><dd id="inundationSource">—</dd></div>
+              <div><dt data-i18n="resolutionLabel">Upplösning &amp; tidssteg</dt><dd id="inundationResolution">—</dd></div>
+            </dl>
+          </div>
+          <div id="regionalEquation" class="equation">
             <div><span data-i18n="todayTerrain">Dagens markhöjd</span><b id="todayHeight"></b></div>
             <div id="relativeHeightRow" hidden><span data-i18n="relativeHeightAnomaly">+ relativhöjdsanomali (land + hav)</span><b id="relativeHeightValue"></b></div>
             <div><span data-i18n="laterUplift">− senare landhöjning / + landsänkning</span><b id="upliftValue"></b></div>
@@ -147,7 +173,7 @@
             <div><span data-i18n="laterDeposition">− senare sedimentpålagring</span><b id="depositionValue"></b></div>
             <div class="total"><span data-i18n="reconstructedTerrain">= rekonstruerad äldre markhöjd</span><b id="paleoHeight"></b></div>
           </div>
-          <dl class="cell-metrics">
+          <dl id="regionalMetrics" class="cell-metrics">
             <div><dt data-i18n="seaSurface">Vald havsyta</dt><dd id="seaSurface"></dd></div>
             <div><dt data-i18n="heightMargin">Höjdmarginal</dt><dd id="margin"></dd></div>
             <div><dt data-i18n="computedClass">Beräknad klass</dt><dd id="cellClass"></dd></div>

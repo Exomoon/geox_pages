@@ -778,6 +778,27 @@ select optgroup {
   background: #398b72;
 }
 
+.layer-swatch.shelf_80_100 {
+  background: #00e5ff;
+  border: 1px solid rgba(0, 229, 255, 0.4);
+}
+
+.layer-swatch.hanebuth_cores {
+  background: #f59e0b;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 158, 11, 0.6);
+}
+
+.layer-swatch.modern_coastline {
+  background: #38bdf8;
+  height: 2px;
+  border-radius: 0;
+}
+
+.layer-swatch.bathymetric_relief {
+  background: linear-gradient(90deg, #051226, #124e6a, #30a0af, #55c3b9);
+}
+
 .layer-glyphs {
   display: inline-flex;
   gap: 2px;
@@ -888,6 +909,99 @@ select optgroup {
   margin-top: 3px;
 }
 
+/* Inundation History Box for Global & Sundaland Analysis */
+.inundation-box {
+  margin: 10px 0;
+  background: rgba(0, 210, 255, 0.05);
+  border: 1px solid rgba(0, 210, 255, 0.28);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.inundation-box[hidden] {
+  display: none !important;
+}
+
+.inundation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.inundation-badge {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.inundation-status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(0, 210, 255, 0.16);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 210, 255, 0.25);
+}
+
+.inundation-interval-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 4px;
+  border-left: 3px solid var(--accent-cyan);
+  margin-bottom: 10px;
+}
+
+.inundation-interval-row span {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.inundation-interval-row b {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.inundation-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.inundation-meta > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 5px;
+}
+
+.inundation-meta dt {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.inundation-meta dd {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-primary);
+  text-align: right;
+  word-break: break-word;
+}
+
 /* Legend */
 .legend-row {
   display: flex;
@@ -971,7 +1085,60 @@ select optgroup {
   z-index: 500;
   top: 16px;
   left: 366px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   pointer-events: auto;
+}
+
+.btn-sunda-shortcut {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 12px;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--accent-cyan);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-panel);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.btn-sunda-shortcut:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent-cyan);
+  color: #fff;
+  box-shadow: var(--shadow-glow);
+}
+
+.basemap-select {
+  height: 38px;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--accent-cyan);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-panel);
+  padding: 0 10px;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.basemap-select:hover, .basemap-select:focus-visible {
+  border-color: var(--accent-cyan);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-glow);
 }
 
 .map-toolbar form {
@@ -1339,11 +1506,17 @@ dialog::backdrop {
     top: 10px;
   }
   .map-toolbar form {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
   }
   .map-toolbar input {
     width: 100%;
     min-width: 0;
+  }
+  .btn-sunda-shortcut {
+    height: 38px;
+    padding: 0 8px;
+    font-size: 11px;
   }
 
   .orientation {

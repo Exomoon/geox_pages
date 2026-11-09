@@ -27,7 +27,15 @@ const localPlaces = [
   {name:'Hamburg', aliases:[], lat:53.5511, lon:9.9937},
   {name:'Köpenhamn', aliases:['Copenhagen'], lat:55.6761, lon:12.5683},
   {name:'Paris', aliases:[], lat:48.8566, lon:2.3522},
-  {name:'Stockholm', aliases:[], lat:59.3293, lon:18.0686}
+  {name:'Stockholm', aliases:[], lat:59.3293, lon:18.0686},
+  {name:'Sundaland', aliases:['Sunda Shelf','Sundasockeln'], lat:2.0, lon:107.0},
+  {name:'Singapore', aliases:['Singapor'], lat:1.3521, lon:103.8198},
+  {name:'Jakarta', aliases:['Batavia'], lat:-6.2088, lon:106.8456},
+  {name:'Kuala Lumpur', aliases:['KL'], lat:3.1390, lon:101.6869},
+  {name:'Borneo', aliases:['Kalimantan'], lat:0.9619, lon:114.5548},
+  {name:'Sumatra', aliases:['Sumatera'], lat:-0.5897, lon:101.3431},
+  {name:'Java', aliases:['Jawa'], lat:-7.6145, lon:110.7122},
+  {name:'Natuna', aliases:['Natuna Islands','Natunaöarna'], lat:3.9, lon:108.2}
 ];
 const geocoderEndpoint = 'https://nominatim.openstreetmap.org/search';
 
@@ -39,6 +47,20 @@ const translations = {
     headline: 'Read coastal change layer by layer.',
     intro: 'Compare sea-level change alone with a scenario where land motion, erosion and deposition also reshape terrain. Experimental, under development.',
     eyebrow: 'PALAEOCOAST · EUROPE · EXPERIMENTAL, UNDER DEVELOPMENT',
+    regionGlobal: 'Global',
+    regionSundaland: 'Sunda Shelf',
+    globalYears: '26 ka',
+    sundaTag: '2′ · Focus',
+    zoomToSundaland: 'Sunda Shelf',
+    inundationBadge: 'Inundation History',
+    inundationIntervalLabel: 'Inundation interval',
+    todayDepthLabel: 'Present depth / height',
+    epochClassLabel: 'Model class at selected time',
+    dataSourceLabel: 'Data source',
+    resolutionLabel: 'Resolution & time step',
+    shelf80_100: 'Seabed 80–100 m depth (exploration filter)',
+    hanebuth_cores: 'Hanebuth sediment cores (SO115)',
+    modern_coastline: 'Modern coastline (reference)',
     regionEurope: 'Europe',
     overview: '5 km',
     aegean: 'Aegean Sea',
@@ -158,6 +180,20 @@ const translations = {
     geoxReportLink: 'Läs fullständig vetenskaplig rapport & interaktiv principskiss på GeoX ↗',
     verifiedCandidates: 'Verifierade kandidater för lokal förfining',
     datumWarning: 'Dessa underlag får inte fogas ihop utan dokumenterad vertikal datumharmonisering. Finare omprovtagning är inte högre faktisk noggrannhet.',
+    regionGlobal: 'Globalt',
+    regionSundaland: 'Sundaland',
+    globalYears: '26 ka',
+    sundaTag: '2′ · Fokus',
+    zoomToSundaland: 'Sundaland',
+    inundationBadge: 'Översvämningshistorik',
+    inundationIntervalLabel: 'Översvämningsintervall',
+    todayDepthLabel: 'Dagens djup / höjd',
+    epochClassLabel: 'Modellens klass vid vald tid',
+    dataSourceLabel: 'Datakälla',
+    resolutionLabel: 'Upplösning & tidssteg',
+    shelf80_100: 'Havsbotten 80–100 m djup (utforskningsfilter)',
+    hanebuth_cores: 'Hanebuths sedimentkärnor (SO115)',
+    modern_coastline: 'Dagens kustlinje (referens)',
     regionEurope: 'Europa',
     overview: '5 km',
     aegean: 'Egeiska havet',
@@ -260,6 +296,8 @@ const translations = {
 
 const scenarioUi = {
   en: {
+    global_degroeve: { name: 'PalaeoCoast Global · De Groeve (2022)', status: 'GLOBAL PALAEODROWNING: 26,000 BP to present at 500-year steps from De Groeve et al. (2022) with GEBCO 2021 and SELEN4 GIA RSL. Click any cell to inspect inundation timing.' },
+    sundaland_degroeve: { name: 'Sundaland deep dive (Sunda Shelf)', status: 'SUNDA SHELF: 2 arcminute bathymetry, 80–100 m depth filter, and Hanebuth (2000) SO115 sediment cores showing the North Sunda River and Meltwater Pulse 1A.' },
     baseline: { name: 'Sea level only · control', status: 'CONTROL: present terrain and illustrative sea level. No separate land motion, erosion or deposition.' },
     spatial_scenario: { name: 'Sea level + landscape', status: 'HYPOTHETICAL TEST: synthetic land motion, erosion and deposition—not measurements.' },
     europe_overview: { name: 'Europe overview (5 km)', status: 'ILLUSTRATIVE OVERVIEW: present terrain with a manually selected sea-level curve; no ICE-6G_C correction. DATED-1 ice extent is a separate overlay.' },
@@ -269,6 +307,8 @@ const scenarioUi = {
     doggerland_ice6g_c: { name: 'Doggerland ICE-6G_C', status: 'SCIENTIFIC MODEL: combined change in ground height relative to past sea level affects the coastline calculation. This is not pure land uplift.' }
   },
   sv: {
+    global_degroeve: { name: 'PalaeoCoast Global · De Groeve (2022)', status: 'GLOBAL ÖVERSVÄMNING: 26 000 BP till nutid med 500-års tidssteg från De Groeve m.fl. (2022), GEBCO 2021 och SELEN4 GIA. Klicka på valfri cell för översvämningsintervall.' },
+    sundaland_degroeve: { name: 'Sundaland fördjupning (Sundasockeln)', status: 'SUNDASOCKELN: 2 bågminuters batymetri, 80–100 m djupfilter och Hanebuths (2000) SO115-sedimentkärnor längs Nord-Sundafloden och Meltwater Pulse 1A.' },
     baseline: { name: 'Bara havsnivå · kontroll', status: 'KONTROLL: dagens terräng och illustrativ havsnivå. Ingen separat landrörelse, erosion eller sedimentpålagring.' },
     spatial_scenario: { name: 'Havsnivå + landskap', status: 'HYPOTETISKT TEST: syntetisk landrörelse, erosion och sedimentpålagring – inte mätningar.' },
     europe_overview: { name: 'Europa översikt (5 km)', status: 'ILLUSTRATIV ÖVERSIKT: dagens terräng med manuellt vald havsnivåkurva; ingen ICE-6G_C-korrigering. DATED-1:s isutbredning är ett separat visningslager.' },
@@ -291,7 +331,10 @@ const processLabels = {
     erosion: 'Assumed erosion after selected date → 1950',
     deposition: 'Assumed deposition after selected date → 1950',
     ice_extent: 'Ice sheet extent (DATED-1)',
-    palaeodrainage: 'Palaeodrainage channels (EMODnet)'
+    palaeodrainage: 'Palaeodrainage channels (EMODnet)',
+    shelf_80_100: 'Seabed 80–100 m depth (exploration filter)',
+    hanebuth_cores: 'Hanebuth sediment cores (SO115)',
+    modern_coastline: 'Modern coastline (reference)'
   },
   sv: {
     paleo_elevation: 'Terrängrelief · bakgrund',
@@ -304,7 +347,10 @@ const processLabels = {
     erosion: 'Antagen erosion efter vald tid → 1950',
     deposition: 'Antagen sedimentpålagring efter vald tid → 1950',
     ice_extent: 'Isutbredning (DATED-1)',
-    palaeodrainage: 'Fornfloddalar / kanaler (EMODnet)'
+    palaeodrainage: 'Fornfloddalar / kanaler (EMODnet)',
+    shelf_80_100: 'Havsbotten 80–100 m djup (utforskningsfilter)',
+    hanebuth_cores: 'Hanebuths sedimentkärnor (SO115)',
+    modern_coastline: 'Dagens kustlinje (referens)'
   }
 };
 
@@ -320,7 +366,8 @@ const rateLabels = {
     erosion: 'Assumed erosion at 0 BP',
     deposition: 'Assumed deposition at 0 BP',
     ice_extent: 'Ice sheet extent (DATED-1)',
-    palaeodrainage: 'Palaeodrainage channels (EMODnet)'
+    palaeodrainage: 'Palaeodrainage channels (EMODnet)',
+    bathymetric_relief: 'Bathymetric relief (seabed & channels)'
   },
   sv: {
     paleo_elevation: 'Terrängrelief · bakgrund',
@@ -333,7 +380,8 @@ const rateLabels = {
     erosion: 'Antagen erosion vid 0 BP',
     deposition: 'Antagen sedimentpålagring vid 0 BP',
     ice_extent: 'Isutbredning (DATED-1)',
-    palaeodrainage: 'Fornfloddalar / kanaler (EMODnet)'
+    palaeodrainage: 'Fornfloddalar / kanaler (EMODnet)',
+    bathymetric_relief: 'Batymetrisk relief (havsbotten & kanaler)'
   }
 };
 
@@ -349,7 +397,11 @@ const layerDescriptions = {
     erosion: 'Cumulative assumed material stripped away after selected epoch.',
     deposition: 'Cumulative assumed sediment accumulated after selected epoch.',
     ice_extent: 'Empirical ice sheet margin documented for this epoch. Absence of layer does not imply ice-free conditions.',
-    palaeodrainage: 'Mapped palaeochannels from EMODnet Geology feature inventory.'
+    palaeodrainage: 'Mapped palaeochannels from EMODnet Geology feature inventory.',
+    shelf_80_100: 'Modern seabed 80–100 m below sea level (terrace flooded rapidly during Meltwater Pulse 1A).',
+    hanebuth_cores: 'Marine sediment cores from the ancient North Sunda River valley (Hanebuth 2000, PANGAEA, CC BY 3.0).',
+    bathymetric_relief: 'High-relief seabed shading from GEBCO highlighting submerged palaeoriver valleys, submarine canyons and shelf sills.',
+    modern_coastline: 'Present-day coastline displayed simultaneously with modeled palaeocoastline.'
   },
   sv: {
     paleo_elevation: 'Rekonstruerad höjd med tidsberoende terrängskuggning. Havsnivån avgör vad som översvämmas; landskapsprocesserna ändrar själva höjden.',
@@ -362,7 +414,11 @@ const layerDescriptions = {
     erosion: 'Kumulativ antagen höjd som eroderats bort efter vald äldre tid.',
     deposition: 'Kumulativ antagen sedimenthöjd som lagrats efter vald äldre tid.',
     ice_extent: 'Källbelagd empirisk isutbredning för just detta tidssteg. Saknat lager betyder inte automatiskt isfritt.',
-    palaeodrainage: 'Kartlagda palaeokanaler från EMODnet Geology. Inventariet är inte en samtidig eller komplett flodrekonstruktion.'
+    palaeodrainage: 'Kartlagda palaeokanaler från EMODnet Geology. Inventariet är inte en samtidig eller komplett flodrekonstruktion.',
+    shelf_80_100: 'Dagens havsbotten på 80–100 m djup (terrass översvämmad snabbt under Meltwater Pulse 1A).',
+    hanebuth_cores: 'Marina sedimentkärnor längs forntida Nord-Sundafloden (Hanebuth 2000, PANGAEA, CC BY 3.0).',
+    bathymetric_relief: 'Högreliefskuggning av havsbotten från GEBCO som framhäver dränkta forntida floddalar, undervattensraviner och trösklar.',
+    modern_coastline: 'Dagens kustlinje visad samtidigt med den modellerade äldre kustlinjen.'
   }
 };
 
@@ -446,9 +502,44 @@ const map = L.map('map', {
 }).setView([37.6, 25.4], 6);
 L.control.zoom({position: 'bottomright'}).addTo(map);
 L.control.scale({imperial: false, position: 'bottomleft'}).addTo(map);
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: '© OpenStreetMap contributors'}).addTo(map);
+
+const basemaps = {
+  ocean: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 13,
+    attribution: '© Esri, GEBCO, NOAA'
+  }),
+  carto_dark: L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19,
+    subdomains: 'abcd',
+    attribution: '© OpenStreetMap, © CARTO'
+  }),
+  osm: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap contributors'
+  })
+};
+let savedBasemap = 'ocean';
+try { savedBasemap = localStorage.getItem('palaeocoast_basemap') || 'ocean'; } catch {}
+let currentBasemap = basemaps[savedBasemap] || basemaps.ocean;
+currentBasemap.addTo(map);
+
+function setBasemap(key) {
+  if (!basemaps[key] || basemaps[key] === currentBasemap) return;
+  map.removeLayer(currentBasemap);
+  currentBasemap = basemaps[key];
+  currentBasemap.addTo(map);
+  currentBasemap.bringToBack();
+  if ($('basemapSelect')) $('basemapSelect').value = key;
+  try { localStorage.setItem('palaeocoast_basemap', key); } catch {}
+}
+if ($('basemapSelect')) {
+  $('basemapSelect').value = savedBasemap;
+  $('basemapSelect').onchange = (e) => setBasemap(e.target.value);
+}
+
 map.createPane('resultA'); map.getPane('resultA').style.zIndex = 410;
 map.createPane('resultB'); map.getPane('resultB').style.zIndex = 420;
+map.createPane('relief'); map.getPane('relief').style.zIndex = 425;
 map.createPane('process'); map.getPane('process').style.zIndex = 430;
 map.createPane('terrain'); map.getPane('terrain').style.zIndex = 405;
 
@@ -598,8 +689,8 @@ function addImage(key, info, pane = 'process', opacity = .8) {
   }
 
   const nextLayer = isTile
-    ? new SparseTileLayer(info.tiles, {pane, opacity, interactive: false, noWrap: true, bounds: info.bounds, minNativeZoom: info.min_native_zoom, maxNativeZoom: info.max_native_zoom, maxZoom: 14, tileRanges: info.tile_ranges, className: 'model-raster'})
-    : L.imageOverlay(info.url, info.bounds, {pane, opacity, interactive: false, crossOrigin: false, className: 'model-raster'});
+    ? new SparseTileLayer(info.tiles, {pane, opacity, interactive: false, noWrap: Boolean(info.bounds), bounds: info.bounds, minNativeZoom: info.min_native_zoom || 1, maxNativeZoom: info.max_native_zoom || 13, maxZoom: 16, tileRanges: info.tile_ranges, className: 'model-raster'})
+    : L.imageOverlay(info.url.includes('?') ? info.url : `${info.url}?v=20261109_v3`, info.bounds, {pane, opacity, interactive: false, crossOrigin: false, className: 'model-raster'});
 
   if (trans.pending) {
     if (map.hasLayer(trans.pending)) map.removeLayer(trans.pending);
@@ -739,9 +830,13 @@ function layerDescription(name, display = processDisplay(name)) {
 }
 
 const processNames = ['paleo_elevation', 'terrain_change', 'relative_height_anomaly', 'coastline', 'sensitivity', 'basins', 'land_motion', 'erosion', 'deposition'];
-processNames.push('ice_extent', 'palaeodrainage');
+processNames.push('ice_extent', 'palaeodrainage', 'shelf_80_100', 'hanebuth_cores', 'modern_coastline', 'bathymetric_relief');
 
-for (const name of processNames) state.layerSettings.set(name, {enabled: name === 'coastline' || name === 'paleo_elevation' || name === 'ice_extent', opacity: name === 'coastline' ? 1 : name === 'paleo_elevation' ? 0.88 : 0.78, visual: name === 'land_motion' ? 'both' : null});
+for (const name of processNames) state.layerSettings.set(name, {
+  enabled: name === 'coastline' || name === 'paleo_elevation' || name === 'ice_extent' || name === 'shelf_80_100' || name === 'hanebuth_cores' || name === 'modern_coastline' || name === 'bathymetric_relief',
+  opacity: name === 'coastline' || name === 'modern_coastline' ? 1 : name === 'paleo_elevation' || name === 'bathymetric_relief' ? 0.88 : name === 'shelf_80_100' ? 0.85 : 0.78,
+  visual: name === 'land_motion' ? 'both' : null
+});
 const vectorCache = new Map();
 function availableProcessNames() {
   return processNames.filter(name => state.frame.layers[name] || state.frame.vector_layers?.[name] || state.scenario.frames.some(frame => frame.vector_layers?.[name]));
@@ -762,10 +857,47 @@ async function addVector(name, info, opacity) {
     const data = await vectorCache.get(url);
     if (state.frame.vector_layers?.[name]?.url !== url || !state.layerSettings.get(name)?.enabled) return;
     removeMapLayer(name);
+    const isCores = name === 'hanebuth_cores';
     const layer = L.geoJSON(data, {
       pane: 'process', interactive: true,
       style: feature => vectorStyle(name, opacity, feature),
+      pointToLayer: (feature, latlng) => {
+        return L.circleMarker(latlng, {
+          radius: 7,
+          fillColor: '#fa9a38',
+          color: '#ffffff',
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.95
+        });
+      },
       onEachFeature: (feature, featureLayer) => {
+        if (isCores) {
+          const props = feature.properties || {};
+          const isEn = state.lang === 'en';
+          const title = props.name || 'Sediment core';
+          const depth = props.depth_m !== undefined ? `${props.depth_m} m` : '—';
+          const rec = props.recovery_m !== undefined ? `${props.recovery_m} m` : '—';
+          const unit = props.unit || '—';
+          const doi = props.doi || '10.1594/PANGAEA.869934';
+          const popupContent = `
+            <div class="core-popup">
+              <h4 style="margin:0 0 4px;font-size:13px;color:#0b3038">${title}</h4>
+              <p class="core-tag" style="margin:0 0 6px;font-size:11px;color:#fa9a38;font-weight:600">${isEn ? 'Sunda Shelf Sediment Core · SO115' : 'Sedimentkärna · Sundasockeln (SO115)'}</p>
+              <table style="width:100%;font-size:11px;border-collapse:collapse;margin-bottom:6px">
+                <tr><th style="text-align:left;color:#6b8590;padding:2px 0">${isEn ? 'Water depth' : 'Vattendjup'}</th><td style="font-weight:600;color:#0b3038">${depth}</td></tr>
+                <tr><th style="text-align:left;color:#6b8590;padding:2px 0">${isEn ? 'Core recovery' : 'Kärnlängd'}</th><td style="font-weight:600;color:#0b3038">${rec}</td></tr>
+                <tr><th style="text-align:left;color:#6b8590;padding:2px 0">${isEn ? 'Device' : 'Provtagare'}</th><td style="color:#0b3038">${props.device || 'Gravity corer'}</td></tr>
+                <tr><th style="text-align:left;color:#6b8590;padding:2px 0">${isEn ? 'Facies / Unit' : 'Facies / Lager'}</th><td style="color:#0b3038">${unit}</td></tr>
+                <tr><th style="text-align:left;color:#6b8590;padding:2px 0">${isEn ? 'Context' : 'Sammanhang'}</th><td style="color:#0b3038">${isEn ? 'North Sunda River (MWP-1A)' : 'Nord-Sundafloden (MWP-1A)'}</td></tr>
+              </table>
+              <p style="margin:6px 0;font-size:10px;line-height:1.4;color:#496068;border-top:1px solid #e1e9ec;padding-top:4px"><em>${isEn ? 'Modern bathymetry shows seabed shape. Sediment cores & seismics reveal what lies beneath.' : 'Dagens batymetri visar havsbottnens form. Sedimentkärnor och seismik behövs för att undersöka vad som ligger under den.'}</em></p>
+              <p style="margin:4px 0 0;font-size:11px"><a href="https://doi.org/${doi}" target="_blank" rel="noopener noreferrer" style="color:#008499;font-weight:600">${isEn ? 'View in PANGAEA ↗' : 'Öppna data i PANGAEA ↗'}</a></p>
+            </div>
+          `;
+          featureLayer.bindPopup(popupContent, {maxWidth: 320});
+          return;
+        }
         const extentLabels = state.lang === 'en'
           ? {maximum: 'Maximum published extent', most_credible: 'Most credible extent', minimum: 'Minimum published extent'}
           : {maximum: 'Största publicerade utbredning', most_credible: 'Mest trovärdig utbredning', minimum: 'Minsta publicerade utbredning'};
@@ -821,7 +953,8 @@ function toggleProcess(name, on, opacity) {
     const display = processDisplay(name);
     if (display.isVector) addVector(name, display.info, opacity);
     else if (name !== 'land_motion' || !['markers', 'off'].includes(state.layerSettings.get(name)?.visual)) {
-      addImage(name, display.info, 'process', name === 'land_motion' ? opacity * .24 : opacity);
+      const pane = (name === 'paleo_elevation') ? 'terrain' : (name === 'bathymetric_relief') ? 'relief' : 'process';
+      addImage(name, display.info, pane, name === 'land_motion' ? opacity * .24 : opacity);
     }
     if (name === 'land_motion' && !['surface', 'off'].includes(state.layerSettings.get(name)?.visual)) {
       renderMotionSymbols(opacity);
@@ -864,10 +997,12 @@ function updateLegend(activeName, on = true) {
     return;
   }
   if (info.kind === 'state') $('legend').innerHTML = `<div class="legend-row"><i class="swatch" style="background:#d3c091"></i>${t('land')}</div><div class="legend-row"><i class="swatch" style="background:#155870"></i>${t('connectedSea')}</div><p class="legend-note">${t('closedBasinsSeparate')}</p>`;
-  else if (['diverging', 'positive', 'terrain'].includes(info.kind)) {
-    const gradients = {paleo_elevation: 'linear-gradient(90deg,#10384b,#4f93a0,#d9c89e,#8da672,#8a725e,#e8e3d8)', terrain_change: 'linear-gradient(90deg,#4a63a8,#f3efe1,#cb5b3e)', erosion: 'linear-gradient(90deg,#fff4d5,#d04d2e)', deposition: 'linear-gradient(90deg,#eef5c6,#30896f)', land_motion: 'linear-gradient(90deg,#4a63a8,#f3efe1,#cb5b3e)'};
+  else if (['diverging', 'positive', 'terrain', 'relief'].includes(info.kind)) {
+    const gradients = {paleo_elevation: 'linear-gradient(90deg,#10384b,#4f93a0,#d9c89e,#8da672,#8a725e,#e8e3d8)', bathymetric_relief: 'linear-gradient(90deg,#041024,#10446c,#2c7394,#4bb0b9,#90d9cf)', terrain_change: 'linear-gradient(90deg,#4a63a8,#f3efe1,#cb5b3e)', erosion: 'linear-gradient(90deg,#fff4d5,#d04d2e)', deposition: 'linear-gradient(90deg,#eef5c6,#30896f)', land_motion: 'linear-gradient(90deg,#4a63a8,#f3efe1,#cb5b3e)'};
     const title = activeName ? layerLabel(activeName, display) : baseLayerTitle(state.mode);
-    $('legend').innerHTML = `<b>${title} · ${formatUnits(info.units)}</b><div class="gradient" style="background:${gradients[activeName] || 'linear-gradient(90deg,#133d59,#d8c89a,#6d5139)'}"></div><div class="legend-scale"><span>${info.min}</span><span>${info.kind === 'diverging' ? '0' : ''}</span><span>${info.max}</span></div><p class="legend-note">${activeName ? layerDescription(activeName, display) : ''}</p>`;
+    const minVal = info.kind === 'relief' ? '-5000 m' : (info.min ?? '');
+    const maxVal = info.kind === 'relief' ? '0 m' : (info.max ?? '');
+    $('legend').innerHTML = `<b>${title} · ${formatUnits(info.units)}</b><div class="gradient" style="background:${gradients[activeName] || 'linear-gradient(90deg,#133d59,#d8c89a,#6d5139)'}"></div><div class="legend-scale"><span>${minVal}</span><span>${info.kind === 'diverging' ? '0' : ''}</span><span>${maxVal}</span></div><p class="legend-note">${activeName ? layerDescription(activeName, display) : ''}</p>`;
   } else {
     const title = state.mode === 'difference' && !activeName ? t('diffFromSeaOnly') : (activeName ? layerLabel(activeName, display) : baseLayerTitle(state.mode));
     $('legend').innerHTML = `<div class="legend-row"><i class="swatch" style="background:${info.kind === 'coast' ? '#fff6db' : info.kind === 'basin' ? '#725982' : '#ee7c3f'}"></i>${title}</div>`;
@@ -946,9 +1081,15 @@ async function geocodePlace(query) {
   return results;
 }
 function configureAnalysisBounds(fit = true) {
-  const raw = state.scenario?.analysis_bounds;
+  const raw = state.scenario?.analysis_bounds || state.scenario?.bounds || state.frame?.layers?.state_full?.bounds;
   if (!raw) return;
   state.analysisBounds = L.latLngBounds(raw);
+  if (state.regionId === 'global') {
+    map.setMinZoom(1);
+    map.setMaxBounds(null);
+    if (fit) map.setView([15, 0], 2);
+    return;
+  }
   map.setMinZoom(1);
   map.setMaxBounds(state.analysisBounds.pad(0.12));
   const regionMinZoom = map.getBoundsZoom(state.analysisBounds, false, [8, 8]);
@@ -1007,6 +1148,15 @@ const dataStatusTranslations = {
     'ICE-6G_C VM5a': {
       status: 'Scientific model — integrated as separate scenario',
       detail: '1° time-dependent relative land-sea elevation alters classification and coastline. Display grid is finer but does not synthesize local GIA detail. Results are model-derived and pending regional validation.'
+    },
+    'De Groeve et al. (2022) AGE 2021': {
+      status: 'Scientific reconstruction — active in global mode',
+      detail: 'Global raster dataset of historical coastline drowning in 500-year steps (26,000 BP – 0 BP), 2 arcminutes. CC BY 4.0 (DOI: 10.1111/geb.13573).'
+    },
+    'Hanebuth (2000) sedimentkärnor': {
+      name: 'Hanebuth (2000) sediment cores',
+      status: 'Empirical observations — Sunda Shelf',
+      detail: 'Marine sediment cores along the ancient North Sunda River with 80 AMS-14C dates documenting palaeocoasts and Meltwater Pulse 1A. PANGAEA (CC BY 3.0).'
     },
     'Copernicus DEM GLO-30': {
       status: 'Verified candidate — not integrated',
@@ -1115,7 +1265,11 @@ function populate() {
     renderFrame();
   }
 }
-function clearCell() { $('emptyCell').hidden = false; $('cellDetails').hidden = true; }
+function clearCell() {
+  $('emptyCell').hidden = false;
+  $('cellDetails').hidden = true;
+  if ($('inundationBox')) $('inundationBox').hidden = true;
+}
 async function inspectCell(latlng) {
   const analysisTrigger = document.querySelector('[data-mobile-panel="cellSection"]');
   if (!state.api) { $('emptyCell').innerHTML = `<p>${t('cellSplitRequiresApi')}</p>`; if (activeMobilePanel !== 'cellSection') openMobileSheet('cellSection', analysisTrigger); return; }
@@ -1126,19 +1280,57 @@ async function inspectCell(latlng) {
   setText('cellCoordinates', state.lang === 'en'
     ? `${data.lat.toFixed(5)}°, ${data.lon.toFixed(5)}° · row ${data.row}, col ${data.column}`
     : `${data.lat.toFixed(5)}°, ${data.lon.toFixed(5)}° · rad ${data.row}, kolumn ${data.column}`);
-  setText('todayHeight', `${fmt.format(data.today_m)} m`); setText('upliftValue', `${signed(-data.uplift_since_m)} m`); setText('erosionValue', `${signed(data.erosion_since_m)} m`); setText('depositionValue', `${signed(-data.deposition_since_m)} m`); setText('paleoHeight', `${fmt.format(data.paleo_m)} m`);
-  const relRow = $('relativeHeightRow'); if (relRow) { relRow.hidden = Math.abs(data.relative_height_anomaly_m || 0) < 1e-9; setText('relativeHeightValue', `${signed(data.relative_height_anomaly_m || 0)} m`); }
-  setText('seaSurface', `${fmt.format(data.sea_surface_m)} m`); setText('margin', `${fmt.format(data.margin_m)} m`);
+
   const formatClassName = (name) => {
     if (state.lang !== 'en') return name;
     if (name === 'Land') return 'Land';
     if (name === 'Hav med kontakt' || name === 'Hav') return 'Connected sea';
     if (name === 'Sluten sänka') return 'Closed basin';
+    if (typeof name === 'string' && name.includes('Djuphav')) return 'Deep ocean (permanent seabed since LGM)';
     return name;
   };
-  const sensitiveTag = state.lang === 'en' ? ' · sensitive' : ' · känslig';
-  setText('cellClass', formatClassName(data.full_class_name) + (data.sensitive ? sensitiveTag : ''));
-  setText('simpleClass', formatClassName(data.sea_only_class_name));
+
+  const isGlobal = Boolean(data.is_global);
+  const inunBox = $('inundationBox');
+  const eqBox = $('regionalEquation');
+  const metricsBox = $('regionalMetrics');
+
+  if (isGlobal && inunBox) {
+    inunBox.hidden = false;
+    if (eqBox) eqBox.hidden = true;
+    if (metricsBox) metricsBox.hidden = true;
+    setText('inundationInterval', data.inundation_interval || '—');
+    const statusText = data.last_land_bp !== null
+      ? (data.last_land_bp === 0
+          ? (state.lang === 'en' ? 'Present land (0 BP)' : 'Torrlagt i dag (0 BP)')
+          : (state.lang === 'en' ? `Land until ${fmt.format(data.last_land_bp)} BP` : `Torrlagt fram till ${fmt.format(data.last_land_bp)} BP`))
+      : (state.lang === 'en' ? 'Permanent deep ocean since LGM' : 'Permanent djuphav sedan LGM');
+    setText('inundationStatus', statusText);
+    setText('inundationDepth', `${fmt.format(data.today_m)} m`);
+    setText('inundationEpochClass', formatClassName(data.full_class_name));
+    setText('inundationSource', data.data_source || 'De Groeve et al. (2022) / GEBCO 2021');
+    setText('inundationResolution', `${data.cell_size} · ${data.time_resolution}`);
+  } else {
+    if (inunBox) inunBox.hidden = true;
+    if (eqBox) eqBox.hidden = false;
+    if (metricsBox) metricsBox.hidden = false;
+    setText('todayHeight', `${fmt.format(data.today_m)} m`);
+    setText('upliftValue', `${signed(-data.uplift_since_m)} m`);
+    setText('erosionValue', `${signed(data.erosion_since_m)} m`);
+    setText('depositionValue', `${signed(-data.deposition_since_m)} m`);
+    setText('paleoHeight', `${fmt.format(data.paleo_m)} m`);
+    const relRow = $('relativeHeightRow');
+    if (relRow) {
+      relRow.hidden = Math.abs(data.relative_height_anomaly_m || 0) < 1e-9;
+      setText('relativeHeightValue', `${signed(data.relative_height_anomaly_m || 0)} m`);
+    }
+    setText('seaSurface', `${fmt.format(data.sea_surface_m)} m`);
+    setText('margin', `${fmt.format(data.margin_m)} m`);
+    const sensitiveTag = state.lang === 'en' ? ' · sensitive' : ' · känslig';
+    setText('cellClass', formatClassName(data.full_class_name) + (data.sensitive ? sensitiveTag : ''));
+    setText('simpleClass', formatClassName(data.sea_only_class_name));
+  }
+
   if (activeMobilePanel !== 'cellSection') openMobileSheet('cellSection', analysisTrigger);
 }
 async function calculate() {
@@ -1218,9 +1410,22 @@ map.on('zoomend', refreshMotionSymbols);
 map.on('click', e => inspectCell(e.latlng));
 document.querySelectorAll('[data-region]').forEach(button => button.onclick = () => {
   const region = button.dataset.region;
-  const preferred = {aegean: 'spatial_scenario', europe: 'europe_overview', doggerland: 'doggerland_overview'}[region];
+  const preferred = {
+    global: 'global_degroeve',
+    sundaland: 'sundaland_degroeve',
+    aegean: 'spatial_scenario',
+    europe: 'europe_overview',
+    doggerland: 'doggerland_overview'
+  }[region];
   setRegion(region, preferred, true); renderFrame();
 });
+const sundaShortcut = $('sundalandShortcut');
+if (sundaShortcut) {
+  sundaShortcut.onclick = () => {
+    setRegion('sundaland', 'sundaland_degroeve', true);
+    renderFrame();
+  };
+}
 $('goto').oninput = () => showSearchResults(localSearch($('goto').value));
 $('goto').onkeydown = e => { if (e.key === 'Escape') hideSearchResults(); };
 $('gotoForm').onsubmit = async e => {
@@ -1236,4 +1441,4 @@ document.addEventListener('keydown', event => { if (event.key === 'Escape' && ac
 $('methodButton').onclick = () => $('methodDialog').showModal(); $('closeMethod').onclick = () => $('methodDialog').close();
 $('language').onclick = () => setLanguage(state.lang === 'sv' ? 'en' : 'sv');
 
-fetch('data/catalog.json?v=20261012-1').then(r => r.json()).then(catalog => { state.catalog = catalog; populate(); detectApi(); }).catch(error => { document.body.innerHTML = `<main style="padding:3rem"><h1>PalaeoCoast kunde inte starta</h1><p>${error.message}</p><p>Kör <code>python web_server.py</code> och öppna den angivna adressen.</p></main>`; });
+fetch(`data/catalog.json?v=${Date.now()}`).then(r => r.json()).then(catalog => { state.catalog = catalog; populate(); detectApi(); }).catch(error => { document.body.innerHTML = `<main style="padding:3rem"><h1>PalaeoCoast kunde inte starta</h1><p>${error.message}</p><p>Kör <code>python web_server.py</code> och öppna den angivna adressen.</p></main>`; });
